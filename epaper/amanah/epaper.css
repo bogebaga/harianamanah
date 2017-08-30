@@ -1,0 +1,225 @@
+html,
+body
+{
+    height: auto;
+
+    background-color: #eee;
+}
+
+a[href]
+{
+    text-decoration: none;
+    outline: none;
+}
+a[data-style="social-btn"]
+{
+    color: #1fbcc0;
+    
+}
+
+a[data-style="select-epaper"]
+{
+    color: white;
+}
+
+a[data-style="select-epaper"]:hover, a[data-style="select-epaper"]:focus
+{
+    color: #a0a0a0;
+}
+.container-gambar
+{
+    margin-top: 93px;
+}
+
+
+nav
+{
+    width: 100%;
+    background: #fff;
+}
+
+.menu
+{   
+    display: inline-block;
+    font-size: 25px;   
+    margin-left: 25px;   
+    vertical-align: middle;   
+    color: #1fbcc0;
+    cursor: pointer;
+}
+
+header
+{
+    background-color: #1fbcc0;
+    padding: 50px 0 75px;
+    color: #fff;
+}
+
+
+header .logo
+{
+    display: inline-block;
+    width: 215px;
+    padding-right: 0;
+    vertical-align: top;
+}
+
+
+header .cap-epaper
+{
+    font-size: 30px;
+    line-height: 54px;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+nav
+{
+    font-size: 40px;
+}
+
+.brand-bar
+{
+    float: left;
+    /* width: 100%; */
+}
+
+.social-bar
+{
+    float: right;
+}
+
+.h-daerah
+{
+    display: inline-block;
+    font-family: serif;
+    padding: 7px 25px;
+    border-width: 3px;
+    border-style: dotted;
+    margin-top: 9px;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.epaper-today
+{
+    height: 600px;
+}
+.wrapper
+{
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.page-view-right
+{
+    height: 600px;
+    width: 600px;
+    float: right;
+    overflow: hidden;
+}
+.page-view-right > .lapisan-lay
+{
+    width: inherit;
+}
+.pvr-manify
+{
+    position: relative;
+    width: 230px;
+    height: 230px;
+    background-color: #fff;
+    border-radius: 200px;
+    border: 4px double #1fbcc0;
+    margin: -60px auto -170px;
+}
+.pvr-manify > .day-name
+{
+    margin-top: 70px;
+    color: #1fbcc0;
+    font-size: 30px;
+    font-family: serif;
+    font-weight: 800;
+}
+
+.pvr-manify > .date-format 
+{
+    font-weight: 700;
+    font-size: 21px;
+
+}
+
+.page-view-left
+{
+    height: 600px;
+    width: 600px;
+    float: left;
+    overflow: hidden;
+    background-color: #fff;
+    text-align: center;
+}
+
+.page-view-left > .welcome
+{
+    margin-top: 200px;
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.page-view-left > .baca-epaper-hari 
+{
+    padding: 10px 10px;
+    border: 1px solid #1fbcc0;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    background-color: #1fbcc0;
+
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+
+}
+.page-view-left > .baca-epaper-hari:hover
+{
+    background-color: #fff;
+    color: #000;
+}
+.page-view-left > .baca-epaper-hari:active
+{
+    background-color: #35DBDE;
+    color: #000;
+}
+.edisi-label
+{
+    color: white;
+    padding: 5px 35px;
+    font-size: 30px ;
+    margin-bottom: 20px;
+    margin-top: -25px;
+    border: 1px solid  #fff;
+    display: inline-block;
+}
+
+.date-font
+{
+    font-size: 25px;
+
+}
+.bg-white
+{
+    background-color: rgb(51, 44, 43);
+}
+
+
+.fill-content
+{
+    padding: 0 0 25px;
+}
+
+
+.center
+{
+    text-align: center;
+}

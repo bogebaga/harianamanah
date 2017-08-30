@@ -1,0 +1,250 @@
+html,
+body
+{
+    height: auto;
+}
+a[href]
+{
+    text-decoration: none;
+    outline: none;
+}
+a[data-style="social-btn"]
+{
+    color: #fff;
+}
+
+a[data-style="select-epaper"]
+{
+    color: white;
+
+}
+
+a[data-style="select-epaper"]:hover, a[data-style="select-epaper"]:focus
+{
+    color: #D1D1D1;
+}
+
+.news-cover
+{
+    background: url(front-cover/cover-newspaper-1.png) bottom center no-repeat #eee;
+    height: 500px;
+    background-size: 180ex;
+}
+.container-gambar
+{
+    margin-top: 93px;
+}
+nav
+{
+    width: 100%;
+    background: #fff;
+    padding: 0;
+}
+header
+{
+    background-color: #1fbcc0;
+    padding: 15px 0 5px;
+    color: #fff;
+}
+header .logo
+{
+    display: inline-block;
+    width: 215px;
+    padding-right: 0;
+    vertical-align: top;
+}
+header .cap-epaper
+{
+    font-size: 30px;
+    line-height: 54px;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+nav
+{
+    font-size: 40px;
+}
+
+.brand-bar
+{
+    float: left;
+}
+
+.social-bar
+{
+    float: right;
+    font-size: 35px;
+}
+
+.h-daerah
+{
+    display: inline-block;
+    font-family: serif;
+    padding: 7px 25px;
+    border-width: 3px;
+    border-style: dotted;
+    margin-top: 9px;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.epaper-today
+{
+    height: 600px;
+}
+.wrapper
+{
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.page-view-right
+{
+    height: 600px;
+    width: 600px;
+    float: right;
+    overflow: hidden;
+}
+.page-view-right > .lapisan-lay
+{
+    width: inherit;
+}
+.pvr-manify
+{
+    position: relative;
+    width: 230px;
+    height: 230px;
+    background-color: #fff;
+    border-radius: 200px;
+    border: 4px double #1fbcc0;
+    margin: -60px auto -170px;
+}
+.pvr-manify > .day-name
+{
+    margin-top: 70px;
+    color: #1fbcc0;
+    font-size: 30px;
+    font-family: serif;
+    font-weight: 800;
+}
+
+.pvr-manify > .date-format 
+{
+    font-weight: 700;
+    font-size: 21px;
+
+}
+
+.page-view-left
+{
+    height: 600px;
+    width: 600px;
+    float: left;
+    overflow: hidden;
+    background-color: #fff;
+    text-align: center;
+}
+
+.page-view-left > .welcome
+{
+    margin-top: 200px;
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.page-view-left > .baca-epaper-hari 
+{
+    padding: 10px 10px;
+    border: 1px solid #1fbcc0;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    background-color: #1fbcc0;
+
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+
+}
+.page-view-left > .baca-epaper-hari:hover
+{
+    background-color: #fff;
+    color: #000;
+}
+.page-view-left > .baca-epaper-hari:active
+{
+    background-color: #35DBDE;
+    color: #000;
+}
+.edisi-label
+{
+    color: white;
+    padding: 5px 35px;
+    font-size: 30px ;
+    margin-bottom: 20px;
+    margin-top: -25px;
+    border: 1px solid  #fff;
+    display: inline-block;
+}
+
+.date-font
+{
+    font-size: 25px;
+
+}
+.bg-epaper
+{
+    background: rgba(144,186,185,1);
+    background: -moz-linear-gradient(45deg, rgba(144,186,185,1) 0%, rgba(66,91,132,1) 88%, rgba(66,91,132,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(144,186,185,1)), color-stop(88%, rgba(66,91,132,1)), color-stop(100%, rgba(66,91,132,1)));
+    background: -webkit-linear-gradient(45deg, rgba(144,186,185,1) 0%, rgba(66,91,132,1) 88%, rgba(66,91,132,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(144,186,185,1) 0%, rgba(66,91,132,1) 88%, rgba(66,91,132,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(144,186,185,1) 0%, rgba(66,91,132,1) 88%, rgba(66,91,132,1) 100%);
+    background: linear-gradient(45deg, rgba(144,186,185,1) 0%, rgba(66,91,132,1) 88%, rgba(66,91,132,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#90bab9', endColorstr='#425b84', GradientType=1 );
+}
+.bg-islami
+{
+    background: rgba(117,137,12,1);
+    background: -moz-linear-gradient(-45deg, rgba(117,137,12,1) 0%, rgba(117,137,12,1) 27%, rgba(164,179,87,1) 85%, rgba(164,179,87,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(117,137,12,1)), color-stop(27%, rgba(117,137,12,1)), color-stop(85%, rgba(164,179,87,1)), color-stop(100%, rgba(164,179,87,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(117,137,12,1) 0%, rgba(117,137,12,1) 27%, rgba(164,179,87,1) 85%, rgba(164,179,87,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(117,137,12,1) 0%, rgba(117,137,12,1) 27%, rgba(164,179,87,1) 85%, rgba(164,179,87,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(117,137,12,1) 0%, rgba(117,137,12,1) 27%, rgba(164,179,87,1) 85%, rgba(164,179,87,1) 100%);
+    background: linear-gradient(135deg, rgba(117,137,12,1) 0%, rgba(117,137,12,1) 27%, rgba(164,179,87,1) 85%, rgba(164,179,87,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#75890c', endColorstr='#a4b357', GradientType=1 );
+}
+.bg-alharam
+{
+   background: rgba(233,107,85,1);
+    background: -moz-linear-gradient(top, rgba(233,107,85,1) 0%, rgba(233,107,85,1) 8%, rgba(174,73,55,1) 74%, rgba(174,73,55,1) 93%, rgba(174,73,55,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(233,107,85,1)), color-stop(8%, rgba(233,107,85,1)), color-stop(74%, rgba(174,73,55,1)), color-stop(93%, rgba(174,73,55,1)), color-stop(100%, rgba(174,73,55,1)));
+    background: -webkit-linear-gradient(top, rgba(233,107,85,1) 0%, rgba(233,107,85,1) 8%, rgba(174,73,55,1) 74%, rgba(174,73,55,1) 93%, rgba(174,73,55,1) 100%);
+    background: -o-linear-gradient(top, rgba(233,107,85,1) 0%, rgba(233,107,85,1) 8%, rgba(174,73,55,1) 74%, rgba(174,73,55,1) 93%, rgba(174,73,55,1) 100%);
+    background: -ms-linear-gradient(top, rgba(233,107,85,1) 0%, rgba(233,107,85,1) 8%, rgba(174,73,55,1) 74%, rgba(174,73,55,1) 93%, rgba(174,73,55,1) 100%);
+    background: linear-gradient(to bottom, rgba(233,107,85,1) 0%, rgba(233,107,85,1) 8%, rgba(174,73,55,1) 74%, rgba(174,73,55,1) 93%, rgba(174,73,55,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e96b55', endColorstr='#ae4937', GradientType=0 );
+}
+.fill-content
+{
+    padding: 60px 0 25px;
+}
+.center
+{
+    text-align: center;
+}
+.center > div 
+{
+    float: none;
+    display: inline-block;
+}
+@media (max-width: 1152px) 
+{
+    .news-cover
+    {
+        display: none;
+    }   
+}

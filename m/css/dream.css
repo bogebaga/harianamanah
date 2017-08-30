@@ -1,0 +1,661 @@
+a, p, h1, h2, h3, h4, h5{
+	font-family: "Lato", "sans-serif";
+}
+
+
+.ket_gam{
+	font-size: 10px;
+}
+
+.navbar{
+	margin-bottom: 0 !important;
+}
+
+.navbar-default{
+	background-color: #404040 !important;
+	border-color: #404040 !important;
+}
+
+.navbar-default .navbar-nav > li > a{
+	color: white !important;
+}
+
+.navbar-header{
+	height: 50px;
+}
+
+
+
+
+
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: white  !important;
+	border-radius: 5px !important;
+	height: 5px;
+}
+
+.navbar-toggle .icon-bar+.icon-bar{
+	margin-top: 3px !important;
+}
+
+.navbar-default .navbar-header .navbar-toggle{
+	border-color: transparent;
+	margin-right: 10px;
+
+}
+
+.navbar-default .navbar-collapse{
+	margin-top:10px;
+}
+
+/*Div Search*/
+
+/* .demo-2{
+	width: 300px;
+	vertical-align: middle;
+	white-space: nowrap;
+	position: relative;
+}
+
+.demo-2 input#search{
+	width: 20px;
+	height: 50px;
+	border: none;
+	background: black;
+	font-size: 14pt;
+	color: #262626;
+	padding-left: 50px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	color: #fff;
+
+	z-index: 1;
+	-webkit-transition: width .55s ease;
+  	-moz-transition: width .55s ease;
+  	transition: width .55s ease;
+}
+
+demo-2 input#search::-webkit-input-placeholder {
+   color: #ffffff;
+}
+
+.demo-2 .icon{
+  position: absolute;
+  font-size: 18px;
+  top: -12%;
+  margin-left: 17px;
+  margin-top: 17px;
+  color: #4f5b66;
+}
+
+.demo-2 input#search:focus, .demo-2 input#search:active{
+    outline:none;
+    width: 100%
+}
+
+ .demo-2:hover input#search{
+    outline:none;
+    width: 100%;
+
+  }
+
+  .demo-2:hover .icon{
+    color: #93a2ad;
+  } */
+
+/*-------------------END---------------------*/
+
+/*Owl Carousel*/
+#owl-demo .item img{
+	display: block;
+	width: 100%;
+	height: auto;
+	margin-top: 13%;
+}
+
+#owl-demo{
+	margin-bottom: 10px;
+}
+
+#owl-demo .item .judul-berita-utama{
+	position: absolute;
+	top: 50%;
+	padding:0%;
+
+}
+
+#owl-demo .item .judul-berita-utama{
+	background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+	background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+	background: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+	background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+	width: 100%;
+	height: 51%;
+}
+
+#owl-demo .item .judul-berita-utama h3{
+	text-align: left;
+	margin-top: 6%;
+	margin-bottom: 0;
+	margin-left: 15px;
+	margin-right: 15px;
+	line-height: 0.8;
+
+}
+
+#owl-demo .item .judul-berita-utama p{
+	text-align: left;
+	margin: 4px 15px 0;
+	font-size: 10px;
+	color: white;
+}
+
+#owl-demo .item .judul-berita-utama h3 a{
+	color: white;
+	font-size:70%;
+}
+/*-------------------END---------------------*/
+
+
+/*10 Berita*/
+/*.container-fluid{
+	background: whitesmoke;
+}*/
+
+.artikle{
+	padding: 8px 0px;
+	/*margin-bottom: 10px;*/
+	background: white;
+	border-bottom: 1px solid #ececec;
+	overflow: hidden;
+	/*box-shadow: 0px 1px 5px #c8c8c8;*/
+}
+
+.artikle:last-child{
+	border-bottom: 1px solid #ececec;
+}
+
+.artikle .link-kategori {
+	font-size: 12px;
+	font-weight: bold;
+	color: #14afb4;
+}
+
+.artikle .artikle-text .berita p{
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0;
+	text-align: left;
+}
+
+.artikle .artikle-text .berita {
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #3c3c3c;
+}
+
+.artikle .artikle-text .link-kategori{
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.list-picture img{
+	border-radius: 40px;
+	height: 80px;
+	float: left;
+	margin-left: 5px;
+	margin-top:5px;
+}
+
+.list-picture1 img{
+	height: 95px;
+	float: left;
+	margin-left: 5px;
+	margin-top:5px;
+}
+
+.artikle-text{
+	width: calc(100% - 100px);
+	float: right;
+	padding: 2px;
+}
+
+.artikle-text1{
+	width: calc(100% - 120px);
+	float: right;
+	padding: 2px;
+}
+
+.artikle-text .waktu-berita{
+	margin: 0;
+}
+/*-------------------END---------------------*/
+
+
+/* Iklan */
+
+.iklan{
+	width: 100%;
+	margin: 8px auto;
+}
+
+/*-------------------END---------------------*/
+
+
+/*Box Waktu Sholat*/
+
+.header-sholat{
+	margin-top: 7px;
+	padding: 5px 0;
+	text-align: center;
+	background: #14afb4;
+}
+
+.content-sholat{
+	background: gray;
+	height: 200px;
+	width: 100%;
+}
+
+.header-sholat .judul-sholat{
+	font-size: 22px;
+}
+
+.header-sholat .judul-sholat, .header-sholat .tanggal-sholat{
+	color: white;
+}
+
+/*-------------------END---------------------*/
+
+
+/*Box Trending Tag */
+
+.box .judul-tag{
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	margin: 20px 0 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #14afb4;
+
+}
+
+.box .list-tag{
+	list-style: none;
+	text-align: center;
+	font-size: 18px;
+	padding: 0;
+}
+
+.box .list-tag  li  a {
+	color: black;
+}
+
+.box .list-tag > li{
+	border-bottom: 1px solid #ececec;
+	margin: 0 15px;
+	padding: 20px 0;
+}
+
+.box .list-tag li:last-child{
+	border-bottom: transparent;
+}
+
+/*-------------------END---------------------*/
+
+
+/*Box Laporan Khusus*/
+
+.box a h4{
+	color: black;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.box .artikel-penuh a img{
+	position: relative;
+	text-align: center;
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.box .daftar-artikel-penuh{
+	padding-left: 0;
+	list-style: none;
+	font-size: 18px;
+	margin-right: 5px;
+	margin-top:;
+	margin-bottom: 0;
+}
+
+.daftar-artikel{
+
+	margin-top:10px;
+
+}
+
+.box .daftar-artikel-penuh li {
+	padding: 20px 0;
+	display: table;
+}
+
+.box .daftar-artikel-penuh li .nomor{
+	font-size: 36px;
+	font-weight: bold;
+	width: 50px;
+	text-align: center;
+	display: table-cell;
+	color: gray;
+}
+
+.box .daftar-artikel-penuh li .spasi{
+	margin-right: 6px;
+}
+
+.box .daftar-artikel-penuh li .cerita{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.box .daftar-artikel-penuh li .cerita a{
+	color: black;
+	font-family: Roboto;
+	font-weight: 400;
+}
+
+.box .daftar-artikel-penuh .more{
+	text-align: center;
+}
+
+.box .daftar-artikel-penuh .more a{
+	color: #14afb4;
+	font-size: 18px;
+	padding: 6px 0;
+}
+
+.box .artikel-penuh .judul-headline{
+	padding: 1px;
+	background: black;
+}
+
+.box .artikel-penuh .judul-headline .text-medium{
+	text-align: center;
+	font-size: 24px;
+	background: black;
+}
+
+.box .artikel-penuh .judul-headline .text-medium a{
+	color: white;
+	padding: 0 5px;
+}
+/*-------------------END---------------------*/
+
+/*Box Trending Now*/
+
+.box .judul-now{
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	margin: 40px 0 0;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #14afb4;
+}
+
+.box .list-now{
+	list-style: none;
+	text-align: center;
+	padding: 0;
+}
+
+.box .list-now li{
+	padding: 0px ;
+	border-bottom: 1px solid #ececec ;
+	margin: 0 15px;
+}
+
+.box .list-now li:last-child{
+	border-bottom: transparent;
+}
+
+.box .list-now  li  .berita-now{
+	padding: 0 15px;
+	margin: 15px 0;
+}
+
+.box .list-now  li  .berita-now > a{
+	font-size: 12px;
+	text-transform: uppercase;
+	color: #14afb4;
+}
+
+.box .list-now  li  .berita-now > h4 > a{
+	font-size: 22px;
+	font-weight: bold;
+	color: black;
+}
+/*-------------------END---------------------*/
+
+
+
+/*Box Recommended*/
+
+.box .black{
+	background: #15161b;
+	margin-top: 20px;
+	padding: 15px 0;
+	overflow: auto;
+}
+
+.box .black h4{
+	color: white;
+	text-align:center;
+	font-size: 24px;
+}
+
+.box .black ul{
+	padding: 0 15px;
+}
+
+.box .black ul li{
+	width: 50%;
+	float: left;
+	padding: 10px 15px;
+	height:180px;
+	list-style: none;
+}
+
+.box .black ul li a img{
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.box .black ul li p{
+	padding-top: 5px;
+	line-height: 100%;
+	height: 80px;
+	overflow: hidden;
+}
+
+.box .black ul li p a{
+	color: white;
+	font-size: 14px;
+	font-family: "Open Sans";
+}
+
+
+/*-------------------END---------------------*/
+
+/*Back To Top*/
+.go-top {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	text-decoration: none;
+	color: #fff;
+	padding: 10px 10px;
+	background: rgba(0, 0, 0, 0.2);
+	display: none;
+}
+
+.go-top:hover {
+	background: rgba(0, 0, 0, 0.5);
+}
+/*-------------------END---------------------*/
+
+/*Footer*/
+.isi-footer{
+	text-align: center;
+	margin-top: 10px;
+	background: #e8e8e8;
+}
+
+.isi-footer .gambar-footer a img{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.isi-footer .list-footer{
+	padding: 30px 0  20px ;
+	font-size: 12px;
+}
+
+.isi-footer .list-footer a{
+	display: inline-block;
+	color: black;
+}
+
+.more{
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	border: 1px solid black;
+	padding: 10px 0;
+}
+
+.more a{
+	color: black;
+}
+/*-------------------END---------------------*/
+/* --------PAGELOADER-------- */
+#loader
+{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 3000;
+	background-color: white;
+}
+.page-loader
+{
+	height: inherit;
+	margin-top: 170px;
+}
+.page-loader center img
+{
+	display: block;
+}
+/* ---------END-------------- */
+.headline .headline-text{
+	background: #14afb4;
+	text-align: center;
+	padding-left:5%;
+	padding-right:5%;
+	position: relative;
+	margin-bottom:-10px;
+}
+
+.headline .close-headline{
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #484343;
+	padding: 0 5px;
+	border-radius: 0 0 11px 0;
+}
+
+.headline .headline-text a{
+	color: white;
+}
+
+.iklan-fixed{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+}
+
+.iklan-fixed .wrap{
+	padding: 10px;
+	margin: 0 auto;
+
+}
+
+.iklan-fixed  .wrap img{
+	position: relative;
+	width: 100%;
+}
+
+.iklan-fixed .wrap .close-iklan{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 5;
+	padding: 1px 5px;
+	color: white;
+	background: #14afb4;
+	opacity: 1;
+}
+
+
+.artikle .link-kategori {
+	font-size: 12px;
+	font-weight: bold;
+	color: #14afb4;
+}
+
+.artikle .artikle-text-1 .berita p{
+	font-family: "Open Sans";
+	font-size: 14px;
+	margin: 0;
+	text-align: left;
+}
+
+.artikle .artikle-text-1 .berita {
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #3c3c3c;
+}
+
+.artikle .artikle-text-1 .link-kategori{
+	text-decoration: none;
+	text-transform: uppercase;
+	margin:0;
+}
+
+.artikle-text-1{
+	width: calc(100% - 100px);
+	float: right;
+	padding: 2px
+}
+
+.artikle-text-1 .tag-sponsored{
+	color: gray;
+	font-size: 13px;
+	display: inline-block;
+	margin:0;
+}
+
+.artikle-text-1 .instal{
+	display: inline-block;
+	color: #14afb4;
+	right: 10%;
+	font-size: 13px;
+	position: absolute;
+	margin:0;
+}

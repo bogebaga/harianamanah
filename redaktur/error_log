@@ -1,0 +1,4 @@
+[06-Aug-2016 13:28:41 Asia/Jakarta] PHP Warning:  mysql_connect(): Connection refused in /home/harj8127/public_html/config/koneksi.php on line 12
+[06-Aug-2016 13:28:45 Asia/Jakarta] PHP Warning:  mysql_connect(): Connection refused in /home/harj8127/public_html/config/koneksi.php on line 12
+[21-Nov-2016 13:53:28 Asia/Jakarta] PHP Warning:  mysql_connect(): No such file or directory in /home/harj8127/public_html/config/koneksi.php on line 10
+[21-Nov-2016 13:53:48 Asia/Jakarta] PHP Warning:  mysql_connect(): No such file or directory in /home/harj8127/public_html/config/koneksi.php on line 10

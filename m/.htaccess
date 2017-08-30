@@ -1,0 +1,102 @@
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+ErrorDocument 404 http://harianamanah.id/alamatpalsu.html
+RewriteRule ^index\.php$ template.php?module=home [L]
+RewriteRule ^amanah-(.*)$ template.php?module=home&daerah=$1 [L]
+
+RewriteRule ^tes-(.*)\.html$ template.php?module=tes&id=$1 [L]
+RewriteRule ^kategori-(.*)\.html$ template.php?module=detailkategori&id=$1 [L]
+RewriteRule ^berita-(.*)\.html$ template.php?module=detailberita&judul=$1 
+RewriteRule ^video-(.*)\.html$ template.php?module=detailvideo&judul=$1
+RewriteRule ^foto-(.*)\.html$ template.php?module=detailfoto&judul=$1
+RewriteRule ^hasil-pencarian\.html$ template.php?module=hasilcari&id=$1 [L]
+
+RewriteRule ^tes1\.html$ template.php?module=tes1 [L]
+RewriteRule ^epaper\.html$ template.php?module=epaper [L]
+RewriteRule ^teskategori-(.*)\.html$ template.php?module=tesdetailkategori&id=$1 [L]
+RewriteRule ^teshalkategori-(.*)-([0-9]+)\.html$ template.php?module=detailkategori&id=$1&halkategori=$2 [L]
+RewriteRule ^alamatpalsu\.html$ template.php?module=error [L]
+
+RewriteRule ^video\.html$ template.php?module=video [L]
+RewriteRule ^foto\.html$ template.php?module=foto [L]
+RewriteRule ^abutours\.html$ template.php?module=abu [L]
+RewriteRule ^downloadabu\.html$ template.php?module=doabu [L]
+RewriteRule ^news\.html$ template.php?module=news [L]
+RewriteRule ^kalam\.html$ template.php?module=kalam [L]
+RewriteRule ^sosok\.html$ template.php?module=sosok [L]
+RewriteRule ^kajian\.html$ template.php?module=kajian [L]
+RewriteRule ^lifestyle\.html$ template.php?module=lifestyle [L]
+RewriteRule ^komunitas\.html$ template.php?module=komunitas [L]
+RewriteRule ^profil-kami\.html$ template.php?module=profilkami&id=$1 [L]
+
+RewriteRule ^halkomentar-(.*)-([0-9]+)\.html$ template.php?module=detailberita&judul=$1&halkomentar=$2 [L]
+
+RewriteRule ^indeks-berita\.html$ template.php?module=indeksberita&id=$1 [L]
+RewriteRule ^halberita-(.*)\.html$ template.php?module=semuaberita&halberita=$1 [L]
+
+RewriteRule ^kategori-(.*)\.html$ template.php?module=detailkategori&id=$1 [L]
+RewriteRule ^halkategori-(.*)-([0-9]+)\.html$ template.php?module=detailkategori&id=$1&halkategori=$2 [L]
+RewriteRule ^hasil-pencarian\.html$ template.php?module=hasilcari&id=$1 [L]
+
+RewriteRule ^semua-berita\.html$ template.php?module=semuaberita&id=$1 [L]
+
+RewriteRule ^album-([0-9]+)-(.*)\.html$ template.php?module=detailalbum&id=$1 [L]
+RewriteRule ^semua-album\.html$ template.php?module=semuaalbum&id=$1 [L]
+RewriteRule ^galeri-(.*)\.html$ zoom.php?id=$1 [L]
+RewriteRule ^halgaleri-([0-9]+)-(.*)\.html$ template.php?module=detailalbum&id=$1&halgaleri=$2 [L]
+
+RewriteRule ^semua-agenda\.html$ template.php?module=semuaagenda&id=$1 [L]
+RewriteRule ^halagenda-(.*)\.html$ template.php?module=semuaagenda&halagenda=$1 [L]
+RewriteRule ^agenda-(.*)\.html$ template.php?module=detailagenda&tema=$1 [L]
+
+RewriteRule ^hasil-poling\.html$ template.php?module=hasilpoling&id=$1 [L]
+RewriteRule ^lihat-poling\.html$ template.php?module=lihatpoling&id=$1 [L]
+
+RewriteRule ^semua-download\.html$ template.php?module=semuadownload&id=$1 [L]
+RewriteRule ^haldownload-(.*)\.html$ template.php?module=semuadownload&haldownload=$1 [L]
+
+RewriteRule ^play-([0-9]+)-(.*)\.html$ template.php?module=play&id=$1 [L]
+RewriteRule ^halkomentarvideo-([0-9]+)-(.*)\.html$ template.php?module=play&id=$1&halkomentarvideo=$2 [L]
+RewriteRule ^halvideo-([0-9]+)-(.*)\.html$ template.php?module=detailplaylist&id=$1&halvideo=$2 [L]
+RewriteRule ^playlist-([0-9]+)-(.*)\.html$ template.php?module=detailplaylist&id=$1 [L]
+RewriteRule ^semua-playlist\.html$ template.php?module=semuaplaylist&id=$1 [L]
+RewriteRule ^halplaylist-(.*)\.html$ template.php?module=semuaplaylist&halplaylist=$1 [L]
+
+RewriteRule ^hubungi-kami\.html$ template.php?module=hubungikami&id=$1 [L]
+RewriteRule ^hubungi-aksi\.html$ template.php?module=hubungiaksi&id=$1 [L]
+
+RewriteRule ^login\.html$ template.php?module=login [L]
+RewriteRule ^daftar\.html$ template.php?module=daftar [L]
+RewriteRule ^cek-login\.html$ template.php?module=ceklogin [L]
+RewriteRule ^daftar-aksi\.html$ template.php?module=daftaraksi [L]
+RewriteRule ^logout\.html$ template.php?module=logout [L]
+
+RewriteRule ^not-found\.html$ template.php?module=notfound&id=$1 [L]
+
+RewriteRule ^hal-(.*)\.html$ template.php?module=halamanstatis&judul=$1 [L]
+
+Options All -Indexes
+</IfModule>
+
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://new.harianamanah.id/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://new.harianamanah.id$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://harianamanah.id/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://harianamanah.id$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://m.harianamanah.id/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://m.harianamanah.id$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.harianamanah.id/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.harianamanah.id$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.m.harianamanah.id/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.m.harianamanah.id$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://harianamanah.id/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://harianamanah.id$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://m.harianamanah.id/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://m.harianamanah.id$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.harianamanah.id/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.harianamanah.id$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.m.harianamanah.id/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.m.harianamanah.id$      [NC]
+
+

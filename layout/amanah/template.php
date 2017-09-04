@@ -32,7 +32,7 @@ xmlns="http://www.w3.org/1999/xhtml"
     </script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=1056" initial-scale=1 />
+    <meta name="viewport" content="width=1056" initial-scale=1 />
     <title><?php
         if($d['judul'] !=''){
             echo"$d[judul]" ." | Berita Islam Terkini HarianAmanah Media Islam Indonesia";
@@ -248,6 +248,7 @@ xmlns="http://www.w3.org/1999/xhtml"
   nav#logo{
     position:relative;
     top: 50px;
+    margin-bottom:0;
   }
 
   nav#logo img {
@@ -268,7 +269,7 @@ xmlns="http://www.w3.org/1999/xhtml"
       </div>
     </div>
   </nav>
-  <nav id="logo" class="navbar navbar-default" style="background-color:#F1F1F1;">
+  <nav id="logo" class="navbar navbar-default" style="background-color:#ececec;">
     <div class="row">
       <div class="container" style="padding:0;">
         <a href="">
@@ -296,6 +297,13 @@ xmlns="http://www.w3.org/1999/xhtml"
           <li><a id="search"><i class="fa fa-search"></i></a></li>
         </ul> -->
         </div>
+      </div>
+      <div class="container sub-nav-menu" style="border:1px solid grey; border-top:0;padding:5px 0">
+      <ul>
+        <li style="display:inline-block;margin:0 15px;">Test</li>&nbsp;&bull;
+        <li style="display:inline-block;margin:0 15px;">Test</li>&nbsp;&bull;
+        <li style="display:inline-block;margin:0 15px;">Test</li>
+      </ul>
       </div>
     </div>
   </nav>
@@ -330,8 +338,8 @@ $(document).ready(function(){
       <ul class="must-know">
         <li><a href="">HOME</a></li>
         <li><a href="">ABOUT</a></li>
+        <li><a href="">CYBER MEDIA TERM</a></li>
         <li><a href="">PRIVACY POLICY</a></li>
-        <!-- <li><a href="">TEAM</a></li> -->
         <li><a href="">ADVERTISEMENT</a></li>
         <li><a href="">CONTACT US</a></li>
       </ul>
@@ -346,25 +354,25 @@ $(document).ready(function(){
           <li>Ekobis</li>
           <li>Politik</li>
           <li>Jazirah</li>
-          <li>Muslim Star</li>
+          <li>Muslim&nbsp;Star</li>
           <li>Bola+</li>
           <li>Muslimah</li>
-          <li>Gen M</li>
+          <li>Gen&nbsp;M</li>
           <li>Ormas</li>
-          <li>Ensiklopedi Muslim</li>
+          <li>Ensiklopedi&nbsp;Muslim</li>
           <li>Mozaik</li>
           <li>Hikmah</li>
           <li>Tafsir</li>
-          <li>Haji & Umrah</li>
+          <li>Haji&nbsp;&amp;&nbsp;Umrah</li>
           <li>Khazanah</li>
           <li>Legenda</li>
-          <li>Islamic View</li>
+          <li>Islamic&nbsp;View</li>
           <li>Opini</li>
           <li>Esai</li>
         </ul>
       </li>
-      <li>
-        <span class="title-menu">MENU UTAMA</span>
+      <li style="width:230px;">
+        <span class="title-menu">MENU&nbsp;UTAMA</span>
         <ul class="block">
           <li>News</li>
           <li>LifeStyle</li>
@@ -374,19 +382,30 @@ $(document).ready(function(){
           <li>Kalam</li>
         </ul>
       </li>
-      <li>
-        <span class="title-menu">FIND US</span>
+      <li style="width:220px;">
+        <span class="title-menu">FIND&nbsp;US</span>
         <ul class="block">
-          <li>
+          <li style="width:100%">
             <a href="https://play.google.com/store/apps/details?id=com.koran.harian.amanah&hl=in" text-decor="none" target="_blank">
 							<img src="images/googleplay.png" alt="android" style="max-width:100%; height:55px; margin-top:10px;">
 						</a>
 					</li>
-          <li>
+          <li style="width:100%;">
             <a href="https://itunes.apple.com/id/app/harian-amanah/id1186655456?mt=8" text-decor="none" target="_blank">
 							<img src="images/appstore.png" alt="apple" style="max-width:100%; height:55px; margin-top: 10px; ">
 						</a>
           </li>
+        </ul>
+      </li>
+      <li style="width:140px;">
+        <span class="title-menu">SOCIAL&nbsp;HUB</span>
+        <ul class="block">
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Google+</li>
+          <li>LinkedIn</li>
+          <li>Instagram</li>
+          <li>Youtube</li>
         </ul>
       </li>
     </ul>
@@ -533,26 +552,13 @@ $(document).ready(function(){
     });
 </script>
 <script type="text/javascript">
-$(document).ready(function(){
-
-	var colormenu = $(location).attr('href');
-
-	if (colormenu == "/news.html") 
-		{
-			$('#news').addClass('blue');
-		}
-
-});
-</script>
-<script type="text/javascript">
 $(document).ready(function()
 {
 	$(window).bind('scroll',function()
 	{
-		if ($(this).scrollTop()>900) 
-		{
-			$("#b-top").fadeIn();
-		}else{
+		if ($(this).scrollTop()>900){
+			$("#b-top").fadeIn(); 
+      } else {
 			$("#b-top").fadeOut(500);
 		}
 	});
@@ -562,16 +568,12 @@ $(document).ready(function()
 		return false;
 	});
 });
-</script>
-<script type="text/javascript">
-  	     $('[id^=carousel-selector-]').click( function(){
-            var id = this.id.substr(this.id.lastIndexOf("-") + 1);
-            var id = parseInt(id);
-     
-            $('#myCarousel').carousel(id);
-        });
-	
-	
+  $('[id^=carousel-selector-]').click( function(){
+    var id = this.id.substr(this.id.lastIndexOf("-") + 1);
+    var id = parseInt(id);
+
+    $('#myCarousel').carousel(id);
+});
 	$("#myCarousel").carousel({interval: false}); 
   </script>
 </body>

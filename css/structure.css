@@ -759,6 +759,10 @@ h2{
   margin-top: 0;
   color: black;
 }
+.deskripsi-judul.home a 
+{
+	color: yellow;
+}
 
 .featured_title.berita-terkini {
   margin-bottom: 0;

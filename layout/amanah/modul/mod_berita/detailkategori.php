@@ -62,7 +62,7 @@ echo"<img src='foto_kategori/$n[photo]'>";
 							
 							                                  
                                 <div class='left-trending-fix'>	<a href='berita-$r[judul_seo].html' title=''>
-								<img src='foto_berita/$r[gambar]' border='0' alt=''></a> 
+								<img src='foto_berita/base.jpg' border='0' alt=''></a> 
 								</div>
 								
                             </figure>

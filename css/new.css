@@ -1,5 +1,5 @@
 .wraplist {
-    background: #fdfdfd;
+    background: #ececec;
     font: 10px "RobotoMedium",Arial,Helvetica,sans-serif;
     line-height: 1;
 	margin-top:63px;
@@ -169,6 +169,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     padding: 10px;
     font: 1.4em/1.5 "RobotoMedium",Arial,Helvetica,sans-serif;
     color: #484848;
+    background: white;
 }
 
 .right-konten {
@@ -336,15 +337,7 @@ Pseudo ::after element
 .cf:after, article:after {
     clear: both;
 }
-.cf:before, .cf:after, article:before, article:after {
-    content: "";
-    display: table;
-    height: 0;
-    line-height: 0;
-    clear: both;
-    overflow: hidden;
-    visibility: hidden;
-}
+
 .pub-auth a {
     color: #000;
     float: left;

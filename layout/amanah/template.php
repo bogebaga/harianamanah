@@ -1,9 +1,9 @@
-<?php 
+<?php
 include "config/koneksi.php";
 error_reporting(0);
-	$detail=mysql_query("SELECT * FROM berita,users,kategori    
-			WHERE users.username=berita.username 
-			AND kategori.id_kategori=berita.id_kategori 
+	$detail=mysql_query("SELECT * FROM berita,users,kategori
+			WHERE users.username=berita.username
+			AND kategori.id_kategori=berita.id_kategori
 			AND judul_seo='$_GET[judul]'");
 	$d   = mysql_fetch_array($detail);
 	$tgl = tgl_indo($d['tanggal']);
@@ -12,9 +12,9 @@ error_reporting(0);
 	$detail1=mysql_query("SELECT * FROM video WHERE video_seo ='$_GET[judul]'");
 	$d1   = mysql_fetch_array($detail1);
 
-	$detail2=mysql_query("SELECT * FROM gallery,users,album    
-			WHERE users.username=album.username 
-			AND album.id_album=gallery.id_album 
+	$detail2=mysql_query("SELECT * FROM gallery,users,album
+			WHERE users.username=album.username
+			AND album.id_album=gallery.id_album
 			AND album_seo='$_GET[judul]'");
 	$d2   = mysql_fetch_array($detail2); ?>
 <!DOCTYPE html>
@@ -44,8 +44,8 @@ xmlns="http://www.w3.org/1999/xhtml"
             echo"Media Islam Indonesia, Berita Islam Terkini, Media Muslim , Dunia Islam, Berita Haji Umroh || Harian Amanah";
         }
         ?></title>
-    <meta name="title" content="<?php 
-	
+    <meta name="title" content="<?php
+
 	if($d['judul'] !=''){
             echo"$d[judul]" ." | Berita Islam Terkini HarianAmanah Media Islam Indonesia";
         }elseif($d1['jdl_video'] !=''){
@@ -55,12 +55,12 @@ xmlns="http://www.w3.org/1999/xhtml"
         }else{
             echo"Media Islam Indonesia, Berita Islam Terkini, Media Muslim , Dunia Islam, Berita Haji Umroh || Harian Amanah";
         }
-	
+
 	?>">
     <meta name="description" content="Media Islam Indonesia, Berita Islam Terkini, Media Muslim , Dunia Islam, Berita Haji Umroh || Harian Amanah">
     <meta name=keywords content="situs, media muslim ,berita,berita islam, muslim, populer, indonesia, hijab, sunnah, sejarah, ummat, dakwah, foto, video, gaya, hidup, halal, haram, ramadhan, idul, fitri, adha, qurban, zakat, puasa, shalat, wudhu, quran, hadist, syariah" />
     <meta name="author" content="">
-	<meta name="image"  content="<?php 
+	<meta name="image"  content="<?php
 	if($d['gambar']!=''){
 	echo "http://harianamanah.id/foto_berita/$d[gambar]";
 	}elseif($d1['gbr_video']!=''){
@@ -99,7 +99,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 
         ?>"/>
         <meta property="og:image" content="<?php
-        
+
       if($d['gambar']!=''){
 		echo "http://harianamanah.id/foto_berita/$d[gambar]";
 		}elseif($d1['gbr_video']!=''){
@@ -110,15 +110,15 @@ xmlns="http://www.w3.org/1999/xhtml"
 		echo "http://harianamanah.id/images/amanah.jpg";
 		}
         ?>"/>
-        <meta property="og:site_name" content="harianamanah.id"/>
-        <meta property="fb:app_id" content="168067490271817"/>
-        <meta name="adx:sections" content="<?php echo "$d[nama_kategori]"; ?>"/>
+    <meta property="og:site_name" content="harianamanah.id"/>
+    <meta property="fb:app_id" content="168067490271817"/>
+    <meta name="adx:sections" content="<?php echo "$d[nama_kategori]"; ?>"/>
 
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css"  type="text/css">
     <link href="css/structure.css" rel="stylesheet">
-	
+
 
 	<!-- Owl Carousel Assets -->
     <link href="owl-carousel/owl.carousel.css" rel="stylesheet">
@@ -128,7 +128,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 		width:100%;
 	}
 	</style>
-    
+
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/new.css">
@@ -139,18 +139,18 @@ xmlns="http://www.w3.org/1999/xhtml"
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
 	<!-- jQuery and Modernizr-->
 	<script src="js/jquery-2.1.1.js"></script>
-	
-	<!-- Core JavaScript Files -->  	 
+
+	<!-- Core JavaScript Files -->
     <script src="js/bootstrap.min.js"></script>
-	
+
 	<!-- mobile view -->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       var URL = window.location.href.split('/').pop();
       if(screen.width < 768)
       {
         document.location = 'http://localhost/harianamanah/m/'+URL;
       }
-    </script>
+    </script> -->
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -160,24 +160,24 @@ xmlns="http://www.w3.org/1999/xhtml"
 
 <style>
 #err{
-	background-image: url("images/404.jpg"); 
+	background-image: url("images/404.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 	margin-bottom:-50px;
 	}
-	
+
 @media(max-width:629px){
 	#err{
-	background-image: url("images/404.jpg"); 
+	background-image: url("images/404.jpg");
 	background-repeat: no-repeat;
 	background-size: 150% auto;
 	margin-bottom:-50px;
 	}
 }
-	
+
 	@media(max-width:476px){
 	#err{
-	background-image: url("images/404.jpg"); 
+	background-image: url("images/404.jpg");
 	background-repeat: no-repeat;
 	background-size: 180% auto;
 	margin-bottom:-50px;
@@ -185,7 +185,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 }
 @media(max-width:421px){
 	#err{
-	background-image: url("images/404.jpg"); 
+	background-image: url("images/404.jpg");
 	background-repeat: no-repeat;
 	background-size: 210% auto;
 	margin-bottom:-50px;
@@ -193,7 +193,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 }
 @media(max-width:373px){
 	#err{
-	background-image: url("images/404.jpg"); 
+	background-image: url("images/404.jpg");
 	background-repeat: no-repeat;
 	background-size: 210% auto;
 	margin-bottom:-80px;
@@ -213,7 +213,7 @@ xmlns="http://www.w3.org/1999/xhtml"
 			position: absolute;
 			left: 30px;
 			bottom: 30px;
-			font-size: 35px;	
+			font-size: 35px;
 			width: 50px;
 			height: 50px;
 			border-radius: 50px;
@@ -223,9 +223,9 @@ xmlns="http://www.w3.org/1999/xhtml"
 
 		#radio audio{
 			position: absolute;
-			left: 5px;
-			bottom: 20px;
-			width: 230px;
+			left: 0;
+			bottom: 0;
+			width: 100%;
 		}
 
 		#radio img {
@@ -236,14 +236,15 @@ xmlns="http://www.w3.org/1999/xhtml"
   .row.header-row-logo-bulat
   {
     padding: 10px 0;
-    background-color: #052844;
-    background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);    
+    background-color: white;
+    box-shadow: -9px -4px 20px 0px black;
+    /* background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);     */
   }
   .container.nav-menu
   {
     background-color: #052844;
     background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);
-    
+
   }
   nav#logo{
     position:relative;
@@ -254,16 +255,16 @@ xmlns="http://www.w3.org/1999/xhtml"
   nav#logo img {
     padding:30px 0;
   }
+  .logo{display:inline-block;}
 </style>
 	</head>
-
 <body>
 <header>
   <!--Navigation-->
   <nav id="menu" class="navbar navbar-default navbar-fixed-top">
     <div class="row header-row-logo-bulat">
       <div class="container" style="padding:0;">
-        <a href="">
+        <a href="/">
           <img src="logo/assets/pp_ff.png" width="30" alt="Logo bulat Amanah - harianamanah.com">
         </a>
       </div>
@@ -272,9 +273,10 @@ xmlns="http://www.w3.org/1999/xhtml"
   <nav id="logo" class="navbar navbar-default" style="background-color:#ececec;">
     <div class="row">
       <div class="container" style="padding:0;">
-        <a href="">
+        <a href="/">
           <div class="logo"><img src="images/amanah.png" width="350px" alt="Logo Amanah - harianamanah.com"></div>
         </a>
+        <img style="margin-left:15px;" src="foto_banner/milad_amanah.jpg" alt="banner milad amanah">
       </div>
     </div>
     <div class="row">
@@ -289,7 +291,7 @@ xmlns="http://www.w3.org/1999/xhtml"
         while( $row = mysql_fetch_array($result)){
           $idp = $row['id_menu'];
           echo "<li class='dropdown' ><a href='$row[link]' class='dropdown-toggle' data-toggle='dropdown' style='color:#fff;padding:10px 25px;' >$row[nama_menu] </a></li>";
-        }?>		
+        }?>
         </ul>
         <!-- <ul class="list-inline navbar-right top-social">
           <li><a href="https://www.facebook.com/harianamanah"><i class="fa fa-facebook fa-1x"></i></a></li>
@@ -298,7 +300,7 @@ xmlns="http://www.w3.org/1999/xhtml"
         </ul> -->
         </div>
       </div>
-      <div class="container sub-nav-menu" style="border:1px solid grey; border-top:0;padding:5px 0">
+      <div class="container sub-nav-menu" style="border:1px solid rgba(51, 51, 51, 0.25);border-top:0;padding:5px 0;background-color:#fff;">
       <ul>
         <li style="display:inline-block;margin:0 15px;">Test</li>&nbsp;&bull;
         <li style="display:inline-block;margin:0 15px;">Test</li>&nbsp;&bull;
@@ -314,7 +316,7 @@ xmlns="http://www.w3.org/1999/xhtml"
         <button><i class="fa fa-search"></i></button>
         </form>
         </div>
-			</div>	
+			</div>
 </header>
 <?php include_once("analyticstracking.php") ?>
 <script>
@@ -325,7 +327,7 @@ $(document).ready(function(){
 });
 </script>
 
-<?php include "konten.php"; ?>	
+<?php include "konten.php"; ?>
 
 <footer>
   <div class="footer-logo">
@@ -336,12 +338,12 @@ $(document).ready(function(){
   <div class="footer-menu">
     <div class="container">
       <ul class="must-know">
-        <li><a href="">HOME</a></li>
-        <li><a href="">ABOUT</a></li>
-        <li><a href="">CYBER MEDIA TERM</a></li>
-        <li><a href="">PRIVACY POLICY</a></li>
+        <!-- <li><a href="">HOME</a></li> -->
+        <li><a href="">TENTANG</a></li>
+        <li><a href="">PRIVASI</a></li>
+        <li><a href="">PEDOMAN&nbsp;MEDIA&nbsp;SIBER</a></li>
         <li><a href="">ADVERTISEMENT</a></li>
-        <li><a href="">CONTACT US</a></li>
+        <li><a href="">KONTAK</a></li>
       </ul>
     </div>
   </div>
@@ -351,38 +353,38 @@ $(document).ready(function(){
       <li>
         <span class="title-menu">KATEGORI</span>
         <ul>
-          <li>Ekobis</li>
-          <li>Politik</li>
-          <li>Jazirah</li>
-          <li>Muslim&nbsp;Star</li>
-          <li>Bola+</li>
-          <li>Muslimah</li>
-          <li>Gen&nbsp;M</li>
-          <li>Ormas</li>
-          <li>Ensiklopedi&nbsp;Muslim</li>
-          <li>Mozaik</li>
-          <li>Hikmah</li>
-          <li>Tafsir</li>
-          <li>Haji&nbsp;&amp;&nbsp;Umrah</li>
-          <li>Khazanah</li>
-          <li>Legenda</li>
-          <li>Islamic&nbsp;View</li>
-          <li>Opini</li>
-          <li>Esai</li>
-        </ul>
-      </li>
-      <li style="width:230px;">
-        <span class="title-menu">MENU&nbsp;UTAMA</span>
-        <ul class="block">
-          <li>News</li>
-          <li>LifeStyle</li>
-          <li>Komunitas</li>
-          <li>Kajian</li>
-          <li>Sosok</li>
-          <li>Kalam</li>
+          <li><a>Ekobis</a></li>
+          <li><a>Politik</a></li>
+          <li><a>Jazirah</a></li>
+          <li><a>Muslim&nbsp;Star</a></li>
+          <li><a>Bola+</a></li>
+          <li><a>Muslimah</a></li>
+          <li><a>Gen&nbsp;M</a></li>
+          <li><a>Ormas</a></li>
+          <li><a>Ensiklopedi&nbsp;Muslim</a></li>
+          <li><a>Mozaik</a></li>
+          <li><a>Hikmah</a></li>
+          <li><a>Tafsir</a></li>
+          <li><a>Haji&nbsp;&amp;&nbsp;Umrah</a></li>
+          <li><a>Khazanah</a></li>
+          <li><a>Legenda</a></li>
+          <li><a>Islamic&nbsp;View</a></li>
+          <li><a>Opini</a></li>
+          <li><a>Esai</a></li>
         </ul>
       </li>
       <li style="width:220px;">
+        <span class="title-menu">MENU&nbsp;UTAMA</span>
+        <ul class="block">
+          <li><a>News</a></li>
+          <li><a>LifeStyle</a></li>
+          <li><a>Komunitas</a></li>
+          <li><a>Kajian</a></li>
+          <li><a>Sosok</a></li>
+          <li><a>Kalam</a></li>
+        </ul>
+      </li>
+      <li style="width:260px;">
         <span class="title-menu">FIND&nbsp;US</span>
         <ul class="block">
           <li style="width:100%">
@@ -397,91 +399,23 @@ $(document).ready(function(){
           </li>
         </ul>
       </li>
-      <li style="width:140px;">
+      <li style="width:200px;">
         <span class="title-menu">SOCIAL&nbsp;HUB</span>
         <ul class="block">
-          <li>Facebook</li>
-          <li>Twitter</li>
-          <li>Google+</li>
-          <li>LinkedIn</li>
-          <li>Instagram</li>
-          <li>Youtube</li>
+          <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='width:30px' class='fa fa-facebook'></i>Facebook</a></li>
+          <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='width:30px' class='fa fa-twitter'></i>Twitter</a></li>
+          <li><a href=""><i style='width:30px' class='fa fa-google-plus'></i>Google+</a></li>
+          <!-- <li><a href="">LinkedIn</a></li> -->
+          <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='width:30px' class='fa fa-instagram'></i>Instagram</a></li>
+          <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='width:30px' class='fa fa-youtube'></i>Youtube</a></li>
         </ul>
       </li>
     </ul>
     </div>
   </div>
-		<!-- <div class="wrap-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-footer footer-1">
-						<div class="footer-heading"><h4>Menu Utama</h4></div>
-						<div class="content">
-							<h5><a href="news.html" class="blue">News</a></h5>
-							<h5><a href="lifestyle.html" class="purple">LifeStyle</a></h5>
-							<h5><a href="komunitas.html" class="red">Komunitas</a></h5>
-							<h5><a href="kajian.html" class="green">Kajian</a></h5>
-							<h5><a href="sosok.html" class="yellow">Sosok</a></h5>
-							<h5><a href="kalam.html" class="orange">Kalam</a></h5>
-						</div>
-					</div>
-					<div class="col-md-4 col-footer footer-2">
-						<div class="footer-heading"><h4>Kategori</h4></div>
-						<div class="content">
-							<ul class="list-inline">
-							<a href="kategori-21-ekobis.html">Ekobis</a>
-							<a href="kategori-22-politik.html">Politik</a>
-							<a href="kategori-56-jazirah.html">Jazirah</a>
-							</ul>
-							<ul class="list-inline">
-							<a href="kategori-70-muslim-star.html">Muslim Star</a>
-							<a href="kategori-55-bola.html">Bola+</a>
-							</ul>
-							<ul class="list-inline">
-							<a href="kategori-57-muslimah.html">Muslimah</a>
-							<a href="kategori-58-gen-m.html">Gen M</a>
-							<a href="kategori-59-ormas.html">Ormas</a>
-							</ul>
-							<ul class="list-inline">
-							<a href="kategori-60-ensiklopedi-muslim.html">Ensiklopedi Muslim</a>
-							<a href="kategori-61-mozaik.html">Mozaik</a>
-							<a href="kategori-62-hikmah.html">Hikmah</a>
-							<a href="kategori-63-tafsir.html">Tafsir</a>
-							<a href="kategori-64-haji-umrah.html">Haji & Umrah</a>
-							</ul>
-							<ul class="list-inline">
-							<a href="kategori-65-khazanah.html">Khazanah</a>
-							<a href="kategori-66-legenda.html">Legenda</a>
-							</ul>
-							<ul class="list-inline">
-							<a href="kategori-67-islamic-view.html">Islamic View</a>
-							<a href="kategori-68-opini.html">Opini</a>
-							<a href="kategori-69-esai.html">Esai</a>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-4 col-footer footer-3">
-						<div class="footer-heading"><h4>About Us</h4></div>
-						<div class="content">
-							<h6><a href="hal-tentang-kami.html" class="blue">Profil</a></h6>
-							<h6><a href="hal-kontak-kami.html" class="purple">Kontak</a></h6>
-						</div>
-						<center>
-							<h4 style="color:#464646; font-size:20px; margin-top:25px;">Aplikasi</h4>
-							<div class="app" style="margin-top: 15px;">
-								
-							</div>
-						</center>
-					</div>
-				</div>
-			</div>
-			<div class="back-top" id="b-top">
-				<div class="fa fa-angle-up"></div>
-			</div>
-		</div> -->
-		<div class="copy-right">
-			<p style="margin:0;">HarianAmanah &copy; 2017</p>
-		</div>
+  <div class="copy-right">
+    <p style="margin:0;">HarianAmanah&nbsp;&copy;&nbsp;2017</p>
+  </div>
 	</footer>
 	<!-- Footer -->
 	<!-- JS -->
@@ -497,24 +431,24 @@ $(document).ready(function(){
 	  $("#owl-demo-2").owlCarousel({
         autoPlay: 3000,
         items : 3,
-        
+
       });
     });
     </script>
-	
+
 	<script>
 	var mq = window.matchMedia( "(max-width: 767px)" );
 	if (mq.matches) {
-		
+
 	} else {
 		$(document).ready(function(){
 		$(".dropdown").click(function(event){
         event.stopPropagation();
     });
-    
+
 });
 	}
-	
+
 	</script>
 	<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 	<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
@@ -557,7 +491,7 @@ $(document).ready(function()
 	$(window).bind('scroll',function()
 	{
 		if ($(this).scrollTop()>900){
-			$("#b-top").fadeIn(); 
+			$("#b-top").fadeIn();
       } else {
 			$("#b-top").fadeOut(500);
 		}
@@ -568,13 +502,18 @@ $(document).ready(function()
 		return false;
 	});
 });
+
   $('[id^=carousel-selector-]').click( function(){
     var id = this.id.substr(this.id.lastIndexOf("-") + 1);
     var id = parseInt(id);
 
     $('#myCarousel').carousel(id);
-});
-	$("#myCarousel").carousel({interval: false}); 
+  });
+
+  $(".flex-container .item-flex:first-child").addClass('grid-thumb-big');
+  $(".flex-container .item-flex + .item-flex").addClass('grid-thumb-medium');
+  $(".item:first, li[data-target='#carousel-example-generic']:first").addClass('active');
+  $("#carousel-example-generic").carousel({interval: 3000});
   </script>
 </body>
 </html>

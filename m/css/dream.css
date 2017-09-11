@@ -2,7 +2,6 @@ a, p, h1, h2, h3, h4, h5{
 	font-family: "Lato", "sans-serif";
 }
 
-
 .ket_gam{
 	font-size: 10px;
 }
@@ -11,22 +10,9 @@ a, p, h1, h2, h3, h4, h5{
 	margin-bottom: 0 !important;
 }
 
-.navbar-default{
-	background-color: #404040 !important;
-	border-color: #404040 !important;
-}
-
-.navbar-default .navbar-nav > li > a{
-	color: white !important;
-}
-
 .navbar-header{
 	height: 50px;
 }
-
-
-
-
 
 .navbar-default .navbar-toggle .icon-bar{
 	background-color: white  !important;
@@ -110,7 +96,7 @@ demo-2 input#search::-webkit-input-placeholder {
 	display: block;
 	width: 100%;
 	height: auto;
-	margin-top: 13%;
+	/* margin-top: 13%; */
 }
 
 #owl-demo{
@@ -119,8 +105,8 @@ demo-2 input#search::-webkit-input-placeholder {
 
 #owl-demo .item .judul-berita-utama{
 	position: absolute;
-	top: 50%;
-	padding:0%;
+  padding:0%;
+  bottom: 0;
 
 }
 
@@ -130,17 +116,25 @@ demo-2 input#search::-webkit-input-placeholder {
 	background: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
 	background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
 	width: 100%;
-	height: 51%;
+	height: 80%;
 }
 
+#owl-demo .item .judul-berita-utama span{
+  color:#efcb17;
+  margin: 10px 15px;
+  display: inline-block;
+}
+
+#owl-demo .item .judul-berita-utama .caption-dt-jd{
+  position: absolute;
+  bottom: 0;
+}
 #owl-demo .item .judul-berita-utama h3{
 	text-align: left;
-	margin-top: 6%;
 	margin-bottom: 0;
 	margin-left: 15px;
 	margin-right: 15px;
-	line-height: 0.8;
-
+	line-height: 1.1;
 }
 
 #owl-demo .item .judul-berita-utama p{
@@ -152,7 +146,7 @@ demo-2 input#search::-webkit-input-placeholder {
 
 #owl-demo .item .judul-berita-utama h3 a{
 	color: white;
-	font-size:70%;
+	font-size:20px;
 }
 /*-------------------END---------------------*/
 
@@ -189,10 +183,11 @@ demo-2 input#search::-webkit-input-placeholder {
 }
 
 .artikle .artikle-text .berita {
-	font-size: 16px;
-	font-weight: bold;
+	font-size: 17px;
+	font-weight: 300;
 	text-decoration: none;
-	color: #3c3c3c;
+	color: #000;
+  display: block;
 }
 
 .artikle .artikle-text .link-kategori{
@@ -200,12 +195,17 @@ demo-2 input#search::-webkit-input-placeholder {
 	text-transform: uppercase;
 }
 
-.list-picture img{
+/* .list-picture img{
 	border-radius: 40px;
 	height: 80px;
 	float: left;
 	margin-left: 5px;
 	margin-top:5px;
+} */
+.list-picture img{
+	/* border-radius: 40px; */
+	height: 85px;
+	float: left;
 }
 
 .list-picture1 img{
@@ -218,7 +218,7 @@ demo-2 input#search::-webkit-input-placeholder {
 .artikle-text{
 	width: calc(100% - 100px);
 	float: right;
-	padding: 2px;
+	padding: 0 2px 2px 2px;
 }
 
 .artikle-text1{
@@ -228,7 +228,8 @@ demo-2 input#search::-webkit-input-placeholder {
 }
 
 .artikle-text .waktu-berita{
-	margin: 0;
+  margin: 0;
+  font-size: 10px;
 }
 /*-------------------END---------------------*/
 
@@ -327,7 +328,6 @@ demo-2 input#search::-webkit-input-placeholder {
 	list-style: none;
 	font-size: 18px;
 	margin-right: 5px;
-	margin-top:;
 	margin-bottom: 0;
 }
 
@@ -491,28 +491,23 @@ demo-2 input#search::-webkit-input-placeholder {
 
 /*Back To Top*/
 .go-top {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
+  position: absolute;
+  top: -22px;
+	right: 10px;
 	text-decoration: none;
-	color: #fff;
-	padding: 10px 10px;
-	background: rgba(0, 0, 0, 0.2);
-	display: none;
-}
-
-.go-top:hover {
-	background: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  background: rgb(244, 244, 244);
+  border-radius: 50px;
+  border: 1px solid rgba(51, 51, 51, 0.15);
+  width: 42px;
+  height: 42px;
+  line-height: 1.2;
+  font-size: 25px;
+  text-align: center;
 }
 /*-------------------END---------------------*/
 
 /*Footer*/
-.isi-footer{
-	text-align: center;
-	margin-top: 10px;
-	background: #e8e8e8;
-}
-
 .isi-footer .gambar-footer a img{
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -613,9 +608,10 @@ demo-2 input#search::-webkit-input-placeholder {
 
 
 .artikle .link-kategori {
-	font-size: 12px;
-	font-weight: bold;
-	color: #14afb4;
+	font-size: 11px;
+	font-weight: 300;
+  color: #14afb4;
+  margin-bottom: 5px;
 }
 
 .artikle .artikle-text-1 .berita p{

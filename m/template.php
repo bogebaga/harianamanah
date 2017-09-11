@@ -1,17 +1,17 @@
-<?php 
+<?php
 session_start();
   include "../config/koneksi.php";
   include "../config/library.php";
   include "../config/fungsi_indotgl.php";
   include "../config/fungsi_combobox.php";
   include "../config/class_paging.php";
-  
-  error_reporting(0);
-  
-        $detail=mysql_query("SELECT * FROM berita,users,kategori    
-                      WHERE users.username=berita.username 
-                      AND kategori.id_kategori=berita.id_kategori 
-                      AND judul_seo= $_GET[judul]");
+
+  // error_reporting(0);
+
+        $detail=mysql_query("SELECT * FROM berita,users,kategori
+                      WHERE users.username=berita.username
+                      AND kategori.id_kategori=berita.id_kategori
+                      AND judul_seo= '$_GET[judul]'");
 				$d   = mysql_fetch_array($detail);
 				$tgl = tgl_indo($d['tanggal']);
 				$baca = $d['dibaca']+1;
@@ -19,10 +19,10 @@ session_start();
         $detail1=mysql_query("SELECT * FROM video WHERE video_seo = $_GET[judul]");
         $d1   = mysql_fetch_array($detail1);
 
-        $detail2=mysql_query("SELECT * FROM gallery,users,album    
-              WHERE users.username=album.username 
-              AND album.id_album=gallery.id_album 
-              AND album_seo=$_GET[judul]");
+        $detail2=mysql_query("SELECT * FROM gallery,users,album
+              WHERE users.username=album.username
+              AND album.id_album=gallery.id_album
+              AND album_seo='$_GET[judul]'");
         $d2   = mysql_fetch_array($detail2);
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ session_start();
             echo"Media Islam Indonesia, Berita Islam Terkini, Media Muslim , Dunia Islam, Berita Haji Umroh || Harian Amanah";
         }
         ?></title>
-    <meta name="title" content="<?php 
+    <meta name="title" content="<?php
 	if($d['judul'] !=''){
             echo"$d[judul]" ." | Berita Islam Terkini HarianAmanah Media Islam Indonesia";
         }elseif($d1['jdl_video'] !=''){
@@ -56,7 +56,7 @@ session_start();
     <meta name="description" content="Media Islam Indonesia, Berita Islam Terkini, Media Muslim , Dunia Islam, Berita Haji Umroh || Harian Amanah">
     <meta name=keywords content="situs, media muslim ,berita,berita islam, muslim, populer, indonesia, hijab, sunnah, sejarah, ummat, dakwah, foto, video, gaya, hidup, halal, haram, ramadhan, idul, fitri, adha, qurban, zakat, puasa, shalat, wudhu, quran, hadist, syariah" />
     <meta name="author" content="">
-	<meta name="image"  content="<?php 
+	<meta name="image"  content="<?php
 	if($d['gambar']!=''){
 	echo "http://harianamanah.com/foto_berita/$d[gambar]";
 	}elseif($d1['gbr_video']!=''){
@@ -107,10 +107,12 @@ session_start();
         <meta property="og:site_name" content="harianamanah.com"/>
         <meta property="fb:app_id" content="168067490271817"/>
         <meta name="adx:sections" content="<?php echo "$d[nama_kategori]"; ?>"/>
+  <link rel="shortcut icon" href="../favicon.png">
 	<link rel="stylesheet" type="text/css" href="css/dream.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/Berita.css">
-	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
     <!--Line Share -->
     <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
     <script type="text/javascript">LineIt.loadButton();</script>
@@ -162,25 +164,28 @@ session_start();
 <?php endif ?>
 	<header class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
-			<div class="navbar-header"> 
-				<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".menuSamping">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#menuSamping">
 					<span class="sr-only">Toggle Navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<button type="button" class="tutup">&#735;</button>
-				<center>
-				<a href="./" title="" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
-				</center>
+				<button type="button" class="tutup"><span class="big-close"></span></button>
+				<a href="./" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
 				<form method="POST" action="hasil-pencarian.html">
 					<input type="text" name="kata" placeholder="Cari Di Sini">
 				</form>
 			</div>
 		</div>
 		<div id="menuSamping" class="sidenav">
-			<!-- <p>KATEGORI</p> -->
-			<ul class="nav navbar-nav navbar-right">
+      <!-- <p>KATEGORI</p> -->
+      <h2 class="caption">HARIANAMANAH</h2>
+      <!-- <ul class="nav navbar-nav">
+        <li><a class='tagging'>TEST</a></li>
+      </ul> -->
+      <h2 class="caption">KANAL</h2>
+			<ul class="nav navbar-nav">
 					<?php
 			$result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_menu");
 			while( $row = mysql_fetch_array($result)){
@@ -197,46 +202,47 @@ session_start();
 				<li>
 				<a href='$row[link]' class='tagging'  >$row[nama_menu] </a>
 				<ul class='dropdown-menu'>
-				";	
+				";
 				}
-			$result1 = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent=$idp ORDER BY id_menu");	
+			$result1 = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent=$idp ORDER BY id_menu");
 			while( $row1 = mysql_fetch_array($result1)){
 				echo"
 								<li><a href='$row1[link]'>$row1[nama_menu]</a></li>
 							";
-			}	
+			}
 				echo"
 					</ul>
 				</li>
 				";
 			}
-			?>	
+			?>
 				</ul>
 		</div>
 	</header>
 	<section id="main">
-	<?php
-    include "content.php";
-	?>
-	<footer style="text-align:center;">
-		 <a href="#" class="go-top"><img src="assets/arrow.png"></a>
+<?php require "content.php"; ?>
+	<footer>
+		<a href="#" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
 	 	<div class="gambar-footer">
 		 	<a href="#">
-		 		<img src="http://harianamanah.com/images/amanah.png" width="150px">
-		 	</a>		
+		 		<img src="assets/pp_ff.png" width="38px">
+		 	</a>
 	 	</div>
-		 <div class="isi-footer">
-		 	<span class="copyright">
-		 		Copyright 2016 - HarianAmanah
-		 	</span>
-		 </div>
+	 	<div class="menu-footer">
+		 	<a href="#">TENTANG</a>
+      <a href="#">PRIVASI</a>
+      <a href="#">KONTAK</a>
+	 	</div>
+    <div class="isi-footer">
+      <span class="copyright">
+        HarianAmanah&nbsp;&copy;&nbsp;2017
+      </span>
+    </div>
 	</footer>
 </section>
-
 <script>
 	$('#loader').fadeOut('slow');
 </script>
-
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#owl-demo").owlCarousel({
@@ -260,21 +266,21 @@ session_start();
 			});
 
 		// Show or hide the sticky footer button
-		$(window).scroll(function() {
-			if ($(this).scrollTop() > 400) {
-				$('.go-top').fadeIn(200);
-			} else {
-				$('.go-top').fadeOut(200);
-			}
-		});
-			
+		// $(window).scroll(function() {
+		// 	if ($(this).scrollTop() > 400) {
+		// 		$('.go-top').fadeIn(200);
+		// 	} else {
+		// 		$('.go-top').fadeOut(200);
+		// 	}
+		// });
+
 		// Animate the scroll to top
 		$('.go-top').click(function(event) {
 			event.preventDefault();
-			
+
 			$('html, body').animate({scrollTop: 0}, 300);
 		})
-			
+
 		});
 	</script>
 	<script type="text/javascript">
@@ -283,9 +289,9 @@ session_start();
 			$(".tutup").hide();
 
 			$(".navbar-toggle").click(function(event) {
-				$("#menuSamping").css('width', '220px');
+				$("#menuSamping").css('width', '100%');
 				// $("#main").css('margin-left', '220px');
-				$("#main").css('background', 'rgba(0, 0, 0, 0.4)');
+				// $("#main").css('background', 'rgba(0, 0, 0, 0.4)');
 				$(".navbar-toggle").hide();
 				$(".tutup").show();
 			});
@@ -293,7 +299,7 @@ session_start();
 			$(".tutup").click(function(event) {
 				$("#menuSamping").css('width', '0');
 				// $("#main").css('margin-left', '0');
-				$("#main").css('background', 'white');
+				// $("#main").css('background', 'white');
 				$(".tutup").hide();
 				$(".navbar-toggle").show();
 			});
@@ -301,7 +307,7 @@ session_start();
 			$("#main").click(function(event) {
 				$("#menuSamping").css('width', '0');
 				// $("#main").css('margin-left', '0');
-				$("#main").css('background', 'white');
+				// $("#main").css('background', 'white');
 				$(".navbar-toggle").show();
 				$(".tutup").hide();
 			});
@@ -318,7 +324,6 @@ session_start();
         loop: true
     });
     </script>
-
 <script>
     $('#myModal').modal('show');
 

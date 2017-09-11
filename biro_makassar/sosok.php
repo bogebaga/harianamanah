@@ -1,10 +1,8 @@
 <br>
 <br>
-
-
 <!-- /////////////////////////////////////////Content -->
 	<div id="page-content" class="index-page container">
-		
+
 
 			<div id="sidebar">
 			<div class="col-md-12">
@@ -13,17 +11,17 @@
                 		<div class="single_blog_sidebar wow fadeInUp">
                 		<h4>Khazanah</h4></br>
                 			<ul class="featured_nav">
-                  			
-                  			
-							<?php 
+
+
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '65' ORDER BY id_berita DESC limit 4 ");
 							while($t=mysql_fetch_array($terkini)){
-								
+
 							echo "
 							<li>
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='judul_atas' href='berita-$t[judul_seo].html'>$t[judul]</a>
                     		</div>
@@ -31,29 +29,29 @@
 							";
 							}
 							?>
-                    			
-                  			
+
+
 
                 			</ul>
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div class="col-md-6">
 					<div class="row">
                 		<div class="single_blog_sidebar1 wow fadeInUp">
                 			<h4> Legenda</h4></br>
                 				<ul class="featured_nav1">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '66' ORDER BY id_berita DESC limit 3 ");
 							while($t=mysql_fetch_array($terkini)){
-								
+
 							echo "
 							<li>
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
                     		<div class='featured_title1'>
-                      		
+
 							<a class='judul_atas' href='berita-$t[judul_seo].html'>$t[judul]</a>
                     		</div>
 							</li>
@@ -64,22 +62,22 @@
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div id="" >
 				<div class="col-md-3" >
 					<div class="row">
                 		<div class="sembunyi" >
-                		<h4>Terkini</h4></br>  
+                		<h4>Terkini</h4></br>
                 			<ul class="featured_nav2">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita ORDER BY id_berita DESC limit 4 ");
 							while($t=mysql_fetch_array($terkini)){
-								
+
 							echo "
 							<li>
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='' href='berita-$t[judul_seo].html'>$t[judul]</a>
                     		</div>
@@ -109,11 +107,10 @@
 		</div>
 
 
-		
 
-		
-		
+
+
+
 	</div>
 
 	<!-- /////////////////////////////////////////Content -->
-	

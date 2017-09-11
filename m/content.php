@@ -1,28 +1,25 @@
 <?php
  if ($_GET['module']=='home'){?>
- 	<section class="container-fluid">
+ 	<section class="container-fluid" style="background-color:white;">
 		<section class="headline row">
 			<?php
 				$terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY id_berita DESC LIMIT 1");
 				while($t=mysql_fetch_array($terkini)){
+          $tgl = tgl_indo($t['tanggal']);
+          $jam = trans_jam($t['jam']);
 						$id1 = $t['id_berita'];
-
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item'>
 			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header'>
-
-			  			<span class='judul-berita-utama'>
-			  			<h3>
-			  				<a href='berita-$t[judul_seo].html'>$t[judul]</a>
-
-			  			</h3>
-			  		    </span>
+            <span class='judul-berita-utama'>
+              <div class='caption-dt-jd'>
+                <h3><a href='berita-$t[judul_seo].html' title='$t[judul]'>$t[judul]</a></h3>
+                <span class='tanggal-release home'>$t[hari], $tgl - $jam</span>
+              </div>
+            </span>
 			  	</div>
-			  	</div>
-			  	";
-			  }
-			?>
+        </div>"; }?>
 		</section>
 		<section class="daftar-artikel">
 			<?php
@@ -30,13 +27,15 @@
 			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND id_berita != '$id1' ORDER BY id_berita DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
-				if (strlen($q[judul]) > 75)
+        $tgl = tgl_indo($q['tanggal']);
+        $jam = trans_jam($q['jam']);
+				if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q[judul], 0, 75)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
-								$hasil = $q[judul];
+								$hasil = $q['judul'];
 							}
 				echo "<article class= 'artikle' >
 					<div class='list-picture'>
@@ -45,9 +44,9 @@
 						</a>
 					</div>
 					<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
-							<a href='#' class='link-kategori'>$q[nama_kategori]</a>
-							<a href='berita-$q[judul_seo].html' class='berita'><p>$hasil</p></a>
-							<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+            <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]'>$hasil</a>
+            <a href='#' class='link-kategori'>$q[nama_kategori]</a>
+            <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 					</div>
 				</article>
 				";
@@ -62,16 +61,17 @@
 		<section class="daftar-artikel">
 			<?php
 			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori ORDER BY id_berita DESC LIMIT 6, 5");
-
 			while($q=mysql_fetch_array($artikel))
 			{
-				if (strlen($q[judul]) > 75)
+        $tgl = tgl_indo($q['tanggal']);
+        $jam = trans_jam($q['jam']);
+				if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q[judul], 0, 75)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
-								$hasil = $q[judul];
+								$hasil = $q['judul'];
 							}
 				echo "<article class= 'artikle' >
 					<div class='list-picture'>
@@ -80,9 +80,9 @@
 						</a>
 					</div>
 					<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
-							<a href='#' class='link-kategori'>$q[nama_kategori]</a>
-							<a href='berita-$q[judul_seo].html' class='berita' ><p>$hasil</p></a>
-							<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+            <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]' >$hasil</a>
+            <a href='#' class='link-kategori'>$q[nama_kategori]</a>
+            <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 					</div>
 				</article>
 				";

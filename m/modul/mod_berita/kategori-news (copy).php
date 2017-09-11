@@ -1,15 +1,17 @@
-<?php function ulangi(){ 
-		global $alamat;
-		static $digit=0;
-		$digit = $digit + 5;
-		?>	
-	<!-- Foto Kategori -->
-<!-- 	<div class="foto-Kategori">
+
+	<!-- <div class="foto-Kategori">
 		<img src="assets/muslimStar.png" class="img-responsive" alt="Muslim Star">
 	</div> -->
-<?php 
+
+	<!-- Content -->
+	<?php function ulangi(){ 
+		static $digit=0;
+		global $alamat;
+		$digit = $digit + 5;
+		?>	
+	<?php 
 				
-	$terkini1 = mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = '19' ORDER BY berita.id_berita DESC LIMIT $digit, 1");
+	$terkini1 = mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = '8' ORDER BY berita.id_berita DESC LIMIT $digit, 1");
 	while($a=mysql_fetch_array($terkini1)){     
 	$id1 = $a['id_berita'];
 			
@@ -29,41 +31,34 @@
 			  	";
 			  }
 			?>
-	<!-- Content -->
 	<section class="container-fluid">
-	
-			<section class="daftar-artikel">
-				<?php 
-					$artikel = mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = '19' AND id_berita != '$id1' ORDER BY berita.id_berita DESC LIMIT $digit, 5");
-
-					while ($q = mysql_fetch_array($artikel)) 
-					{
-            $tgl = tgl_indo($q[tanggal]);
-            $jam = trans_jam($q[jam]);
-						echo "<article class= 'artikle' >
-								<div class='list-picture'>
-									<a href='berita-$q[judul_seo].html'>
-									<img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
-									</a>
-								</div>
-								<div class='artikle-text' kode='$q[id_berita]'>
-										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
-										<a href='berita-$q[judul_seo].html' class='berita'><p>$q[judul]</p></a>
-										<p class='waktu-berita'> $q[hari], $tgl - $jam  </p>
-								</div>
-								</article> 
-					";
-					}
-				?>
-			</section>	
-
-			<!-- Iklan -->
-			<div class="iklan">
-				<a href="https://abutours.com/" target="_blank" title="AbuTours.com">
-					<img class="img-responsive" src="http://harianamanah.com/foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan">
-				</a>
+    <section class="daftar-artikel">
+      <?php 
+        $artikel = mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = '8' AND id_berita != '$id1' ORDER BY berita.id_berita DESC LIMIT $digit, 5");
+        while ($q = mysql_fetch_array($artikel)) 
+        {
+          echo "<article class= 'artikle' >
+              <div class='list-picture'>
+                <a href='berita-$q[judul_seo].html'>
+                <img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
+                </a>
+              </div>
+              <div class='artikle-text' kode='$q[id_berita]'>
+                  <a href='#' class='link-kategori'>$q[nama_kategori]</a>
+                  <a href='berita-$q[judul_seo].html' class='berita'><p>$q[judul]</p></a>
+                  <p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+              </div>
+              </article> 
+        ";
+        }
+      ?>
+    </section>	
+    <!-- Iklan -->
+    <div class="iklan">
+      <a href="https://abutours.com/" target="_blank" title="AbuTours.com">
+        <img class="img-responsive" src="http://harianamanah.com/foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan">
+      </a>
 			</div>
-
 		<?php }
 		echo ulangi();
 		echo ulangi();
@@ -71,18 +66,19 @@
 		// echo ulangi();
 		?>
 
-		<div id="daftar-artikel" class="daftar-artikel"></div>
+		<section id="daftar-artikel" class="daftar-artikel">
+		
+		</section>
 <br>
 		<div id="more" style="display: none;">
 			<center><img src="assets/loading.gif" width="100px"></center>
 		</div>
-		<!-- <div id="more">
-			<div  class="more">
-				MUAT LAINNYA
-			</div>
+		<!-- 	<div id="more">
+				<div class="more">
+					MUAT LAINNYA
+				</div>
 		</div> -->
 	</section>
-
 <script>
 		$(document).ready(function(){
 			var loadMore = true;
@@ -92,7 +88,7 @@
 				{
 					loadMore = false;
 					$.ajax({
-						url: 'more.php?kategori=sosok&urut='+$('.artikle-text:last').attr('kode'),
+						url: 'more.php?kategori=news&urut='+$('.artikle-text:last').attr('kode'),
 						beforeSend: function()
 						{
 							$('#more').show();
@@ -118,7 +114,7 @@
 			// $('#more').click(function(){
 			// 	$(this).html('<center><img src="assets/loading.gif" width="100px"></center>');
 			// 	$.ajax({
-			// 		url: 'more.php?kategori=sosok&urut='+$('.artikle-text:last').attr('kode'),
+			// 		url: 'more.php?kategori=news&urut='+$('.artikle-text:last').attr('kode'),
 			// 		success: function(html)
 			// 		{
 			// 			if(html)
@@ -130,6 +126,7 @@
 			// 			}
 			// 		}
 			// 	})
+				
 				
 			// });
 		});

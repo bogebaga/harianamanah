@@ -2,11 +2,11 @@
     background: #ececec;
     font: 10px "RobotoMedium",Arial,Helvetica,sans-serif;
     line-height: 1;
-	margin-top:63px;
+    margin-top:63px;
     overflow-x: hidden;
     overflow-y: auto;
-	margin-left:-10px;
-	margin-right:-10px;
+    margin-left:-10px;
+    margin-right:-10px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -19,13 +19,11 @@
 }
 .halaman {
 	font: 20px arial, helvetica, sans-serif;
-	clear: left;
+	clear: both;
 	font-size: 1.5em;
-	margin-top: 2em;
 	margin-right: 0;
 	margin-bottom: 1em;
 	margin-left: 50px;
-	padding-top: 1em;
 	padding-right: 1em;
 	padding-bottom: 1em;
 	padding-left: 0em;
@@ -86,9 +84,9 @@ float: right;
 }
 
 section {
-    max-width: 1024px;
     margin: 0 auto;
-	margin-top:30px;
+    margin-top:30px;
+    text-align: center;
 }
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
     display: block;
@@ -180,6 +178,41 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     margin-top: 2%;
 }
 
+h2.grid-flex-foto {
+  color: white;
+  display: block;
+  padding:10px;
+  z-index: 1;
+  bottom:0;
+  font-size: 31px;
+  position: absolute;
+  text-shadow: 0px 2px 0px black;
+}
+.grid-thumb-medium h2.grid-flex-foto {
+  font-size:13px;
+}
+.grid-thumb-medium .info-uploader,.grid-thumb-medium  .info-publish{
+  font-size: 10px;
+  padding-bottom:3px;
+  color: #efcb17;
+}
+.grid-thumb-big .kategori-grid, .grid-thumb-medium .kategori-grid{
+  position: absolute;
+  margin:5px;
+}
+.grid-thumb-big .kategori-grid {font-size:21px; padding: 7px 65px;z-index:1;}
+.grid-thumb-medium .kategori-grid {font-size:15px; padding:3px 13px;z-index:1;}
+
+.info-uploader, .info-publish{
+  font-size:12px;
+  padding:7px 5px;
+  color: white;
+  bottom:0;
+  z-index: 2;
+  position: absolute;
+  color: #efcb17;
+}
+
 h2 {
 	float:left;
     display: block;
@@ -223,6 +256,7 @@ p {
     float: right;
     width: 66%;
     margin-top: .5%;
+    text-align: start;
 }
 
 
@@ -238,8 +272,6 @@ p {
 
 }
 
-
-}
 .left-konten .art-social-bar, .left-konten .art-social-bar, .videocafe .art-social-bar {
     float: left;
     width: 100%;
@@ -304,11 +336,8 @@ p {
     padding: 15px;
 }
 
-
-
-
 .trend-left-list:nth-child(1) {
-    margin-top: 20px;
+    margin-top: 7px;
 }
 @media screen and (max-width: 770px) and (min-width: 600px){
 footer .footer h2, .trend-left-list {
@@ -318,7 +347,7 @@ footer .footer h2, .trend-left-list {
 .trend-left-list {
     width: 96.9808%;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     border: 1px solid #d8d8d8;
     float: right;
     background: #fff;
@@ -368,6 +397,7 @@ Pseudo ::after element
 
 .trend-left-list figure img {
     display: block;
+    object-fit: cover;
 }
 img {
     max-width: 100%;
@@ -382,7 +412,7 @@ img {
 }
 
 .trend-left-list figure a {
-    max-height: 95px;
+    /* max-height: 95px; */
     display: block;
     overflow: hidden;
 }
@@ -407,12 +437,9 @@ a:active, a:hover, a:visited {
     border-radius: 50%;
 }
 
-
 .left-konten .trend-left-list figure .left-trending-fix {
-    max-height: 105px;
     overflow: hidden;
 }
-
 
 .trend-left-info {
     float: left;
@@ -424,23 +451,22 @@ a:active, a:hover, a:visited {
     position: relative;
 }
 
-
 .trend-left-info a {
-    font: 1.6em/1.2em "Robotobold",Arial,Helvetica,sans-serif;
+    font: 2.3em/1.3em "Roboto",Arial,Helvetica,sans-serif;
     color: #000;
     display: block;
-	text-decoration:none;
-	margin:5px 10px;
+    text-decoration:none;
+    margin:5px 10px;
+    text-align: left;
+    font-weight: 100;
 }
 
 .trend-left-info a :hover{
-    font: 1.6em/1.2em "Robotobold",Arial,Helvetica,sans-serif;
+    font: 1.6em/1.2em "Roboto",Arial,Helvetica,sans-serif;
     color: #000;
     display: block;
-	text-decoration:underline;
+    text-decoration:underline;
 }
-
-
 
 .publish-info, .publish-info a, .pub-auth a {
     font: 1.2em/1.9em "RobotoRegular",Arial,Helvetica,sans-serif;
@@ -452,8 +478,6 @@ a:active, a:hover, a:visited {
     right: 2%;
     width: 98%;
 }
-
-
 
 figure{
 	margin:0;
@@ -475,8 +499,7 @@ figure{
 @media screen and (max-width:1023px){.konten{margin:2% .5% 0;width:99%}.news-panel{margin-left:1%;width:30%}.life-panel{margin:0 0 0 3.2%;width:65%}.trending-panel{float:left;width:98%}.top-slide-left{font-size:1.3em;height:49px}.top-slide-right{height:49px;padding:16px 1% 13px 1.9%}.graf,.long-left{display:none}.left-konten{width:100%}.right-konten{margin-top:2%;max-width:100%;width:96%}.left-konten{float:left;margin-left:1%;width:98%}.small-logo{float:left;margin-right:2%}.trend-left-inner{border:0 none;width:100%}footer .footer h2,.trend-left-list{width:100%}.video-slide{max-width:900px}}
 
 @media screen and (max-width: 599px) and (min-width: 300px){
-.trend-left-list figure, .trend-left-list figure img, .trend-left-info {
+  .trend-left-list figure, .trend-left-list figure img, .trend-left-info {
     width: 100%;
+  }
 }
-}
-

@@ -1,7 +1,7 @@
 /* Navbar */
 
 .navbar-default{
-  background: #404040 ;
+  background: #009688 ;
   border-color: transparent;
   margin-bottom: 0;
 }
@@ -18,15 +18,17 @@
 
 .navbar-default .navbar-toggle .icon-bar{
   background: white;
-  height: 4px;
-  margin-top: 5px;
+  width: 45px;
+  height: 3px;
+
+  /* margin-top: 5px; */
 }
 
 .navbar-default .tutup{
   background: none;
   color: white;
   border-style: none;
-  font-size: 69px;
+  /* font-size: 69px; */
   position: relative;
   left: 4px;
   top: -8px;
@@ -37,13 +39,13 @@
 }
 
 .navbar-default .navbar-nav li a {
-    color: white;
+  color:#333;
 }
 
 .navbar-nav .open .dropdown-menu li a{
-    padding: 15px 0 10px 40px;
-    font-size: 18px;
-    color: #b7b7b7 !important;
+    padding: 13px 0 13px 40px;
+    font-size: 15px;
+    color: #009688 !important;
 }
 
 .nav li a {
@@ -55,6 +57,10 @@
     text-align: center;
     width: 100%;
 }
+.navbar-header a{
+  position: absolute;
+  left: 60px;
+}
 
 .navbar-brand{
     float: none;
@@ -62,8 +68,7 @@
 
 .navbar-brand img{
     width: 135px;
-    height: auto;
-    margin: -10px auto;
+    margin-top:-5px;
 }
 
 .navbar-toggle{
@@ -113,7 +118,7 @@ input[type=text]:focus {
     margin-top: 0;
     float:right;
     background: white;
-    padding: 5px 0 5px 5px;\
+    padding: 5px 0 5px 5px;
 }
 
 /* ////////////////////////////////////////////// */
@@ -125,11 +130,21 @@ input[type=text]:focus {
     position: fixed; 
     z-index: 4; 
     left: 0;
-    background-color: #111; 
+    top:51px;
+    background-color: #fff; 
     /* opacity: 0.90; */
     overflow-x: hidden; 
     /* padding-top: 60px;  */
     transition: 0.5s; 
+}
+
+.sidenav h2.caption
+{
+  color: #000;
+  margin-bottom: 0;
+  margin-left:10px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .sidenav a {
@@ -162,10 +177,12 @@ input[type=text]:focus {
 .sidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
 }
-
+.sidenav ul.navbar-nav {
+  margin: 0 0 10px 0;
+}
 .sidenav .navbar-nav li:hover{
-    color: white !important;
-    background: #111111 !important;
+    color: #333;
+    background: #fff;;
 }
 
 .sidenav .navbar-nav .open a:hover{
@@ -176,11 +193,18 @@ input[type=text]:focus {
 .sidenav .navbar-nav li .tagging{
     width: 74%;
     display: inline-block;
-    background: #111111;
-    color: white;
-    font-size: 18px;
+    /* background: #111111; */
+    color: #000;
+    font-size: 21px;
+    font-weight: 200;
     /* padding: 20px 100px ; */
     /* padding: 20px 100px 20px 30px; */
+}
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:focus, 
+.navbar-default .navbar-nav>.open>a:hover
+{
+  background: #fff;
 }
 
 .sidenav .navbar-nav li .tagging:focus{
@@ -190,9 +214,8 @@ input[type=text]:focus {
 
 .sidenav .navbar-nav li .dropdown-toggle{
     position:absolute;
-    top: -3px;
+    top: 0;
     right: 0;
-    width: 22%;
     height: 50px;
     padding: 15px 17px;
     margin-right: 10px;
@@ -200,8 +223,8 @@ input[type=text]:focus {
 }
 
 .sidenav .navbar-nav li .panah1:hover, .panah2:hover, .panah3:hover, .panah4:hover, .panah5:hover, .panah6:hover{
-    color: white;
-    background: transparent;
+    color: #000;
+    /* background: transparent; */
 }
 
 /* .sidenav .navbar-nav li .dropdown-toggle .panah:active{
@@ -212,7 +235,8 @@ input[type=text]:focus {
 #main {
     transition: margin-left .5s;
     width: auto;
-    height: 100%;
+    top:50px;
+    position: relative;
     /*background: #eef4ff;*/
 }
 

@@ -1,144 +1,95 @@
-<br>
-<br>
-
-
+<?php
+  $terkini=mysql_query("SELECT * FROM menu WHERE id_menu='13'");
+  $nama_menu = mysql_fetch_array($terkini);
+?>
 <!-- /////////////////////////////////////////Content -->
-	<div id="page-content" class="index-page container">
-		
+<div id="page-content" class="index-page container" style="background-color:#fff;">
+<div id="sidebar" style="padding:0;">
+  <div class="col-xs-12" style="padding:0;float:none;">
+    <div class='flex-container'>
+      <?php
+        $rubrik=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '13' ORDER BY id_berita DESC LIMIT 5");
+        while($row = mysql_fetch_array($rubrik)){
+          $tgl = tgl_indo($row['tanggal']);
+          $jam = trans_jam($row['jam']);
 
-			<div id="sidebar">
-			<div class="col-md-12">
-				<div class="col-md-3">
-					<div class="row">
-                		<div class="single_blog_sidebar wow fadeInUp">
-                		<h4>Muslim Star</h4></br>
-                			<ul class="featured_nav">
-                  			
-                  			
-							<?php 
-							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '70' ORDER BY id_berita DESC limit 4 ");
-							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
-							{
-								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
-							{
-								$hasil = $t[judul];
-							} 	
-							echo "
-							<li kode='$t[id_berita]' data-kategori='muslim'>
-							
-							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='foto_berita/base.jpg'></a>
-                    		
-							<div class='featured_title'>
-                      		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
-                    		</div>
-                    		<p style='font-size:14px;float:right;color:#b1afaf;margin: 0 15px;position:absolute;bottom:0;right:0;'>".$t[tanggal]." | ".$t[jam]."</p>
-							</li>
-							";
-							}
-							?>
-                    			
-                  			
+          $i=0;
+          echo "<div class='item-flex grid-$i'>
+          <span class='kategori-grid' style='background:rgba(0, 150, 136, 0.8)'><a style='color:#fff;' href='kategori-$row[id_kategori]-$row[kategori_seo].html'>$row[nama_kategori]</a></span>
+          <a href='berita-$row[judul_seo].html' title='$row[judul]'><h2 class='grid-flex-foto'>$row[judul]</h2></a>
+          <span class='info-uploader'>Oleh&nbsp;$row[username]&nbsp;|&nbsp;$row[hari], $tgl - $jam</span>
+          <div class='black_layer'></div>
+          <img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'>
+        </div>";
+        $i++;
+        }
+      ?>
+      <!-- <div class="item-flex grid-0 grid-thumb-big">
+        <div class="black_layer"></div>
+        <img src="foto_berita/base.jpg" alt="">
+      </div>
+      <div class="item-flex grid-1 grid-thumb-medium">
+        <div class="black_layer"></div>
+        <img src="foto_berita/base.jpg" alt="">
+      </div>
+      <div class="item-flex grid-2 grid-thumb-medium">
+        <div class="black_layer"></div>
+        <img src="foto_berita/base.jpg" alt="">
+      </div>
+      <div class="item-flex grid-3 grid-thumb-medium">
+        <div class="black_layer"></div>
+        <img src="foto_berita/base.jpg" alt="">
+      </div>
+      <div class="item-flex grid-4 grid-thumb-medium">
+        <div class="black_layer"></div>
+        <img src="foto_berita/base.jpg" alt="">
+      </div> -->
+    </div>
+  </div>
+  <div class="col-xs-12" style="padding:0;float:none;margin-top:25px">
+    <div class="col-xs-12 news-category">
+      <h1><?php echo $nama_menu['nama_menu']?></h1>
+      <br>
+      <?php
+      $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '13' ORDER BY id_berita DESC LIMIT 32");
+      while($t=mysql_fetch_array($terkini)){
+        $tgl = tgl_indo($t['tanggal']);
+        $jam = trans_jam($t['jam']);
+        if (strlen($t['judul']) > 75)
+        {
+          $hasil = substr($t['judul'], 0, 75)."&hellip;";
+        }
+        else
+        {
+          $hasil = $t['judul'];
+        }
+        echo "
+        <article>
+          <a href='berita-$t[judul_seo].html'>
+            <img src='http://harianamanah.com/foto_berita/$t[gambar]' alt=''>
+          </a>
+          <div class='badges-cate'>
+            <span style='background:#009688'><a style='color:#fff;' href='kategori-$t[id_kategori]-$t[kategori_seo].html'>$t[nama_kategori]</a></span>
+            <span>".$tgl." | ".$jam."</span>
+          </div>
+          <a href='berita-$t[judul_seo].html' class='captions'>$hasil</a>
+        </article>"; }
+      ?>
+    </div>
+    <!-- <div class="col-xs-3">
+      <h1 style="color:#009688;word-wrap:break-word;word-spacing:105px;">Indeks&nbsp;<b><?php echo $nama_menu[nama_menu]?></b></h1>
+      <br>
+      <div></div>
+    </div> -->
+  </div>
+</div>
+<div id="daftar-artikel"></div>
+<div id="more" style="display: none;">
+  <center><img src="images/loading.gif" width="170px"></center>
+</div>
+</div>
 
-                			</ul>
-                		</div>
-                	</div>
-				</div>
-				
-				<div class="col-md-6">
-					<div class="row">
-                		<div class="single_blog_sidebar1 wow fadeInUp">
-                			<h4>Bola+</h4></br>
-                				<ul class="featured_nav1">
-                  			<?php 
-							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '55' ORDER BY id_berita DESC limit 3 ");
-							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 56) 
-							{
-								$hasil = substr($t[judul], 0, 56)."&hellip;";
-							} else {
-								$hasil = $t[judul];
-							}	
-							echo "
-							<li kode='$t[id_berita]' data-kategori='bola'>
-							
-							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='foto_berita/base.jpg'></a>
-                    		<div class='featured_title1'>
-                      		
-							<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
-                    		</div>
-                    		<p style='font-size:14px;float:right;color:#b1afaf;margin: 0 15px;position:absolute;bottom:0;right:0;'>".$t[tanggal]." | ".$t[jam]."</p>
-							</li>
-							";
-							}
-							?>
-                				</ul>
-                		</div>
-                	</div>
-				</div>
-				
-				<div id="" >
-				<div class="col-md-3" >
-					<div class="row">
-                		<div class="sembunyi" >
-                		<h4> Terkini</h4></br>  
-                			<ul class="featured_nav2">
-                  			<?php 
-							$terkini=mysql_query("SELECT * FROM berita ORDER BY id_berita DESC limit 4 ");
-							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
-							{
-								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
-							{
-								$hasil = $t[judul];
-							} 	
-							echo "
-							<li kode='$t[id_berita]' data-kategori='kuliner'>
-							
-							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='foto_berita/base.jpg'></a>
-                    		
-							<div class='featured_title'>
-                      		<a class='' href='berita-$t[judul_seo].html'>$hasil</a>
-                    		</div>
-                    		<p style='font-size:14px;float:right;color:#b1afaf;margin: 0 15px;position:absolute;bottom:0;right:0;'>".$t[tanggal]." | ".$t[jam]."</p>
-							</li>
-							";
-							}
-							?>
-                			</ul>
-                		</div>
-                	</div>
-				</div>
-				</div>
-				<!-- <div class="row">
-					<div class="col-md-12">
-						<h6 class="text-center">ADVERTISEMENT</h6>
-					<?php
-					$iklantengah=mysql_query("SELECT * FROM iklantengah  WHERE id_iklantengah ='1' ORDER BY id_iklantengah DESC LIMIT 1");
-					while($b=mysql_fetch_array($iklantengah)){
-					echo "<div class='iklan' width='100%'>
-					<a href='$b[url]'' target='_blank' title='$b[judul]'>
-					<img src='foto_iklantengah/$b[gambar]' alt='img'></a>
-					</div>";}
-					?>
-					</div>
-				</div></br> -->
-			</div>
-		</div>
-
-		<div id="daftar-artikel"></div>
-		<div id="more" style="display: none;">
-				<center><img src="images/loading.gif" width="170px"></center>
-		</div>	
-		
-	</div>
-	<!-- /////////////////////////////////////////Content -->
-<br>	
-<script>
+<!-- <script>
 		var loadMore = true;
 	$(window).scroll(function(){
 		var nearbottom = 100;
@@ -182,7 +133,7 @@
 			// 			}
 			// 		}
 			// 	})
-				
-				
+
+
 			// });
-</script>
+</script> -->

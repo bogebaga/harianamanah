@@ -5,12 +5,12 @@ $sql = mysql_query("SELECT * FROM berita ORDER BY id_berita DESC LIMIT 5");
 
 $file = fopen("rss.xml", "w");
 
-fwrite($file, '<?xml version="1.0"?> 
-<rss version="2.0"> 
-<channel> 
-<title>.:: Harian Amanah::.</title> 
-<link>http://harianamanah.id</link> 
-<description>Feed Description</description> 
+fwrite($file, '<?xml version="1.0"?>
+<rss version="2.0">
+<channel>
+<title>.:: Harian Amanah::.</title>
+<link>http://harianamanah.id</link>
+<description>Feed Description</description>
 <language>en-us</language>');
 
 while($r=mysql_fetch_array($sql)){

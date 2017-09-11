@@ -1,25 +1,18 @@
 <?php
-
 include '../config/koneksi.php';
-
+include '../config/fungsi_indotgl.php';
 include 'server.php';
 
-
-
 if ($_GET['kategori']=='news')
-
 {
-
 		$artikel = mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND berita.id_berita < ".$_GET['urut']." AND menu.id_parent = '8'  ORDER BY berita.id_berita DESC LIMIT 0, 8");
-
-
-
 					while ($q = mysql_fetch_array($artikel))
-
 					{
-						if (strlen($q['judul']) > 71)
+            $tgl = tgl_indo($q['tanggal']);
+            $jam = trans_jam($q['jam']);
+						if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q['judul'], 0, 71)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
@@ -40,11 +33,11 @@ if ($_GET['kategori']=='news')
 
 								<div class='artikle-text' kode='$q[id_berita]'>
 
-										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<a href='berita-$q[judul_seo].html' class='berita'><p>$hasil</p></a>
+                <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]'>$hasil</a>
+                <a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+										<p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 
 								</div>
 
@@ -65,9 +58,11 @@ if ($_GET['kategori']=='news')
 					while ($q = mysql_fetch_array($artikel))
 
 					{
-						if (strlen($q['judul']) > 71)
+            $tgl = tgl_indo($q['tanggal']);
+            $jam = trans_jam($q['jam']);
+						if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q['judul'], 0, 71)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
@@ -87,11 +82,11 @@ if ($_GET['kategori']=='news')
 
 								<div class='artikle-text' kode='$q[id_berita]'>
 
-										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<a href='berita-$q[judul_seo].html' class='berita'><p>$hasil</p></a>
+                <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]'>$hasil</a>
+                <a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+										<p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 
 								</div>
 
@@ -112,9 +107,11 @@ if ($_GET['kategori']=='news')
 					while ($q = mysql_fetch_array($artikel))
 
 					{
-						if (strlen($q['judul']) > 71)
+            $tgl = tgl_indo($q['tanggal']);
+            $jam = trans_jam($q['jam']);
+						if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q['judul'], 0, 71)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
@@ -134,11 +131,11 @@ if ($_GET['kategori']=='news')
 
 								<div class='artikle-text' kode='$q[id_berita]'>
 
-										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<a href='berita-$q[judul_seo].html' class='berita'><p>$hasil</p></a>
+                <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]'>$hasil</a>
+                <a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+										<p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 
 								</div>
 
@@ -159,9 +156,11 @@ if ($_GET['kategori']=='news')
 					while ($q = mysql_fetch_array($artikel))
 
 					{
-						if (strlen($q['judul']) > 71)
+            $tgl = tgl_indo($q['tanggal']);
+            $jam = trans_jam($q['jam']);
+						if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q['judul'], 0, 71)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
@@ -181,11 +180,11 @@ if ($_GET['kategori']=='news')
 
 								<div class='artikle-text' kode='$q[id_berita]'>
 
-										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<a href='berita-$q[judul_seo].html' class='berita'><p>$hasil</p></a>
+                <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]'>$hasil</a>
+                <a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+										<p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 
 								</div>
 
@@ -206,9 +205,11 @@ if ($_GET['kategori']=='news')
 					while ($q = mysql_fetch_array($artikel))
 
 					{
-						if (strlen($q['judul']) > 71)
+            $tgl = tgl_indo($q['tanggal']);
+            $jam = trans_jam($q['jam']);
+						if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q['judul'], 0, 71)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
@@ -228,11 +229,11 @@ if ($_GET['kategori']=='news')
 
 								<div class='artikle-text' kode='$q[id_berita]'>
 
-										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<a href='berita-$q[judul_seo].html' class='berita'><p>$hasil</p></a>
+                <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]'>$hasil</a>
+                <a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+										<p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 
 								</div>
 
@@ -253,9 +254,11 @@ if ($_GET['kategori']=='news')
 					while ($q = mysql_fetch_array($artikel))
 
 					{
-						if (strlen($q['judul']) > 71)
+            $tgl = tgl_indo($q['tanggal']);
+            $jam = trans_jam($q['jam']);
+						if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q['judul'], 0, 71)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
@@ -275,11 +278,11 @@ if ($_GET['kategori']=='news')
 
 								<div class='artikle-text' kode='$q[id_berita]'>
 
-										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<a href='berita-$q[judul_seo].html' class='berita'><p>$hasil</p></a>
+                <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]'>$hasil</a>
+                <a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+										<p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 
 								</div>
 
@@ -294,9 +297,11 @@ if ($_GET['kategori']=='news')
 		$artikel = mysql_query("SELECT * FROM  berita WHERE id_kategori = ".$_GET['id']." AND id_berita < ".$_GET['urut']." ORDER BY id_berita DESC LIMIT 0, 8");
 					while ($q = mysql_fetch_array($artikel))
 					{
-						if (strlen($q['judul']) > 71)
+            $tgl = tgl_indo($q['tanggal']);
+            $jam = trans_jam($q['jam']);
+						if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q['judul'], 0, 71)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
@@ -316,11 +321,11 @@ if ($_GET['kategori']=='news')
 
 								<div class='artikle-text' kode='$q[id_berita]'>
 
-										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<a href='berita-$q[judul_seo].html' class='berita'><p>$hasil</p></a>
+                <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]'>$hasil</a>
+                <a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-										<p class='waktu-berita' idk='$q[id_kategori]'> $q[tanggal] | $q[jam] </p>
+										<p class='waktu-berita' idk='$q[id_kategori]'> $q[hari], $tgl - $jam </p>
 
 								</div>
 
@@ -338,9 +343,11 @@ else{
 	while($q=mysql_fetch_array($artikel))
 
 	{
-		if (strlen($q['judul']) > 71)
+    $tgl = tgl_indo($q['tanggal']);
+    $jam = trans_jam($q['jam']);
+		if (strlen($q['judul']) > 60)
 							{
-								$hasil = substr($q['judul'], 0, 71)."&hellip;";
+								$hasil = substr($q['judul'], 0, 60)."&hellip;";
 							}
 							else
 							{
@@ -360,11 +367,11 @@ else{
 
 			<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
 
-					<a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-					<a href='berita-$q[judul_seo].html' class='berita'><p>$hasil</p></a>
+      <a href='berita-$q[judul_seo].html' class='berita' title='$q[judul]'>$hasil</a>
+      <a href='#' class='link-kategori'>$q[nama_kategori]</a>
 
-					<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
+					<p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 
 			</div>
 

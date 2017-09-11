@@ -1,13 +1,13 @@
 
 <IfModule mod_rewrite.c>
 RewriteEngine on
-ErrorDocument 404 http://harianamanah.id/alamatpalsu.html
+ErrorDocument 404 http://harianamanah.com/alamatpalsu.html
 RewriteRule ^index\.php$ template.php?module=home [L]
 RewriteRule ^amanah-(.*)$ template.php?module=home&daerah=$1 [L]
 
 RewriteRule ^tes-(.*)\.html$ template.php?module=tes&id=$1 [L]
 RewriteRule ^kategori-(.*)\.html$ template.php?module=detailkategori&id=$1 [L]
-RewriteRule ^berita-(.*)\.html$ template.php?module=detailberita&judul=$1 
+RewriteRule ^berita-(.*)\.html$ template.php?module=detailberita&judul=$1
 RewriteRule ^video-(.*)\.html$ template.php?module=detailvideo&judul=$1
 RewriteRule ^foto-(.*)\.html$ template.php?module=detailfoto&judul=$1
 RewriteRule ^hasil-pencarian\.html$ template.php?module=hasilcari&id=$1 [L]
@@ -27,7 +27,7 @@ RewriteRule ^kalam\.html$ template.php?module=kalam [L]
 RewriteRule ^sosok\.html$ template.php?module=sosok [L]
 RewriteRule ^kajian\.html$ template.php?module=kajian [L]
 RewriteRule ^lifestyle\.html$ template.php?module=lifestyle [L]
-RewriteRule ^komunitas\.html$ template.php?module=komunitas [L]
+RewriteRule ^ummatizen\.html$ template.php?module=komunitas [L]
 RewriteRule ^profil-kami\.html$ template.php?module=profilkami&id=$1 [L]
 
 RewriteRule ^halkomentar-(.*)-([0-9]+)\.html$ template.php?module=detailberita&judul=$1&halkomentar=$2 [L]
@@ -79,24 +79,24 @@ RewriteRule ^hal-(.*)\.html$ template.php?module=halamanstatis&judul=$1 [L]
 Options All -Indexes
 </IfModule>
 
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^http://new.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://new.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://m.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://m.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.m.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.m.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://m.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://m.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.m.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.m.harianamanah.id$      [NC]
+# RewriteCond %{HTTP_REFERER} !^$
+# RewriteCond %{HTTP_REFERER} !^http://new.harianamanah.id/.*$      [NC]
+# RewriteCond %{HTTP_REFERER} !^http://new.harianamanah.id$      [NC]
+# RewriteCond %{HTTP_REFERER} !^http://harianamanah.id/.*$      [NC]
+# RewriteCond %{HTTP_REFERER} !^http://harianamanah.id$      [NC]
+# RewriteCond %{HTTP_REFERER} !^http://m.harianamanah.id/.*$      [NC]
+# RewriteCond %{HTTP_REFERER} !^http://m.harianamanah.id$      [NC]
+# RewriteCond %{HTTP_REFERER} !^http://www.harianamanah.id/.*$      [NC]
+# RewriteCond %{HTTP_REFERER} !^http://www.harianamanah.id$      [NC]
+# RewriteCond %{HTTP_REFERER} !^http://www.m.harianamanah.id/.*$      [NC]
+# RewriteCond %{HTTP_REFERER} !^http://www.m.harianamanah.id$      [NC]
+# RewriteCond %{HTTP_REFERER} !^https://harianamanah.id/.*$      [NC]
+# RewriteCond %{HTTP_REFERER} !^https://harianamanah.id$      [NC]
+# RewriteCond %{HTTP_REFERER} !^https://m.harianamanah.id/.*$      [NC]
+# RewriteCond %{HTTP_REFERER} !^https://m.harianamanah.id$      [NC]
+# RewriteCond %{HTTP_REFERER} !^https://www.harianamanah.id/.*$      [NC]
+# RewriteCond %{HTTP_REFERER} !^https://www.harianamanah.id$      [NC]
+# RewriteCond %{HTTP_REFERER} !^https://www.m.harianamanah.id/.*$      [NC]
+# RewriteCond %{HTTP_REFERER} !^https://www.m.harianamanah.id$      [NC]
 
 

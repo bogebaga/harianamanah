@@ -4,7 +4,11 @@
 			$bulan = getBulan(substr($tgl,5,2));
 			$tahun = substr($tgl,0,4);
 			return $tanggal.' '.$bulan.' '.$tahun;		 
-	}	
+  }	
+  
+  function trans_jam($jam){
+    return date('g:i A', strtotime($jam));
+  }
 
 	function getBulan($bln){
 				switch ($bln){

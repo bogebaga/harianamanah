@@ -90,8 +90,8 @@ include_once('config_fb.php');
             <?php
             echo "<img class='main-pic' src='http://harianamanah.com/foto_berita/$d[gambar]' alt='img'>";
             echo "<p class='caption-pic'>$d[keterangan_gambar]</p>";
-            echo "<img id='ads-fill-news' data-spy='affix' src='foto_Iklan_isiberita/ems web.png' style='position:absolute;width:160px'>";
             echo '<div class="isi-berita">';
+            echo "<img src='foto_Iklan_isiberita/ems web.png' style='float:left;width:160px'>";
             // echo "<div class='clearfix'></div>";
             echo "$d[isi_berita]";
             echo "<div class='clearfix'></div>";
@@ -199,6 +199,7 @@ include_once('config_fb.php');
                   <a class='featured_img' href='$c[url]' >
                   <img src='foto_pasangiklan/$c[gambar]' alt='img' width='100%'></a>
                   </li>
+                  <div class='clearfix'></div>
                   ";
           } ?>
            <?php
@@ -210,7 +211,8 @@ include_once('config_fb.php');
                   <li>
                     <a class='featured_img' href='$c[url]' >
                     <img src='foto_pasangiklan/$c[gambar]' alt='img' width='100%'></a>
-                  </li>";
+                  </li>
+                  <div class='clearfix'></div>";
           }?>
            <?php
           $iklantengah=mysql_query("SELECT * FROM pasangiklan WHERE id_pasangiklan != '$idc1'  ORDER BY id_pasangiklan DESC LIMIT 1");
@@ -221,7 +223,8 @@ include_once('config_fb.php');
                   <li>
                     <a class='featured_img' href='$c[url]' >
                     <img src='foto_pasangiklan/$c[gambar]' alt='img' width='100%'></a>
-                  </li>";
+                  </li>
+                  <div class='clearfix'></div>";
           }?>
           </ul>
         </div>
@@ -251,12 +254,6 @@ include_once('config_fb.php');
     offset : {
       top: $("#fixed-baca").offset().top,
       bottom: $("#iklan-footer").outerHeight(true) + 550
-    }
-  });
-  $("#ads-fill-news").affix({
-    offset:{
-      top:$("#ads-fill-news").offset().top,
-      bottom: ($(".related-news").outerHeight(true)+$("#iklan-footer").outerHeight(true))+200
     }
   });
 </script>

@@ -96,9 +96,11 @@
               <audio src="http://s3.vinhostmedia.com:9324/;" autobuffer autoloop loop controls ></audio>
             </div>
           </li>
+          <div class="clearfix"></div>
           <li>
             <div id="radio"><img src="foto_iklanatas/box_abu.gif"></div>
           </li>
+          <div class="clearfix"></div>
           <!-- <li>
             <div id="box-trending">
               <h4>Liputan <strong>Khusus</strong></h4>

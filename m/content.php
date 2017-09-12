@@ -176,8 +176,17 @@
  	////////////////////////////////////////////////////////////
 
    // news.html
+  elseif ($_GET['module']=='terkini')
+    include "modul/mod_berita/sub-terkini.php";
+	// lifestyle.html
+	elseif ($_GET['module']=='popular')
+		include "modul/mod_berita/sub-popular.php";
+	// komunitas.html
+	elseif ($_GET['module']=='rekomendasi')
+		include 'modul/mod_berita/sub-rekomendasi.php';
+   // news.html
   elseif ($_GET['module']=='news')
-  include "modul/mod_berita/kategori-news.php";
+    include "modul/mod_berita/kategori-news.php";
 	// lifestyle.html
 	elseif ($_GET['module']=='lifestyle')
 		include "modul/mod_berita/kategori-lifestyle.php";

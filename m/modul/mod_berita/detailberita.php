@@ -84,7 +84,7 @@
           <span id="toggle-info" class="fa fa-info-circle" style="font-size:35px;position:absolute;right:10px;bottom:10px"></span>
           <img src='http://harianamanah.com/foto_berita/<?php echo $d['gambar']?>' class='img-responsive' alt='img'>
         </div>
-        <span id="info-gambarku" style="padding:0 7px;font-size:12px;display:none;"><?php echo $d['keterangan_gambar']?></span>
+        <div id="info-gambarku" style="padding:0 7px;font-size:12px;display:none;"><?php echo $d['keterangan_gambar']?></div>
     </div>
     <script>
       $("#toggle-info").click(function(){

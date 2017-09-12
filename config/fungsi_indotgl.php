@@ -3,16 +3,16 @@
 			$tanggal = substr($tgl,8,2);
 			$bulan = getBulan(substr($tgl,5,2));
 			$tahun = substr($tgl,0,4);
-			return $tanggal.' '.$bulan.' '.$tahun;		 
-  }	
-  
+			return $tanggal.' '.$bulan.' '.$tahun;
+  }
+
   function trans_jam($jam){
-    return date('g:i A', strtotime($jam));
+    return date('H:i', strtotime($jam))."&nbsp;WIB";
   }
 
 	function getBulan($bln){
 				switch ($bln){
-					case 1: 
+					case 1:
 						return "Januari";
 						break;
 					case 2:

@@ -1,5 +1,5 @@
 
-#menu .top-social{/*background-color:#505052*/;padding: 5px;font-size: 20px; text-align: center;}
+#menu .top-social{/*background-color:#505052;*/padding: 5px;font-size: 20px; text-align: center;}
 #menu ul.top-social{margin: 0;}
 #menu ul.top-social  li{height: 38px; width: 38px; }
 #menu ul.top-social a i{color: #14afb4;line-height: 1.9;height: 38px; width: 38px;border-radius: 50%;background-color: #fff;border:1px solid #fff;}
@@ -24,9 +24,6 @@
 /* --------------------------------Zoom-Effect--------------------------------- */
 /* ---------------------------------------------------------------------------- */
 
-.sosial{
-  /*float: right;*/
-}
 .swiper-container {
         width: 100%;
         height: auto;

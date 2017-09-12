@@ -90,12 +90,11 @@ include_once('config_fb.php');
             <?php
             echo "<img class='main-pic' src='http://harianamanah.com/foto_berita/$d[gambar]' alt='img'>";
             echo "<p class='caption-pic'>$d[keterangan_gambar]</p>";
+            echo "<img id='ads_news' data-spy='affix' src='foto_Iklan_isiberita/ems web.png' style='float:left;width:160px'>";
             echo '<div class="isi-berita">';
-            echo "<img src='foto_Iklan_isiberita/ems web.png' style='float:left;width:160px'>";
-            // echo "<div class='clearfix'></div>";
             echo "$d[isi_berita]";
-            echo "<div class='clearfix'></div>";
             echo '</div>';
+            echo "<div class='clearfix'></div>";
 
             if($d[youtube]!='')
             {
@@ -214,21 +213,9 @@ include_once('config_fb.php');
                   </li>
                   <div class='clearfix'></div>";
           }?>
-           <?php
-          $iklantengah=mysql_query("SELECT * FROM pasangiklan WHERE id_pasangiklan != '$idc1'  ORDER BY id_pasangiklan DESC LIMIT 1");
-          while($c=mysql_fetch_array($iklantengah))
-          {
-            $idc2 = $c['id_pasangiklan'];
-            echo "
-                  <li>
-                    <a class='featured_img' href='$c[url]' >
-                    <img src='foto_pasangiklan/$c[gambar]' alt='img' width='100%'></a>
-                  </li>
-                  <div class='clearfix'></div>";
-          }?>
           </ul>
         </div>
-        <div id="fixed-baca" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="border:1px solid #052845;border-top:0;background-color: #fff;height:720px;">
+        <div id="fixed-baca" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color:#ececec;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44);height:840px;">
           <div class="title berita-foto" style="color:#EFCB03;padding:10px 15px;background-color: #052844;background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);">BERITA FOTO</div>
         </div>
       </div>
@@ -248,12 +235,17 @@ include_once('config_fb.php');
     }?>
   </div>
 </div>
-
 <script>
+  $('#ads_news').affix({
+    offset: {
+      top: $('#ads_news').offset().top
+      // bottom: ($('#iklan-footer').outerHeight(true)+$('.related-news').outerHeight(true)+($('.isi-berita').outerHeight(true)-$('#ads_news').outerHeight(true)))+300
+    }
+  });
   $("#fixed-baca").affix({
     offset : {
       top: $("#fixed-baca").offset().top,
-      bottom: $("#iklan-footer").outerHeight(true) + 550
+      bottom: $("#iklan-footer").outerHeight(true) + 791
     }
   });
 </script>

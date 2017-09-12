@@ -1,3 +1,7 @@
+<?php
+  $terkini=mysql_query("SELECT * FROM menu WHERE id_menu='18'");
+  $nama_menu = mysql_fetch_array($terkini);
+?>
 <!-- /////////////////////////////////////////Content -->
 <div id="page-content" class="index-page container" style="background-color:#fff;">
 <div id="sidebar" style="padding:0;">
@@ -37,7 +41,7 @@
   </div>
   <div class="col-xs-12" style="padding:0;float:none;margin-top:25px">
     <div class="col-xs-12 news-category">
-      <h1>Kajian</h1>
+      <h1 style="color:#f44336;"><?php echo $nama_menu['nama_menu']?></h1>
       <br>
       <?php
       $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '18' ORDER BY id_berita DESC LIMIT 32");

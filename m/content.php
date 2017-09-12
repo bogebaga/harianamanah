@@ -2,12 +2,12 @@
  if ($_GET['module']=='home'){?>
  	<section class="container-fluid" style="background-color:white;">
 		<section class="headline row">
-			<?php
+      <?php
 				$terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY id_berita DESC LIMIT 1");
 				while($t=mysql_fetch_array($terkini)){
-          $tgl = tgl_indo($t['tanggal']);
-          $jam = trans_jam($t['jam']);
-						$id1 = $t['id_berita'];
+          $tgl = tgl_indo($t["tanggal"]);
+          $jam = trans_jam($t["jam"]);
+					$id1 = $t["id_berita"];
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item'>

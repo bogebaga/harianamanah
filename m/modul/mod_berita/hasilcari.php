@@ -1,9 +1,4 @@
-<br>
-<br>
-<br>
-
-            <section class="container-fluid">
-	
+  <section class="container-fluid">
 			<section class="daftar-artikel">
                 <span class="fl art-count">
 				<?php
@@ -13,7 +8,7 @@
   $jml_katakan = (integer)count($pisah_kata);
   $jml_kata = $jml_katakan-1;
 
-  $cari = "SELECT * FROM berita where judul  LIKE '%$kata%'
+  $cari = "SELECT * FROM berita where judul LIKE '%$kata%'
     ORDER BY case
     when judul like '$kata' then 1
     when judul like '% $kata %' then 2
@@ -24,50 +19,42 @@
 
   $hasil  = mysql_query($cari);
   $ketemu = mysql_num_rows($hasil);
-  
+
   echo "<b>".$ketemu." Artikel</b>";
 				?>
 				</span>
-
-           
-<?php 
- 
-
-  
+<?php
   if ($ketemu > 0){
   while($r=mysql_fetch_array($hasil)){
   $tgl = tgl_indo($r['tanggal']);
-  
+  $jam = trans_jam($r['jam']);
   echo"
- 
-                                        
                 <article class= 'artikle' >
 								<div class='list-picture'>
 									<a href='berita-$r[judul_seo].html'>
-									<img class='picture' src='http://harianamanah.id/foto_small/$r[gambar1]' />
+									<img class='picture' src='http://harianamanah.com/foto_small/$r[gambar1]' />
 									</a>
 								</div>
 								<div class='artikle-text' kode='$r[id_berita]'>
 										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
 										<a href='berita-$r[judul_seo].html' class='berita'><p>$r[judul]</p></a>
-										<p class='waktu-berita'> $r[tanggal] | $r[jam] </p>
+										<p class='waktu-berita'> $r[hari], $tgl - $jam </p>
 								</div>
-				</article> 
-                        
-                                            
-            
-			
+				</article>
+
+
+
+
   ";
   }
-  
+
   }
- 
-  
-  
+
+
+
  ?>
-			
-           
+
+
 </section>
   </section>
-   
-  
+

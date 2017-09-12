@@ -62,13 +62,13 @@ xmlns="http://www.w3.org/1999/xhtml"
     <meta name="author" content="">
 	<meta name="image"  content="<?php
 	if($d['gambar']!=''){
-	echo "http://harianamanah.id/foto_berita/$d[gambar]";
+	echo "http://harianamanah.com/foto_berita/$d[gambar]";
 	}elseif($d1['gbr_video']!=''){
-	echo "http://harianamanah.id/img_video/$d1[gbr_video]";
+	echo "http://harianamanah.com/img_video/$d1[gbr_video]";
 	}elseif($d2['gbr_album']!=''){
-	echo "http://harianamanah.id/img_album/$d2[gbr_album]";
+	echo "http://harianamanah.com/img_album/$d2[gbr_album]";
 	}else{
-	echo "http://harianamanah.id/images/amanah.jpg";
+	echo "http://harianamanah.com/images/amanah.jpg";
 	}
 	?>" />
 
@@ -88,26 +88,26 @@ xmlns="http://www.w3.org/1999/xhtml"
         <meta property="og:url" content="<?php
 
         if ($d['judul_seo'] != '') {
-            echo "http://www.harianamanah.id/berita-$d[judul_seo].html";
+            echo "http://harianamanah.com/berita-$d[judul_seo].html";
         } elseif ($d1['video_seo'] != '') {
-            echo "http://www.harianamanah.id/video-$d1[video_seo].html";
+            echo "http://harianamanah.com/video-$d1[video_seo].html";
         }elseif ($d2['album_seo'] != '') {
-            echo "http://www.harianamanah.id/foto-$d2[album_seo].html";
+            echo "http://harianamanah.com/foto-$d2[album_seo].html";
         } else {
-            echo "http://www.harianamanah.id";
+            echo "http://harianamanah.com";
         }
 
         ?>"/>
         <meta property="og:image" content="<?php
 
       if($d['gambar']!=''){
-		echo "http://harianamanah.id/foto_berita/$d[gambar]";
+		echo "http://harianamanah.com/foto_berita/$d[gambar]";
 		}elseif($d1['gbr_video']!=''){
-		echo "http://harianamanah.id/img_video/$d1[gbr_video]";
+		echo "http://harianamanah.com/img_video/$d1[gbr_video]";
 		}elseif($d2['gbr_album']!=''){
-		echo "http://harianamanah.id/img_album/$d2[gbr_album]";
+		echo "http://harianamanah.com/img_album/$d2[gbr_album]";
 		}else{
-		echo "http://harianamanah.id/images/amanah.jpg";
+		echo "http://harianamanah.com/images/amanah.jpg";
 		}
         ?>"/>
     <meta property="og:site_name" content="harianamanah.id"/>
@@ -148,7 +148,7 @@ xmlns="http://www.w3.org/1999/xhtml"
       var URL = window.location.href.split('/').pop();
       if(screen.width < 768)
       {
-        document.location = 'http://localhost/harianamanah/m/'+URL;
+        document.location = 'http://harianamanah.com/m/'+URL;
       }
     </script> -->
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -338,50 +338,38 @@ $(document).ready(function(){
   <div class="footer-menu">
     <div class="container">
       <ul class="must-know">
-        <!-- <li><a href="">HOME</a></li> -->
-        <li><a href="">TENTANG</a></li>
-        <li><a href="">PRIVASI</a></li>
-        <li><a href="">PEDOMAN&nbsp;MEDIA&nbsp;SIBER</a></li>
-        <li><a href="">ADVERTISEMENT</a></li>
-        <li><a href="">KONTAK</a></li>
+        <li><a href="/">HOME</a></li>
+        <li><a href="hal-tentang-kami.html">TENTANG</a></li>
+        <li><a href="hal-privacy-policy.html">KEBIJAKAN PRIVASI</a></li>
+        <!-- <li><a href="">PEDOMAN&nbsp;MEDIA&nbsp;SIBER</a></li> -->
+        <!-- <li><a href="">ADVERTISEMENT</a></li> -->
+        <li><a href="hal-kontak-kami.html">KONTAK</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-menu-expand">
     <div class="container">
     <ul class="menu-utama">
-      <li>
+      <li class="kategori">
         <span class="title-menu">KATEGORI</span>
         <ul>
-          <li><a>Ekobis</a></li>
-          <li><a>Politik</a></li>
-          <li><a>Jazirah</a></li>
-          <li><a>Muslim&nbsp;Star</a></li>
-          <li><a>Bola+</a></li>
-          <li><a>Muslimah</a></li>
-          <li><a>Gen&nbsp;M</a></li>
-          <li><a>Ormas</a></li>
-          <li><a>Ensiklopedi&nbsp;Muslim</a></li>
-          <li><a>Mozaik</a></li>
-          <li><a>Hikmah</a></li>
-          <li><a>Tafsir</a></li>
-          <li><a>Haji&nbsp;&amp;&nbsp;Umrah</a></li>
-          <li><a>Khazanah</a></li>
-          <li><a>Legenda</a></li>
-          <li><a>Islamic&nbsp;View</a></li>
-          <li><a>Opini</a></li>
-          <li><a>Esai</a></li>
+        <?php
+          $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND (id_parent = 8 || id_parent = 13 || id_parent = 14 || id_parent = 18 || id_parent = 20)");
+          while($row = mysql_fetch_array($menu_sub)){
+            echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
+          }
+          ?>
         </ul>
       </li>
       <li style="width:220px;">
         <span class="title-menu">MENU&nbsp;UTAMA</span>
         <ul class="block">
-          <li><a>News</a></li>
-          <li><a>LifeStyle</a></li>
-          <li><a>Komunitas</a></li>
-          <li><a>Kajian</a></li>
-          <li><a>Sosok</a></li>
-          <li><a>Kalam</a></li>
+          <?php
+          $menu_parent = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent='0'");
+          while($row = mysql_fetch_array($menu_parent)){
+            echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
+          }
+          ?>
         </ul>
       </li>
       <li style="width:260px;">

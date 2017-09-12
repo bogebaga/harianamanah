@@ -6,7 +6,7 @@ session_start();
   include "../config/fungsi_combobox.php";
   include "../config/class_paging.php";
 
-  // error_reporting(0);
+  error_reporting(0);
 
         $detail=mysql_query("SELECT * FROM berita,users,kategori
                       WHERE users.username=berita.username
@@ -107,6 +107,10 @@ session_start();
         <meta property="og:site_name" content="harianamanah.com"/>
         <meta property="fb:app_id" content="168067490271817"/>
         <meta name="adx:sections" content="<?php echo "$d[nama_kategori]"; ?>"/>
+        <meta name="theme-color" content="#009688">
+        <meta name="msapplication-navbutton-color" content="#009688">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#009688">
+
   <link rel="shortcut icon" href="../favicon.png">
 	<link rel="stylesheet" type="text/css" href="css/dream.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -220,7 +224,7 @@ session_start();
 		</div>
 	</header>
 	<section id="main">
-<?php require "content.php"; ?>
+<?php include "content.php"; ?>
 	<footer>
 		<a href="#" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
 	 	<div class="gambar-footer">
@@ -229,9 +233,9 @@ session_start();
 		 	</a>
 	 	</div>
 	 	<div class="menu-footer">
-		 	<a href="#">TENTANG</a>
-      <a href="#">PRIVASI</a>
-      <a href="#">KONTAK</a>
+		 	<a>TENTANG</a>
+      <a>PRIVASI</a>
+      <a>KONTAK</a>
 	 	</div>
     <div class="isi-footer">
       <span class="copyright">

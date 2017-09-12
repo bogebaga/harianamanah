@@ -1,16 +1,10 @@
-@font-face {
-	font-family: "Open Sans";
-	src: url('fonts/OpenSans-Regular.ttf');
-	font-style: normal;
-}
-
 html, body
 {
   background-color: #ECECEC !important;
   height: 100% !important;
 }
 a, p, h1, h2, h3, h4, h5{
-	font-family: "Lato", "Open Sans", "Sans-Serif";
+	font-family: "Roboto", sans-serif;
 }
 
 /* Bagian Header */
@@ -32,7 +26,7 @@ a, p, h1, h2, h3, h4, h5{
 	margin-top: 7px !important;
 }
 
-.navbar-default .navbar-toggle:focus, 
+.navbar-default .navbar-toggle:focus,
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:active
 {
@@ -84,7 +78,7 @@ a.social-share {
 }
 a.social-share:active, a.social-share:hover{
   text-decoration: none;
-  color: grey;
+  color: #fff;
 }
 
 a.social-share.fa-facebook{

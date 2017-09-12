@@ -1541,6 +1541,16 @@ h3[data-style="und-bdr"]::after
 	background:#FA58F4;
 }
 
+.menu-utama > li.kategori{
+  display: block !important;
+  width: 100% !important;
+  margin-bottom: 35px;
+}
+
+.menu-utama > li.kategori li{
+  width: 25% !important;
+}
+
 #fixed-left.affix,
 #fixed-left.affix-bottom,
 #fixed-baca.affix,
@@ -1558,18 +1568,17 @@ h3[data-style="und-bdr"]::after
 #fixed-left.affix-bottom,
 #fixed-right.affix-bottom,
 #fixed-baca.affix-bottom,
-#ads-fill-news.affix-bottom{
+#ads_news.affix-bottom{
   position: absolute;
 }
-#ads-fill-news.affix{
+#ads_news.affix{
   top:59px;
-  position: fixed !important;
 }
 #iklan-footer{
  padding:0;
 }
 
-.isi-berita > p{
-  width: 73%;
+.isi-berita{
+  width: 77%;
   float: right;
 }

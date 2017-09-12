@@ -178,14 +178,14 @@
   $("#fixed-right").affix({
     offset : {
       top: $('#fixed-right').offset().top,
-      bottom: $('#iklan-footer').outerHeight(true) + 514
+      bottom: $('#iklan-footer').outerHeight(true) + 754
     }
   });
 
   $("#fixed-left").affix({
     offset : {
       top: $('#fixed-left').offset().top,
-      bottom: $('#iklan-footer').outerHeight(true) + 514
+      bottom: $('#iklan-footer').outerHeight(true) + 754
     }
   });
 

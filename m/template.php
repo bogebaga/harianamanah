@@ -233,9 +233,9 @@ session_start();
 		 	</a>
 	 	</div>
 	 	<div class="menu-footer">
-		 	<a>TENTANG</a>
-      <a>PRIVASI</a>
-      <a>KONTAK</a>
+			<a href="#">TENTANG</a>
+      <a href="#">PRIVASI</a>
+      <a href="#">KONTAK</a>
 	 	</div>
     <div class="isi-footer">
       <span class="copyright">
@@ -330,10 +330,8 @@ session_start();
     </script>
 <script>
     $('#myModal').modal('show');
-
     setTimeout(function(){
         $('#myModal').modal('hide')
     }, 5000);
 </script>
-
 </body>

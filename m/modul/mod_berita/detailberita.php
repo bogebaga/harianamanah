@@ -1,19 +1,3 @@
-<?php
-// $ip = "";
-
-// if (!empty($_SERVER["HTTP_CLIENT_IP"]))
-// {
-//     $ip = $_SERVER["HTTP_CLIENT_IP"];
-// }
-// elseif (!empty($_SERVER["HTTP_X_FORWARDED_FOR"]))
-// {
-//     // Check for the Proxy User
-//     $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
-// }
-// else
-// {
-//     $ip = $_SERVER["REMOTE_ADDR"];
-// } ?>
 <div id="fb-root"></div>
 <?php include_once("analyticstracking.php") ?>
 <?php //include_once("../../analyticstracking.php") ?>
@@ -62,15 +46,16 @@
         padding-left: 10px;
         padding-bottom: 10px;
         background-color:white;
-        margin-top:17px;
+        margin-bottom:17px;
     }
 
     .bungkus.nav-nex-pre {
       padding:0;
     }
+
     .bungkus.nav-nex-pre .berita-next {text-align:right;}
     .bungkus.nav-nex-pre .berita-next span {right:10px;}
-    .bungkus.nav-nex-pre span {position:absolute;display:block;margin-top:10px;color:#F44336;font-size:22px;}
+    .bungkus.nav-nex-pre span {position:absolute;display:block;color:#F44336;font-size:22px;bottom:10px;}
     .bungkus.nav-nex-pre a:first-child {border-right:1px solid rgba(0, 0, 0, 0.2);}
     .bungkus.nav-nex-pre a {
       width:50%;
@@ -79,6 +64,7 @@
       font-size:17px;
       color:#333;
       font-weight:300;
+      min-height:195px;
       position:relative;
     }
 
@@ -94,10 +80,17 @@
     <h1 class="read_berita"><?php echo $d['judul'];?></h1>
     <span class="tanggal-release"><?php echo $d['hari'].", ".$tgl." - ".$jam ?></span>&nbsp;Oleh&nbsp;<span><?php echo $d['username']?></span>
     <div class="box-header row">
-        <div class="gambar-berita">
+        <div class="gambar-berita" style="position:relative;margin:0 0 7px;">
+          <span id="toggle-info" class="fa fa-info-circle" style="font-size:35px;position:absolute;right:10px;bottom:10px"></span>
           <img src='http://harianamanah.com/foto_berita/<?php echo $d['gambar']?>' class='img-responsive' alt='img'>
         </div>
+        <span id="info-gambarku" style="padding:0 7px;font-size:12px;display:none;"><?php echo $d['keterangan_gambar']?></span>
     </div>
+    <script>
+      $("#toggle-info").click(function(){
+        $("#info-gambarku").toggle();
+      })
+    </script>
     <div class="social-optimize">
       <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/m/berita-".$d['judul_seo'].".html"?>" class="social-share fa fa-facebook" target="_blank"></a>
       <a href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/m/berita-".$d['judul_seo'].".html"?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="social-share fa fa-twitter" target="_blank"></a>
@@ -171,7 +164,8 @@
 </section>
 <section class="container-fluid bungkus nav-nex-pre">
   <?php
-    $link_berita_prev = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 1");
+  // echo $d['id_kategori'];
+    $link_berita_prev = mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' ORDER BY id_berita DESC LIMIT 1");
     while($row_p=mysql_fetch_array($link_berita_prev)){
       echo "<a class='berita-next' href='berita-$row_p[judul_seo].html'>$row_p[judul]<span class='fa fa-long-arrow-left'></span></a>";
     }

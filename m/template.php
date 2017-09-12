@@ -6,7 +6,7 @@ session_start();
   include "../config/fungsi_combobox.php";
   include "../config/class_paging.php";
 
-  // error_reporting(0);
+  error_reporting(0);
 
         $detail=mysql_query("SELECT * FROM berita,users,kategori
                       WHERE users.username=berita.username
@@ -220,7 +220,7 @@ session_start();
 		</div>
 	</header>
 	<section id="main">
-<?php require "content.php"; ?>
+<?php include "content.php"; ?>
 	<footer>
 		<a href="#" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
 	 	<div class="gambar-footer">
@@ -229,7 +229,7 @@ session_start();
 		 	</a>
 	 	</div>
 	 	<div class="menu-footer">
-		 	<a href="#">TENTANG</a>
+			<a href="#">TENTANG</a>
       <a href="#">PRIVASI</a>
       <a href="#">KONTAK</a>
 	 	</div>
@@ -326,10 +326,8 @@ session_start();
     </script>
 <script>
     $('#myModal').modal('show');
-
     setTimeout(function(){
         $('#myModal').modal('hide')
     }, 5000);
 </script>
-
 </body>

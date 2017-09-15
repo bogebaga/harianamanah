@@ -4,6 +4,14 @@
 	</div>
  -->
  <!-- Content -->
+  <ul class="navbar sub-rubrik">
+    <?php
+    $kalam = mysql_query("SELECT * FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE nama_menu = 'Kajian') ORDER BY nama_menu");
+    while($row = mysql_fetch_array($kalam)){
+      echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
+    }
+    ?>
+</ul>
  <section class="container-fluid" style="background-color:white;">
 		<section class="headline row">
 			<?php

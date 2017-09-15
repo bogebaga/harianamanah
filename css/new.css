@@ -162,6 +162,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 .mt20 {
     margin-bottom: 20px;
+    text-align: center;
 }
 .penulis {
     padding: 10px;

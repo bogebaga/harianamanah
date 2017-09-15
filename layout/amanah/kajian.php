@@ -3,17 +3,17 @@
   $nama_menu = mysql_fetch_array($terkini);
 ?>
 <!-- /////////////////////////////////////////Content -->
-<div id="page-content" class="index-page container" style="background-color:#fff;">
-<div id="sidebar" style="padding:0;">
-  <div class="col-xs-12" style="padding:0;float:none;">
-    <div class='flex-container'>
-    <?php
+<div id="page-content" class="index-page container" style="background-color:#ececec;">
+    <h1 style="color:#f44336;border-bottom:1px solid #f44336"><?php echo $nama_menu['nama_menu']?></h1>
+    <div id="sidebar" style="padding:0;background:#ECECEC;">
+      <div class="col-xs-12" style="padding:0;float:none;margin-bottom:25px">
+        <div class='flex-container'>
+        <?php
         $rubrik=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '18' ORDER BY id_berita DESC LIMIT 5");
+        $i=0;
         while($row = mysql_fetch_array($rubrik)){
           $tgl = tgl_indo($row['tanggal']);
           $jam = trans_jam($row['jam']);
-
-          $i=0;
           echo "<div class='item-flex grid-$i'>
           <span class='kategori-grid' style='background:rgba(244, 67, 54, 0.8)'><a style='color:#fff;' href='kategori-$row[id_kategori]-$row[kategori_seo].html'>$row[nama_kategori]</a></span>
           <a href='berita-$row[judul_seo].html' title='$row[judul]'><h2 class='grid-flex-foto'>$row[judul]</h2></a>
@@ -24,63 +24,63 @@
         $i++;
         }
       ?>
-    </div>
-    <!-- <div class="row">
-      <div class="col-md-12">
-        <h6 class="text-center">ADVERTISEMENT</h6>
-      <?php
-      $iklantengah=mysql_query("SELECT * FROM iklantengah  WHERE id_iklantengah ='1' ORDER BY id_iklantengah DESC LIMIT 1");
-      while($b=mysql_fetch_array($iklantengah)){
-      echo "<div class='iklan' width='100%'>
-      <a href='$b[url]'' target='_blank' title='$b[judul]'>
-      <img src='foto_iklantengah/$b[gambar]' alt='img'></a>
-      </div>";}
-      ?>
+        </div>
+				<!-- <div class="row">
+					<div class="col-md-12">
+						<h6 class="text-center">ADVERTISEMENT</h6>
+					<?php
+					$iklantengah=mysql_query("SELECT * FROM iklantengah  WHERE id_iklantengah ='1' ORDER BY id_iklantengah DESC LIMIT 1");
+					while($b=mysql_fetch_array($iklantengah)){
+					echo "<div class='iklan' width='100%'>
+					<a href='$b[url]'' target='_blank' title='$b[judul]'>
+					<img src='foto_iklantengah/$b[gambar]' alt='img'></a>
+					</div>";}
+					?>
+					</div>
+				</div></br> -->
       </div>
-    </div></br> -->
-  </div>
-  <div class="col-xs-12" style="padding:0;float:none;margin-top:25px">
-    <div class="col-xs-12 news-category">
-      <h1 style="color:#f44336;"><?php echo $nama_menu['nama_menu']?></h1>
-      <br>
-      <?php
-      $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '18' ORDER BY id_berita DESC LIMIT 32");
-      while($t=mysql_fetch_array($terkini)){
-        $tgl = tgl_indo($t['tanggal']);
-        $jam = trans_jam($t['jam']);
-        if (strlen($t['judul']) > 75)
-        {
-          $hasil = substr($t['judul'], 0, 75)."&hellip;";
-        }
-        else
-        {
-          $hasil = $t['judul'];
-        }
-        echo "
-        <article>
-          <a href='berita-$t[judul_seo].html'>
-            <img src='http://harianamanah.com/foto_berita/$t[gambar]' alt=''>
-          </a>
-          <div class='badges-cate'>
-            <span style='background:#f44336;'><a style='color:#fff;' href='kategori-$t[id_kategori]-$t[kategori_seo].html'>$t[nama_kategori]</a></span>
-            <span>".$tgl." | ".$jam."</span>
-          </div>
-          <a href='berita-$t[judul_seo].html' class='captions'>$hasil</a>
-        </article>"; }
-      ?>
+      <div class="col-xs-12" style="padding:0;float:none;">
+      <div class="col-xs-3">
+          Test
+      </div>
+      <div class="col-xs-9 news-category" style="background:#fff;">
+          <!-- <h1 style="color:#f44336;border-bottom:1px solid #f44336"><?php echo $nama_menu['nama_menu']?></h1> -->
+          <br>
+          <?php
+          $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '18' ORDER BY id_berita DESC LIMIT 33");
+					while($t=mysql_fetch_array($terkini)){
+            $tgl = tgl_indo_short($t['tanggal']);
+            $jam = trans_jam($t['jam']);
+            if (strlen($t['judul']) > 75)
+            {
+              $hasil = substr($t['judul'], 0, 75)."&hellip;";
+            }
+            else
+            {
+              $hasil = $t['judul'];
+            }
+            echo "
+            <article>
+              <a href='berita-$t[judul_seo].html'>
+                <img src='http://harianamanah.com/foto_berita/$t[gambar]' alt=''>
+              </a>
+              <div class='badges-cate'>
+                <span style='background:#f44336'><a style='color:#fff;' href='kategori-$t[id_kategori]-$t[kategori_seo].html'>$t[nama_kategori]</a></span>
+                <span>".$tgl." | ".$jam."</span>
+              </div>
+              <a href='berita-$t[judul_seo].html' class='captions'>$hasil</a>
+            </article>"; }
+          ?>
+        </div>
+      <div class="clearfix"></div>
+      </div>
     </div>
-    <!-- <div class="col-xs-3">
-      <h1 style="color:#f44336;">Indeks&nbsp;<b>Kajian</b></h1>
-      <br>
-      <div></div>
-    </div> -->
-  </div>
-</div>
-  <div id="daftar-artikel"></div>
-  <div id="more" style="display: none;">
-    <center><img src="images/loading.gif" width="170px"></center>
-  </div>
-</div>
+		<div id="daftar-artikel"></div>
+		<div id="more" style="display: none;">
+			<center><img src="images/loading.gif" width="170px"></center>
+		</div>
+	</div>
+
 <!-- <script>
     var loadMore = true;
   $(window).scroll(function(){

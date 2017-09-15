@@ -3,9 +3,10 @@
   $nama_menu = mysql_fetch_array($terkini);
 ?>
 <!-- /////////////////////////////////////////Content -->
-	<div id="page-content" class="index-page container" style="background-color:#fff;">
-    <div id="sidebar" style="padding:0;">
-      <div class="col-xs-12" style="padding:0;float:none;">
+	<div id="page-content" class="index-page container" style="background-color:#ececec;">
+  <h1 style="color:#06375E;border-bottom:1px solid #06375E"><?php echo $nama_menu['nama_menu']?></h1>
+    <div id="sidebar" style="padding:0;background:#ECECEC;">
+      <div class="col-xs-12" style="padding:0;float:none;margin-bottom:25px">
         <div class='flex-container'>
         <?php
         $rubrik=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '8' ORDER BY id_berita DESC LIMIT 5");
@@ -38,14 +39,17 @@
 					</div>
 				</div></br> -->
       </div>
-      <div class="col-xs-12" style="padding:0;float:none;margin-top:25px">
-        <div class="col-xs-12 news-category">
-          <h1 style="color:#06375E;"><?php echo $nama_menu['nama_menu']?></h1>
+      <div class="col-xs-12" style="padding:0;float:none;">
+      <div class="col-xs-3">
+          Test
+      </div>
+      <div class="col-xs-9 news-category" style="background:#fff;">
+          <!-- <h1 style="color:#06375E;border-bottom:1px solid #06375E"><?php echo $nama_menu['nama_menu']?></h1> -->
           <br>
           <?php
-          $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '8' ORDER BY id_berita DESC LIMIT 32");
+          $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '8' ORDER BY id_berita DESC LIMIT 33");
 					while($t=mysql_fetch_array($terkini)){
-            $tgl = tgl_indo($t['tanggal']);
+            $tgl = tgl_indo_short($t['tanggal']);
             $jam = trans_jam($t['jam']);
             if (strlen($t['judul']) > 75)
             {
@@ -67,12 +71,14 @@
               <a href='berita-$t[judul_seo].html' class='captions'>$hasil</a>
             </article>"; }
           ?>
+          <div class="clearfix"></div>
         </div>
         <!-- <div class="col-xs-3">
           <h1 style="color:#06375E;">Indeks&nbsp;<b>News</b></h1>
           <br>
           <div></div>
         </div> -->
+      <div class="clearfix"></div>
       </div>
     </div>
 		<div id="daftar-artikel"></div>

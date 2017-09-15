@@ -3,7 +3,11 @@
 		<img src="assets/muslimStar.png" class="img-responsive" alt="Muslim Star">
 	</div> -->
 	<!-- Content -->
-  Terkini
+  <ul class="navbar sub-rubrik">
+    <li class='active'><a href='terkini.html'>TERKINI</a></li>
+    <li><a href='popular.html'>POPULAR</a></li>
+    <li><a href='rekomendasi.html'>REKOMENDASI</a></li>
+  </ul>
   <section class="container-fluid" style="background-color:white;">
 		<section class="headline row">
 			<?php
@@ -23,7 +27,15 @@
             </span>
 			  	</div>
         </div>"; }?>
-		</section>
+    </section>
+    <ul class="navbar topik-popular">
+      TOPIK POPULAR
+      <li><a href='#'><span class="fa fa-hashtag">&nbsp;&nbsp;&nbsp;</span>Manasik Abutours</a></li>
+      <li><a href='#'><span class="fa fa-hashtag">&nbsp;&nbsp;&nbsp;</span>6000 jamaah Abutours</a></li>
+      <li><a href='#'><span class="fa fa-hashtag">&nbsp;&nbsp;&nbsp;</span>6000 jamaah Abutours</a></li>
+      <li><a href='#'><span class="fa fa-hashtag">&nbsp;&nbsp;&nbsp;</span>6000 jamaah Abutours</a></li>
+      <li><a href='#'><span class="fa fa-hashtag">&nbsp;&nbsp;&nbsp;</span>6000 jamaah Abutours</a></li>
+    </ul>
 		<section class="daftar-artikel">
 			<?php
 			$_digit = 5;

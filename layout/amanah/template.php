@@ -16,7 +16,9 @@ error_reporting(0);
 			WHERE users.username=album.username
 			AND album.id_album=gallery.id_album
 			AND album_seo='$_GET[judul]'");
-	$d2   = mysql_fetch_array($detail2); ?>
+  $d2   = mysql_fetch_array($detail2);
+?>
+
 <!DOCTYPE html>
 <html lang="en"
 xmlns="http://www.w3.org/1999/xhtml"
@@ -128,21 +130,15 @@ xmlns="http://www.w3.org/1999/xhtml"
 		width:100%;
 	}
 	</style>
-
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/new.css">
-    <link rel="stylesheet" href="css/paging.css">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/new.css">
 	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
 
-	<!-- Custom Fonts -->
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
 	<!-- jQuery and Modernizr-->
-	<script src="js/jquery-2.1.1.js"></script>
-
-	<!-- Core JavaScript Files -->
-    <script src="js/bootstrap.min.js"></script>
-
+  <script src="js/jquery-2.1.1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 	<!-- mobile view -->
     <!-- <script type="text/javascript">
       var URL = window.location.href.split('/').pop();
@@ -151,13 +147,13 @@ xmlns="http://www.w3.org/1999/xhtml"
         document.location = 'http://harianamanah.com/m/'+URL;
       }
     </script> -->
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
     <![endif]-->
-
 <style>
 #err{
 	background-image: url("images/404.jpg");
@@ -230,9 +226,8 @@ xmlns="http://www.w3.org/1999/xhtml"
 
 		#radio img {
 			width: 400px;
-		}
-</style>
-<style>
+    }
+
   .row.header-row-logo-bulat
   {
     padding: 10px 0;
@@ -242,9 +237,11 @@ xmlns="http://www.w3.org/1999/xhtml"
   }
   .container.nav-menu
   {
-    background-color: #052844;
-    background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);
-
+    background-color: #1c9fa7;
+    background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+    background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+    background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+    background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
   }
   nav#logo{
     position:relative;
@@ -257,7 +254,7 @@ xmlns="http://www.w3.org/1999/xhtml"
   }
   .logo{display:inline-block;}
 </style>
-	</head>
+</head>
 <body>
 <header>
   <!--Navigation-->
@@ -290,7 +287,7 @@ xmlns="http://www.w3.org/1999/xhtml"
         $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_menu");
         while( $row = mysql_fetch_array($result)){
           $idp = $row['id_menu'];
-          echo "<li class='dropdown' ><a href='$row[link]' class='dropdown-toggle' data-toggle='dropdown' style='color:#fff;padding:10px 25px;' >$row[nama_menu] </a></li>";
+          echo "<li><a href='$row[link]' style='color:#fff;padding:15px;font-weight:bold;' >$row[nama_menu] </a></li>";
         }?>
         </ul>
         <!-- <ul class="list-inline navbar-right top-social">
@@ -300,11 +297,20 @@ xmlns="http://www.w3.org/1999/xhtml"
         </ul> -->
         </div>
       </div>
-      <div class="container sub-nav-menu" style="border:1px solid rgba(51, 51, 51, 0.25);border-top:0;padding:5px 0;background-color:#fff;">
+      <div class="container sub-nav-menu">
       <ul>
-        <li style="display:inline-block;margin:0 15px;">Test</li>&nbsp;&bull;
-        <li style="display:inline-block;margin:0 15px;">Test</li>&nbsp;&bull;
-        <li style="display:inline-block;margin:0 15px;">Test</li>
+        <?php
+        $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
+        $subrubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$pop')");
+        while($row = mysql_fetch_array($subrubrik)){
+          echo "<li class='sub__rubrik'><a href='$row[link]'>$row[nama_menu]</a><i>&nbsp;&nbsp;&nbsp;&bull;</i></li>";
+        }
+        ?>
+        <!-- <pre> -->
+        <?php
+        //  var_export($_SERVER);
+        ?>
+        <!-- </pre> -->
       </ul>
       </div>
     </div>
@@ -351,7 +357,7 @@ $(document).ready(function(){
     <div class="container">
     <ul class="menu-utama">
       <li class="kategori">
-        <span class="title-menu">KATEGORI</span>
+        <span class="title-menu">KANAL</span>
         <ul>
         <?php
           $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND (id_parent = 8 || id_parent = 13 || id_parent = 14 || id_parent = 18 || id_parent = 20)");
@@ -392,7 +398,7 @@ $(document).ready(function(){
         <ul class="block">
           <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='width:30px' class='fa fa-facebook'></i>Facebook</a></li>
           <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='width:30px' class='fa fa-twitter'></i>Twitter</a></li>
-          <li><a href=""><i style='width:30px' class='fa fa-google-plus'></i>Google+</a></li>
+          <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='width:30px' class='fa fa-google-plus'></i>Google+</a></li>
           <!-- <li><a href="">LinkedIn</a></li> -->
           <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='width:30px' class='fa fa-instagram'></i>Instagram</a></li>
           <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='width:30px' class='fa fa-youtube'></i>Youtube</a></li>
@@ -407,72 +413,6 @@ $(document).ready(function(){
 	</footer>
 	<!-- Footer -->
 	<!-- JS -->
-	<script src="owl-carousel/owl.carousel.js"></script>
-    <script>
-    $(document).ready(function() {
-      $("#owl-demo-1").owlCarousel({
-        autoPlay: 3000,
-        items : 1,
-        itemsDesktop : [1199,1],
-        itemsDesktopSmall : [400,1]
-      });
-	  $("#owl-demo-2").owlCarousel({
-        autoPlay: 3000,
-        items : 3,
-
-      });
-    });
-    </script>
-
-	<script>
-	var mq = window.matchMedia( "(max-width: 767px)" );
-	if (mq.matches) {
-
-	} else {
-		$(document).ready(function(){
-		$(".dropdown").click(function(event){
-        event.stopPropagation();
-    });
-
-});
-	}
-
-	</script>
-	<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-	<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-	<script type="text/javascript">
-    $('.form_datetime').datetimepicker({
-        //language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		forceParse: 0,
-        showMeridian: 1
-    });
-	$('.form_date').datetimepicker({
-        language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView: 2,
-		forceParse: 0
-    });
-	$('.form_time').datetimepicker({
-        language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 1,
-		minView: 0,
-		maxView: 1,
-		forceParse: 0
-    });
-</script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -490,13 +430,6 @@ $(document).ready(function()
 		return false;
 	});
 });
-
-  $('[id^=carousel-selector-]').click( function(){
-    var id = this.id.substr(this.id.lastIndexOf("-") + 1);
-    var id = parseInt(id);
-
-    $('#myCarousel').carousel(id);
-  });
 
   $(".flex-container .item-flex:first-child").addClass('grid-thumb-big');
   $(".flex-container .item-flex + .item-flex").addClass('grid-thumb-medium');

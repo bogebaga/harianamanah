@@ -18,7 +18,7 @@
                     <div class='header-text'>
                       <h1 id='title'><a href='berita-$t[judul_seo].html'>$t[judul]</a></h1>
                     </div><!-- /header-text -->
-                    <img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='First slide' style='display:inline-block;vertical-align:top;'>
+                    <img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='display:inline-block;vertical-align:top;'>
                     <div class='desc-home' style='display:inline-block;width:155px;'>
                       <a href='kategori-$t[id_kategori]-$t[kategori_seo].html' style='background-color:#EFCB17;padding:5px 8px;display:inline-block;color:#000;margin:0 3px'>".strtoupper($t['nama_kategori'])."</a>
                       <p style='font-size:14px;color:#ddd;line-height:1.5;margin:10px 3px 0;word-wrap:break-word;'>".substr(strip_tags($t['isi_berita']), 0, 160).".&nbsp;<a href='berita-$t[judul_seo].html'><b style='color:yellow;'>Selanjutnya</b></a></p>
@@ -42,7 +42,7 @@
                   $i = 0;
                   while($indicator = mysql_fetch_array($terkini)){
                     echo "<li data-target='#carousel-example-generic' data-slide-to='$i'>
-                      <img src='http://harianamanah.com/foto_berita/$indicator[gambar]' alt='berita gambar HL harianamanah'>
+                      <img src='http://harianamanah.com/foto_berita/$indicator[gambar]' alt='$indicator[judul]'>
                       <p style=margin:0;padding:7px;font-size:12px;color:white;display:inline-block;'>$indicator[judul]</p>
                     </li>";
                   $i++;
@@ -54,15 +54,15 @@
         <div class="col-md-12" style="margin-top:7px;padding:0;">
           <div class="col-md-4" style="padding-left:0;">
             <!-- <div id="sidebar-1" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:500px;margin-bottom:10px;">
-              <div class="title berita-popular" style="color:#EFCB03;padding:10px 15px;background-color: #052844;background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);">BERITA POPULAR</div>
+              <div class="title berita-popular" style="color:#EFCB03;padding:10px 15px;background-color: #1c9fa7;background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);">BERITA POPULAR</div>
             </div> -->
-            <div id="fixed-left" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:720px;margin-bottom:10px;">
-              <div class="title berita-popular" style="color:#EFCB03;padding:10px 15px;background-color: #052844;background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);">BERITA POPULAR</div>
+            <div id="fixed-left" data-spy="affix" class="single_blog_sidebar berita-popular wow fadeInUp" style="background-color: #fff;height:720px;margin-bottom:10px;">
+              <div class="title">BERITA POPULAR</div>
             </div>
           </div>
           <div class="col-md-8" style="padding:0;">
-            <div class="single_blog_sidebar1 berita-terkini wow fadeInUp" style="background-color: #052844;background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);padding:0">
-              <div class="title berita-terkini" style="padding:10px 15px;border-bottom:1px solid #EFCB03;color:white;">BERITA TERKINI</div>
+            <div class="single_blog_sidebar1 berita-terkini wow fadeInUp">
+              <div class="title">BERITA TERKINI</div>
               <ul>
               <?php
                 $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY b.id_berita DESC LIMIT 25");
@@ -73,9 +73,9 @@
                   $jam = trans_jam($p1['jam']);
 
                   echo "<li style='color:white;'>
-                  <a href='berita-$p1[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='gambar utama home' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'></a>
+                  <a href='berita-$p1[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'></a>
                   <div class='deskripsi-judul home'>
-                    <h6 style='margin-left:15px;color:#E8BF0A;text-align:left;'><a href='berita-$p1[judul_seo].html' style='color:#E8BF0A;text-align:left;padding-left:0;font-weight:normal;'>$p1[judul]</a></h6>
+                    <h6><a href='berita-$p1[judul_seo].html'>$p1[judul]</a></h6>
                     <p class='rubrik-tanggal'><a href='kategori-$p1[id_kategori]-$p1[kategori_seo].html'>".strtoupper($p1['nama_kategori'])."</a> | $p1[hari], $tgl - $jam</p>
                     <p style='color:white;'>".substr(strip_tags($p1['isi_berita']), 0, 160)."&nbsp;<a href='berita-$p1[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
                   </div>
@@ -92,13 +92,13 @@
         <ul class="featured_nav2">
           <li>
             <div id="radio">
-              <img src="images/radio.jpg" alt="">
+              <img src="images/radio.jpg" alt="radio bharata post harianamanah.com">
               <audio src="http://s3.vinhostmedia.com:9324/;" autobuffer autoloop loop controls ></audio>
             </div>
           </li>
           <div class="clearfix"></div>
           <li>
-            <div id="radio"><img src="foto_iklanatas/box_abu.gif"></div>
+            <div id="radio"><img src="foto_iklanatas/box_abu.gif" alt="iklan abutours post harianamanah.com"></div>
           </li>
           <div class="clearfix"></div>
           <!-- <li>
@@ -108,7 +108,7 @@
               <?php
               $query=mysql_query("SELECT * FROM berita WHERE aktif = 'Y' ORDER BY id_berita DESC LIMIT 0, 1");
               $row = mysql_fetch_array($query);
-              echo "<li class='gambar-pertama'><a href='berita-$row[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='' class='img-responsive' witdh='auto'><figcaption><span>1</span><h3>$row[judul]</h3></figcaption></a></li>";
+              echo "<li class='gambar-pertama'><a href='berita-$row[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' class='img-responsive' witdh='auto'><figcaption><span>1</span><h3>$row[judul]</h3></figcaption></a></li>";
               ?>
               <?php
               $sql=mysql_query("SELECT * FROM berita WHERE aktif = 'Y' ORDER BY id_berita DESC LIMIT 1, 3");
@@ -178,14 +178,14 @@
   $("#fixed-right").affix({
     offset : {
       top: $('#fixed-right').offset().top,
-      bottom: $('#iklan-footer').outerHeight(true) + 754
+      bottom: $('#iklan-footer').outerHeight(true) + 725
     }
   });
 
   $("#fixed-left").affix({
     offset : {
       top: $('#fixed-left').offset().top,
-      bottom: $('#iklan-footer').outerHeight(true) + 754
+      bottom: $('#iklan-footer').outerHeight(true) + 725
     }
   });
 

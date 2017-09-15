@@ -80,17 +80,12 @@ session_start();
   <meta property="og:site_name" content="harianamanah.com"/>
   <meta property="fb:app_id" content="168067490271817"/>
   <meta name="adx:sections" content="<?php echo "$d[nama_kategori]"; ?>">
-  <meta name="theme-color" content="#009688">
-  <meta name="msapplication-navbutton-color" content="#009688">
-  <meta name="apple-mobile-web-app-status-bar-style" content="#009688">
+  <meta name="theme-color" content="#1c9fa7">
+  <meta name="msapplication-navbutton-color" content="#1c9fa7">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#1c9fa7">
 
   <link rel="shortcut icon" href="../favicon.png">
-  <link rel="stylesheet" type="text/css" href="css/dream.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/Berita.css">
-  <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
-    <!--Line Share -->
+  <!--Line Share -->
   <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
   <script type="text/javascript">LineIt.loadButton();</script>
   <!--Bootstrap Theme-->
@@ -98,7 +93,12 @@ session_start();
   <!-- CSS -->
   <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/dream.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="css/Berita.css" type="text/css">
   <link rel="stylesheet" href="css/sidemenu.css">
+  <link rel="stylesheet" href="css/swiper.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
   <!-- JS -->
   <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -139,13 +139,20 @@ session_start();
 				</button>
 				<button type="button" class="tutup"><span class="big-close"></span></button>
 				<a href="./" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
-				<form method="POST" action="hasil-pencarian.html">
-					<input type="text" name="kata" placeholder="Cari Di Sini">
+				<form method="POST" action="hasil-pencarian.html" style="width:100vw;">
+          <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="kata" placeholder="Cari Di Sini">
 				</form>
 			</div>
 		</div>
 		<div id="menuSamping" class="sidenav">
       <!-- <p>KATEGORI</p> -->
+      <ul class="nav navbar-nav social-hub"  style="margin:0;">
+        <li class="facebook"><a href="https://www.facebook.com/harianamanah/" target="_blank"><span class="fa fa-facebook-square"></span></a></li>
+        <li class="instagram"><a href="https://www.instagram.com/harian_amanah/" target="_blank"><span class="fa fa-instagram"></span></a></li>
+        <li class="twitter-nav"><a href="https://twitter.com/harianamanah" target="_blank"><span class="fa fa-twitter-square"></span></a></li>
+        <li class="youtube"><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><span class="fa fa-youtube-square"></span></a></li>
+        <li class="google"><a href='https://plus.google.com/115045050828571942973' target='_blank'><span class="fa fa-google-plus-square"></span></a></li>
+      </ul>
       <h2 class="caption">HARIANAMANAH</h2>
       <ul class="nav navbar-nav">
         <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
@@ -183,7 +190,7 @@ session_start();
 	<section id="main">
 <?php include "content.php"; ?>
 	<footer>
-		<a href="#" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
+		<a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
 	 	<div class="gambar-footer">
 		 	<a href="#">
 		 		<img src="assets/pp_ff.png" width="38px">

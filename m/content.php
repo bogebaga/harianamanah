@@ -1,5 +1,10 @@
 <?php
  if ($_GET['module']=='home'){?>
+  <ul class="navbar sub-rubrik">
+    <li><a href='terkini.html'>TERKINI</a></li>
+    <li><a href='popular.html'>POPULAR</a></li>
+    <li><a href='rekomendasi.html'>REKOMENDASI</a></li>
+  </ul>
  	<section class="container-fluid" style="background-color:white;">
 		<section class="headline row">
       <?php

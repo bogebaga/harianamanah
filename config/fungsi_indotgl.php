@@ -6,6 +6,13 @@
 			return $tanggal.' '.$bulan.' '.$tahun;
   }
 
+  function tgl_indo_short($tgl){
+			$tanggal = substr($tgl,8,2);
+			$bulan = getBulan_short(substr($tgl,5,2));
+			$tahun = substr($tgl,0,4);
+			return $tanggal.' '.$bulan.' '.$tahun;
+  }
+
   function trans_jam($jam){
     return date('H:i', strtotime($jam))."&nbsp;WIB";
   }
@@ -49,7 +56,48 @@
 						return "Desember";
 						break;
 				}
-			}
+		}
+
+    function getBulan_short($bln){
+				switch ($bln){
+					case 1:
+						return "Jan";
+						break;
+					case 2:
+						return "Feb";
+						break;
+					case 3:
+						return "Mar";
+						break;
+					case 4:
+						return "Apr";
+						break;
+					case 5:
+						return "Mei";
+						break;
+					case 6:
+						return "Jun";
+						break;
+					case 7:
+						return "Jul";
+						break;
+					case 8:
+						return "Agu";
+						break;
+					case 9:
+						return "Sep";
+						break;
+					case 10:
+						return "Okt";
+						break;
+					case 11:
+						return "Nov";
+						break;
+					case 12:
+						return "Des";
+						break;
+				}
+		}
 
 		function cut($isi){
     		$tahun = substr($tgl,0,84);

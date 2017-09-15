@@ -1,22 +1,21 @@
 <div id="fb-root"></div>
 <?php include_once("analyticstracking.php") ?>
-<?php //include_once("../../analyticstracking.php") ?>
 <script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '168067490271817',
-            xfbml      : true,
-            version    : 'v2.7'
-        });
-    };
+  window.fbAsyncInit = function() {
+    FB.init({
+        appId      : '168067490271817',
+        xfbml      : true,
+        version    : 'v2.7'
+    });
+  };
 
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+  (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 </script>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <?php
@@ -55,7 +54,7 @@
 
     .bungkus.nav-nex-pre .berita-next {text-align:right;}
     .bungkus.nav-nex-pre .berita-next span {right:10px;}
-    .bungkus.nav-nex-pre span {position:absolute;display:block;color:#F44336;font-size:22px;bottom:10px;}
+    .bungkus.nav-nex-pre span {position:absolute;display:block;color:#19A2AC;font-size:22px;bottom:10px;}
     .bungkus.nav-nex-pre a:first-child {border-right:1px solid rgba(0, 0, 0, 0.2);}
     .bungkus.nav-nex-pre a {
       width:50%;
@@ -71,7 +70,6 @@
     #main{
         background:#ececec ;
         top:50px;
-        /* z-index:-2; */
     }
 </style>
 <section class="container-fluid bungkus" id="test">
@@ -186,14 +184,14 @@
           while($p1=mysql_fetch_array($detail1)){
           echo"
             <li>
-            <a href='berita-$p1[judul_seo].html' title='artikel-lain'>
-            <div class='caption'>$p1[judul]</div>
-            <span>$p1[nama_kategori]</span>
-            </a>
-            <img src='http://harianamanah.com/foto_small/$p1[gambar1]' width='85px' alt='image-berita'>
-            <span style='clear:both;'></span>
+              <a href='berita-$p1[judul_seo].html' title='$p1[judul]'>
+                <div class='caption'>$p1[judul]</div>
+              </a>
+              <img src='http://harianamanah.com/foto_small/$p1[gambar1]' width='85px' alt='$p1[judul]'>
+              <a href='kategori-$p1[id_kategori]-$p1[kategori_seo].html'><span>$p1[nama_kategori]</span></a>
             </li>";
           }?>
+      <div class="clearfix"></div>
       </ul>
   </div>
 </section>

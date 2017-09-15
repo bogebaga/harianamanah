@@ -46,10 +46,9 @@ include_once('config_fb.php');
     20 => 'Kalam'
   ];
 ?>
-<div id="page-content" style="background-color: #fff;margin-bottom:10px;" class="index-page container">
-  <div id="sidebar">
-    <div class="col-md-9" style="padding-left:0;">
-      <div class="row" style="padding-right:20px;">
+<div id="page-content" style="background-color: #ECECEC;margin-bottom:10px;" class="index-page container">
+<div class="col-md-9" style="background:#fff;">
+<div id="sidebar">
         <div class="user-panel">
         <div class="info">
             <p class="daftar-redaksi"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".lcfirst($menu[$d[id_parent]]).".html>".$menu[$d[id_parent]]."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
@@ -81,20 +80,17 @@ include_once('config_fb.php');
             </ul>
           </div>
         </div><hr>
-      </div>
       <div class="dua-atas">
-        <div class="col-md-12" style="padding-left:0;">
-          <div class="row">
             <div class="single_blog_sidebar wow fadeInUp">
-            <div class="clearfix"></div>
             <?php
-            echo "<img class='main-pic' src='http://harianamanah.com/foto_berita/$d[gambar]' alt='img'>";
+            echo "<div class='row'><img class='main-pic' src='http://harianamanah.com/foto_berita/$d[gambar]' alt='$d[judul]'></div>";
             echo "<p class='caption-pic'>$d[keterangan_gambar]</p>";
-            echo "<img id='ads_news' data-spy='affix' src='foto_Iklan_isiberita/ems web.png' style='float:left;width:160px'>";
+            echo "<img id='ads_news' src='foto_Iklan_isiberita/ems web.png' style='float:left;margin-top:19px;width:160px'>";
             echo '<div class="isi-berita">';
             echo "$d[isi_berita]";
             echo '</div>';
             echo "<div class='clearfix'></div>";
+            echo "<hr>";
 
             if($d[youtube]!='')
             {
@@ -107,12 +103,10 @@ include_once('config_fb.php');
             ?>
             <div class="fb-comments" data-href="" data-width="100%" data-numposts="5"></div>
             <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
-            <br>
             <div class="related-news">
               <div class='kotak' style="width:100%;float:none">
               <br>
-              <h5 style="color:#EFCB03;padding:10px 15px;background-color: #052844;background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);text-align:left">Berita Terkait</h5>
-              <br>
+              <h5 style="padding:15px 40px;text-align:left;background:#262932;color:#fff;display:inline-block">Berita Terkait</h5>
                 <ul class="featured_nav0 berita-terkait">
                 <?php
                 $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 10");
@@ -120,7 +114,7 @@ include_once('config_fb.php');
                 {
                   $idarray = $p1['id_berita'];
                   echo "
-                        <li style='width:47%;text-align:left'>
+                        <li style='width:47%;text-align:left;margin-bottom:0;'>
                             <div class='featured_title berita-terkait'>
                             <a href='berita-$p1[judul_seo].html' style='text-align:left;padding-left:0;font-weight:normal;'>$p1[judul]</a>
                             </div>
@@ -133,16 +127,15 @@ include_once('config_fb.php');
               </div>
               <div class='kotak' style="width:100%;margin-bottom:30px;float:none">
               <br>
-              <h5 style="text-align:left;color:#EFCB03;padding:10px 15px;background-color: #052844;background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);">Berita Lainnya</h5>
-              <br>
+              <h5 style="padding:15px 40px;text-align:left;background:#262932;color:#fff;display:inline-block;margin-bottom:25px;">Berita Lainnya</h5>
                 <ul class="featured_nav0 berita-lainnya">
                 <?php
                 $detail2=mysql_query("SELECT * FROM berita WHERE id_kategori != '$d[id_kategori]' AND id_berita != '$d[id_berita]'  order by id_berita DESC limit 8");
                 while($p2=mysql_fetch_array($detail2))
                 {
                   echo "
-                        <li style='width:24%;margin:0 7px 10px 0'>
-                          <a class='featured_img' href='berita-$p2[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$p2[gambar]' alt='img'></a>
+                        <li style='width:190px;margin:0 0 10px;padding-right:7px;'>
+                          <a class='featured_img' href='berita-$p2[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$p2[gambar]' alt='$p2[judul]'></a>
                           <div class='featured_title berita-lainnya' style='font-size:14px;'>
                             <a class='' href='berita-$p2[judul_seo].html' style='margin-top:0;padding-top:5px;text-align:left;width:auto '>$p2[judul]</a>
                           </div>
@@ -153,8 +146,10 @@ include_once('config_fb.php');
                 <div class="clearfix"></div>
               </div>
               <div class='kotak' style="width:100%;float:none;">
-              <h5 style="text-align:left;color:#EFCB03;padding:10px 15px;background-color: #052844;background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);margin-bottom:20px">Berita Terkini</h5>
-                <ul class="featured_nav0 berita-terkini">
+              <div class="row">
+                <h5 style="padding:15px;text-align:left; background-color: #1c9fa7;background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);color:#fff;margin-bottom:20px">Berita Terkini</h5>
+              </div>
+                <ul class="featured_nav0">
                 <?php
                 $detail1=mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_kategori = '$d[id_kategori]' AND berita.id_berita != '$d[id_berita]' ORDER BY berita.id_berita DESC LIMIT 30");
                 while($p1=mysql_fetch_array($detail1))
@@ -165,7 +160,7 @@ include_once('config_fb.php');
                   $idarray = $p1['id_berita'];
                   echo "
                     <li style='text-align:left;float:none;'>
-                        <a class='featured_img berita-terkini'><img src='http://harianamanah.com/foto_berita/$p1[gambar]'></a>
+                        <a class='featured_img berita-terkini'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]'></a>
                         <div class='deskripsi-judul'>
                           <h6 class='featured_title berita-terkini'>
                           <a href='berita-$p1[judul_seo].html' style='text-align:left;padding-left:0;font-weight:normal;'>$p1[judul]</a>
@@ -176,17 +171,27 @@ include_once('config_fb.php');
                       </li>
                     ";} ?>
                 </ul>
-                <div class="clearfix"></div>
+                <div id="iklan-footer" style="">
+                  <?php
+                  $iklantengah=mysql_query("SELECT * FROM iklanatas  ORDER BY id_iklanatas DESC LIMIT 1");
+                  while($b=mysql_fetch_array($iklantengah))
+                  {
+                    $id1 = $b['id_iklanatas'];
+                    echo "<div class='iklan' width='100%' style='position:relative;'>
+                          <a href='$b[url]' target='_blank' title='$b[judul]'>
+                          <img src='foto_iklanatas/$b[gambar]' alt='abutours beriklan di harianamanah.com'></a>
+                          </div>";
+                  }?>
+                </div>
               </div>
             </div>
             </div>
-          </div>
-        </div>
       </div>
-    </div>
-    <div class="col-md-3" style="padding-right:0;">
-      <div class="row">
-        <div id="ads-aside" class="single_blog_sidebar wow fadeInUp">
+
+  </div>
+</div>
+<div class="col-md-3" style="background:#ECECEC;padding-right:0;">
+        <div class="single_blog_sidebar wow fadeInUp">
           <ul class="featured_nav0 read-news">
           <?php
           $iklantengah=mysql_query("SELECT * FROM pasangiklan  ORDER BY id_pasangiklan DESC LIMIT 1");
@@ -196,9 +201,8 @@ include_once('config_fb.php');
             echo "
                   <li>
                   <a class='featured_img' href='$c[url]' >
-                  <img src='foto_pasangiklan/$c[gambar]' alt='img' width='100%'></a>
+                  <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com atas' width='100%'></a>
                   </li>
-                  <div class='clearfix'></div>
                   ";
           } ?>
            <?php
@@ -209,43 +213,44 @@ include_once('config_fb.php');
             echo "
                   <li>
                     <a class='featured_img' href='$c[url]' >
-                    <img src='foto_pasangiklan/$c[gambar]' alt='img' width='100%'></a>
-                  </li>
-                  <div class='clearfix'></div>";
+                    <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
+                  </li>";
           }?>
-          </ul>
-        </div>
-        <div id="fixed-baca" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color:#ececec;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44);height:840px;">
-          <div class="title berita-foto" style="color:#EFCB03;padding:10px 15px;background-color: #052844;background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);">BERITA FOTO</div>
-        </div>
+          <li>
+            <div id="fixed-baca" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44);height:620px;">
+              <div class="title berita-foto" style="color:#fff;padding:15px;background-color: #1c9fa7;background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);">BERITA FOTO</div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-  <div id="iklan-footer" class="col-md-12">
+    <div class="clearfix"></div>
+</div>
+<!-- <div class="container">
+  <div id="iklan-footer" class="col-md-12" style="float:none;">
     <?php
     $iklantengah=mysql_query("SELECT * FROM iklanatas  ORDER BY id_iklanatas DESC LIMIT 1");
     while($b=mysql_fetch_array($iklantengah))
     {
       $id1 = $b['id_iklanatas'];
-      echo "<div class='iklan' width='100%' style='height:278px;position:relative;'>
-            <h6 class='text-center' style='top:30%;position:absolute;right:0;left:0;margin:0 auto;'>ADVERTISEMENT</h6>
+      echo "<div class='iklan' width='100%' style='position:relative;'>
             <a href='$b[url]' target='_blank' title='$b[judul]'>
-            <img src='foto_iklanatas/$b[gambar]' alt='img' style='position:absolute;bottom:0;'></a>
+            <img src='foto_iklanatas/$b[gambar]' alt='abutours beriklan di harianamanah.com' style='position:absolute;bottom:0;'></a>
             </div>";
     }?>
   </div>
-</div>
+</div> -->
 <script>
-  $('#ads_news').affix({
-    offset: {
-      top: $('#ads_news').offset().top
-      // bottom: ($('#iklan-footer').outerHeight(true)+$('.related-news').outerHeight(true)+($('.isi-berita').outerHeight(true)-$('#ads_news').outerHeight(true)))+300
-    }
-  });
+  // $('#ads_news').affix({
+  //   offset: {
+  //     top: $('#ads_news').offset().top
+  //     // bottom: ($('#iklan-footer').outerHeight(true)+$('.related-news').outerHeight(true)+($('.isi-berita').outerHeight(true)-$('#ads_news').outerHeight(true)))+300
+  //   }
+  // });
   $("#fixed-baca").affix({
     offset : {
       top: $("#fixed-baca").offset().top,
-      bottom: $("#iklan-footer").outerHeight(true) + 791
+      bottom: $("#iklan-footer").outerHeight(true) + 705
     }
   });
 </script>

@@ -182,25 +182,23 @@ body.sub-page .logo {background: url(../images/bg.jpg) fixed;  }
 /* ---------------------------------------------------------------------------- */
 
 #cari {
-  width:100%;
-  margin:auto;
-  margin-bottom:-13px;
   text-align:left;
-  display:none;
-  background-color:#f1f1f1;
-  padding:5px;
-  -webkit-box-shadow: inset 0 -2px 0 #ddd;
-          box-shadow: inset 0 -2px 0 #ddd;
+  display:inline-block;
+  border-radius: 5px;
+  background-color:rgba(224, 224, 224, 0.44);
+  padding:7px 10px;margin-left: 10px;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(25, 162, 172, 0.72);
+          box-shadow: inset 0 -1px 0 rgba(25, 162, 172, 0.72);
 }
 #cari1 {
 
   width:100%;
-display:block;
+  display:block;
   margin:auto;
 
-color:#fff;
+  color:#fff;
   background-color:#14afb4;
-margin-bottom:-2px;
+  margin-bottom:-2px;
   padding:5px;
 
 }
@@ -222,18 +220,22 @@ margin:3px;
 	margin-left:10px;
 	color:#14afb4;
 	background-color:#f1f1f1;
-	border:0px;
+  border:0px;
+  outline: 0;
 }
 #cari input{
-	-webkit-box-shadow: inset 0 -1px 0 #ddd;
-	        box-shadow: inset 0 -1px 0 #ddd;
+  width: 400px;
+  font-size:15px;
+  color: #262932;
+  border:0;
+  outline:0;
+  background: transparent;
 }
 
 #menu {background-color:#F1F1F1;border-radius: 0;border:0; /*border-bottom: solid 3px #14afb4;*/}
 #menu a.navbar-brand:hover{color: #fff;}
 #menu .navbar-brand{margin-top: 11px;padding: 1px 1px;/*background-color: #000000;*/height: auto;text-transform: uppercase;}
 #menu .logo {padding-right: 15px;}
-/* #menu .navbar-collapse{padding:6px;} */
 #menu .dropdown-menu {background-color: #fff;border:none;}
 #menu ul.nav .dropdown-menu li a{ font-size:15px; color: #14afb4; background-color:#fff ; font-weight: bold; text-align:center;}
 #menu ul.nav .dropdown-menu li a:hover{color: #14afb4;background-color: #fff; text-decoration:none;}
@@ -396,9 +398,7 @@ margin-bottom:-2px;
 #carousel-example-generic{
   height:675px;
   background-color: #252831;
-  background-image: -webkit-linear-gradient(90deg, #252831 0%, #404350 100%);
-  background-image: -moz-linear-gradient(90deg, #252831 0%, #404350 100%);
-  background-image: -o-linear-gradient(90deg, #252831 0%, #404350 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#252831), to(#404350));
   background-image: linear-gradient(90deg, #252831 0%, #404350 100%);
 
 }
@@ -446,9 +446,7 @@ margin-bottom:-2px;
   width: 100%;
   height: 400px;
   background-color: #252831;
-  background-image: -webkit-linear-gradient(90deg, #252831 0%, #404350 100%);
-  background-image: -moz-linear-gradient(90deg, #252831 0%, #404350 100%);
-  background-image: -o-linear-gradient(90deg, #252831 0%, #404350 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#252831), to(#404350));
   background-image: linear-gradient(90deg, #252831 0%, #404350 100%);
 
 }
@@ -456,20 +454,21 @@ margin-bottom:-2px;
 .carousel-inner > .item > a > img {display: block;max-width: 100%;height: auto;margin-left:0;padding-left: 0; /* margin-top:38px; */}
 .berita-terkini{
   background-color: #252831;
-  background-image: -webkit-linear-gradient(90deg, #252831 0%, #404350 100%);
-  background-image: -moz-linear-gradient(90deg, #252831 0%, #404350 100%);
-  background-image: -o-linear-gradient(90deg, #252831 0%, #404350 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(#252831), to(#404350));
   background-image: linear-gradient(90deg, #252831 0%, #404350 100%);
   padding:0;
 }
 
+.berita-foto .title{
+  background-color: #FBAB7E;
+  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  color:#fff;
+  padding:10px 15px;
+}
 .berita-popular .title{
   color:#fff;
   padding:10px 15px;
   background-color: #1c9fa7;
-  background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
-  background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
-  background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
   background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
 }
 .berita-terkini .title{
@@ -542,7 +541,7 @@ ul.pagination li a{color: #444;}
 }
 #sidebar .flex-container{display: -webkit-inline-box;display: -ms-inline-flexbox;display: inline-flex;-webkit-box-orient: horizontal;-webkit-box-direction: normal;-ms-flex-direction: row;flex-direction: row;-ms-flex-wrap:wrap;flex-wrap:wrap;width: 100%;-webkit-box-pack: end;-ms-flex-pack: end;justify-content: flex-end;}
 .flex-container .item-flex{position: relative;}
-.flex-container .item-flex .black_layer {position: absolute;height: 100%;width: 100%;background:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));background:linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 100%);opacity: .6;}
+.black_layer {top:0;position: absolute;height: 100%;width: 100%;background:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));background:linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 100%);opacity: .6;}
 .grid-thumb-big{width: 570px;height: 328px;}
 .grid-thumb-big img{-o-object-fit: cover;object-fit: cover;height: inherit;width: inherit;}
 .grid-thumb-medium{width: 250px;height: 164px;}

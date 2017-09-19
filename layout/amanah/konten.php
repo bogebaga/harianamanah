@@ -1,5 +1,8 @@
 <?php if ($_GET['module']=='home'){ ?>
 	<div class="featured container">
+    <div class="headline__ads__news">
+
+    </div>
 		<div class="row">
 			<div class="col-xs-9" style='padding-left:0;padding-right:7px;'>
           <!-- Carousel -->
@@ -51,13 +54,105 @@
               </ol>
             </div>
           </div><!-- /carousel -->
+          <style>
+          ul.list-berita-foto img,
+          ul.list-liputan-video img{
+            height:200px;
+            object-fit:contain;
+            background-color: #252831;
+            background-image: -webkit-linear-gradient(90deg, #252831 0%, #404350 100%);
+            background-image: -moz-linear-gradient(90deg, #252831 0%, #404350 100%);
+            background-image: -o-linear-gradient(90deg, #252831 0%, #404350 100%);
+            background-image: linear-gradient(90deg, #252831 0%, #404350 100%);
+          }
+          ol.list-berita-popular
+          {
+             list-style:none;
+             padding:0;
+          }
+          ol.list-berita-popular li
+          {
+            counter-increment:item;
+          }
+          ol.list-berita-popular li:before{
+            content:counter(item);
+            margin-right:10px;
+            background:#1c9fa7;
+            border-radius:100%;
+            color:white;
+            width:40px;
+            line-height:2.7;
+            height:40px;
+            text-align:center;
+            float:left;
+          }
+          ul.list-liputan-khusus li a:hover
+          {
+            color:#000 !important;
+
+          }
+          ul.list-liputan-khusus li,
+          ol.list-berita-popular li
+          {
+            position:relative;
+            font-size:15px;
+            line-height:1.2;
+            font-weight:bold;
+            padding:10px 0;
+            margin:0 10px;
+            border-bottom:1px solid rgba(25, 162, 172, 0.38);
+          }
+                                ul.list-liputan-khusus li{
+                                  border-bottom:1px solid rgba(239, 203, 23, 0.45);
+                                }
+          ul.list-liputan-khusus li:last-child,
+          ol.list-berita-popular li:last-child{
+            padding-bottom:25px;
+            border-bottom:0;
+          }
+    </style>
         <div class="col-md-12" style="margin-top:7px;padding:0;">
           <div class="col-md-4" style="padding-left:0;">
             <!-- <div id="sidebar-1" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:500px;margin-bottom:10px;">
               <div class="title berita-popular" style="color:#EFCB03;padding:10px 15px;background-color: #1c9fa7;background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);">BERITA POPULAR</div>
-            </div> -->
-            <div id="fixed-left" data-spy="affix" class="single_blog_sidebar berita-popular wow fadeInUp" style="background-color: #fff;height:720px;margin-bottom:10px;">
+            </div>
+            <div class="single_blog_sidebar berita-popular wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
               <div class="title">BERITA POPULAR</div>
+              <ol class="list-berita-popular">
+              <?php
+              $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 5");
+              while($row = mysql_fetch_array($berita_popular)){
+                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo].html' title='$row[judul]'>".substr($row[judul], 0, 60)."&hellip;</a><div class='clearfix'></div></li>";
+              }
+              ?>
+              </ol>
+            </div> -->
+            <div class="single_blog_sidebar berita-foto wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
+              <div class="title">BERITA FOTO</div>
+              <ul class="list-berita-foto">
+              <?php
+              $foto = mysql_query("SELECT * FROM video ORDER BY tanggal DESC LIMIT 3");
+              while($row = mysql_fetch_array($foto)){
+                echo "
+                <li style='position:relative;margin-bottom:2px;'>
+                  <img src='img_video/$row[gbr_video]'>
+                  <div class='black_layer'><div>
+                  <i class='fa fa-2x fa-camera' style='color:#fff;padding:7px;'></i>
+                </li>";
+              }
+              ?>
+              </ul>
+            </div>
+            <div id="fixed-left" class="single_blog_sidebar berita-popular wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
+              <div class="title">BERITA POPULAR</div>
+              <ol class="list-berita-popular">
+              <?php
+              $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 10");
+              while($row = mysql_fetch_array($berita_popular)){
+                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo].html' title='$row[judul]'>".substr($row[judul], 0, 60)."&hellip;</a><div class='clearfix'></div></li>";
+              }
+              ?>
+              </ol>
             </div>
           </div>
           <div class="col-md-8" style="padding:0;">
@@ -101,53 +196,108 @@
             <div id="radio"><img src="foto_iklanatas/box_abu.gif" alt="iklan abutours post harianamanah.com"></div>
           </li>
           <div class="clearfix"></div>
-          <!-- <li>
-            <div id="box-trending">
-              <h4>Liputan <strong>Khusus</strong></h4>
-              <ul>
-              <?php
-              $query=mysql_query("SELECT * FROM berita WHERE aktif = 'Y' ORDER BY id_berita DESC LIMIT 0, 1");
-              $row = mysql_fetch_array($query);
-              echo "<li class='gambar-pertama'><a href='berita-$row[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' class='img-responsive' witdh='auto'><figcaption><span>1</span><h3>$row[judul]</h3></figcaption></a></li>";
-              ?>
-              <?php
-              $sql=mysql_query("SELECT * FROM berita WHERE aktif = 'Y' ORDER BY id_berita DESC LIMIT 1, 3");
-              $i = 2;
-              while($p=mysql_fetch_array($sql)){
-              echo "<li><a href='berita-$p[judul_seo].html'><span>$i</span><div class='waktu-berikut'><p>$p[judul]</p></div></a></li>";
-              $i++;
-              }?>
-              </ul>
-            </div>
-          </li> -->
         </ul>
       </div>
-      <div class="single_blog_sidebar wow fadeInUp" style="background-color: #052844;background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);height:250px margin-bottom:10px;"></div>
-      <div id="fixed-right" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:400px;">
-        <div class="title liputan-khusus" style="background-color: #ff9d25;background-image: linear-gradient(62deg, #ff9d25 0%, #ffca00 100%);padding:10px 15px;color:white;">LIPUTAN KHUSUS</div>
-      </div>
-      <!-- <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:620px;margin-bottom:10px;">
-        <div class="title liputan-khusus" style="background-color: #0093E9;background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);padding:10px 15px;color:white;">BERITA FOTO</div>
-      </div> -->
-    </div>
-    <!-- break -->
-    </div>
-    <div class="row">
-      <div id="iklan-footer" style="padding-bottom:10px;">
-        <div class="iklan">
-          <img src="foto_pasangiklan/adhomebanner.jpg" width="100%">
+      <div class="single_blog_sidebar wow fadeInUp" style="height:auto;">
+        <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
+          <div class="title liputan-khusus" style="background-color: #ff9d25;background-image: linear-gradient(62deg, #ff9d25 0%, #ffca00 100%);padding:10px 15px;color:white;">LIPUTAN KHUSUS</div>
+          <ul class="list-liputan-khusus">
+          <?php
+          $liputan_khusus = mysql_query("SELECT * FROM berita WHERE utama = 'Y' ORDER BY id_berita DESC LIMIT 8");
+          $foto = TRUE;
+          while($row = mysql_fetch_array($liputan_khusus)){
+            $tgl = tgl_indo($row['tanggal']);
+            $jam = trans_jam($row['jam']);
+            if($foto){
+              echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+            }else{
+              echo "<li><a style='color:#444444;' href='berita-$row[judul_seo].html'>$row[judul]</a></li>";
+            }
+            $foto = FALSE;
+          }
+          ?>
+          </ul>
         </div>
+      <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
+        <div class="title liputan-khusus" style="background-color: #cd201f;background-image: linear-gradient(112deg, #cd201f 0%, #7a0707 100%);padding:10px 15px;color:white;">VIDEO</div>
+        <ul class="list-liputan-video">
+        <?php
+        $video = mysql_query("SELECT * FROM video ORDER BY tanggal DESC LIMIT 1");
+        while($row = mysql_fetch_array($video)){
+          echo "
+            <li style='position:relative;margin-bottom:2px;'>
+              <img src='img_video/$row[gbr_video]'>
+              <div class='black_layer'><div>
+              <i class='fa fa-3x fa-play-circle' style='color:#fff;padding:7px;'></i>
+            </li>";
+        }
+        ?>
+        </ul>
+      </div>
+      <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:3px;">
+        <div class="title liputan-khusus" style="background-color: #8BC6EC;background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);padding:10px 15px;color:white;">SOCIAL CORNER</div></div>
+        <!-- <blockquote class="twitter-tweet" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/FUB6zzRiUG">https://t.co/FUB6zzRiUG</a> <a href="https://twitter.com/hashtag/harianamanah?src=hash">#harianamanah</a> <a href="https://twitter.com/hashtag/koranamanah?src=hash">#koranamanah</a> <a href="https://twitter.com/hashtag/abucorp?src=hash">#abucorp</a> <a href="https://twitter.com/hashtag/dailyquotes?src=hash">#dailyquotes</a> <a href="https://twitter.com/hashtag/quoteoftheday?src=hash">#quoteoftheday</a> <a href="https://twitter.com/hashtag/muslimquotes?src=hash">#muslimquotes</a> <a href="https://twitter.com/hashtag/muslim?src=hash">#muslim</a> <a href="https://twitter.com/hashtag/tausiyah?src=hash">#tausiyah</a> <a href="https://twitter.com/hashtag/teladanrasul?src=hash">#teladanrasul</a> <a href="https://t.co/NF6lNauPIZ">pic.twitter.com/NF6lNauPIZ</a></p>&mdash; Harian Amanah (@HarianAmanah) <a href="https://twitter.com/HarianAmanah/status/900991240035983360">August 25, 2017</a></blockquote> -->
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+        <blockquote class="instagram-media" data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BYFQehmFUC6/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Harian Amanah (@harian_amanah)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-08-22T04:09:53+00:00">Aug 21, 2017 at 9:09pm PDT</time></p></div></blockquote>
+        <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+
+        <!-- <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fharianamanah%2Fposts%2F824693491022428%3A0&width=500" width="100%" height="385px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe> -->
+
+      <div id="fixed-right" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
+        <div class="title liputan-khusus" style="background-color: #ff9d25;background-image: linear-gradient(62deg, #ff9d25 0%, #ffca00 100%);padding:10px 15px;color:white;">LIPUTAN KHUSUS</div>
+        <ul class="list-liputan-khusus">
+        <?php
+        $liputan_khusus = mysql_query("SELECT * FROM berita WHERE utama = 'Y' ORDER BY id_berita DESC LIMIT 8");
+        $foto = TRUE;
+        while($row = mysql_fetch_array($liputan_khusus)){
+          $tgl = tgl_indo($row['tanggal']);
+          $jam = trans_jam($row['jam']);
+          if($foto){
+            echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+          }else{
+            echo "<li><a style='color:#444444;' href='berita-$row[judul_seo].html'>$row[judul]</a></li>";
+          }
+          $foto = FALSE;
+        }
+        ?>
+        </ul>
+      </div>
+    </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="row">
+    <div id="iklan-footer" style="padding-bottom:10px;">
+      <div class="iklan">
+        <img src="foto_pasangiklan/adhomebanner.jpg" width="100%">
       </div>
     </div>
   </div>
+  </div>
+  <script>
+    $('#more-3').click(function(){
+        	$(this).html('<center><img src="images/loading.gif" width="170px"></center>');
+        	$.ajax({
+        		url: 'more-web.php?kategori=kajian&urut='+$('li[data-target=kajian]:last').attr('kode'),
+        		success: function(html)
+        		{
+        			if(html)
+        			{
+        				$('#all-news-2').append(html);
+        				$('#more-3').html('<div class="more-green-toska">MUAT LAINNYA</div>');
+        				// $('.iklan').html('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
 
-  <!-- /////////////////////////////////////////Content -->
-  <!-- <script>
+        			}
+        		}
+        	})
+        });
+  </script>
+ <!-- <script>
 		var loadMore = true;
 		var page = 1;
 		$(window).scroll(function(){
 			var nearbottom = 100;
-			// if(($(window).scrollTop()+$(window).height()) > ($(document).height()-nearbottom))
 			if(($(window).scrollTop()+nearbottom >= $(document).height()-$(window).height()) && loadMore)
 			{
 				loadMore = false;
@@ -175,23 +325,22 @@
 		});
   </script> -->
   <script>
-  $("#fixed-right").affix({
-    offset : {
-      top: $('#fixed-right').offset().top,
-      bottom: $('#iklan-footer').outerHeight(true) + 725
-    }
-  });
+   $("#fixed-right").affix({
+     offset : {
+       top: $('#fixed-right').offset().top,
+       bottom: $('#iklan-footer').outerHeight(true) + 725
+     }
+   });
 
-  $("#fixed-left").affix({
-    offset : {
-      top: $('#fixed-left').offset().top,
-      bottom: $('#iklan-footer').outerHeight(true) + 725
-    }
-  });
-
+   $("#fixed-left").affix({
+     offset : {
+       top: $('#fixed-left').offset().top,
+       bottom: $('#iklan-footer').outerHeight(true) + 725
+     }
+   });
   </script>
   <?php  }
-// tes////////////////////////////////////////////
+//tes////////////////////////////////////////////
   elseif ($_GET['module']=='tes'){
   include "$f[folder]/modul/mod_berita/tesji.php";}
   ////////////////////////////////////////////////////////////

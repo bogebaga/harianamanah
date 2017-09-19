@@ -40,7 +40,7 @@ RewriteRule ^halberita-(.*)\.html$ template.php?module=semuaberita&halberita=$1 
 
 RewriteRule ^kategori-(.*)\.html$ template.php?module=detailkategori&id=$1 [L]
 RewriteRule ^halkategori-(.*)-([0-9]+)\.html$ template.php?module=detailkategori&id=$1&halkategori=$2 [L]
-RewriteRule ^hasil-pencarian\.html$ template.php?module=hasilcari&id=$1 [L]
+RewriteRule ^search? template.php?module=hasilcari&searchmode=all [QSA,L]
 
 RewriteRule ^semua-berita\.html$ template.php?module=semuaberita&id=$1 [L]
 

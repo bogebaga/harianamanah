@@ -2,15 +2,12 @@
     background: #ececec;
     font: 10px "RobotoMedium",Arial,Helvetica,sans-serif;
     line-height: 1;
-    margin-top:63px;
+    margin-top:50px;
     overflow-x: hidden;
     overflow-y: auto;
-    margin-left:-10px;
-    margin-right:-10px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
 
 /*----------------------*/
 .garis{
@@ -255,7 +252,7 @@ p {
 }
 .left-konten {
     float: right;
-    width: 66%;
+    width: 70%;
     margin-top: .5%;
     text-align: start;
 }
@@ -399,6 +396,8 @@ Pseudo ::after element
 .trend-left-list figure img {
     display: block;
     object-fit: cover;
+    height: 147px;
+    width: 230px;
 }
 img {
     max-width: 100%;

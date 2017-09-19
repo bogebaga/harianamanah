@@ -5,9 +5,9 @@ RewriteEngine on
 RewriteRule ^index\.php$ media.php?module=home [L]
 RewriteRule ^amanah-(.*)$ media.php?module=home [L]
 
-RewriteRule ^video-(.*)\.html$ media.php?module=tes&judul=$1 
+RewriteRule ^video-(.*)\.html$ media.php?module=tes&judul=$1
 RewriteRule ^video\.html$ media.php?module=video [L]
-RewriteRule ^foto-(.*)\.html$ media.php?module=foto&judul=$1 
+RewriteRule ^foto-(.*)\.html$ media.php?module=foto&judul=$1
 RewriteRule ^foto\.html$ media.php?module=beritafoto [L]
 RewriteRule ^abutours\.html$ media.php?module=abu&judul=$1 [L]
 RewriteRule ^teskategori-(.*)\.html$ media.php?module=tesdetailkategori&id=$1 [L]
@@ -29,7 +29,7 @@ RewriteRule ^halberita-(.*)\.html$ media.php?module=semuaberita&halberita=$1 [L]
 
 RewriteRule ^kategori-(.*)\.html$ media.php?module=detailkategori&id=$1 [L]
 RewriteRule ^halkategori-(.*)-([0-9]+)\.html$ media.php?module=detailkategori&id=$1&halkategori=$2 [L]
-RewriteRule ^hasil-pencarian\.html$ media.php?module=hasilcari&id=$1 [L]
+RewriteRule ^search? media.php?module=hasilcari&searchmode=all [QSA,L]
 
 RewriteRule ^semua-berita\.html$ media.php?module=semuaberita&id=$1 [L]
 
@@ -67,6 +67,8 @@ RewriteRule ^logout\.html$ media.php?module=logout [L]
 RewriteRule ^not-found\.html$ media.php?module=notfound&id=$1 [L]
 
 RewriteRule ^hal-(.*)\.html$ media.php?module=halamanstatis&judul=$1 [L]
+
+# ErrorDocument 404 /
 
 Options All -Indexes
 </IfModule>

@@ -1,18 +1,18 @@
- <?php
+<?php
  include "../config/koneksi.php";
   if ($_GET['module']=='home'){?>
-	
+
 	<div class="featured container">
 		<div class="row">
 			<div class="col-sm-12">
 				<!-- Carousel -->
 				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-					
+
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
-					<?php 
+					<?php
 					 $terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY id_berita DESC LIMIT 1");
-					 while($t=mysql_fetch_array($terkini)){     
+					 while($t=mysql_fetch_array($terkini)){
 						$id1 = $t['id_berita'];
 					 echo"
 					 <div class='item active'>
@@ -24,23 +24,23 @@
 									<br>
 									<br>
 									<br>
-									
-									
+
+
 									<h3 id='title'><a href='berita-$t[judul_seo].html'>$t[judul]</a></h3>
-									
+
 								</div>
-								
+
 							</div><!-- /header-text -->
-							
+
 						</div>
-						
-						
+
+
 					 ";
 					 }
 					?>
 					<?php
 					 $terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' AND id_berita != '$id1' ORDER BY id_berita DESC LIMIT 5");
-					 while($t=mysql_fetch_array($terkini)){      
+					 while($t=mysql_fetch_array($terkini)){
 					 echo"
 					 <div class='item'>
 							<img src='../foto_berita/base.jpg' alt='First slide'>
@@ -51,21 +51,21 @@
 									<br>
 									<br>
 									<br>
-									
+
 									<h3 id='title'><a href='berita-$t[judul_seo].html'>$t[judul]</a></h3>
-									
+
 								</div>
 							</div><!-- /header-text -->
-							
+
 						</div>
-						
+
 					 ";
 					 }
 					?>
-					
-					
+
+
 					</div>
-						
+
 					<!-- Controls -->
 					<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
 						<span class="glyphicon glyphicon-chevron-left"></span>
@@ -74,13 +74,13 @@
 						<span class="glyphicon glyphicon-chevron-right"></span>
 					</a>
 				</div><!-- /carousel -->
-				<?php 
+				<?php
 					 $terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY id_berita DESC LIMIT 1");
-					 while($t=mysql_fetch_array($terkini)){     
+					 while($t=mysql_fetch_array($terkini)){
 						$id1 = $t['id_berita'];
 					 echo"
 					 <div class='hidden_header'>
-									
+
 									<br>
 									<br>
 							<img width='100%' src='../foto_berita/base.jpg' alt='First slide'>
@@ -95,26 +95,26 @@
 									<p id='title1'><a href='berita-$t[judul_seo].html'>$t[judul]</a></p>
 								</div>
 								</div>
-								
+
 							</div><!-- /header-text -->
-							
-						
+
+
 									<br>
 									<br>
-									
-									
-						</div>			
-						
+
+
+						</div>
+
 					 ";
 					 }
-					?>	
+					?>
 			</div>
-			
+
 		</div>
 	</div>
-	
+
 	<!-- /////////////////////////////////////////Content -->
-	<?php 
+	<?php
 	function kategori($a)
 	{
 		if ($a == 21) :
@@ -176,23 +176,23 @@
                 		<div class="single_blog_sidebar wow fadeInUp">
                 		<h4 class="blue"><span class="fa fa-newspaper-o"></span> News</h4></br>
                 			<ul class="featured_nav">
-                  			
-							<?php 
+
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '21' ORDER BY id_berita DESC limit 2 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 
+							}
 							echo "<li>";
 							kategori($t[id_kategori]);
 							echo "
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -200,23 +200,23 @@
 							";
 							}
 							?>
-							<?php 
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '22' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 
+							}
 							echo "<li>";
 							kategori($t[id_kategori]);
 							echo "
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -224,22 +224,22 @@
 							";
 							}
 							?>
-							<?php 
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '56' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 
+							}
 							echo "<li>";
 							kategori($t[id_kategori])							;
 							echo "
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -247,71 +247,71 @@
 							";
 							}
 							?>
-							
+
 
                 			</ul>
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div class="col-md-6">
 					<div class="row">
                 		<div class="single_blog_sidebar1 wow fadeInUp">
                 			<h4 class="orange"><span class="fa fa-compass"></span> Lifestyle</h4></br>
                 				<ul class="featured_nav1">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '70' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
-							
+
 								$idb1= $t['id_berita'];
-							if (strlen($t[judul]) > 56) 
+							if (strlen($t[judul]) > 56)
 							{
 								$hasil = substr($t[judul], 0, 56)."&hellip;";
 							} else {
 								$hasil = $t[judul];
-							}	
+							}
 							echo "<li>";
 							kategori($t[id_kategori]);
 							echo "
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
                     		<div class='featured_title1'>
-                      		
+
 							<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil </a>
                     		</div>
 							</li>
 							";
 							}
 							?>
-							<?php 
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '70' AND id_berita !='$idb1' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
-							
+
 								$idb2= $t['id_berita'];
-							if (strlen($t[judul]) > 56) 
+							if (strlen($t[judul]) > 56)
 							{
 								$hasil = substr($t[judul], 0, 56)."&hellip;";
 							} else {
 								$hasil = $t[judul];
-							}	
+							}
 							echo "<li>";
 							kategori($t[id_kategori]);
 							echo "
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
                     		<div class='featured_title1'>
-                      		
+
 							<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil </a>
                     		</div>
 							</li>
 							";
 							}
 							?>
-							<?php 
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '55' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
 								$idb3= $t['id_berita'];
-							if (strlen($t[judul]) > 56) 
+							if (strlen($t[judul]) > 56)
 							{
 								$hasil = substr($t[judul], 0, 56)."&hellip;";
 							} else {
@@ -320,44 +320,44 @@
 							echo "<li>";
 							kategori($t[id_kategori]);
 							echo "
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
                     		<div class='featured_title1'>
-                      		
+
 							<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
 							</li>
 							";
 							}
 							?>
-							
+
                 				</ul>
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div class="col-md-3" >
 					<div class="row">
                 		<div class="sembunyi" >
-                		<h4 class="red"><span class="fa fa-rocket"></span> Terkini</h4></br>  
+                		<h4 class="red"><span class="fa fa-rocket"></span> Terkini</h4></br>
                 			<ul class="featured_nav2">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita ORDER BY id_berita DESC LIMIT 4");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -384,7 +384,7 @@
 					</div>";}
 					?>
 					</div>
-				</div></br>		
+				</div></br>
 			</div>
 		</div>
 
@@ -395,26 +395,26 @@
                 		<div class="single_blog_sidebar wow fadeInUp">
                 		<h4 class="green"><span class="fa fa-book"></span> Kajian</h4></br>
                 			<ul class="featured_nav">
-                  			
-                  			
-							<?php 
+
+
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '60' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -422,24 +422,24 @@
 							";
 							}
 							?>
-							<?php 
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '61' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -447,25 +447,25 @@
 							";
 							}
 							?>
-                    			
-                  			<?php 
+
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '62' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -473,25 +473,25 @@
 							";
 							}
 							?>
-							<?php 
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '64' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
 								$idb4= $t['id_berita'];
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -504,64 +504,64 @@
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div class="col-md-6">
 					<div class="row">
                 		<div class="single_blog_sidebar1 wow fadeInUp">
                 			<h4 class="green1"><span class="fa fa-plane"></span> Haji dan Umrah</h4></br>
                 				<ul class="featured_nav1">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '64' AND id_berita != '$idb4' ORDER BY id_berita DESC limit 3 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 56) 
+							if (strlen($t[judul]) > 56)
 							{
 								$hasil = substr($t[judul], 0, 56)."&hellip;";
 							} else {
 								$hasil = $t[judul];
-							}	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
                     		<div class='featured_title1'>
-                      		
+
 							<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
 							</li>
 							";
 							}
 							?>
-							
+
                 				</ul>
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div class="col-md-3" >
 					<div class="row">
                 		<div class="sembunyi" >
-                		<h4 class="blue"><span class="fa fa-bolt"></span> Populer</h4></br>  
+                		<h4 class="blue"><span class="fa fa-bolt"></span> Populer</h4></br>
                 			<ul class="featured_nav2">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita ORDER BY dibaca DESC limit 4 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -569,7 +569,7 @@
 							";
 							}
 							?>
-							
+
                 			</ul>
                 		</div>
                 	</div>
@@ -599,26 +599,26 @@
                 		<div class="single_blog_sidebar wow fadeInUp">
                 		<h4 class="blue"><span class="fa fa-futbol-o"></span> Bola+</h4></br>
                 			<ul class="featured_nav">
-                  			
-                  			
-							<?php 
+
+
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '55' AND id_berita != '$idb3' ORDER BY id_berita DESC limit 4 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -630,29 +630,29 @@
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div class="col-md-6">
 					<div class="row">
                 		<div class="single_blog_sidebar1 wow fadeInUp">
                 			<h4 class="green"><span class="fa fa-star"></span> Muslim Star</h4></br>
                 				<ul class="featured_nav1">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '70' AND (id_berita != $idb1 AND id_berita != $idb2) ORDER BY id_berita DESC limit 3 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 56) 
+							if (strlen($t[judul]) > 56)
 							{
 								$hasil = substr($t[judul], 0, 56)."&hellip;";
 							} else {
 								$hasil = $t[judul];
-							}	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
                     		<div class='featured_title1'>
-                      		
+
 							<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
 							</li>
@@ -663,30 +663,30 @@
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div class="col-md-3" >
 					<div class="row">
                 		<div class="sembunyi" >
-                		<h4 class="yellow"><span class="fa fa-users"></span> Komunitas</h4></br>  
+                		<h4 class="yellow"><span class="fa fa-users"></span> Komunitas</h4></br>
                 			<ul class="featured_nav2">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '57' ORDER BY id_berita DESC limit 2 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -694,24 +694,24 @@
 							";
 							}
 							?>
-							<?php 
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '58' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -719,24 +719,24 @@
 							";
 							}
 							?>
-							<?php 
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '59' ORDER BY id_berita DESC limit 1 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li>";
 							kategori($t[id_kategori]);
 							echo"
-							
+
 							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-                    		
+
 							<div class='featured_title'>
                       		<a class='' href='berita-$t[judul_seo].html'>$hasil</a>
                     		</div>
@@ -755,9 +755,9 @@
 		 		<div class="more-green-toska">
 			 		MUAT LAINNYA
 			 	</div>
-		 	</div>			
-		</div>		
-		
+		 	</div>
+		</div>
+
 		<div id="all-news">
 					<h3 data-style="und-bdr" style="margin-bottom:30px;">SEMUA BERITA</h3>
 					<div id="sidebar">
@@ -766,25 +766,25 @@
 									<div class="row">
 				                		<div class="single_blog_sidebar wow fadeInUp">
 				                			<ul class="featured_nav">
-											<?php 
+											<?php
 											$terkini=mysql_query("SELECT * FROM berita ORDER BY id_berita DESC limit 4");
 											while($t=mysql_fetch_array($terkini)){
 											$id_berita_col_1 = $t[id_berita];
-											if (strlen($t[judul]) > 75) 
+											if (strlen($t[judul]) > 75)
 											{
 												$hasil = substr($t[judul], 0, 75)."&hellip;";
-											} 
-											else 
+											}
+											else
 											{
 												$hasil = $t[judul];
-											} 
+											}
 											echo "
 											<li kode='$t[id_berita]'>";
 											kategori($t[id_kategori]);
 											echo "
-											
+
 											<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-				                    		
+
 											<div class='featured_title'>
 				                      		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
 				                    		</div>
@@ -796,16 +796,16 @@
 				                		</div>
 				                	</div>
 								</div>
-								
+
 								<div class="col-md-6">
 									<div class="row">
 				                		<div class="single_blog_sidebar1 wow fadeInUp">
 				           				<ul class="featured_nav1">
-				                  			<?php 
+				                  			<?php
 											$terkini=mysql_query("SELECT * FROM berita WHERE id_berita < $id_berita_col_1 ORDER BY id_berita DESC limit 3 ");
 											while($t=mysql_fetch_array($terkini)){
 												$id_berita_col_2 = $t[id_berita];
-											if (strlen($t[judul]) > 56) 
+											if (strlen($t[judul]) > 56)
 											{
 												$hasil = substr($t[judul], 0, 56)."&hellip;";
 											} else {
@@ -815,10 +815,10 @@
 											<li kode='$t[id_berita]'>";
 											kategori($t[id_kategori]);
 											echo "
-											
+
 											<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
 				                    		<div class='featured_title1'>
-				                      		
+
 											<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
 				                    		</div>
 											</li>
@@ -829,29 +829,29 @@
 				                		</div>
 				                	</div>
 								</div>
-								
+
 								<div class="col-md-3" >
 									<div class="row">
 				                		<div class="sembunyi" >
 				             			<ul class="featured_nav2">
-				                  			<?php 
+				                  			<?php
 											$terkini=mysql_query("SELECT * FROM berita WHERE id_berita < $id_berita_col_2 ORDER BY id_berita DESC limit 4");
 											while($t=mysql_fetch_array($terkini)){
-											if (strlen($t[judul]) > 75) 
+											if (strlen($t[judul]) > 75)
 											{
 												$hasil = substr($t[judul], 0, 75)."&hellip;";
-											} 
-											else 
+											}
+											else
 											{
 												$hasil = $t[judul];
-											} 	
+											}
 											echo "
 											<li kode='$t[id_berita]'>";
 											kategori($t[id_kategori]);
 											echo "
-											
+
 											<a class='featured_img' href='berita-$t[judul_seo].html'><img src='../foto_berita/base.jpg'></a>
-				                    		
+
 											<div class='featured_title'>
 				                      		<a class='' href='berita-$t[judul_seo].html'>$hasil</a>
 				                    		</div>
@@ -863,7 +863,7 @@
 				                		</div>
 				                	</div>
 								</div>
-							 </div>	
+							 </div>
 					</div>
 		</div>
 
@@ -873,7 +873,7 @@
 				<div class="more-green-toska">
 			 		MUAT LAINNYA
 			 	</div>
-			</div>	
+			</div>
 		</div>
 		<div class="clearfix">
 			<div class="row">
@@ -894,7 +894,7 @@
 		</div>
 	</div>
 	<script>
-		$('#more-1').click(function () 
+		$('#more-1').click(function ()
 		{
 			$(this).fadeOut('fast');
 			$('#all-news').fadeIn('slow');
@@ -913,7 +913,7 @@
 	  $("#owl-demo-2").owlCarousel({
         autoPlay: 3000,
         items : 3,
-        
+
       });
     });
     </script>
@@ -934,69 +934,69 @@
 							}
 						}
 					})
-					
-					
+
+
 				});
 			});
 	</script>
-  <?php 
+  <?php
   }
    // tes////////////////////////////////////////////
   elseif ($_GET['module']=='tes'){
   include "$f[folder]/modul/mod_berita/tesji.php";}
   ////////////////////////////////////////////////////////////
-  
+
    // NEWS////////////////////////////////////////////
   elseif ($_GET['module']=='news'){
   include "$f[folder]/news.php";}
   ////////////////////////////////////////////////////////////
-  
+
     // LIFESTYLE////////////////////////////////////////////
   elseif ($_GET['module']=='lifestyle'){
   include "$f[folder]/lifestyle.php";}
   ////////////////////////////////////////////////////////////
-  
+
     // KOMUNITAS////////////////////////////////////////////
   elseif ($_GET['module']=='komunitas'){
   include "$f[folder]/komunitas.php";}
   ////////////////////////////////////////////////////////////
-  
+
     // KAJIAN////////////////////////////////////////////
   elseif ($_GET['module']=='kajian'){
   include "$f[folder]/kajian.php";}
   ////////////////////////////////////////////////////////////
-  
+
     // SOSOK////////////////////////////////////////////
   elseif ($_GET['module']=='sosok'){
   include "$f[folder]/sosok.php";}
   ////////////////////////////////////////////////////////////
-  
+
     // KALAM////////////////////////////////////////////
   elseif ($_GET['module']=='kalam'){
   include "$f[folder]/kalam.php";}
   ////////////////////////////////////////////////////////////
-  
-  
+
+
   // DETAIL BERITA////////////////////////////////////////////
   elseif ($_GET['module']=='detailberita'){
   include "$f[folder]/modul/mod_berita/detailberita.php";}
   ////////////////////////////////////////////////////////////
-  
+
    // KATEGORI BERITA ////////////////////////////////////////////
   elseif ($_GET['module']=='detailkategori'){
   include "$f[folder]/modul/mod_berita/detailkategori.php";}
   ////////////////////////////////////////////////////////////
-  
+
   // CARI BERITA ////////////////////////////////////////////
   elseif ($_GET['module']=='hasilcari'){
   include "$f[folder]/modul/mod_berita/hasilcari.php";}
   ////////////////////////////////////////////////////////////
-  
+
    // DEATAIL HALAMAN STATIS ////////////////////////////////////////////
   elseif ($_GET['module']=='halamanstatis'){
   include "$f[folder]/modul/mod_halaman/halaman.php";}
   /////////////////////////////////////////////////////////////
-  
+
    // DEATAIL HALAMAN STATIS ////////////////////////////////////////////
   elseif ($_GET['module']=='error'){
   include "$f[folder]/notfound.html";}

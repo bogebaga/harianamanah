@@ -84,7 +84,7 @@ session_start();
   <meta name="msapplication-navbutton-color" content="#1c9fa7">
   <meta name="apple-mobile-web-app-status-bar-style" content="#1c9fa7">
 
-  <link rel="shortcut icon" href="../favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
   <!--Line Share -->
   <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
   <script type="text/javascript">LineIt.loadButton();</script>
@@ -139,8 +139,8 @@ session_start();
 				</button>
 				<button type="button" class="tutup"><span class="big-close"></span></button>
 				<a href="./" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
-				<form method="POST" action="hasil-pencarian.html" style="width:100vw;">
-          <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="kata" placeholder="Cari Di Sini">
+				<form method="GET" action="search" style="width:100vw;">
+          <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="query-search" placeholder="Cari Di Sini">
 				</form>
 			</div>
 		</div>
@@ -169,14 +169,14 @@ session_start();
 				if($row['nama_menu']!== 'Info Alharam'){
 				echo"
 				<li>
-				<a href='$row[link]' class='tagging'  >$row[nama_menu] </a>
+				<a href='$row[link]' class='tagging' >$row[nama_menu] </a>
 				<a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='fa fa-angle-down panah6'></span></a>
 				<ul class='dropdown-menu'>
 				";
 				}elseif(($row['nama_menu'] == 'Info Alharam')){
 				echo"
 				<li>
-				<a href='$row[link]' class='tagging'  >$row[nama_menu] </a>
+				<a href='$row[link]' class='tagging'>$row[nama_menu] </a>
 				<ul class='dropdown-menu'>
 				";}
 			$result1 = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent=$idp ORDER BY id_menu");
@@ -258,24 +258,18 @@ session_start();
 
 			$(".navbar-toggle").click(function(event) {
 				$("#menuSamping").css('width', '100%');
-				// $("#main").css('margin-left', '220px');
-				// $("#main").css('background', 'rgba(0, 0, 0, 0.4)');
 				$(".navbar-toggle").hide();
 				$(".tutup").show();
 			});
 
 			$(".tutup").click(function(event) {
 				$("#menuSamping").css('width', '0');
-				// $("#main").css('margin-left', '0');
-				// $("#main").css('background', 'white');
 				$(".tutup").hide();
 				$(".navbar-toggle").show();
 			});
 
 			$("#main").click(function(event) {
 				$("#menuSamping").css('width', '0');
-				// $("#main").css('margin-left', '0');
-				// $("#main").css('background', 'white');
 				$(".navbar-toggle").show();
 				$(".tutup").hide();
 			});

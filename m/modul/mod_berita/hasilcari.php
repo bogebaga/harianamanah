@@ -2,11 +2,8 @@
 			<section class="daftar-artikel">
                 <span class="fl art-count">
 				<?php
-  $kata = trim($_POST['kata']);
-  $kata = htmlentities(htmlspecialchars($kata), ENT_QUOTES);
-  $pisah_kata = explode(" ",$kata);
-  $jml_katakan = (integer)count($pisah_kata);
-  $jml_kata = $jml_katakan-1;
+  $kata = $_GET['query-search'];
+  // $kata = htmlentities(htmlspecialchars($kata), ENT_QUOTES);
 
   $cari = "SELECT * FROM berita where judul LIKE '%$kata%'
     ORDER BY case
@@ -29,7 +26,7 @@
   $tgl = tgl_indo($r['tanggal']);
   $jam = trans_jam($r['jam']);
   echo"
-                <article class= 'artikle' >
+                <article class= 'artikle' style='padding:0;'>
 								<div class='list-picture'>
 									<a href='berita-$r[judul_seo].html'>
 									<img class='picture' src='http://harianamanah.com/foto_small/$r[gambar1]' />

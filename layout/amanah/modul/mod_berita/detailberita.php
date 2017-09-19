@@ -63,7 +63,6 @@ include_once('config_fb.php');
             <p class="daftar-redaksi" style="font-size:12px;"><?php echo"$d[hari], $tgl - $jam"; ?></p>
           </div>
           <br>
-          <br>
           <div class="sosial">
             <ul class="list-inline" style="text-align:left;margin:0;">
               <!-- <li>
@@ -90,8 +89,6 @@ include_once('config_fb.php');
             echo "$d[isi_berita]";
             echo '</div>';
             echo "<div class='clearfix'></div>";
-            echo "<hr>";
-
             if($d[youtube]!='')
             {
               echo "<div class='wrap-vid'>
@@ -101,12 +98,30 @@ include_once('config_fb.php');
             $acak           = rand(44,77);
             mysql_query("UPDATE berita SET dibaca='$d[dibaca]'+$acak WHERE judul_seo='$_GET[judul]'");
             ?>
+            <div class="sosial">
+              <ul class="list-inline" style="text-align:left;margin:0;">
+                <!-- <li>
+                    <a class="btn btn-social-icon btn-dibaca" ><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;<?php $dibaca = round($d[dibaca]/56); echo"$dibaca";?></a>
+                </li> -->
+                <li><a class="btn btn-social-icon btn-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog','width=626,height=436'); return false;"><i class="fa fa-facebook fa-2x"></i></a>
+                </li>
+                <li>
+                  <a class="btn btn-social-icon btn-twitter" onclick="window.open('https://twitter.com/share','width=336','height=206');return false;" ><i class="fa fa-twitter fa-2x"></i></a>
+                </li>
+                <li>
+                  <a class="btn btn-social-icon btn-google" onclick="window.open('','width=336','height=206');return false;" ><i class="fa fa-google-plus fa-2x"></i></a>
+                </li>
+              </ul>
+            </div>
+            <hr>
             <div class="fb-comments" data-href="" data-width="100%" data-numposts="5"></div>
             <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
             <div class="related-news">
               <div class='kotak' style="width:100%;float:none">
               <br>
-              <h5 style="padding:15px 40px;text-align:left;background:#262932;color:#fff;display:inline-block">Berita Terkait</h5>
+              <div class="row">
+                <h5 style="padding:15px;text-align:left;background:#262932;color:#fff;">Berita Terkait</h5>
+              </div>
                 <ul class="featured_nav0 berita-terkait">
                 <?php
                 $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 10");
@@ -127,13 +142,15 @@ include_once('config_fb.php');
               </div>
               <div class='kotak' style="width:100%;margin-bottom:30px;float:none">
               <br>
-              <h5 style="padding:15px 40px;text-align:left;background:#262932;color:#fff;display:inline-block;margin-bottom:25px;">Berita Lainnya</h5>
+              <div class='row'>
+                <h5 style="padding:15px;text-align:left;background:#262932;color:#fff;margin-bottom:25px;">Berita Lainnya</h5>
+              </div>
                 <ul class="featured_nav0 berita-lainnya">
                 <?php
                 $detail2=mysql_query("SELECT * FROM berita WHERE id_kategori != '$d[id_kategori]' AND id_berita != '$d[id_berita]'  order by id_berita DESC limit 8");
                 while($p2=mysql_fetch_array($detail2))
                 {
-                  echo "
+                  echo"
                         <li style='width:190px;margin:0 0 10px;padding-right:7px;'>
                           <a class='featured_img' href='berita-$p2[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$p2[gambar]' alt='$p2[judul]'></a>
                           <div class='featured_title berita-lainnya' style='font-size:14px;'>
@@ -194,7 +211,7 @@ include_once('config_fb.php');
         <div class="single_blog_sidebar wow fadeInUp">
           <ul class="featured_nav0 read-news">
           <?php
-          $iklantengah=mysql_query("SELECT * FROM pasangiklan  ORDER BY id_pasangiklan DESC LIMIT 1");
+          $iklantengah=mysql_query("SELECT * FROM pasangiklan  ORDER BY id_pasangiklan DESC LIMIT 2");
           while($c=mysql_fetch_array($iklantengah))
           {
             $idc1 = $c['id_pasangiklan'];
@@ -217,8 +234,16 @@ include_once('config_fb.php');
                   </li>";
           }?>
           <li>
-            <div id="fixed-baca" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44);height:620px;">
-              <div class="title berita-foto" style="color:#fff;padding:15px;background-color: #1c9fa7;background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);">BERITA FOTO</div>
+            <div id="fixed-baca" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44);">
+              <div class="title berita-foto" style="color:#fff;padding:15px;background-color: #1c9fa7;background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);">BERITA POPULAR</div>
+              <ul class="list-berita-popular">
+              <?php
+              $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 8");
+              while($row = mysql_fetch_array($berita_popular)){
+                echo "<li style='padding:0 10px 10px 10px;font-size:15px;font-weight:600;'><a href='berita-$row[judul_seo].html'>$row[judul]</a><div class='clearfix'></div></li>";
+              }
+              ?>
+              </ul>
             </div>
           </li>
         </ul>

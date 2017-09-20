@@ -12,6 +12,7 @@
         $rubrik=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '13' ORDER BY id_berita DESC LIMIT 5");
         $i=0;
         while($row = mysql_fetch_array($rubrik)){
+          $id_berita = $row['id_berita'];
           $tgl = tgl_indo($row['tanggal']);
           $jam = trans_jam($row['jam']);
           echo "<div class='item-flex grid-$i'>
@@ -66,7 +67,7 @@
           <!-- <h1 style="color:#009688;border-bottom:1px solid #009688"><?php echo $nama_menu['nama_menu']?></h1> -->
           <br>
           <?php
-          $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '13' ORDER BY id_berita DESC LIMIT 33");
+          $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '13' AND b.id_berita < $id_berita ORDER BY id_berita DESC LIMIT 33");
 					while($t=mysql_fetch_array($terkini)){
             $tgl = tgl_indo_short($t['tanggal']);
             $jam = trans_jam($t['jam']);

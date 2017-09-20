@@ -2,7 +2,7 @@
     background: #ececec;
     font: 10px "RobotoMedium",Arial,Helvetica,sans-serif;
     line-height: 1;
-    margin-top:50px;
+    margin-top:30px;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-font-smoothing: antialiased;
@@ -396,8 +396,8 @@ Pseudo ::after element
 .trend-left-list figure img {
     display: block;
     object-fit: cover;
-    height: 147px;
-    width: 230px;
+    height: 120px;
+    width: 245px;
 }
 img {
     max-width: 100%;
@@ -452,13 +452,13 @@ a:active, a:hover, a:visited {
 }
 
 .trend-left-info a {
-    font: 2.3em/1.3em "Roboto",Arial,Helvetica,sans-serif;
+    font: 17px/1.2 "Roboto",Arial,Helvetica,sans-serif;
     color: #000;
     display: block;
     text-decoration:none;
     margin:5px 10px;
     text-align: left;
-    font-weight: 100;
+    font-weight: bold;
 }
 
 .trend-left-info a :hover{

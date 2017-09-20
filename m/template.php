@@ -31,52 +31,52 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" >
   <title>
-  <?php
-      if($d['judul'] !=''):
-          echo "$d[judul] - harianmanah.com";
-      else:
-          echo "Kiblat Berita Islami - harianamanah.com";
-      endif;
-  ?>
+    <?php
+    if ($d['judul'] !='') :
+        echo "$d[judul] - harianmanah.com";
+    else :
+            echo "Kiblat Berita Islami - harianamanah.com";
+    endif;
+    ?>
   </title>
   <meta name="title" content="<?php
-  if($d['judul'] !=''):
-    echo "$d[judul] - harianamanah.com";
-  else:
-    echo "Kiblat Berita Islami - harianamanah.com";
-  endif;
-  ?>">
+    if ($d['judul'] !='') :
+        echo "$d[judul] - harianamanah.com";
+    else :
+        echo "Kiblat Berita Islami - harianamanah.com";
+    endif;
+    ?>">
   <meta name="description" content="Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international">
   <meta name="author" content="harianamanah.com">
   <meta name="image"  content="<?php
-  if($d['gambar']!=''):
-    echo "http://harianamanah.com/foto_berita/$d[gambar]";
-  else:
-    echo "http://harianamanah.com/images/amanah.jpg";
-  endif;?>">
+    if ($d['gambar']!='') :
+        echo "http://harianamanah.com/foto_berita/$d[gambar]";
+    else :
+        echo "http://harianamanah.com/images/amanah.jpg";
+    endif;?>">
   <meta property="og:title" content="<?php
-  if($d['judul'] !=''):
-    echo "$d[judul] - harianamanah.com";
-  else:
-    echo "Kiblat Berita Islami - harianamanah.com";
-  endif;
-  ?>">
+    if ($d['judul'] !='') :
+        echo "$d[judul] - harianamanah.com";
+    else :
+        echo "Kiblat Berita Islami - harianamanah.com";
+    endif;
+    ?>">
   <meta property="og:description" content="Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international">
   <meta property="og:type" content="article">
   <meta property="og:url" content="<?php
-  if ($d['judul_seo'] != '') :
-    echo "http://harianamanah.com/berita-$d[judul_seo].html";
-  else :
-    echo "http://harianamanah.com";
-  endif;
-  ?>">
+    if ($d['judul_seo'] != '') :
+        echo "http://harianamanah.com/berita-$d[judul_seo].html";
+    else :
+        echo "http://harianamanah.com";
+    endif;
+    ?>">
   <meta property="og:image" content="<?php
-  if($d['gambar']!=''):
-    echo "http://harianamanah.com/foto_berita/$d[gambar]";
-  else:
-    echo "http://harianamanah.com/images/amanah.jpg";
-  endif;
-  ?>">
+    if ($d['gambar']!='') :
+        echo "http://harianamanah.com/foto_berita/$d[gambar]";
+    else :
+        echo "http://harianamanah.com/images/amanah.jpg";
+    endif;
+    ?>">
   <meta property="og:site_name" content="harianamanah.com"/>
   <meta property="fb:app_id" content="168067490271817"/>
   <meta name="adx:sections" content="<?php echo "$d[nama_kategori]"; ?>">
@@ -85,9 +85,6 @@ session_start();
   <meta name="apple-mobile-web-app-status-bar-style" content="#1c9fa7">
 
   <link rel="shortcut icon" href="favicon.png">
-  <!--Line Share -->
-  <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-  <script type="text/javascript">LineIt.loadButton();</script>
   <!--Bootstrap Theme-->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <!-- CSS -->
@@ -117,7 +114,7 @@ session_start();
 </head>
 <body>
 <?php include_once("analyticstracking.php") ?>
-<?php if (empty($_SESSION['cek'])): ?>
+<?php if (empty($_SESSION['cek'])) : ?>
   <div id="loader">
     <div class="page-loader">
     <center>
@@ -126,25 +123,25 @@ session_start();
     </center>
     </div>
   </div>
-  <?php $_SESSION['cek'] = $_GET['module']; ?>
+    <?php $_SESSION['cek'] = $_GET['module']; ?>
 <?php endif ?>
-	<header class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#menuSamping">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<button type="button" class="tutup"><span class="big-close"></span></button>
-				<a href="./" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
-				<form method="GET" action="search" style="width:100vw;">
-          <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="query-search" placeholder="Cari Di Sini">
-				</form>
-			</div>
-		</div>
-		<div id="menuSamping" class="sidenav">
+    <header class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#menuSamping">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <button type="button" class="tutup"><span class="big-close"></span></button>
+                <a href="./" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
+                <form method="GET" action="search" style="width:100vw;">
+          <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="query-search" placeholder="Cari berita dan peristiwa">
+                </form>
+            </div>
+        </div>
+        <div id="menuSamping" class="sidenav">
       <!-- <p>KATEGORI</p> -->
       <ul class="nav navbar-nav social-hub"  style="margin:0;">
         <li class="facebook"><a href="https://www.facebook.com/harianamanah/" target="_blank"><span class="fa fa-facebook-square"></span></a></li>
@@ -156,126 +153,128 @@ session_start();
       <h2 class="caption">HARIANAMANAH</h2>
       <ul class="nav navbar-nav">
         <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
-        <li><i class='fa fa-2x fa-lightbulb-o' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='terkini.html' class='tagging'>TERKINI</a></li>
-        <li><i class='fa fa-2x fa-flash' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='popular.html' class='tagging'>POPULAR</a></li>
-        <li><i class='fa fa-2x fa-thumbs-o-up' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='rekomendasi.html' class='tagging'>REKOMENDASI</a></li>
+        <li><i class='fa fa-2x fa-lightbulb-o' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='terkini.html' class='tagging'>Terkini</a></li>
+        <li><i class='fa fa-2x fa-flash' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='popular.html' class='tagging'>Popular</a></li>
+        <li><i class='fa fa-2x fa-thumbs-o-up' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='rekomendasi.html' class='tagging'>Rekomendasi</a></li>
       </ul>
       <h2 class="caption">KANAL</h2>
-			<ul class="nav navbar-nav">
+            <ul class="nav navbar-nav">
     <?php
-			$result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_menu");
-			while( $row = mysql_fetch_array($result)){
-				$idp = $row['id_menu'];
-				if($row['nama_menu']!== 'Info Alharam'){
-				echo"
+            $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_menu");
+    while ($row = mysql_fetch_array($result)) {
+        $idp = $row['id_menu'];
+        if ($row['nama_menu']!== 'Info Alharam') {
+            echo"
 				<li>
 				<a href='$row[link]' class='tagging' >$row[nama_menu] </a>
 				<a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='fa fa-angle-down panah6'></span></a>
 				<ul class='dropdown-menu'>
 				";
-				}elseif(($row['nama_menu'] == 'Info Alharam')){
-				echo"
+        } elseif (($row['nama_menu'] == 'Info Alharam')) {
+            echo"
 				<li>
 				<a href='$row[link]' class='tagging'>$row[nama_menu] </a>
 				<ul class='dropdown-menu'>
-				";}
-			$result1 = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent=$idp ORDER BY id_menu");
-      while( $row1 = mysql_fetch_array($result1)){
-				echo "<li><a href='$row1[link]'>$row1[nama_menu]</a></li>";}
-				echo "</ul></li>";
-			}?>
+				";
+        }
+        $result1 = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent=$idp ORDER BY id_menu");
+        while ($row1 = mysql_fetch_array($result1)) {
+                echo "<li><a href='$row1[link]'>$row1[nama_menu]</a></li>";
+        }
+        echo "</ul></li>";
+    }?>
       </ul>
-		</div>
-	</header>
-	<section id="main">
+        </div>
+    </header>
+    <section id="main">
 <?php include "content.php"; ?>
-	<footer>
-		<a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
-	 	<div class="gambar-footer">
-		 	<a href="#">
-		 		<img src="assets/pp_ff.png" width="38px">
-		 	</a>
-	 	</div>
-	 	<div class="menu-footer">
-			<a href="#">TENTANG</a>
+    <footer>
+        <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
+        <div class="gambar-footer">
+            <a href="#">
+                <img src="assets/pp_ff.png" width="38px">
+            </a>
+        </div>
+        <div class="menu-footer">
+            <a href="#">TENTANG</a>
       <a href="#">PRIVASI</a>
       <a href="#">KONTAK</a>
-	 	</div>
+        </div>
     <div class="isi-footer">
       <span class="copyright">
         HarianAmanah&nbsp;&copy;&nbsp;2017
       </span>
     </div>
-	</footer>
+    </footer>
 </section>
 <script>
-	$('#loader').fadeOut('slow');
+    $('#loader').fadeOut('slow');
 </script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#owl-demo").owlCarousel({
-			navigation : false,
-			slideSpeed : 200,
-			paginationSpeed : 400,
-			singleItem:true,
-			autoplay:true,
-			pagination:false
-			});
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#owl-demo").owlCarousel({
+            navigation : false,
+            slideSpeed : 200,
+            paginationSpeed : 400,
+            singleItem:true,
+            autoplay:true,
+            pagination:false
+            });
 
-			//iklan and tag
-			$('.close-headline').click(function(event){
-				event.preventDefault();
-				$(this).parents('.headline-text').fadeOut('slow');
-			});
+            //iklan and tag
+            $('.close-headline').click(function(event){
+                event.preventDefault();
+                $(this).parents('.headline-text').fadeOut('slow');
+            });
 
-			$('.close-iklan').click(function(event){
-				event.preventDefault();
-				$(this).parents('.iklan-fixed').fadeOut('slow');
-			});
+            $('.close-iklan').click(function(event){
+                event.preventDefault();
+                $(this).parents('.iklan-fixed').fadeOut('slow');
+            });
 
-		// Show or hide the sticky footer button
-		// $(window).scroll(function() {
-		// 	if ($(this).scrollTop() > 400) {
-		// 		$('.go-top').fadeIn(200);
-		// 	} else {
-		// 		$('.go-top').fadeOut(200);
-		// 	}
-		// });
+        // Show or hide the sticky footer button
+        // $(window).scroll(function() {
+        //  if ($(this).scrollTop() > 400) {
+        //      $('.go-top').fadeIn(200);
+        //  } else {
+        //      $('.go-top').fadeOut(200);
+        //  }
+        // });
 
-		// Animate the scroll to top
-		$('.go-top').click(function(event) {
-			event.preventDefault();
+        // Animate the scroll to top
+        $('.go-top').click(function(event) {
+            event.preventDefault();
 
-			$('html, body').animate({scrollTop: 0}, 300);
-		})
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
 
-		});
-	</script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			var arah = 1;
-			$(".tutup").hide();
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var arah = 1;
+            $(".tutup").hide();
 
-			$(".navbar-toggle").click(function(event) {
-				$("#menuSamping").css('width', '100%');
-				$(".navbar-toggle").hide();
-				$(".tutup").show();
-			});
+            $(".navbar-toggle").click(function(event) {
+                $("#menuSamping").css('width', '100%');
+                $(".navbar-toggle").hide();
+                $(".tutup").show();
+            });
 
-			$(".tutup").click(function(event) {
-				$("#menuSamping").css('width', '0');
-				$(".tutup").hide();
-				$(".navbar-toggle").show();
-			});
+            $(".tutup").click(function(event) {
+                $("#menuSamping").css('width', '0');
+                $(".tutup").hide();
+                $(".navbar-toggle").show();
+            });
 
-			$("#main").click(function(event) {
-				$("#menuSamping").css('width', '0');
-				$(".navbar-toggle").show();
-				$(".tutup").hide();
-			});
-		});
-	</script>
-		<script>
+            $("#main").click(function(event) {
+                $("#menuSamping").css('width', '0');
+                $(".navbar-toggle").show();
+                $(".tutup").hide();
+            });
+        });
+    </script>
+        <script>
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',

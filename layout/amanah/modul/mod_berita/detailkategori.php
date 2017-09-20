@@ -11,7 +11,7 @@ echo"<img src='foto_kategori/$n[photo]'>";
 ?>
 </section>
 <div id="listberita">
-    <section class="container cf" style="margin-bottom:0px;padding:0;"><!--konten start-->
+    <section class="container cf" style="margin-bottom:0px;padding:0;margin-top:0;"><!--konten start-->
         <div class="right-konten" style="border: 0px solid red;"><!-- right konten start -->
             <div class="penulis"><!-- penulis start -->
               <div class="mt20 small-logo"><img src="logo/assets/pp_ff.png" width="120px" height="auto" alt="logo bulat harianamanah.com"></div>
@@ -70,7 +70,7 @@ echo"<img src='foto_kategori/$n[photo]'>";
 
 
                                 <div class='left-trending-fix'>	<a href='berita-$r[judul_seo].html' title=''>
-								<img src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt=''></a>
+								<img src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt='$r[judul]'></a>
 								</div>
 
                             </figure>

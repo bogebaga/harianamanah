@@ -411,7 +411,7 @@ margin-bottom:-2px;
   border-radius: 0;
   text-indent:0;
   margin: 0;
-  height:160px;
+  height:175px;
   line-height: 1.2;
   vertical-align: text-top;
 }
@@ -486,11 +486,11 @@ margin-bottom:-2px;
 /* -------------------------------------Content-------------------------------- */
 /* ---------------------------------------------------------------------------- */
 #page-content{padding: 0;}
-#page-content.index-page, #page-content.single-page, #page-content.archive-page{margin-top: 70px;background-color: #fff;}
+#page-content.index-page, #page-content.single-page, #page-content.archive-page{margin-top: 45px;background-color: #fff;}
 
 .archive-page .box .zoom-container{max-width: 250px;display: inline-block; margin-right: 5px;}
 
-.featured{background-color: #ECECEC; position:relative;top:100px;/*border: 1px solid #ddd; saya ubah*/}
+.featured{background-color: #ECECEC; position:relative;top:60px;/*border: 1px solid #ddd; saya ubah*/}
 
 /* ---MainContent--- */
 
@@ -765,9 +765,9 @@ footer .footer-3 ul li a:hover{color: #666;}
 /* ---------------------------------------------------------------------------- */
 .btn-facebook, .btn-twitter, .btn-pinterest, .btn-google, .btn-mail{color: #fff;}
 .btn-facebook:hover, .btn-twitter:hover, .btn-pinterest:hover, .btn-google:hover, .btn-mail:hover{background-color: #000; color: #fff;}
-.btn-facebook{background-color: #3B5998;min-width: 62px;}
-.btn-google{background-color: #ad3434;min-width: 62px;}
-.btn-twitter{background-color: #00ACED;min-width: 62px;}
+.btn-facebook{background-color: #3B5998;}
+.btn-google{background-color: #ad3434;}
+.btn-twitter{background-color: #00ACED;}
 .btn-dibaca{background-color: #FFF; color:#000; border: solid 1px #ccc; font-size:100%; font-weight:bold; padding:8px 17px;}
 .btn-pinterest{background-color: #CA212A;}
 .btn-google{background-color: #EB4026;}
@@ -862,14 +862,15 @@ footer .footer-3 ul li a:hover{color: #666;}
 .judul h1{
   text-align: left;
 	margin-top:30px;
+	margin-bottom:30px;
 }
 
-.news-category > article {float:left;height:275px;width: 240px;margin:0 15px 13px 0;}
+.news-category > article {float:left;height:300px;width: 240px;margin:0 15px 13px 0;}
 .news-category > article .badges-cate {margin:10px 0 40px;}
 .news-category > article .badges-cate span{display: inline-block;font-size: 12px;}
 .news-category > article .badges-cate span:first-child{float: left;padding:5px; color:#fff; background-color: #052844;}
 .news-category > article .badges-cate span:last-child{float: right;padding:5px;}
-.news-category > article .captions{word-break: break-all;}
+.news-category > article .captions{word-break: break-word;}
 
 .news-category > article img
 {
@@ -900,7 +901,6 @@ footer .footer-3 ul li a:hover{color: #666;}
   color: #000000;
   font-size: 16px;
   display: block;
-  margin-bottom: 7px;
 }
 
 .tips:hover .teks-foto{

@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-xs-9" style='padding-left:0;padding-right:7px;'>
           <!-- Carousel -->
-          <div id="carousel-example-generic" class="carousel slide carousel-fade hl-slider" data-ride="carousel" style="background-color:#000;height:675px;/* background-image: linear-gradient(90deg, #052844 1%, #073e69 100%); */">
+          <div id="carousel-example-generic" class="carousel slide carousel-fade hl-slider" data-ride="carousel" style="background-color:#000;height:690px;/* background-image: linear-gradient(90deg, #052844 1%, #073e69 100%); */">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role='listbox'>
             <?php
@@ -155,28 +155,47 @@
               </ol>
             </div>
           </div>
+          <style>
+           li p[data-opacity='true']{
+            opacity:0;
+           }
+           li:hover p[data-opacity='true']{
+            opacity: 1;
+          }
+          </style>
           <div class="col-md-8" style="padding:0;">
             <div class="single_blog_sidebar1 berita-terkini wow fadeInUp">
               <div class="title">BERITA TERKINI</div>
-              <ul>
+              <ul id='list-terkini-middle'>
               <?php
-                $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY b.id_berita DESC LIMIT 25");
+                $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY b.id_berita DESC LIMIT 150");
                 while($p1=mysql_fetch_array($detail1))
                 {
-                  // $idarray = $p1['id_berita'];
                   $tgl = tgl_indo($p1['tanggal']);
                   $jam = trans_jam($p1['jam']);
 
-                  echo "<li style='color:white;'>
+                  echo "<li style='color:white;' data-berita='$p1[id_berita]'>
                   <a href='berita-$p1[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'></a>
                   <div class='deskripsi-judul home'>
-                    <h6><a href='berita-$p1[judul_seo].html'>$p1[judul]</a></h6>
+                    <h6><a href='berita-$p1[judul_seo].html' title='$p1[judul]'>".substr($p1['judul'], 0, 60)."&hellip;</a></h6>
                     <p class='rubrik-tanggal'><a href='kategori-$p1[id_kategori]-$p1[kategori_seo].html'>".strtoupper($p1['nama_kategori'])."</a> | $p1[hari], $tgl - $jam</p>
-                    <p style='color:white;'>".substr(strip_tags($p1['isi_berita']), 0, 160)."&nbsp;<a href='berita-$p1[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
+                    <p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($p1['isi_berita']), 0, 150)."&nbsp;<a href='berita-$p1[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
+                    <p data-opacity='true' style='margin:0 0 0 12px;'>
+                      <a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$p1[judul_seo].html' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
+                      <a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$p1[judul_seo].html&text=$p1[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
+                      <a class='btn btn-social-icon' href='https://plus.google.com/share?url=http://harianamanah.com/berita-$p1[judul_seo].html' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
+                    </p>
                   </div>
                 </li>";
                 } ?>
               </ul>
+              <style>
+                #more,#more_indeks {margin-bottom:10px;display:inline-block;padding:5px 20px; border:1px solid #EFCB17;color:#EFCB17;cursor:pointer; transition:background .5s ease;}
+                #more:hover, #more_indeks:hover {background:#EFCB17; color:#262932}
+              </style>
+              <div id="more_animasi" style="text-align:center;">
+                <div id="more">Lainnya</div>
+              </div>
             </div>
           </div>
         </div>
@@ -268,7 +287,7 @@
     <div class="clearfix"></div>
   </div>
   <div class="row">
-    <div id="iklan-footer" style="padding-bottom:10px;">
+    <div id="iklan-footer" style="padding-bottom:10px;margin-top:10px;">
       <div class="iklan">
         <img src="foto_pasangiklan/adhomebanner.jpg" width="100%">
       </div>
@@ -276,22 +295,24 @@
   </div>
   </div>
   <script>
-    $('#more-3').click(function(){
-        	$(this).html('<center><img src="images/loading.gif" width="170px"></center>');
-        	$.ajax({
-        		url: 'more-web.php?kategori=kajian&urut='+$('li[data-target=kajian]:last').attr('kode'),
-        		success: function(html)
-        		{
-        			if(html)
-        			{
-        				$('#all-news-2').append(html);
-        				$('#more-3').html('<div class="more-green-toska">MUAT LAINNYA</div>');
-        				// $('.iklan').html('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
-
-        			}
-        		}
-        	})
-        });
+  $('#more_animasi').one('click', function(){
+    $(this).html('<div><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" style="color:#EFCB17"></i><span style="color:#fff;padding:7px 0;display:block">Memuat&hellip;</span></div>');
+    $.ajax({
+      method: 'GET',
+      url: 'more-web.php',
+      data: {
+        urut: $('li[data-berita]:last-child').attr('data-berita')
+      },
+      success: function(html)
+      {
+        if(html)
+        {
+          $('#list-terkini-middle').append(html);
+          $('#more_animasi').html('<a id="more_indeks">Indeks Berita</a>');
+        }
+      }
+    })
+  });
   </script>
  <!-- <script>
 		var loadMore = true;
@@ -328,14 +349,14 @@
    $("#fixed-right").affix({
      offset : {
        top: $('#fixed-right').offset().top,
-       bottom: $('#iklan-footer').outerHeight(true) + 725
+       bottom: $('#iklan-footer').outerHeight(true) + 760
      }
    });
 
    $("#fixed-left").affix({
      offset : {
        top: $('#fixed-left').offset().top,
-       bottom: $('#iklan-footer').outerHeight(true) + 725
+       bottom: $('#iklan-footer').outerHeight(true) + 760
      }
    });
   </script>

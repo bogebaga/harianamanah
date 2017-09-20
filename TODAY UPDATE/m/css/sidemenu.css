@@ -1,0 +1,300 @@
+/* Navbar */
+
+.navbar-default{
+  background-color: #1c9fa7;
+  background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+  background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+  background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+  background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+
+  border-color: transparent;
+  margin-bottom: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.39);
+}
+
+.navbar-default .navbar-toggle{
+  border-color: transparent;
+  padding: 0;
+  margin-right: 0;
+}
+
+.navbar-default .navbar-toggle:focus{
+  background: transparent;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+  background: white;
+  width: 35px;
+  height: 1px;
+
+  /* margin-top: 5px; */
+}
+
+.navbar-default .tutup{
+  background: none;
+  color: white;
+  border-style: none;
+  /* font-size: 69px; */
+  position: relative;
+  left: 4px;
+  top: -8px;
+  height: 51px;
+  float: left;
+  padding-right: 6px;
+  display: none;
+}
+
+.navbar-default .navbar-nav li a {
+  color:#333;
+}
+
+.navbar-nav .open .dropdown-menu li a{
+    padding: 13px 0 13px 40px;
+    font-size: 15px;
+    color: #009688 !important;
+}
+
+.nav li a {
+    padding: 20px 30px;
+}
+
+.navbar-header{
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.navbar-header a{
+  position: absolute;
+  left: 60px;
+}
+
+.navbar-brand{
+    float: none;
+}
+
+.navbar-brand img{
+    width: 135px;
+    margin-top:-5px;
+}
+
+.navbar-toggle{
+    float: left;
+    margin-left: 15px;
+    z-index: 0;
+    margin-top: 15px;
+}
+
+input[type=text] {
+    /* float:right; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    font-size: 15px;
+    background: transparent;
+    background-size: 25px;
+    /* background-image: url("../assets/musica-searcher (1).png"); */
+    background-position: 0px 4px;
+    background-repeat: no-repeat;
+    padding: 5px 0 5px 35px;
+    -webkit-transition: width 0.4s ease-in-out;
+    -moz-transition: width 0.4s ease-in-out;
+    -o-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+input[type=text]:focus::after{
+    background-size: 25px;
+    background-image: url("../assets/magnifying-glass.png");
+    background-position: 0px 6px;
+    background-repeat: no-repeat;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+input[type=text]:focus {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    float:right;
+    background: white;
+    padding: 5px 0 5px 5px;
+}
+
+/* ////////////////////////////////////////////// */
+
+/* Menu Samping */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top:51px;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidenav h2.caption
+{
+  margin:0 0 7px;
+  color: #000;
+  margin-left:10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.sidenav li {
+  width: 100vw;
+}
+.sidenav a {
+    /* padding: 8px 8px 8px 32px; */
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    transition: 0.3s;
+    line-height: 10px !important;
+}
+
+.sidenav .tombolClose{
+  font-size: 25px;
+  text-align: center;
+  color: white;
+  padding: 15px;
+  width: 100px;
+  background: #8a1818;
+  margin: 10px auto;
+}
+
+.sidenav p{
+  font-size: 20px;
+  text-align: center;
+  padding: 15px;
+  margin: 0;
+  color: white;
+  border-bottom: 2px solid #966f49;
+}
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+.sidenav ul.navbar-nav {
+  margin: 0 0 10px 0;
+}
+.sidenav .navbar-nav li:hover{
+    color: #333;
+    background: #fff;;
+}
+
+.sidenav .navbar-nav .open a:hover{
+  color: white;
+  background: #111111;
+}
+.navbar-nav.social-hub {
+  display: table;
+  table-layout: fixed;
+  width: 100vw;
+  text-align: center;
+}
+.navbar-nav.social-hub li > a {
+  font-size:2em;
+}
+.navbar-nav.social-hub li {
+  display: table-cell;
+  width: 20%;
+}
+.sidenav .navbar-nav li .tagging{
+    width: 75%;
+    display: inline-block;
+    /* background: #111111; */
+    color: #000;
+    font-size: 21px;
+    font-weight: 200;
+    /* padding: 20px 100px ; */
+    /* padding: 20px 100px 20px 30px; */
+}
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover
+{
+  background: #fff;
+}
+
+.sidenav .navbar-nav li .tagging:focus{
+    color: #14afb4;
+    background: transparent;
+}
+
+.sidenav .navbar-nav li .dropdown-toggle{
+    position:absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    padding: 15px 17px;
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.sidenav .navbar-nav li .panah1:hover, .panah2:hover, .panah3:hover, .panah4:hover, .panah5:hover, .panah6:hover{
+    color: #000;
+    /* background: transparent; */
+}
+
+/* .sidenav .navbar-nav li .dropdown-toggle .panah:active{
+  transform: rotate(180deg);
+  transition: all 0.5s ease;
+} */
+
+#main {
+    transition: margin-left .5s;
+    width: auto;
+    top:50px;
+    position: relative;
+    /*background: #eef4ff;*/
+}
+
+header{
+  transition: margin-left .5s;
+}
+
+.open span{
+  transform: rotate(180deg);
+}
+
+li .panah6{
+  transition: all .4s ease-in-out;
+}
+
+li.instagram:hover a,
+li.instagram:active a
+{
+  color:#e4405f !important;
+}
+li.google:hover a,
+li.google:active a
+{
+  color:#dd4b39  !important;
+}
+li.twitter-nav:hover a,
+li.twitter-nav:active a
+{
+  color:#55acee !important;
+}
+li.youtube:hover a,
+li.youtube:active a
+{
+  color:#cd201f !important;
+}
+li.facebook:hover a,
+li.facebook:active a
+{
+  color:#3b5999 !important;
+}
+
+/* /////////////////////////////////// */

@@ -46,7 +46,7 @@ include_once('config_fb.php');
     20 => 'Kalam'
   ];
 ?>
-<div id="page-content" style="background-color: #ECECEC;margin-bottom:10px;" class="index-page container">
+<div id="page-content" style="background-color: #ECECEC;margin-bottom:10px;margin-top:60px;" class="index-page container">
 <div class="col-md-9" style="background:#fff;">
 <div id="sidebar">
         <div class="user-panel">
@@ -56,29 +56,27 @@ include_once('config_fb.php');
           <div class="judul">
               <?php echo"<h1>$d[judul]</h1>";?>
           </div>
-          <div class="info">
-            <span class="info-name"> <?php echo"$d[reporter]";?></span>
-          </div>
-          <div class="info">
-            <p class="daftar-redaksi" style="font-size:12px;"><?php echo"$d[hari], $tgl - $jam"; ?></p>
-          </div>
-          <br>
-          <div class="sosial">
+          <div class="sosial" style="float:right">
             <ul class="list-inline" style="text-align:left;margin:0;">
               <!-- <li>
                   <a class="btn btn-social-icon btn-dibaca" ><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;<?php $dibaca = round($d[dibaca]/56); echo"$dibaca";?></a>
               </li> -->
-              <li><a class="btn btn-social-icon btn-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog','width=626,height=436'); return false;"><i class="fa fa-facebook fa-2x"></i></a>
+              <li><a class="btn btn-social-icon btn-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog','width=626,height=436'); return false;"><i class="fa fa-facebook fa-fw"></i></a>
               </li>
               <li>
-                <a class="btn btn-social-icon btn-twitter" onclick="window.open('https://twitter.com/share','width=336','height=206');return false;" ><i class="fa fa-twitter fa-2x"></i></a>
+                <a class="btn btn-social-icon btn-twitter" onclick="window.open('https://twitter.com/share','width=336','height=206');return false;" ><i class="fa fa-twitter fa-fw"></i></a>
               </li>
               <li>
-                <a class="btn btn-social-icon btn-google" onclick="window.open('','width=336','height=206');return false;" ><i class="fa fa-google-plus fa-2x"></i></a>
+                <a class="btn btn-social-icon btn-google" onclick="window.open('','width=336','height=206');return false;"><i class="fa fa-google-plus fa-fw"></i></a>
               </li>
             </ul>
           </div>
-        </div><hr>
+        </div>
+        <div class="info">
+          <span class="info-name"> <?php echo"$d[username]";?></span>
+          <p class="daftar-redaksi" style="font-size:12px;color:rgba(49, 49, 49, 0.76);"><?php echo"$d[hari], $tgl - $jam"; ?></p>
+        </div>
+          <hr>
       <div class="dua-atas">
             <div class="single_blog_sidebar wow fadeInUp">
             <?php
@@ -99,17 +97,17 @@ include_once('config_fb.php');
             mysql_query("UPDATE berita SET dibaca='$d[dibaca]'+$acak WHERE judul_seo='$_GET[judul]'");
             ?>
             <div class="sosial">
-              <ul class="list-inline" style="text-align:left;margin:0;">
+              <ul class="list-inline" style="text-align:right;margin:0;">
                 <!-- <li>
                     <a class="btn btn-social-icon btn-dibaca" ><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;<?php $dibaca = round($d[dibaca]/56); echo"$dibaca";?></a>
                 </li> -->
-                <li><a class="btn btn-social-icon btn-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog','width=626,height=436'); return false;"><i class="fa fa-facebook fa-2x"></i></a>
+                <li><a class="btn btn-social-icon btn-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog','width=626,height=436'); return false;"><i class="fa fa-facebook fa-fw"></i></a>
                 </li>
                 <li>
-                  <a class="btn btn-social-icon btn-twitter" onclick="window.open('https://twitter.com/share','width=336','height=206');return false;" ><i class="fa fa-twitter fa-2x"></i></a>
+                  <a class="btn btn-social-icon btn-twitter" onclick="window.open('https://twitter.com/share','width=336','height=206');return false;" ><i class="fa fa-twitter fa-fw"></i></a>
                 </li>
                 <li>
-                  <a class="btn btn-social-icon btn-google" onclick="window.open('','width=336','height=206');return false;" ><i class="fa fa-google-plus fa-2x"></i></a>
+                  <a class="btn btn-social-icon btn-google" onclick="window.open('','width=336','height=206');return false;" ><i class="fa fa-google-plus fa-fw"></i></a>
                 </li>
               </ul>
             </div>
@@ -180,10 +178,10 @@ include_once('config_fb.php');
                         <a class='featured_img berita-terkini'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]'></a>
                         <div class='deskripsi-judul'>
                           <h6 class='featured_title berita-terkini'>
-                          <a href='berita-$p1[judul_seo].html' style='text-align:left;padding-left:0;font-weight:normal;'>$p1[judul]</a>
+                          <a href='berita-$p1[judul_seo].html' style='text-align:left;padding-left:0;font-weight:bold;'>$p1[judul]</a>
                           </h6>
                           <p class='rubrik-tanggal'><a style='color:#052844;pointer:cursor;' href='kategori-$p1[id_kategori]-$p1[kategori_seo].html'>".ucfirst($p1[nama_kategori])."</a> | $p1[hari], $tgl - $jam </p>
-                          <p>".substr(strip_tags($p1['isi_berita']), 0, 160)."</p>
+                          <p style='margin-left:15px;'>".substr(strip_tags($p1['isi_berita']), 0, 160)."</p>
                         </div>
                       </li>
                     ";} ?>

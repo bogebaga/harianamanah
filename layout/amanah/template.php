@@ -50,7 +50,6 @@ if($d['judul'] !=''){
     echo "Kiblat Berita Islami - harianamanah.com";
 }?>">
 <meta name="description" content="Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international">
-<meta name=keywords content="situs, media muslim ,berita,berita islam, muslim, populer, indonesia, hijab, sunnah, sejarah, ummat, dakwah, foto, video, gaya, hidup, halal, haram, ramadhan, idul, fitri, adha, qurban, zakat, puasa, shalat, wudhu, quran, hadist, syariah" />
 <meta name="author" content="">
 <meta name="image"  content="<?php
 if($d['gambar']!=''){
@@ -80,7 +79,7 @@ echo "http://harianamanah.com/foto_berita/$d[gambar]";
 }else{
 echo "http://harianamanah.com/images/amanah.jpg";
 }?>"/>
-<meta property="og:site_name" content="harianamanah"/>
+<meta property="og:site_name" content="harianamanah.com"/>
 <meta property="fb:app_id" content="168067490271817"/>
 <meta name="adx:sections" content="<?php echo "$d[nama_kategori]"; ?>"/>
 <!-- Bootstrap Core CSS -->
@@ -208,7 +207,7 @@ echo "http://harianamanah.com/images/amanah.jpg";
   }
 
   nav#logo img {
-    padding:30px 0;
+    padding:15px 0 10px;
   }
   .logo{display:inline-block;}
 </style>
@@ -225,7 +224,7 @@ echo "http://harianamanah.com/images/amanah.jpg";
         <div id="cari">
           <div class="mid1">
           <form method="GET" action="search">
-            <input type="text" name="query-search" placeholder='Cari berita dan peristiwa di harianamanah ...'>
+            <input type="text" name="query-search" placeholder='Cari berita dan peristiwa'>
             <button><i class="fa fa-circle-thin"></i></button>
           </form>
           </div>
@@ -253,7 +252,7 @@ echo "http://harianamanah.com/images/amanah.jpg";
         $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_menu");
         while( $row = mysql_fetch_array($result)){
           $idp = $row['id_menu'];
-          echo "<li><a href='$row[link]' style='color:#fff;padding:15px;font-weight:bold;' >$row[nama_menu] </a></li>";
+          echo "<li><a href='$row[link]' style='color:#fff;padding:15px;font-weight:bold;text-transform:uppercase;padding:13px 9px;' >$row[nama_menu] </a></li>";
         }?>
         </ul>
         <!-- <ul class="list-inline navbar-right top-social">

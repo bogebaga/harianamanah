@@ -696,7 +696,6 @@ h2{
 .featured_img.berita-terkini img{
   width: 140px;
   height: 140px;
-  vertical-align: text-top;
 }
 .featured_title.berita-terkait,
 .featured_title.berita-lainnya{
@@ -715,13 +714,14 @@ h2{
 .deskripsi-judul.home h6{
   margin-left:15px;
   text-align:left;
+  margin-top:0;
 }
 .deskripsi-judul
 {
   display: inline-block;
   min-width:300px;
   width:580px;
-  vertical-align: middle;
+  vertical-align: top;
   height: 0;
 
 }
@@ -730,7 +730,7 @@ h2{
 }
 .deskripsi-judul > p.rubrik-tanggal
 {
-  font-size:11px;
+  font-size:12px;
   margin:5px 0 5px 15px;
   color: rgb(158, 158, 158);
 
@@ -738,10 +738,14 @@ h2{
 .deskripsi-judul > p
 {
   line-height: 1.2;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 0;
-  margin-left: 17px;
+  margin-left: 15px;
   color: black;
+}
+.deskripsi-judul.home > p
+{
+  font-size: 12px;
 }
 .deskripsi-judul.home a:hover,
 .deskripsi-judul.home a:active{

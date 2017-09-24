@@ -122,7 +122,7 @@
               <?php
               $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 5");
               while($row = mysql_fetch_array($berita_popular)){
-                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo].html' title='$row[judul]'>".substr($row[judul], 0, 60)."&hellip;</a><div class='clearfix'></div></li>";
+                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo].html' title='$row[judul]'>".substr($row[judul], 0, 50)."&hellip;</a><div class='clearfix'></div></li>";
               }
               ?>
               </ol>
@@ -149,7 +149,7 @@
               <?php
               $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 10");
               while($row = mysql_fetch_array($berita_popular)){
-                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo].html' title='$row[judul]'>".substr($row[judul], 0, 60)."&hellip;</a><div class='clearfix'></div></li>";
+                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo].html' title='$row[judul]'>".substr($row[judul], 0, 50)."&hellip;</a><div class='clearfix'></div></li>";
               }
               ?>
               </ol>

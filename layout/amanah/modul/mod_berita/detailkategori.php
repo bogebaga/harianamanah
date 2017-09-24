@@ -61,31 +61,21 @@ echo"<img src='foto_kategori/$n[photo]'>";
   while($r=mysql_fetch_array($hasil)){
   $tgl = tgl_indo($r['tanggal']);
 
-  echo"
-  <div class='trend-left-inner'>
-
-                        <div class='trend-left-list cf'>
-                            <span class='img-circle trend-bullet'></span>
-                            <figure>
-
-
-                                <div class='left-trending-fix'>	<a href='berita-$r[judul_seo].html' title=''>
-								<img src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt='$r[judul]'></a>
-								</div>
-
-                            </figure>
-                            <div class='trend-left-info'>
-                                <a href='berita-$r[judul_seo].html'>$r[judul]</a>
-
-                            </div>
-                        </div>
-
-
-            </div>
-
-  ";
-  }
-
+echo"
+<div class='trend-left-inner'>
+  <div class='trend-left-list cf'>
+    <span class='img-circle trend-bullet'></span>
+    <figure>
+        <div class='left-trending-fix'><a href='berita-$r[judul_seo].html'>
+          <img src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt='$r[judul]'></a>
+        </div>
+    </figure>
+    <div class='trend-left-info'>
+        <a href='berita-$r[judul_seo].html' style='margin-top:0;'>$r[judul]</a>
+        <div class='publish-info cf'>".substr(strip_tags($r['isi_berita']), 0, 160)."</div>
+        </div>
+  </div>
+</div>";}
   }
   $jmldata     = mysql_num_rows(mysql_query("SELECT * FROM berita WHERE id_kategori='$_GET[id]'"));
   $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);

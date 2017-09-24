@@ -1,5 +1,0 @@
-dream.css:175
-
-.artikle .artikle-text .berita p{
-font-size: 14px; 
-}

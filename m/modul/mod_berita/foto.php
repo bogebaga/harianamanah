@@ -4,25 +4,25 @@
 	</div>
  -->
 	<!-- Content -->
-	<?php function ulangi(){ 
+	<?php function ulangi(){
 		static $digit=0;
 		global $alamat;
 		$digit = $digit + 5;
-		?>	
-	<?php 
-				
+		?>
+	<?php
+
 	$terkini1 = mysql_query("SELECT * FROM album  ORDER BY id_album DESC limit  0, 1");
-	while($a=mysql_fetch_array($terkini1)){     
+	while($a=mysql_fetch_array($terkini1)){
 	$id1 = $a['id_album'];
-			
+
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item'>
 			  		<img src='http://harianamanah.id/img_album/$a[gbr_album]' alt='Header'>
-			  			
+
 			  			<span class='judul-berita-utama'>
 			  			<h3>
-			  				<a href='foto-$a[album_seo].html'>$a[jdl_album]</a>
+			  				<a href='foto-$a[album_seo]'>$a[jdl_album]</a>
 
 			  			</h3>
 			  		    </span>
@@ -32,28 +32,28 @@
 			  }
 			?>
 	<section class="container-fluid">
-	
+
 			<section class="daftar-artikel">
-				<?php 
+				<?php
 					$artikel = mysql_query("SELECT * FROM album  ORDER BY id_album DESC limit 1, 5");
 
-					while ($q = mysql_fetch_array($artikel)) 
+					while ($q = mysql_fetch_array($artikel))
 					{
 						echo "<article class= 'artikle' >
 								<div class='list-picture1'>
-									<a href='foto-$q[album_seo].html'>
+									<a href='foto-$q[album_seo]'>
 									<img class='picture' width='50%' src='http://harianamanah.id/img_album/$q[gbr_album]' />
 									</a>
 								</div>
 								<div class='artikle-text1' kode='$q[id_album]'>
-										<a href='foto-$q[album_seo].html' class='berita'><p>$q[jdl_album]</p></a>
+										<a href='foto-$q[album_seo]' class='berita'><p>$q[jdl_album]</p></a>
 										<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
 								</div>
-								</article> 
+								</article>
 					";
 					}
 				?>
-			</section>	
+			</section>
 
 			<!-- Iklan -->
 			<div class="iklan">
@@ -64,7 +64,7 @@
 
 		<?php }
 		echo ulangi();
-		
+
 		// echo ulangi();
 		// echo ulangi();
 		?>
@@ -105,8 +105,8 @@
 							{
 								$('#daftar-artikel').append(result);
 								loadMore = true;
-								// $('#more').html('<div class="more">MUAT LAINNYA</div>');
-								// $('.iklan').html('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
+								// $('#more')('<div class="more">MUAT LAINNYA</div>');
+								// $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
 
 							}
 						}
@@ -114,7 +114,7 @@
 				}
 			});
 			// $('#more').click(function(){
-			// 	$(this).html('<center><img src="assets/loading.gif" width="100px"></center>');
+			// 	$(this)('<center><img src="assets/loading.gif" width="100px"></center>');
 			// 	$.ajax({
 			// 		url: 'more.php?kategori=kajian&urut='+$('.artikle-text:last').attr('kode'),
 			// 		success: function(html)
@@ -122,8 +122,8 @@
 			// 			if(html)
 			// 			{
 			// 				$('#daftar-artikel').append(html);
-			// 				$('#more').html('<div class="more">MUAT LAINNYA</div>');
-			// 				// $('.iklan').html('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
+			// 				$('#more')('<div class="more">MUAT LAINNYA</div>');
+			// 				// $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
 
 			// 			}
 			// 		}

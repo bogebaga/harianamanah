@@ -184,6 +184,7 @@ demo-2 input#search::-webkit-input-placeholder {
 	text-decoration: none;
 	color: #000;
   display: block;
+  line-height: 1;
 }
 
 .artikle .artikle-text .link-kategori{
@@ -214,7 +215,7 @@ demo-2 input#search::-webkit-input-placeholder {
 .artikle-text{
 	width: calc(100% - 100px);
 	float: right;
-	padding: 10px 10px 10px 0;
+	padding: 0 10px 10px 0;
 }
 
 .artikle-text1{

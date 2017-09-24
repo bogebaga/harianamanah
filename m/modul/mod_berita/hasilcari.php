@@ -12,7 +12,7 @@
     when judul like '$kata %' then 3
     when judul like '% $kata' then 4
     else CONCAT(5,judul) end
-    , id_berita DESC LIMIT 20" ;
+    , id_berita DESC LIMIT 50" ;
 
   $hasil  = mysql_query($cari);
   $ketemu = mysql_num_rows($hasil);
@@ -28,13 +28,13 @@
   echo"
                 <article class= 'artikle' style='padding:0;'>
 								<div class='list-picture'>
-									<a href='berita-$r[judul_seo].html'>
+									<a href='berita-$r[judul_seo]'>
 									<img class='picture' src='http://harianamanah.com/foto_small/$r[gambar1]' />
 									</a>
 								</div>
-								<div class='artikle-text' kode='$r[id_berita]'>
-										<a href='#' class='link-kategori'>$q[nama_kategori]</a>
-										<a href='berita-$r[judul_seo].html' class='berita'><p>$r[judul]</p></a>
+								<div class='artikle-text' kode='$r[id_berita]' style='padding-top:7px;'>
+										<a href='#' class='link-kategori'>$r[nama_kategori]</a>
+										<a href='berita-$r[judul_seo]' title='$r[judul]' class='berita'><p>".substr($r['judul'], 0, 60)."&nbsp;&hellip;</p></a>
 										<p class='waktu-berita'> $r[hari], $tgl - $jam </p>
 								</div>
 				</article>

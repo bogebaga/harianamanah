@@ -65,7 +65,7 @@ session_start();
   <meta property="og:type" content="article">
   <meta property="og:url" content="<?php
     if ($d['judul_seo'] != '') :
-        echo "http://harianamanah.com/berita-$d[judul_seo].html";
+        echo "http://harianamanah.com/berita-$d[judul_seo]";
     else :
         echo "http://harianamanah.com";
     endif;
@@ -153,9 +153,9 @@ session_start();
       <h2 class="caption">HARIANAMANAH</h2>
       <ul class="nav navbar-nav">
         <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
-        <li><i class='fa fa-2x fa-lightbulb-o' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='terkini.html' class='tagging'>Terkini</a></li>
-        <li><i class='fa fa-2x fa-flash' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='popular.html' class='tagging'>Popular</a></li>
-        <li><i class='fa fa-2x fa-thumbs-o-up' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='rekomendasi.html' class='tagging'>Rekomendasi</a></li>
+        <li><i class='fa fa-2x fa-lightbulb-o' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='terkini' class='tagging'>Terkini</a></li>
+        <li><i class='fa fa-2x fa-flash' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='popular' class='tagging'>Popular</a></li>
+        <li><i class='fa fa-2x fa-thumbs-o-up' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='rekomendasi' class='tagging'>Rekomendasi</a></li>
       </ul>
       <h2 class="caption">KANAL</h2>
             <ul class="nav navbar-nav">
@@ -187,7 +187,7 @@ session_start();
         </div>
     </header>
     <section id="main">
-<?php include "content.php"; ?>
+    <?php include "content.php"; ?>
     <footer>
         <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
         <div class="gambar-footer">

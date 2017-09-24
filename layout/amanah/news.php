@@ -9,10 +9,10 @@
       <div class="col-xs-12" style="padding:0;float:none;margin-bottom:25px">
         <div class='flex-container'>
         <?php
-        $rubrik=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '8' ORDER BY id_berita DESC LIMIT 5");
+        $rubrik=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE m.id_parent = '8' ORDER BY id_berita DESC LIMIT 5");
         $i=0;
         while($row = mysql_fetch_array($rubrik)){
-          $tgl = tgl_short_tgl($row['tanggal']);
+          $tgl = tgl_indo_short($row['tanggal']);
           $jam = trans_jam($row['jam']);
           $id_berita = $row['id_berita'];
           echo "<div class='item-flex grid-$i'>

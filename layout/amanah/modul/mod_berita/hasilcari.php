@@ -9,14 +9,14 @@
         $kata = $_GET['query-search'];
         // $kata = htmlentities(htmlspecialchars($kata), ENT_QUOTES);
 
-        $cari = "SELECT * FROM berita where judul LIKE '%$kata%'
+        $cari = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%'
           ORDER BY case
           when judul like '$kata' then 1
           when judul like '% $kata %' then 2
           when judul like '$kata %' then 3
           when judul like '% $kata' then 4
           else CONCAT(5,judul) end
-          , id_berita DESC LIMIT 20" ;
+          , id_berita DESC LIMIT 50" ;
         $hasil  = mysql_query($cari);
         $ketemu = mysql_num_rows($hasil);
 
@@ -37,8 +37,8 @@
                 </div>
               </figure>
               <div class='trend-left-info'>
-                <a href='berita-$r[judul_seo].html' title='$r[judul]'>".substr($r[judul], 0, 80)."&#8230;</a>
-                <div class='publish-info cf'></div>
+                <a href='berita-$r[judul_seo].html' title='$r[judul]' style='margin-top:0;'>$r[judul]</a>
+                <div class='publish-info cf'>".substr(strip_tags($r['isi_berita']), 0, 160)." - <a style='display:inline-block;margin:0;color:#19A2AC;line-height:1;' href='$r[link]'>$r[nama_menu]</a></div>
               </div>
             </div>
           </div>";}

@@ -1,18 +1,42 @@
-	<!-- Foto Kategori -->
-	<!-- div class="foto-Kategori">
-		<img src="assets/muslimStar.png" class="img-responsive" alt="Muslim Star">
-	</div>
- -->
-	<!-- Content -->
+  <?php
+    if($_GET['jn'] == 'terkini')
+      $query = [
+        'headline' => 'SELECT * FROM berita ORDER BY id_berita DESC LIMIT 1',
+        'list' => 'SELECT * FROM berita WHERE id_berita < $id_berita ORDER BY id_berita DESC LIMIT 10'
+      ];
+    elseif($_GET['jn'] == 'popular')
+      $query = [
+        'headline' => 'SELECT * FROM berita ORDER BY dibaca DESC LIMIT 1',
+        'list' => 'SELECT * FROM berita WHERE id_berita < $id_berita ORDER BY dibaca DESC LIMIT 10'
+      ];
+    elseif($_GET['jn'] == 'rekomendasi')
+      $query = [
+        'headline' => 'SELECT * FROM berita WHERE aktif = "Y" ORDER BY id_berita DESC LIMIT 1',
+        'list' => 'SELECT * FROM berita WHERE aktif = "Y" AND id_berita < $id_berita ORDER BY id_berita DESC LIMIT 10'
+      ];
+    else
+    $query = [
+      'headline' => 'SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = $_GET[jn]) ORDER BY berita.id_berita DESC LIMIT 1',
+      'list' => 'SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = $_GET[jn]) AND berita.id_berita < $id_berita ORDER BY berita.id_berita DESC LIMIT 10'
+    ];
+  ?>
+
+  <ul class="navbar sub-rubrik">
+  <?php
+  $kalam = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[jn]')");
+  while($row = mysql_fetch_array($kalam)){
+    echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
+  }
+  ?>
+</ul>
   <section class="container-fluid" style="background-color:white;">
 		<section class="headline row">
-    <span id="id" style="display:none;"><?php echo $_GET['id']?></span>
-    <?php
-        $terkini=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori WHERE berita.headline='Y' AND berita.id_kategori = '$_GET[id]' ORDER BY id_berita DESC LIMIT 1");
+			<?php
+				$terkini=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[jn]') ORDER BY berita.id_berita DESC LIMIT 1");
 				while($t=mysql_fetch_array($terkini)){
+          $id_berita = $t['id_berita'];
           $tgl = tgl_indo($t['tanggal']);
           $jam = trans_jam($t['jam']);
-					$id1 = $t['id_berita'];
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item'>
@@ -20,16 +44,15 @@
             <span class='judul-berita-utama'>
               <div class='caption-dt-jd'>
                 <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
-                <span class='tanggal-release home'> $t[hari], $tgl - $jam</span>
+                <span class='tanggal-release home'>$t[hari], $tgl - $jam</span>
               </div>
             </span>
 			  	</div>
         </div>"; }?>
-    </section>
+		</section>
 		<section class="daftar-artikel">
-			<?php
-			$_digit = 10;
-			$artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori WHERE berita.id_berita < '$id1' AND berita.id_kategori = '$_GET[id]' ORDER BY id_berita DESC LIMIT $_digit");
+      <?php
+			$artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[jn]') AND berita.id_berita < $id_berita ORDER BY berita.id_berita DESC LIMIT 10");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);
@@ -50,23 +73,23 @@
 					</div>
 					<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
             <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-            <a class='link-kategori'>$q[nama_kategori]</a>
-            <p class='waktu-berita'>  $q[hari], $tgl - $jam </p>
+            <a href='$q[link]'class='link-kategori'>$q[nama_kategori]</a>
+            <p class='waktu-berita'>$q[hari], $tgl - $jam </p>
 					</div>
 				</article>
-				";} ?>
+				";}	?>
 		</section>
 		<div class="iklan">
-      <a href="abutours" title="AbuTours.com">
-        <img class="img-responsive" src="assets/abujie.jpg" alt="iklan">
-      </a>
-    </div>
+            <a href="abutours" title="AbuTours.com">
+                <img class="img-responsive" src="assets/abujie.jpg" alt="iklan">
+            </a>
+        </div>
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">
 			<center><img src="assets/loading.gif" width="100px"></center>
 		</div>
 		</section>
-<script>
+    <script>
 $(document).ready(function(){
   var loadMore = true;
   $(window).scroll(function(){
@@ -78,9 +101,8 @@ $(document).ready(function(){
         method: 'GET',
         url: 'more.php',
         data: {
-          kategori: 'detail',
-          urut: $('.artikle-text:last').attr('kode'),
-          id: $('#id').text()
+          kategori: '<?php echo $_GET['jn']?>',
+          urut: $('.artikle-text:last').attr('kode')
         },
         beforeSend: function()
         {
@@ -98,7 +120,6 @@ $(document).ready(function(){
             loadMore = true;
             // $('#more')('<div class="more">MUAT LAINNYA</div>');
             // $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
-
           }
         }
       });
@@ -107,7 +128,7 @@ $(document).ready(function(){
 			// $('#more').click(function(){
 			// 	$(this)('<center><img src="assets/loading.gif" width="100px"></center>');
 			// 	$.ajax({
-			// 		url: 'more.php?kategori=kajian&urut='+$('.artikle-text:last').attr('kode'),
+			// 		url: 'more.php?kategori=news&urut='+$('.artikle-text:last').attr('kode'),
 			// 		success: function(html)
 			// 		{
 			// 			if(html)
@@ -118,7 +139,9 @@ $(document).ready(function(){
 
 			// 			}
 			// 		}
-			// 	});
+			// 	})
+
+
 			// });
-		});
+});
 </script>

@@ -397,7 +397,8 @@ Pseudo ::after element
     display: block;
     object-fit: cover;
     height: 120px;
-    width: 245px;
+    /* width: 245px; */
+    width: 100%;
 }
 img {
     max-width: 100%;
@@ -472,11 +473,9 @@ a:active, a:hover, a:visited {
     font: 1.2em/1.9em "RobotoRegular",Arial,Helvetica,sans-serif;
 }
 .publish-info {
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 2%;
-    width: 98%;
+  line-height: 1.2;
+  margin-top:20px;
+  margin-left: 12px;
 }
 
 figure{

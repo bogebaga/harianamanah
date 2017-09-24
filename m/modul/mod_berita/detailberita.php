@@ -73,7 +73,7 @@
     }
 </style>
 <section class="container-fluid bungkus" id="test">
-    <p class="daftar-redaksi" style="margin:10px 0 0;"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".lcfirst($menu[$d['id_parent']]).".html>".$menu[$d['id_parent']]."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
+    <p class="daftar-redaksi" style="margin:10px 0 0;font-size:12px;"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".lcfirst($menu[$d['id_parent']]).">".$menu[$d['id_parent']]."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
           </div>
     <h1 class="read_berita"><?php echo $d['judul'];?></h1>
     <span class="tanggal-release"><?php echo $d['hari'].", ".$tgl." - ".$jam ?></span>&nbsp;Oleh&nbsp;<span><?php echo $d['username']?></span>
@@ -90,12 +90,13 @@
       })
     </script>
     <div class="social-optimize">
-      <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/m/berita-".$d['judul_seo'].".html"?>" class="social-share fa fa-facebook" target="_blank"></a>
-      <a href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/m/berita-".$d['judul_seo'].".html"?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="social-share fa fa-twitter" target="_blank"></a>
-      <a href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/m/berita-".$d['judul_seo'].".html"?>" class="social-share fa fa-google-plus" target="_blank"></a>
-      <a href="https://lineit.line.me/share/ui?url=<?php echo "http://harianamanah.com/m/berita-".$d['judul_seo'].".html"?>" class="social-share line" target="_blank"></a>
-      <a href="whatsapp://send?text=<?php echo "http://harianamanah.com/m/berita-".$d['judul_seo'].".html"?>" class="social-share fa fa-whatsapp" target="_blank"></a>
-      <a href="https://telegram.me/share/url?url=<?php echo "http://harianamanah.com/m/berita-".$d['judul_seo'].".html"?>&text=<?php echo $d['judul']?>" class="social-share fa fa-paper-plane" target="_blank"></a>
+      <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share fa fa-facebook" target="_blank"></a>
+      <a href="https://twitter.com/intent/tweet?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="social-share fa fa-twitter" target="_blank"></a>
+      <a href="https://plus.google.com/share?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share fa fa-google-plus" target="_blank"></a>
+      <a href="https://line.me/R/msg/text/?<?php echo "$d[judul] http://m.harianamanah.com/berita-$d[judul_seo]"?>" class="social-share line" target="_blank"></a>
+      <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+      <a href="whatsapp://send?text=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share fa fa-whatsapp" target="_blank"></a>
+      <a href="https://telegram.me/share/url?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>" class="social-share fa fa-paper-plane" target="_blank"></a>
       <a href="#facebook-comment" class="social-share fa fa-commenting-o"></a>
     </div>
     <div class="box left">
@@ -137,7 +138,7 @@
           $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != $d[id_berita] order by id_berita DESC limit 9");
           while($p1=mysql_fetch_array($detail1)){
           echo"
-            <li><a href='berita-$p1[judul_seo].html' title='artikel-lain'>$p1[judul]</a></li>";
+            <li><a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a></li>";
           }?>
       </ul>
   </div>
@@ -152,7 +153,7 @@
           $detail1=mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 5");
           while($p1=mysql_fetch_array($detail1)){
           echo"
-            <li><a href='berita-$p1[judul_seo].html' title='artikel-lain'>$p1[judul]</a></li>";
+            <li><a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a></li>";
           }?>
       </ul>
   </div>
@@ -163,13 +164,13 @@
 <section class="container-fluid bungkus nav-nex-pre">
   <?php
   // echo $d['id_kategori'];
-    $link_berita_prev = mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' ORDER BY id_berita DESC LIMIT 1");
+    $link_berita_prev = mysql_query("SELECT * FROM berita WHERE id_berita < $d[id_berita] AND id_kategori = '$d[id_kategori]' ORDER BY id_berita DESC LIMIT 1");
     while($row_p=mysql_fetch_array($link_berita_prev)){
-      echo "<a class='berita-next' href='berita-$row_p[judul_seo].html'>$row_p[judul]<span class='fa fa-long-arrow-left'></span></a>";
+      echo "<a class='berita-next' href='berita-$row_p[judul_seo]'>$row_p[judul]<span class='fa fa-long-arrow-left'></span></a>";
     }
-    $link_berita_next = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 1");
+    $link_berita_next = mysql_query("SELECT * FROM berita WHERE id_berita > $d[id_berita] AND id_kategori = '$d[id_kategori]' LIMIT 1");
     while($row_n=mysql_fetch_array($link_berita_next)){
-      echo "<a class='berita-prev' href='berita-$row_n[judul_seo].html'>$row_n[judul]<span class='fa fa-long-arrow-right'></span></a>";
+      echo "<a class='berita-prev' href='berita-$row_n[judul_seo]'>$row_n[judul]<span class='fa fa-long-arrow-right'></span></a>";
     }
   ?>
 </section>
@@ -180,15 +181,15 @@
     </div>
       <ul class="list-berita-terkini" style="list-style-type: none;">
           <?php
-          $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY id_berita DESC LIMIT 19");
+          $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY id_berita DESC LIMIT 20");
           while($p1=mysql_fetch_array($detail1)){
           echo"
             <li>
-              <a href='berita-$p1[judul_seo].html' title='$p1[judul]'>
-                <div class='caption'>$p1[judul]</div>
+              <a href='berita-$p1[judul_seo]' title='$p1[judul]'>
+                <div class='caption'>".substr($p1['judul'], 0, 50)."&hellip;</div>
               </a>
               <img src='http://harianamanah.com/foto_small/$p1[gambar1]' width='85px' alt='$p1[judul]'>
-              <a href='kategori-$p1[id_kategori]-$p1[kategori_seo].html'><span>$p1[nama_kategori]</span></a>
+              <a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'><span>$p1[nama_kategori]</span></a>
             </li>";
           }?>
       <div class="clearfix"></div>
@@ -200,7 +201,7 @@
         var judul =  $(".jud").val();
         // setTimeout(function(){
         //     $.post("select.php", {jud: judul }, function(result){
-        //         $("#hasil").html(result);
+        //         $("#hasil")(result);
         //     });
         // }, 500);
 

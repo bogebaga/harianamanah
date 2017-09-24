@@ -19,10 +19,10 @@ while($a=mysql_fetch_array($terkini1)){
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item'>
 			  		<img src='http://harianamanah.id/img_video/$a[gbr_video]' alt='Header'>
-			  			
+
 			  			<span class='judul-berita-utama'>
 			  			<h3>
-			  				<a href='video-$a[video_seo].html'>$a[jdl_video]</a>
+			  				<a href='video-$a[video_seo]'>$a[jdl_video]</a>
 
 			  			</h3>
 			  		    </span>
@@ -41,15 +41,15 @@ while($a=mysql_fetch_array($terkini1)){
         {
             echo "<article class= 'artikle' >
 								<div class='list-picture1'>
-									<a href='video-$q[video_seo].html'>
+									<a href='video-$q[video_seo]'>
 									<img class='picture' width='50%' src='http://harianamanah.id/img_video/$q[gbr_video]' />
 									</a>
 								</div>
 								<div class='artikle-text1' kode='$q[id_video]'>
-										<a href='video-$q[video_seo].html' class='berita'><p>$q[jdl_video]</p></a>
+										<a href='video-$q[video_seo]' class='berita'><p>$q[jdl_video]</p></a>
 										<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
 								</div>
-								</article> 
+								</article>
 					";
         }
         ?>
@@ -70,15 +70,15 @@ while($a=mysql_fetch_array($terkini1)){
         {
             echo "<article class= 'artikle' >
 								<div class='list-picture1'>
-									<a href='video-$q[video_seo].html'>
+									<a href='video-$q[video_seo]'>
 									<img class='picture' width='50%' src='http://harianamanah.id/img_video/$q[gbr_video]' />
 									</a>
 								</div>
 								<div class='artikle-text1' kode='$q[id_video]'>
-										<a href='video-$q[video_seo].html' class='berita'><p>$q[jdl_video]</p></a>
+										<a href='video-$q[video_seo]' class='berita'><p>$q[jdl_video]</p></a>
 										<p class='waktu-berita'> $q[tanggal] | $q[jam] </p>
 								</div>
-								</article> 
+								</article>
 					";
         }
         ?>
@@ -127,8 +127,8 @@ while($a=mysql_fetch_array($terkini1)){
                         {
                             $('#daftar-artikel').append(result);
                             loadMore = true;
-                            // $('#more').html('<div class="more">MUAT LAINNYA</div>');
-                            // $('.iklan').html('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
+                            // $('#more')('<div class="more">MUAT LAINNYA</div>');
+                            // $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
 
                         }
                     }
@@ -136,7 +136,7 @@ while($a=mysql_fetch_array($terkini1)){
             }
         });
         // $('#more').click(function(){
-        // 	$(this).html('<center><img src="assets/loading.gif" width="100px"></center>');
+        // 	$(this)('<center><img src="assets/loading.gif" width="100px"></center>');
         // 	$.ajax({
         // 		url: 'more.php?kategori=kajian&urut='+$('.artikle-text:last').attr('kode'),
         // 		success: function(html)
@@ -144,8 +144,8 @@ while($a=mysql_fetch_array($terkini1)){
         // 			if(html)
         // 			{
         // 				$('#daftar-artikel').append(html);
-        // 				$('#more').html('<div class="more">MUAT LAINNYA</div>');
-        // 				// $('.iklan').html('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
+        // 				$('#more')('<div class="more">MUAT LAINNYA</div>');
+        // 				// $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
 
         // 			}
         // 		}

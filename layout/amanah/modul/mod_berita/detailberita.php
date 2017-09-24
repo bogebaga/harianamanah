@@ -236,9 +236,9 @@ include_once('config_fb.php');
               <div class="title berita-foto" style="color:#fff;padding:15px;background-color: #1c9fa7;background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);">BERITA POPULAR</div>
               <ul class="list-berita-popular">
               <?php
-              $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 8");
+              $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 12");
               while($row = mysql_fetch_array($berita_popular)){
-                echo "<li style='padding:0 10px 10px 10px;font-size:15px;font-weight:600;'><a href='berita-$row[judul_seo].html'>$row[judul]</a><div class='clearfix'></div></li>";
+                echo "<li style='padding:0 10px 10px 10px;font-size:15px;font-weight:600;'><a href='berita-$row[judul_seo].html' title='$row[judul]'>".substr($row['judul'], 0, 50)."&hellip;</a><div class='clearfix'></div></li>";
               }
               ?>
               </ul>

@@ -1,29 +1,5 @@
-  <?php
-    if($_GET['jn'] == 'terkini')
-      $query = [
-        'headline' => 'SELECT * FROM berita ORDER BY id_berita DESC LIMIT 1',
-        'list' => 'SELECT * FROM berita WHERE id_berita < $id_berita ORDER BY id_berita DESC LIMIT 10'
-      ];
-    elseif($_GET['jn'] == 'popular')
-      $query = [
-        'headline' => 'SELECT * FROM berita ORDER BY dibaca DESC LIMIT 1',
-        'list' => 'SELECT * FROM berita WHERE id_berita < $id_berita ORDER BY dibaca DESC LIMIT 10'
-      ];
-    elseif($_GET['jn'] == 'rekomendasi')
-      $query = [
-        'headline' => 'SELECT * FROM berita WHERE aktif = "Y" ORDER BY id_berita DESC LIMIT 1',
-        'list' => 'SELECT * FROM berita WHERE aktif = "Y" AND id_berita < $id_berita ORDER BY id_berita DESC LIMIT 10'
-      ];
-    else
-    $query = [
-      'headline' => 'SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = $_GET[jn]) ORDER BY berita.id_berita DESC LIMIT 1',
-      'list' => 'SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = $_GET[jn]) AND berita.id_berita < $id_berita ORDER BY berita.id_berita DESC LIMIT 10'
-    ];
-  ?>
   <ul class="navbar sub-rubrik">
-  test
   <?php
-  echo $_GET['jn'];
   $kalam = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[jn]')");
   while($row = mysql_fetch_array($kalam)){
     echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";

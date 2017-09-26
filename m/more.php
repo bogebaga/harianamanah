@@ -3,37 +3,7 @@ include '../config/koneksi.php';
 include '../config/fungsi_indotgl.php';
 include 'server.php';
 
-if ($_GET['kategori'])
-{
-  $artikel = mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND berita.id_berita < '$_GET[urut]' AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[kategori]')  ORDER BY berita.id_berita DESC LIMIT 0, 9");
-  while ($q = mysql_fetch_array($artikel))
-  {
-    $tgl = tgl_indo($q['tanggal']);
-    $jam = trans_jam($q['jam']);
-    if (strlen($q['judul']) > 60)
-      {
-        $hasil = substr($q['judul'], 0, 60)."&hellip;";
-      }
-      else
-      {
-        $hasil = $q['judul'];
-      }
-    echo "
-    <article class= 'artikle' >
-      <div class='list-picture'>
-        <a href='berita-$q[judul_seo]'>
-          <img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
-        </a>
-      </div>
-      <div class='artikle-text' kode='$q[id_berita]'>
-      <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-      <a href='$q[link]' class='link-kategori'>$q[nama_kategori]</a>
-          <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
-      </div>
-    </article>
-  ";}
-}
-elseif ($_GET['kategori']=='detail')
+if ($_GET['kategori']=='detail')
 {
 	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_kategori = '$_GET[id]' AND berita.id_berita < '$_GET[urut]' ORDER BY id_berita DESC LIMIT 0, 9");
   while ($q = mysql_fetch_array($artikel))
@@ -61,6 +31,36 @@ elseif ($_GET['kategori']=='detail')
     <p class='waktu-berita' idk='$q[id_kategori]'> $q[hari], $tgl - $jam </p>
     </div>
   </article>
+  ";}
+}
+elseif ($_GET['kategori'])
+{
+  $artikel = mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND berita.id_berita < '$_GET[urut]' AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[kategori]')  ORDER BY berita.id_berita DESC LIMIT 0, 9");
+  while ($q = mysql_fetch_array($artikel))
+  {
+    $tgl = tgl_indo($q['tanggal']);
+    $jam = trans_jam($q['jam']);
+    if (strlen($q['judul']) > 60)
+      {
+        $hasil = substr($q['judul'], 0, 60)."&hellip;";
+      }
+      else
+      {
+        $hasil = $q['judul'];
+      }
+    echo "
+    <article class= 'artikle' >
+      <div class='list-picture'>
+        <a href='berita-$q[judul_seo]'>
+          <img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
+        </a>
+      </div>
+      <div class='artikle-text' kode='$q[id_berita]'>
+      <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
+      <a href='$q[link]' class='link-kategori'>$q[nama_kategori]</a>
+          <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
+      </div>
+    </article>
   ";}
 }
 else

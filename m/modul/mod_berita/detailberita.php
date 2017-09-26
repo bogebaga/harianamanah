@@ -28,15 +28,6 @@
   $tgl = tgl_indo($d['tanggal']);
   $jam = trans_jam($d['jam']);
   $baca = $d['dibaca']+1;
-
-  $menu = [
-    8 => 'News',
-    13 => 'Lifestyle',
-    14 => 'Ummatizen',
-    18 => 'Kajian',
-    19 => 'Sosok',
-    20 => 'Kalam'
-  ];
 ?>
 <style>
     .bungkus{
@@ -72,8 +63,12 @@
         top:50px;
     }
 </style>
+<?php
+  $query = mysql_query("SELECT link, nama_menu FROM menu where id_menu = (SELECT id_parent FROM menu WHERE link = '$d[link]')");
+  $menu = mysql_fetch_array($query);
+?>
 <section class="container-fluid bungkus" id="test">
-    <p class="daftar-redaksi" style="margin:10px 0 0;font-size:12px;"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".lcfirst($menu[$d['id_parent']]).">".$menu[$d['id_parent']]."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
+    <p class="daftar-redaksi" style="margin:10px 0 0;font-size:12px;"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=$menu[link]>$menu[nama_menu]</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
           </div>
     <h1 class="read_berita"><?php echo $d['judul'];?></h1>
     <span class="tanggal-release"><?php echo $d['hari'].", ".$tgl." - ".$jam ?></span>&nbsp;Oleh&nbsp;<span><?php echo $d['username']?></span>

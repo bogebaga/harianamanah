@@ -35,13 +35,13 @@
         $tgl = tgl_indo($q['tanggal']);
         $jam = trans_jam($q['jam']);
 				if (strlen($q['judul']) > 60)
-							{
-								$hasil = substr($q['judul'], 0, 60)."&hellip;";
-							}
-							else
-							{
-								$hasil = $q['judul'];
-							}
+        {
+          $hasil = substr($q['judul'], 0, 60)."&hellip;";
+        }
+        else
+        {
+          $hasil = $q['judul'];
+        }
 				echo "<article class= 'artikle' >
 					<div class='list-picture'>
 						<a href='berita-$q[judul_seo]'>
@@ -101,20 +101,20 @@
 		});
 	</script>
 <?php }
-  // elseif ($_GET['module']=='detailkategori'){
-  //   include "modul/mod_berita/detailkategori.php";}
-  // elseif ($_GET['module']=='detailberita'){
-  //   include "modul/mod_berita/detailberita.php";}
-  // elseif ($_GET['module']=='detailvideo'){
-  //   include "modul/mod_berita/detailvideo.php";}
-	// elseif ($_GET['module']=='hasilcari'){
-  // 	include "modul/mod_berita/hasilcari.php";}
-  // elseif ($_GET['module']=='rubrik')
-  //   include "modul/mod_berita/detailrubrik.php";
-	// elseif ($_GET['module']=='video')
-	// 	include 'modul/mod_berita/video.php';
-	// elseif ($_GET['module']=='foto')
-	// 	include 'modul/mod_berita/foto.php';
-	// elseif ($_GET['module']=='detailfoto')
-	// 	include 'modul/mod_berita/detailfoto.php';
+  elseif ($_GET['module']=='detailkategori'){
+    include "modul/mod_berita/detailkategori.php";}
+  elseif ($_GET['module']=='detailberita'){
+    include "modul/mod_berita/detailberita.php";}
+  elseif ($_GET['module']=='detailvideo'){
+    include "modul/mod_berita/detailvideo.php";}
+	elseif ($_GET['module']=='hasilcari'){
+  	include "modul/mod_berita/hasilcari.php";}
+  elseif ($_GET['module']=='rubrik')
+    include "modul/mod_berita/detailrubrik.php";
+	elseif ($_GET['module']=='video')
+		include 'modul/mod_berita/video.php';
+	elseif ($_GET['module']=='foto')
+		include 'modul/mod_berita/foto.php';
+	elseif ($_GET['module']=='detailfoto')
+		include 'modul/mod_berita/detailfoto.php';
 ?>

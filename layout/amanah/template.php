@@ -1,5 +1,4 @@
 <?php
-include "config/koneksi.php";
 error_reporting(0);
 	$detail=mysql_query("SELECT * FROM berita,users,kategori
 			WHERE users.username=berita.username
@@ -18,86 +17,119 @@ error_reporting(0);
 			AND album_seo='$_GET[judul]'");
   $d2   = mysql_fetch_array($detail2);
 ?>
-
 <!DOCTYPE html>
-<html lang="en"
-xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:og="http://ogp.me/ns#"
-      xmlns:fb="https://www.facebook.com/2008/fbml">
+<html>
 <head>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-8233268686927754",
-        enable_page_level_ads: true
-    });
-</script>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title><?php
-if($d['judul'] !=''){
-    echo "$d[judul]" ." - harianamanah.com";
-}else{
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="googlebot-news" content="index, follow" />
+  <meta name="title" content="<?php
+  if($d['judul'] !=''){
+    echo "$d[judul]";
+  }else{
     echo "Kiblat Berita Islami - harianamanah.com";
-}
-?>
+  }?>" />
+  <meta name="description" content="<?php
+  if($d['isi_berita'] != '')
+    echo desc($d['isi_berita']);
+  else
+    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+  ?>" />
+  <meta name="image"  content="<?php
+  if($d['gambar']!=''){
+    echo "http://harianamanah.com/foto_berita/$d[gambar]";
+  }else{
+    echo "http://harianamanah.com/images/amanah.jpg";
+  }
+  ?>" />
+  <title><?php
+  if($d['judul'] !=''){
+      echo "$d[judul]";
+  }else{
+      echo "Kiblat Berita Islami - harianamanah.com";
+  }?>
 </title>
-<meta name="title" content="<?php
-if($d['judul'] !=''){
-    echo "$d[judul]" ." - harianamanah.com";
-}else{
-    echo "Kiblat Berita Islami - harianamanah.com";
-}?>">
-<meta name="description" content="Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international">
-<meta name="author" content="">
-<meta name="image"  content="<?php
-if($d['gambar']!=''){
-echo "http://harianamanah.com/foto_berita/$d[gambar]";
-}else{
-echo "http://harianamanah.com/images/amanah.jpg";
-}
-?>" />
-<meta property="og:title" content="<?php
-if($d['judul'] !=''){
-    echo "$d[judul]" ." - harianamanah.com";
-}else{
-    echo "Kiblat Berita Islami - harianamanah.com";
-}
-?>"/>
-<meta property="og:description" content="Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international"/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content="<?php
-if ($d['judul_seo'] != '') {
-    echo "http://harianamanah.com/berita-$d[judul_seo].html";
-} else {
-    echo "http://harianamanah.com";
-}?>"/>
-<meta property="og:image" content="<?php
-if($d['gambar']!=''){
-echo "http://harianamanah.com/foto_berita/$d[gambar]";
-}else{
-echo "http://harianamanah.com/images/amanah.jpg";
-}?>"/>
-<meta property="og:site_name" content="harianamanah.com"/>
-<meta property="fb:app_id" content="168067490271817"/>
-<meta name="adx:sections" content="<?php echo "$d[nama_kategori]"; ?>"/>
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css"  type="text/css">
-<link href="css/structure.css" rel="stylesheet">
-<!-- Owl Carousel Assets -->
-<link href="owl-carousel/owl.carousel.css" rel="stylesheet">
-<link href="owl-carousel/owl.theme.css" rel="stylesheet">
-<link rel="shortcut icon" type="image/png" href="favicon.png">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/new.css">
-<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
+  <meta property="og:title" content="<?php
+  if($d['judul'] !=''){
+      echo "$d[judul]";
+  }else{
+      echo "Kiblat Berita Islami - harianamanah.com";
+  }
+  ?>" />
+  <meta property="og:description" content="<?php
+  if($d['isi_berita'] != '')
+    echo desc($d['isi_berita']);
+  else
+    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+  ?>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="<?php
+  if ($d['judul_seo'] != '') {
+      echo "http://harianamanah.com/berita-$d[judul_seo].html";
+  } else {
+      echo "http://harianamanah.com";
+  }?>" />
+  <meta property="og:image" content="<?php
+  if($d['gambar']!=''){
+  echo "http://harianamanah.com/foto_berita/$d[gambar]";
+  }else{
+  echo "http://harianamanah.com/images/amanah.jpg";
+  }?>" />
+  <meta property="og:site_name" content="harianamanah.com" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="fb:admins" content="490830364408744" />
+  <meta property="fb:pages" content="824693407689103" />
+  <meta property="fb:app_id" content="168067490271817" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@harianamanah" />
+  <meta name="twitter:site:id" content="@harianamanah" />
+  <meta name="twitter:creator" content="@harianamanah" />
+  <meta name="twitter:title" content="<?php
+  if($d['judul'] !=''){
+      echo "$d[judul]";
+  }else{
+      echo "Kiblat Berita Islami - harianamanah.com";
+  }?>" />
+  <meta name="twitter:url" content="<?php
+  if ($d['judul_seo'] != '') {
+      echo "http://harianamanah.com/berita-$d[judul_seo].html";
+  } else {
+      echo "http://harianamanah.com";
+  }?>" />
+  <meta name="twitter:description" content="<?php
+  if($d['isi_berita'] != '')
+    echo desc($d['isi_berita']);
+  else
+    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+  ?>" />
+  <meta name="twitter:image" content="<?php
+  if($d['gambar']!=''){
+    echo "http://harianamanah.com/foto_berita/$d[gambar]";
+  }else{
+    echo "http://harianamanah.com/images/amanah.jpg";
+  }
+  ?>" />
 
-<!-- jQuery and Modernizr-->
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<!-- mobile view -->
+  <!-- Bootstrap Core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link href="css/structure.css" rel="stylesheet" />
+  <!-- Owl Carousel Assets -->
+  <link href="owl-carousel/owl.carousel.css" rel="stylesheet" />
+  <link href="owl-carousel/owl.theme.css" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/new.css" />
+  <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen" />
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css" />
+
+  <!-- jQuery and Modernizr-->
+  <script src="js/jquery-2.1.1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- mobile view -->
   <script type="text/javascript">
     var URL = window.location.href.split('/').pop();
     if(screen.width < 768)

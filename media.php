@@ -14,8 +14,9 @@
   include "config/fungsi_badword.php";
   include "config/fungsi_kalender.php";
   include "config/option.php";
+  include "config/desc.php";
   // include_once "police/project-security.php";
-  
+
   // Memilih template yang aktif saat ini
   $pilih_template=mysql_query("SELECT folder FROM templates WHERE aktif='Y'");
   $f=mysql_fetch_array($pilih_template);

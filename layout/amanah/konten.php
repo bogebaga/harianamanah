@@ -31,7 +31,7 @@
                   <div class='slider-berita-terkait' style='position:absolute;margin-top:-45px;right:13px;width:170px;'>
                     <div style='color:#efcb17;font-size:15px;display:inline-block;padding: 7px;border:1px solid #efcb17;'>Berita Terkait</div>
                     <ul style='line-height:.8;margin-top:10px'>";
-                      $terkait=mysql_query("SELECT * FROM berita ORDER BY id_berita DESC LIMIT 3");
+                      $terkait=mysql_query("SELECT * FROM berita WHERE id_kategori = '$t[id_kategori]' ORDER BY id_berita DESC LIMIT 3");
                       while($u=mysql_fetch_array($terkait)){
                         echo "<li><a href='berita-$u[judul_seo].html' style='font-size:12px;color:white;'>$u[judul]</a></li>";
                       };
@@ -179,7 +179,7 @@
                   <div class='deskripsi-judul home'>
                     <h6><a href='berita-$p1[judul_seo].html' title='$p1[judul]'>".substr($p1['judul'], 0, 60)."&hellip;</a></h6>
                     <p class='rubrik-tanggal'><a href='kategori-$p1[id_kategori]-$p1[kategori_seo].html'>".strtoupper($p1['nama_kategori'])."</a> | $p1[hari], $tgl - $jam</p>
-                    <p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($p1['isi_berita']), 0, 150)."&nbsp;<a href='berita-$p1[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
+                    <p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($p1['isi_berita']), 0, 130)."&nbsp;<a href='berita-$p1[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
                     <p data-opacity='true' style='margin:0 0 0 12px;'>
                       <a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$p1[judul_seo].html' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
                       <a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$p1[judul_seo].html&text=$p1[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>

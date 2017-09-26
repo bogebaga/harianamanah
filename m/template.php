@@ -5,87 +5,128 @@ session_start();
   include "../config/fungsi_indotgl.php";
   include "../config/fungsi_combobox.php";
   include "../config/class_paging.php";
+  include "../config/desc.php";
   error_reporting(0);
 
-  $detail=mysql_query("SELECT * FROM berita,users,kategori
-                WHERE users.username=berita.username
-                AND kategori.id_kategori=berita.id_kategori
-                AND judul_seo= '$_GET[judul]'");
-  $d   = mysql_fetch_array($detail);
-  $tgl = tgl_indo($d['tanggal']);
-  $baca = $d['dibaca']+1;
+	$detail=mysql_query("SELECT * FROM berita,users,kategori
+			WHERE users.username=berita.username
+			AND kategori.id_kategori=berita.id_kategori
+			AND judul_seo='$_GET[judul]'");
+	$d   = mysql_fetch_array($detail);
+	$tgl = tgl_indo($d['tanggal']);
+	$baca = $d['dibaca']+1;
 
-  $detail1=mysql_query("SELECT * FROM video WHERE video_seo = $_GET[judul]");
-  $d1   = mysql_fetch_array($detail1);
+	$detail1=mysql_query("SELECT * FROM video WHERE video_seo ='$_GET[judul]'");
+	$d1   = mysql_fetch_array($detail1);
 
-  $detail2=mysql_query("SELECT * FROM gallery,users,album
-        WHERE users.username=album.username
-        AND album.id_album=gallery.id_album
-        AND album_seo='$_GET[judul]'");
+	$detail2=mysql_query("SELECT * FROM gallery,users,album
+			WHERE users.username=album.username
+			AND album.id_album=gallery.id_album
+			AND album_seo='$_GET[judul]'");
   $d2   = mysql_fetch_array($detail2);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" >
-  <title>
-    <?php
-    if ($d['judul'] !='') :
-        echo "$d[judul] - harianmanah.com";
-    else :
-            echo "Kiblat Berita Islami - harianamanah.com";
-    endif;
-    ?>
-  </title>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="googlebot-news" content="index, follow" />
   <meta name="title" content="<?php
-    if ($d['judul'] !='') :
-        echo "$d[judul] - harianamanah.com";
-    else :
-        echo "Kiblat Berita Islami - harianamanah.com";
-    endif;
-    ?>">
-  <meta name="description" content="Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international">
-  <meta name="author" content="harianamanah.com">
+  if($d['judul'] !=''){
+    echo "$d[judul]";
+  }else{
+    echo "Kiblat Berita Islami - harianamanah.com";
+  }?>" />
+  <meta name="description" content="<?php
+  if($d['isi_berita'] != '')
+    echo desc($d['isi_berita']);
+  else
+    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+  ?>" />
   <meta name="image"  content="<?php
-    if ($d['gambar']!='') :
-        echo "http://harianamanah.com/foto_berita/$d[gambar]";
-    else :
-        echo "http://harianamanah.com/images/amanah.jpg";
-    endif;?>">
+  if($d['gambar']!=''){
+    echo "http://harianamanah.com/foto_berita/$d[gambar]";
+  }else{
+    echo "http://harianamanah.com/images/amanah.jpg";
+  }
+  ?>" />
+  <title><?php
+  if($d['judul'] !=''){
+      echo "$d[judul]";
+  }else{
+      echo "Kiblat Berita Islami - harianamanah.com";
+  }?>
+</title>
   <meta property="og:title" content="<?php
-    if ($d['judul'] !='') :
-        echo "$d[judul] - harianamanah.com";
-    else :
-        echo "Kiblat Berita Islami - harianamanah.com";
-    endif;
-    ?>">
-  <meta property="og:description" content="Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international">
-  <meta property="og:type" content="article">
+  if($d['judul'] !=''){
+      echo "$d[judul]";
+  }else{
+      echo "Kiblat Berita Islami - harianamanah.com";
+  }
+  ?>" />
+  <meta property="og:description" content="<?php
+  if($d['isi_berita'] != '')
+    echo desc($d['isi_berita']);
+  else
+    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+  ?>" />
+  <meta property="og:type" content="article" />
   <meta property="og:url" content="<?php
-    if ($d['judul_seo'] != '') :
-        echo "http://harianamanah.com/berita-$d[judul_seo]";
-    else :
-        echo "http://harianamanah.com";
-    endif;
-    ?>">
+  if ($d['judul_seo'] != '') {
+      echo "http://m.harianamanah.com/berita-$d[judul_seo].html";
+  } else {
+      echo "http://m.harianamanah.com";
+  }?>" />
   <meta property="og:image" content="<?php
-    if ($d['gambar']!='') :
-        echo "http://harianamanah.com/foto_berita/$d[gambar]";
-    else :
-        echo "http://harianamanah.com/images/amanah.jpg";
-    endif;
-    ?>">
-  <meta property="og:site_name" content="harianamanah.com"/>
-  <meta property="fb:app_id" content="168067490271817"/>
-  <meta name="adx:sections" content="<?php echo "$d[nama_kategori]"; ?>">
+  if($d['gambar']!=''){
+  echo "http://harianamanah.com/foto_berita/$d[gambar]";
+  }else{
+  echo "http://harianamanah.com/images/amanah.jpg";
+  }?>" />
+  <meta property="og:site_name" content="harianamanah.com" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="fb:admins" content="490830364408744" />
+  <meta property="fb:pages" content="824693407689103" />
+  <meta property="fb:app_id" content="168067490271817" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@harianamanah" />
+  <meta name="twitter:site:id" content="@harianamanah" />
+  <meta name="twitter:creator" content="@harianamanah" />
+  <meta name="twitter:title" content="<?php
+  if($d['judul'] !=''){
+      echo "$d[judul]";
+  }else{
+      echo "Kiblat Berita Islami - harianamanah.com";
+  }?>" />
+  <meta name="twitter:url" content="<?php
+  if ($d['judul_seo'] != '') {
+      echo "http://m.harianamanah.com/berita-$d[judul_seo].html";
+  } else {
+      echo "http://m.harianamanah.com";
+  }?>" />
+  <meta name="twitter:description" content="<?php
+  if($d['isi_berita'] != '')
+    echo desc($d['isi_berita']);
+  else
+    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+  ?>" />
+  <meta name="twitter:image" content="<?php
+  if($d['gambar']!=''){
+    echo "http://harianamanah.com/foto_berita/$d[gambar]";
+  }else{
+    echo "http://harianamanah.com/images/amanah.jpg";
+  }
+  ?>" />
   <meta name="theme-color" content="#1c9fa7">
   <meta name="msapplication-navbutton-color" content="#1c9fa7">
   <meta name="apple-mobile-web-app-status-bar-style" content="#1c9fa7">
 
-  <link rel="shortcut icon" href="favicon.png">
   <!--Bootstrap Theme-->
+  <link rel="shortcut icon" href="favicon.png">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <!-- CSS -->
   <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
@@ -196,7 +237,7 @@ session_start();
             </a>
         </div>
         <div class="menu-footer">
-            <a href="#">TENTANG</a>
+      <a href="#">TENTANG</a>
       <a href="#">PRIVASI</a>
       <a href="#">KONTAK</a>
         </div>

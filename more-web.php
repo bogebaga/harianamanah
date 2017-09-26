@@ -653,7 +653,7 @@ while($t=mysql_fetch_array($terkini)){
           <div class='deskripsi-judul home'>
             <h6><a href='berita-$t[judul_seo].html' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>
             <p class='rubrik-tanggal'><a href='kategori-$t[id_kategori]-$t[kategori_seo].html'>".strtoupper($t['nama_kategori'])."</a> | $t[hari], $tgl - $jam</p>
-            <p style='color:white;'>".substr(strip_tags($t['isi_berita']), 0, 150)."&nbsp;<a href='berita-$t[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
+            <p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($t['isi_berita']), 0, 130)."&nbsp;<a href='berita-$t[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
             <p data-opacity='true' style='margin:0 0 0 12px;'>
             <a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$t[judul_seo].html' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
             <a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$t[judul_seo].html&text=$t[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>

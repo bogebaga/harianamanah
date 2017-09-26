@@ -127,21 +127,47 @@
               ?>
               </ol>
             </div> -->
-            <div class="single_blog_sidebar berita-foto wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
-              <div class="title">BERITA FOTO</div>
-              <ul class="list-berita-foto">
-              <?php
-              $foto = mysql_query("SELECT * FROM video ORDER BY tanggal DESC LIMIT 3");
-              while($row = mysql_fetch_array($foto)){
-                echo "
-                <li style='position:relative;margin-bottom:2px;'>
-                  <img src='img_video/$row[gbr_video]'>
-                  <div class='black_layer'><div>
-                  <i class='fa fa-2x fa-camera' style='color:#fff;padding:7px;'></i>
-                </li>";
-              }
-              ?>
-              </ul>
+            <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
+              <div class="title liputan-khusus" style="background-color: #b721ff;
+                background-image: -webkit-linear-gradient(19deg, #b721ff 0%, #B721FF 100%);
+                background-image: -moz-linear-gradient(19deg, #b721ff 0%, #B721FF 100%);
+                background-image: -o-linear-gradient(19deg, #b721ff 0%, #B721FF 100%);
+                background-image: linear-gradient(19deg, #b721ff 0%, #B721FF 100%);
+                padding:10px 15px;color:white;">TAUSIYAH</div>
+                <ul class="list-liputan-khusus">
+                <?php
+                $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='71' ORDER BY id_berita DESC LIMIT 2");
+                while($row = mysql_fetch_array($liputan_khusus)){
+                  $tgl = tgl_indo($row['tanggal']);
+                  $jam = trans_jam($row['jam']);
+                  echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+                }
+                $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '71'");
+                $kategori = mysql_fetch_array($liputan_khusus);
+                echo "<a href=\"$kategori[link]\" style=\"display:block;text-align:center;padding:10px 0;color:#b721ff;font-weight:bold;font-size:14px;\">Tausiyah Lainnya</a></a>";
+                ?>
+                </ul>
+            </div>
+            <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
+              <div class="title liputan-khusus" style="background-color: #4158D0;
+                background-image: -webkit-linear-gradient(43deg, #4158D0 0%, #4158d0 46%);
+                background-image: -moz-linear-gradient(43deg, #4158D0 0%, #4158d0 46%);
+                background-image: -o-linear-gradient(43deg, #4158D0 0%, #4158d0 46%);
+                background-image: linear-gradient(43deg, #4158D0 0%, #4158d0 46%);
+                padding:10px 15px;color:white;">SOSOK</div>
+                <ul class="list-liputan-khusus">
+                <?php
+                $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='66' ORDER BY dibaca DESC LIMIT 3");
+                while($row = mysql_fetch_array($liputan_khusus)){
+                  $tgl = tgl_indo($row['tanggal']);
+                  $jam = trans_jam($row['jam']);
+                  echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+                }
+                $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '71'");
+                $kategori = mysql_fetch_array($liputan_khusus);
+                echo "<a href=\"$kategori[link]\" style=\"display:block;text-align:center;padding:10px 0;color:#4158D0;font-weight:bold;font-size:14px;\">Sosok Lainnya</a></a>";
+                ?>
+                </ul>
             </div>
             <div id="fixed-left" class="single_blog_sidebar berita-popular wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
               <div class="title">BERITA POPULAR</div>
@@ -211,13 +237,34 @@
             </div>
           </li>
           <div class="clearfix"></div>
-          <li>
+          <!-- <li>
             <div id="radio"><img src="foto_iklanatas/box_abu.gif" alt="iklan abutours post harianamanah.com"></div>
           </li>
-          <div class="clearfix"></div>
+          <div class="clearfix"></div> -->
         </ul>
       </div>
       <div class="single_blog_sidebar wow fadeInUp" style="height:auto;">
+      <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
+        <div class="title liputan-khusus" style="background-color: #0093E9;
+          background-image: -webkit-linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+          background-image: -moz-linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+          background-image: -o-linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+          background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+          padding:10px 15px;color:white;">ISLAMIC VIEW</div>
+          <ul class="list-liputan-khusus">
+          <?php
+          $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='67' ORDER BY id_berita DESC LIMIT 5");
+          while($row = mysql_fetch_array($liputan_khusus)){
+            $tgl = tgl_indo($row['tanggal']);
+            $jam = trans_jam($row['jam']);
+            echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+          }
+          $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '71'");
+          $kategori = mysql_fetch_array($liputan_khusus);
+          echo "<a href=\"$kategori[link]\" style=\"display:block;text-align:center;padding:10px 0;color:#0093E9;font-weight:bold;font-size:14px;\">Islamic Lainnya</a></a>";
+          ?>
+          </ul>
+        </div>
         <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
           <div class="title liputan-khusus" style="background-color: #ff9d25;background-image: linear-gradient(62deg, #ff9d25 0%, #ffca00 100%);padding:10px 15px;color:white;">LIPUTAN KHUSUS</div>
           <ul class="list-liputan-khusus">
@@ -233,6 +280,22 @@
               echo "<li><a style='color:#444444;' href='berita-$row[judul_seo].html'>$row[judul]</a></li>";
             }
             $foto = FALSE;
+          }
+          ?>
+          </ul>
+        </div>
+        <div class="single_blog_sidebar berita-foto wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
+          <div class="title">BERITA FOTO</div>
+          <ul class="list-berita-foto">
+          <?php
+          $foto = mysql_query("SELECT * FROM video ORDER BY tanggal DESC LIMIT 3");
+          while($row = mysql_fetch_array($foto)){
+            echo "
+            <li style='position:relative;margin-bottom:2px;'>
+              <img src='img_video/$row[gbr_video]'>
+              <div class='black_layer'><div>
+              <i class='fa fa-2x fa-camera' style='color:#fff;padding:7px;'></i>
+            </li>";
           }
           ?>
           </ul>
@@ -254,7 +317,12 @@
         </ul>
       </div>
       <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:3px;">
-        <div class="title liputan-khusus" style="background-color: #8BC6EC;background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);padding:10px 15px;color:white;">SOCIAL CORNER</div></div>
+        <div class="title liputan-khusus" style="background-color: #08AEEA;
+          background-image: -webkit-linear-gradient(0deg, #08AEEA 0%, #08aeea 100%);
+          background-image: -moz-linear-gradient(0deg, #08AEEA 0%, #08aeea 100%);
+          background-image: -o-linear-gradient(0deg, #08AEEA 0%, #08aeea 100%);
+          background-image: linear-gradient(0deg, #08AEEA 0%, #08aeea 100%);
+          padding:10px 15px;color:white;">SOCIAL CORNER</div></div>
         <!-- <blockquote class="twitter-tweet" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/FUB6zzRiUG">https://t.co/FUB6zzRiUG</a> <a href="https://twitter.com/hashtag/harianamanah?src=hash">#harianamanah</a> <a href="https://twitter.com/hashtag/koranamanah?src=hash">#koranamanah</a> <a href="https://twitter.com/hashtag/abucorp?src=hash">#abucorp</a> <a href="https://twitter.com/hashtag/dailyquotes?src=hash">#dailyquotes</a> <a href="https://twitter.com/hashtag/quoteoftheday?src=hash">#quoteoftheday</a> <a href="https://twitter.com/hashtag/muslimquotes?src=hash">#muslimquotes</a> <a href="https://twitter.com/hashtag/muslim?src=hash">#muslim</a> <a href="https://twitter.com/hashtag/tausiyah?src=hash">#tausiyah</a> <a href="https://twitter.com/hashtag/teladanrasul?src=hash">#teladanrasul</a> <a href="https://t.co/NF6lNauPIZ">pic.twitter.com/NF6lNauPIZ</a></p>&mdash; Harian Amanah (@HarianAmanah) <a href="https://twitter.com/HarianAmanah/status/900991240035983360">August 25, 2017</a></blockquote> -->
         <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 

@@ -56,19 +56,19 @@ include_once('config_fb.php');
           <div class="judul">
               <?php echo"<h1>$d[judul]</h1>";?>
           </div>
-          <div class="sosial" style="float:right">
+          <div class="sosial" style="float:right;width:200px;">
             <ul class="list-inline" style="text-align:left;margin:0;">
               <!-- <li>
                   <a class="btn btn-social-icon btn-dibaca" ><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;<?php $dibaca = round($d[dibaca]/56); echo"$dibaca";?></a>
               </li> -->
-              <li><a class="btn btn-social-icon btn-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog','width=626,height=436'); return false;"><i class="fa fa-facebook fa-fw"></i></a>
-              </li>
-              <li>
-                <a class="btn btn-social-icon btn-twitter" onclick="window.open('https://twitter.com/share','width=336','height=206');return false;" ><i class="fa fa-twitter fa-fw"></i></a>
-              </li>
-              <li>
-                <a class="btn btn-social-icon btn-google" onclick="window.open('','width=336','height=206');return false;"><i class="fa fa-google-plus fa-fw"></i></a>
-              </li>
+              <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>.html" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
+              <a href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>.html&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
+              <a href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>.html" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
+              <a href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
+              <!-- <a href="https://line.me/R/msg/text/?<?php echo "$d[judul] http://harianamanah.com/berita-$d[judul_seo]"?>" class="social-share line" target="_blank"></a> -->
+              <!-- <a href="whatsapp://send?text=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="social-share fa fa-whatsapp" target="_blank"></a> -->
+              <!-- <a href="https://telegram.me/share/url?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>" class="social-share fa fa-paper-plane" target="_blank"></a> -->
+              <!-- <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script> -->
             </ul>
           </div>
         </div>
@@ -101,18 +101,14 @@ include_once('config_fb.php');
                 <!-- <li>
                     <a class="btn btn-social-icon btn-dibaca" ><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;<?php $dibaca = round($d[dibaca]/56); echo"$dibaca";?></a>
                 </li> -->
-                <li><a class="btn btn-social-icon btn-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog','width=626,height=436'); return false;"><i class="fa fa-facebook fa-fw"></i></a>
-                </li>
-                <li>
-                  <a class="btn btn-social-icon btn-twitter" onclick="window.open('https://twitter.com/share','width=336','height=206');return false;" ><i class="fa fa-twitter fa-fw"></i></a>
-                </li>
-                <li>
-                  <a class="btn btn-social-icon btn-google" onclick="window.open('','width=336','height=206');return false;" ><i class="fa fa-google-plus fa-fw"></i></a>
-                </li>
+                <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>.html" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
+                <a href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>.html&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
+                <a href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>.html" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
+                <a href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
               </ul>
             </div>
             <hr>
-            <div class="fb-comments" data-href="" data-width="100%" data-numposts="5"></div>
+            <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="5"></div>
             <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
             <div class="related-news">
               <div class='kotak' style="width:100%;float:none">

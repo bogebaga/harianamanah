@@ -262,6 +262,19 @@ error_reporting(0);
           </form>
           </div>
         </div>
+        <style>
+            .block {display:inline-block;vertical-align:middle;width:525px;text-align:right;}
+            .block li {display:inline-block;}
+
+        </style>
+        <ul class="block">
+          <li><a href="https://www.facebook.com/harianamanah/" target="_blank" style='color:#3b5999;'><i class='fa fa-2x fa-fw fa-facebook-official'></i></a></li>
+          <li><a href="https://twitter.com/harianamanah" target="_blank" style='color:#55acee;'><i class='fa fa-2x fa-fw fa-twitter-square'></i></a></li>
+          <li><a href="https://plus.google.com/115045050828571942973" target="_blank" style='color:#dd4b39;'><i class='fa fa-2x fa-fw fa-google-plus-square'></i></a></li>
+          <!-- <li><a href="">LinkedIn</a></li> -->
+          <li><a href="https://www.instagram.com/harian_amanah/" target="_blank" style='color:#e4405f;'><i class='fa fa-2x fa-fw fa-instagram'></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank' style='color:#cd201f;'><i class='fa fa-2x fa-fw fa-youtube-square'></i></a></li>
+        </ul>
       </div>
     </div>
   </nav>

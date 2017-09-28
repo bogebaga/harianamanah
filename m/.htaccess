@@ -3,15 +3,15 @@
   Options All -Indexes
 
   RewriteEngine on
-  # RewriteCond %{REQUEST_FILENAME} !-f
-  # RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
 
-  RewriteRule ^index.php$ template.php?module=home [L]
-  RewriteRule ^kategori-(.*)\.html$ template.php?module=detailkategori&id=$1 [L]
-  RewriteRule ^berita-(.*)$ template.php?module=detailberita&judul=$1 [L]
-  RewriteRule ^video-(.*)$ template.php?module=detailvideo&judul=$1 [L]
+  RewriteRule ^popular\.html$ template.php?module=popular [L]
+  RewriteRule ^rekomendasi\.html$ template.php?module=rekomendasi [L]
   RewriteRule ^foto-(.*)$ template.php?module=detailfoto&judul=$1 [L]
-  RewriteRule ^(.*)\.html$ template.php?module=rubrik&jn=$1 [L]
+  RewriteRule ^kategori-(.*)\.html$ template.php?module=detailkategori&id=$1 [L]
+  RewriteRule ^berita-(.*)\.html$ template.php?module=detailberita&judul=$1 [L]
+  RewriteRule ^video-(.*)$ template.php?module=detailvideo&judul=$1 [L]
+  RewriteRule ^search? template.php?module=hasilcari&searchmode=all [QSA,L]
   RewriteRule ^epaper$ template.php?module=epaper [L]
   RewriteRule ^video$ template.php?module=video [L]
   RewriteRule ^foto$ template.php?module=foto [L]
@@ -21,7 +21,6 @@
   RewriteRule ^halberita-(.*)$ template.php?module=semuaberita&halberita=$1 [L]
   RewriteRule ^kategori-(.*)$ template.php?module=detailkategori&id=$1 [L]
   RewriteRule ^halkategori-(.*)-([0-9]+)$ template.php?module=detailkategori&id=$1&halkategori=$2 [L]
-  RewriteRule ^search? template.php?module=hasilcari&searchmode=all [QSA,L]
   RewriteRule ^semua-berita$ template.php?module=semuaberita&id=$1 [L]
   RewriteRule ^album-([0-9]+)-(.*)$ template.php?module=detailalbum&id=$1 [L]
   RewriteRule ^semua-album$ template.php?module=semuaalbum&id=$1 [L]
@@ -41,4 +40,9 @@
   RewriteRule ^halplaylist-(.*)$ template.php?module=semuaplaylist&halplaylist=$1 [L]
   RewriteRule ^hubungi-kami$ template.php?module=hubungikami&id=$1 [L]
   RewriteRule ^not-found$ template.php?module=notfound&id=$1 [L]
+
+  #Clean URL
+  RewriteRule ^(.*)\.html$ template.php?module=rubrik&jn=$1 [L]
+  RewriteRule ^([^\.]+)$ $1.html [NC,L]
+  RewriteRule ^index.php$ template.php?module=home [L]
 </IfModule>

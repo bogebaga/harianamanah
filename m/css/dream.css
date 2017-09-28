@@ -88,6 +88,10 @@ demo-2 input#search::-webkit-input-placeholder {
 /*-------------------END---------------------*/
 
 /*Owl Carousel*/
+#owl-demo .item{
+  position: relative;
+}
+
 #owl-demo .item img{
 	display: block;
 	width: 100%;

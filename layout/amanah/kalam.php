@@ -16,8 +16,8 @@
           $jam = trans_jam($row['jam']);
           $id_berita = $row['id_berita'];
           echo "<div class='item-flex grid-$i'>
-          <span class='kategori-grid' style='background:rgba(103, 58, 183, 0.83)'><a style='color:#fff;' href='kategori-$row[id_kategori]-$row[kategori_seo].html'>$row[nama_kategori]</a></span>
-          <a href='berita-$row[judul_seo].html' title='$row[judul]'><h2 class='grid-flex-foto'>$row[judul]</h2></a>
+          <span class='kategori-grid' style='background:rgba(103, 58, 183, 0.83)'><a style='color:#fff;' href='kategori-$row[id_kategori]-$row[kategori_seo]'>$row[nama_kategori]</a></span>
+          <a href='berita-$row[judul_seo]' title='$row[judul]'><h2 class='grid-flex-foto'>$row[judul]</h2></a>
           <span class='info-uploader'>Oleh&nbsp;$row[username]&nbsp;|&nbsp;$row[hari], $tgl - $jam</span>
           <div class='black_layer'></div>
           <img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'>
@@ -81,14 +81,14 @@
             }
             echo "
             <article>
-              <a href='berita-$t[judul_seo].html'>
+              <div class='badges-cate'>
+                <span style='background:#673ab7;'><a style='color:#fff;' href='kategori-$t[id_kategori]-$t[kategori_seo]'>$t[nama_kategori]</a></span>
+              </div>
+              <a href='berita-$t[judul_seo]'>
                 <img src='http://harianamanah.com/foto_berita/$t[gambar]' alt=''>
               </a>
-              <div class='badges-cate'>
-                <span  style='background:#673ab7;'><a style='color:#fff;' href='kategori-$t[id_kategori]-$t[kategori_seo].html'>$t[nama_kategori]</a></span>
-                <span>".$tgl." | ".$jam."</span>
-              </div>
-              <a href='berita-$t[judul_seo].html' class='captions'>$hasil</a>
+              <span style='font-size:10px;'>".$tgl." | ".$jam."</span>
+              <a href='berita-$t[judul_seo]' class='captions'>$hasil</a>
             </article>"; }
           ?>
         </div>

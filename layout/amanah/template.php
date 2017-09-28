@@ -69,7 +69,7 @@ error_reporting(0);
   <meta property="og:type" content="article" />
   <meta property="og:url" content="<?php
   if ($d['judul_seo'] != '') {
-      echo "http://harianamanah.com/berita-$d[judul_seo].html";
+      echo "http://harianamanah.com/berita-$d[judul_seo]";
   } else {
       echo "http://harianamanah.com";
   }?>" />
@@ -96,7 +96,7 @@ error_reporting(0);
   }?>" />
   <meta name="twitter:url" content="<?php
   if ($d['judul_seo'] != '') {
-      echo "http://harianamanah.com/berita-$d[judul_seo].html";
+      echo "http://harianamanah.com/berita-$d[judul_seo]";
   } else {
       echo "http://harianamanah.com";
   }?>" />
@@ -115,20 +115,21 @@ error_reporting(0);
   ?>" />
 
   <!-- Bootstrap Core CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-  <link href="css/structure.css" rel="stylesheet" />
-  <!-- Owl Carousel Assets -->
-  <link href="owl-carousel/owl.carousel.css" rel="stylesheet" />
-  <link href="owl-carousel/owl.theme.css" rel="stylesheet" />
   <link rel="shortcut icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/structure.css" />
+  <link rel="stylesheet" href="owl-carousel/owl.carousel.css"  />
+  <link rel="stylesheet" href="owl-carousel/owl.theme.css"  />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/new.css" />
-  <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen" />
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css" />
 
   <!-- jQuery and Modernizr-->
   <script src="js/jquery-2.1.1.js"></script>
+  <script src="js/jquery.lazy.min.js"></script>
+  <script src="js/jquery.lazy.plugins.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+
   <!-- mobile view -->
   <script type="text/javascript">
     var URL = window.location.href.split('/').pop();
@@ -284,7 +285,7 @@ error_reporting(0);
         $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_menu");
         while( $row = mysql_fetch_array($result)){
           $idp = $row['id_menu'];
-          echo "<li><a href='$row[link]' style='color:#fff;padding:15px;font-weight:bold;text-transform:uppercase;padding:13px 9px;' >$row[nama_menu] </a></li>";
+          echo "<li><a href='$row[link]' style='color:#fff;font-size:15px;padding:15px;font-weight:bold;text-transform:uppercase;padding:10px 9px;' >$row[nama_menu] </a></li>";
         }?>
         </ul>
         <!-- <ul class="list-inline navbar-right top-social">
@@ -300,7 +301,7 @@ error_reporting(0);
         $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
         $subrubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$pop') AND aktif='Ya'");
         while($row = mysql_fetch_array($subrubrik)){
-          echo "<li class='sub__rubrik'><a href='$row[link]'>$row[nama_menu]</a><i>&nbsp;&nbsp;&nbsp;&bull;</i></li>";
+          echo "<li class='sub__rubrik'><a href='$row[link]' style='font-size:12px'>$row[nama_menu]</a><i>&nbsp;&nbsp;&nbsp;&bull;</i></li>";
         }
         ?>
         <!-- <pre> -->
@@ -325,11 +326,11 @@ error_reporting(0);
     <div class="container">
       <ul class="must-know">
         <li><a href="/">HOME</a></li>
-        <li><a href="hal-tentang-kami.html">TENTANG</a></li>
-        <li><a href="hal-privacy-policy.html">KEBIJAKAN PRIVASI</a></li>
+        <li><a href="hal-tentang-kami">TENTANG</a></li>
+        <li><a href="hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
         <!-- <li><a href="">PEDOMAN&nbsp;MEDIA&nbsp;SIBER</a></li> -->
         <!-- <li><a href="">ADVERTISEMENT</a></li> -->
-        <li><a href="hal-kontak-kami.html">KONTAK</a></li>
+        <li><a href="hal-kontak-kami">KONTAK</a></li>
       </ul>
     </div>
   </div>
@@ -394,22 +395,23 @@ error_reporting(0);
 	<!-- Footer -->
 	<!-- JS -->
 <script type="text/javascript">
-$(document).ready(function()
-{
-	$(window).bind('scroll',function()
-	{
-		if ($(this).scrollTop()>900){
-			$("#b-top").fadeIn();
-      } else {
-			$("#b-top").fadeOut(500);
-		}
-	});
+  $(document).ready(function()
+  {
+    $('.lazy').lazy();
+    $(window).bind('scroll',function()
+    {
+      if ($(this).scrollTop()>900){
+        $("#b-top").fadeIn();
+        } else {
+        $("#b-top").fadeOut(500);
+      }
+    });
 
-	$("#b-top").click(function(){
-		$("html,body").animate({scrollTop:0},1000);
-		return false;
-	});
-});
+    $("#b-top").click(function(){
+      $("html,body").animate({scrollTop:0},1000);
+      return false;
+    });
+  });
 
   $(".flex-container .item-flex:first-child").addClass('grid-thumb-big');
   $(".flex-container .item-flex + .item-flex").addClass('grid-thumb-medium');

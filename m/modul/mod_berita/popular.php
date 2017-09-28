@@ -1,18 +1,16 @@
-<?php
- if ($_GET['module']=='home'){?>
-  <ul class="navbar sub-rubrik">
-    <li class='active'><a href='./'>Terkini</a></li>
-    <li><a href='popular'>Popular</a></li>
+<ul class="navbar sub-rubrik">
+    <li><a href='./'>Terkini</a></li>
+    <li class='active'><a href='popular'>Popular</a></li>
     <li><a href='rekomendasi'>Rekomendasi</a></li>
   </ul>
  	<section class="container-fluid" style="background-color:white;">
 		<section class="headline row">
       <?php
-				$terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY id_berita DESC LIMIT 1");
+				$terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY dibaca DESC LIMIT 1");
 				while($t=mysql_fetch_array($terkini)){
           $tgl = tgl_indo($t["tanggal"]);
           $jam = trans_jam($t["jam"]);
-					$id1 = $t["id_berita"];
+					$id1 = $t["dibaca"];
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item' style='position:relative;'>
@@ -26,10 +24,10 @@
 			  	</div>
         </div>"; }?>
 		</section>
-		<section class="daftar-artikel">
+		<section id='daftar-artikel' class="daftar-artikel">
 			<?php
 			$_digit = 10;
-			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND id_berita < '$id1' ORDER BY id_berita DESC LIMIT $_digit");
+			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);
@@ -48,7 +46,7 @@
 							<img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
 						</a>
 					</div>
-					<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
+					<div class='artikle-text' data-target='popular' kode='$q[dibaca]'>
             <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
             <a href='#' class='link-kategori'>$q[nama_kategori]</a>
             <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
@@ -78,7 +76,12 @@
 				{
 					loadMore = false;
 					$.ajax({
-						url: 'more.php?kategori=&urut='+$('.artikle-text[data-target=update]:last').attr('kode'),
+            method: 'GET',
+            url: 'more.php',
+            data:{
+              kategori: 'popular',
+              urut: $('.artikle-text[data-target=popular]:last').attr('kode')
+            },
 						beforeSend: function()
 						{
 							$('#more').show();
@@ -100,25 +103,3 @@
 			});
 		});
 	</script>
-<?php }
-  elseif ($_GET['module']=='popular'){
-    include "modul/mod_berita/popular.php";}
-  elseif ($_GET['module']=='rekomendasi'){
-    include "modul/mod_berita/rekomendasi.php";}
-  elseif ($_GET['module']=='detailkategori'){
-    include "modul/mod_berita/detailkategori.php";}
-  elseif ($_GET['module']=='detailberita'){
-    include "modul/mod_berita/detailberita.php";}
-  elseif ($_GET['module']=='detailvideo'){
-    include "modul/mod_berita/detailvideo.php";}
-	elseif ($_GET['module']=='hasilcari'){
-  	include "modul/mod_berita/hasilcari.php";}
-  elseif ($_GET['module']=='rubrik')
-    include "modul/mod_berita/detailrubrik.php";
-	elseif ($_GET['module']=='video')
-		include 'modul/mod_berita/video.php';
-	elseif ($_GET['module']=='foto')
-		include 'modul/mod_berita/foto.php';
-	elseif ($_GET['module']=='detailfoto')
-		include 'modul/mod_berita/detailfoto.php';
-?>

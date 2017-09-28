@@ -19,12 +19,12 @@
                   <div class='col-xs-12' style='float:none;padding-bottom:8px;'>
                     <div class='tanggal-news' style='color:#fff;padding-top:10px;font-size:14px;'> $t[hari], $tgl - $jam</div>
                     <div class='header-text'>
-                      <h1 id='title'><a href='berita-$t[judul_seo].html'>$t[judul]</a></h1>
+                      <h1 id='title'><a href='berita-$t[judul_seo]'>$t[judul]</a></h1>
                     </div><!-- /header-text -->
                     <img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='display:inline-block;vertical-align:top;'>
                     <div class='desc-home' style='display:inline-block;width:155px;'>
-                      <a href='kategori-$t[id_kategori]-$t[kategori_seo].html' style='background-color:#EFCB17;padding:5px 8px;display:inline-block;color:#000;margin:0 3px'>".strtoupper($t['nama_kategori'])."</a>
-                      <p style='font-size:14px;color:#ddd;line-height:1.5;margin:10px 3px 0;word-wrap:break-word;'>".substr(strip_tags($t['isi_berita']), 0, 160).".&nbsp;<a href='berita-$t[judul_seo].html'><b style='color:yellow;'>Selanjutnya</b></a></p>
+                      <a href='kategori-$t[id_kategori]-$t[kategori_seo]' style='background-color:#EFCB17;padding:5px 8px;display:inline-block;color:#000;margin:0 3px'>".strtoupper($t['nama_kategori'])."</a>
+                      <p style='font-size:14px;color:#ddd;line-height:1.5;margin:10px 3px 0;word-wrap:break-word;'>".substr(strip_tags($t['isi_berita']), 0, 160).".&nbsp;<a href='berita-$t[judul_seo]'><b style='color:yellow;'>Selanjutnya</b></a></p>
                     </div>
                   </div>
                   <!-- Static Header -->
@@ -33,7 +33,7 @@
                     <ul style='line-height:.8;margin-top:10px'>";
                       $terkait=mysql_query("SELECT * FROM berita WHERE id_kategori = '$t[id_kategori]' ORDER BY id_berita DESC LIMIT 3");
                       while($u=mysql_fetch_array($terkait)){
-                        echo "<li><a href='berita-$u[judul_seo].html' style='font-size:12px;color:white;'>$u[judul]</a></li>";
+                        echo "<li><a href='berita-$u[judul_seo]' style='font-size:12px;color:white;'>$u[judul]</a></li>";
                       };
                 echo "</ul></div></div>";
               } ?>
@@ -122,7 +122,7 @@
               <?php
               $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 5");
               while($row = mysql_fetch_array($berita_popular)){
-                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo].html' title='$row[judul]'>".substr($row[judul], 0, 50)."&hellip;</a><div class='clearfix'></div></li>";
+                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo]' title='$row[judul]'>".substr($row[judul], 0, 50)."&hellip;</a><div class='clearfix'></div></li>";
               }
               ?>
               </ol>
@@ -140,7 +140,7 @@
                 while($row = mysql_fetch_array($liputan_khusus)){
                   $tgl = tgl_indo($row['tanggal']);
                   $jam = trans_jam($row['jam']);
-                  echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+                  echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
                 }
                 $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '71'");
                 $kategori = mysql_fetch_array($liputan_khusus);
@@ -161,7 +161,7 @@
                 while($row = mysql_fetch_array($liputan_khusus)){
                   $tgl = tgl_indo($row['tanggal']);
                   $jam = trans_jam($row['jam']);
-                  echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+                  echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
                 }
                 $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '71'");
                 $kategori = mysql_fetch_array($liputan_khusus);
@@ -175,7 +175,7 @@
               <?php
               $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 10");
               while($row = mysql_fetch_array($berita_popular)){
-                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo].html' title='$row[judul]'>".substr($row[judul], 0, 50)."&hellip;</a><div class='clearfix'></div></li>";
+                echo "<li><a style='float:right;width:185px;' href='berita-$row[judul_seo]' title='$row[judul]'>".substr($row[judul], 0, 50)."&hellip;</a><div class='clearfix'></div></li>";
               }
               ?>
               </ol>
@@ -194,22 +194,24 @@
               <div class="title">BERITA TERKINI</div>
               <ul id='list-terkini-middle'>
               <?php
-                $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY b.id_berita DESC LIMIT 150");
+                $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY b.id_berita DESC LIMIT 300");
                 while($p1=mysql_fetch_array($detail1))
                 {
                   $tgl = tgl_indo($p1['tanggal']);
                   $jam = trans_jam($p1['jam']);
 
                   echo "<li style='color:white;' data-berita='$p1[id_berita]'>
-                  <a href='berita-$p1[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'></a>
+                  <a href='berita-$p1[judul_seo]'>
+                    <img class='lazy' data-src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
+                  </a>
                   <div class='deskripsi-judul home'>
-                    <h6><a href='berita-$p1[judul_seo].html' title='$p1[judul]'>".substr($p1['judul'], 0, 60)."&hellip;</a></h6>
-                    <p class='rubrik-tanggal'><a href='kategori-$p1[id_kategori]-$p1[kategori_seo].html'>".strtoupper($p1['nama_kategori'])."</a> | $p1[hari], $tgl - $jam</p>
-                    <p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($p1['isi_berita']), 0, 130)."&nbsp;<a href='berita-$p1[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
+                    <h6><a href='berita-$p1[judul_seo]' title='$p1[judul]'>".substr($p1['judul'], 0, 60)."&hellip;</a></h6>
+                    <p class='rubrik-tanggal'><a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'>".strtoupper($p1['nama_kategori'])."</a> | $p1[hari], $tgl - $jam</p>
+                    <p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($p1['isi_berita']), 0, 130)."&nbsp;<a href='berita-$p1[judul_seo]'><b style='color:yellow;'>&hellip;</b></a></p>
                     <p data-opacity='true' style='margin:0 0 0 12px;'>
-                      <a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$p1[judul_seo].html' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
-                      <a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$p1[judul_seo].html&text=$p1[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
-                      <a class='btn btn-social-icon' href='https://plus.google.com/share?url=http://harianamanah.com/berita-$p1[judul_seo].html' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
+                      <a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$p1[judul_seo]' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
+                      <a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$p1[judul_seo]&text=$p1[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
+                      <a class='btn btn-social-icon' href='https://plus.google.com/share?url=http://harianamanah.com/berita-$p1[judul_seo]' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
                     </p>
                   </div>
                 </li>";
@@ -257,7 +259,7 @@
           while($row = mysql_fetch_array($liputan_khusus)){
             $tgl = tgl_indo($row['tanggal']);
             $jam = trans_jam($row['jam']);
-            echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+            echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
           }
           $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '71'");
           $kategori = mysql_fetch_array($liputan_khusus);
@@ -275,9 +277,9 @@
             $tgl = tgl_indo($row['tanggal']);
             $jam = trans_jam($row['jam']);
             if($foto){
-              echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+              echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
             }else{
-              echo "<li><a style='color:#444444;' href='berita-$row[judul_seo].html'>$row[judul]</a></li>";
+              echo "<li><a style='color:#444444;' href='berita-$row[judul_seo]'>$row[judul]</a></li>";
             }
             $foto = FALSE;
           }
@@ -341,9 +343,9 @@
           $tgl = tgl_indo($row['tanggal']);
           $jam = trans_jam($row['jam']);
           if($foto){
-            echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo].html' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+            echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
           }else{
-            echo "<li><a style='color:#444444;' href='berita-$row[judul_seo].html'>$row[judul]</a></li>";
+            echo "<li><a style='color:#444444;' href='berita-$row[judul_seo]'>$row[judul]</a></li>";
           }
           $foto = FALSE;
         }
@@ -377,6 +379,7 @@
         {
           $('#list-terkini-middle').append(html);
           $('#more_animasi').html('<a id="more_indeks">Indeks Berita</a>');
+          $('.lazy').lazy();
         }
       }
     })

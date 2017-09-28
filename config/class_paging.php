@@ -29,20 +29,20 @@ if($halaman_aktif > 1){
 	$link_halaman .= "
                     <a href=$_SERVER[PHP_SELF]?module=$_GET[module]&halaman=$prev class='nextprev'>Kembali</a>";
 }
-else{ 
-	$link_halaman .=  " 
+else{
+	$link_halaman .=  "
 	<span class='nextprev'>Kembali</span>";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif >  3 ? " <span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif >  3 ? " <span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
 	  $angka .= "<a href=$_SERVER[PHP_SELF]?module=$_GET[module]&halaman=$i>$i</a>";
   }
 	  $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
@@ -52,7 +52,7 @@ for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
 	$link_halaman .= " <a href=$_SERVER[PHP_SELF]?module=$_GET[module]&halaman=$next class='nextprev'>Lanjut</a>
@@ -87,44 +87,44 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<a href=halaman-1.html class='nextprev'>Awal</a> 
-                    <a href=halaman-$prev.html class='nextprev'>Kembali</a>";
+	$link_halaman .= "<a href=halaman-1 class='nextprev'>Awal</a>
+                    <a href=halaman-$prev class='nextprev'>Kembali</a>";
 }
-else{ 
-	$link_halaman .= "<span class='nextprev'>Awal</span> 
+else{
+	$link_halaman .= "<span class='nextprev'>Awal</span>
 	<span class='nextprev'>Kembali</span>  ";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=halaman-$i.html>$i</a>";
+	  $angka .= "<a href=halaman-$i>$i</a>";
   }
 	  $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=halaman-$i.html>$i</a>";
+	  $angka .= "<a href=halaman-$i>$i</a>";
     }
-	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halaman-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halaman-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <a href=halaman-$next.html class='nextprev' >Lanjut</a>
-                     <a href=halaman-$jmlhalaman.html class='nextprev'>Akhir</a>";
+	$link_halaman .= " <a href=halaman-$next class='nextprev' >Lanjut</a>
+                     <a href=halaman-$jmlhalaman class='nextprev'>Akhir</a>";
 }
 else{
 	$link_halaman .= "<span class='nextprev'>Lanjut</span>
@@ -155,44 +155,44 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<a href=halberita-1.html class='nextprev'>Awal</a> 
-                    <a href=halberita-$prev.html class='nextprev'>Kembali</a>";
+	$link_halaman .= "<a href=halberita-1 class='nextprev'>Awal</a>
+                    <a href=halberita-$prev class='nextprev'>Kembali</a>";
 }
-else{ 
-	$link_halaman .= "<span class='nextprev'>Awal</span> 
+else{
+	$link_halaman .= "<span class='nextprev'>Awal</span>
 	<span class='nextprev'>Kembali</span>  ";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=halberita-$i.html>$i</a>";
+	  $angka .= "<a href=halberita-$i>$i</a>";
   }
 	  $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=halberita-$i.html>$i</a>";
+	  $angka .= "<a href=halberita-$i>$i</a>";
     }
-	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halberita-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halberita-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <a href=halberita-$next.html class='nextprev' >Lanjut</a>
-                     <a href=halberita-$jmlhalaman.html class='nextprev'>Akhir</a>";
+	$link_halaman .= " <a href=halberita-$next class='nextprev' >Lanjut</a>
+                     <a href=halberita-$jmlhalaman class='nextprev'>Akhir</a>";
 }
 else{
 	$link_halaman .= "<span class='nextprev'>Lanjut</span>
@@ -201,12 +201,6 @@ else{
 return $link_halaman;
 }
 }
-
-
-
-
-
-
 
 // KATEGORI BERITA////////////////////////////////////////////////////////////////////////////////////
 class Paging3{
@@ -227,7 +221,7 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
@@ -235,9 +229,9 @@ $link_halaman = "";
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
 	$link_halaman .= "
-                    <a href=halkategori-$_GET[id]-$prev.html class='nextprev'>Kembali</a>";
+                    <a href=halkategori-$_GET[id]-$prev class='nextprev'>Kembali</a>";
 }
-else{ 
+else{
 $link_halaman .= "<p>&nbsp;</p>
 <p>&nbsp;</p>
 
@@ -245,27 +239,27 @@ $link_halaman .= "<p>&nbsp;</p>
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? " ... " : " "); 
+$angka = ($halaman_aktif > 3 ? " ... " : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=halkategori-$_GET[id]-$i.html>$i</a>";
+	  $angka .= "<a href=halkategori-$_GET[id]-$i>$i</a>";
   }
 	 $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=halkategori-$_GET[id]-$i.html>$i</a>";
+	  $angka .= "<a href=halkategori-$_GET[id]-$i>$i</a>";
     }
-	  $angka .= ($halaman_aktif+2<$jmlhalaman ? "<span class='nextprev'>...</span><a href=halkategori-$_GET[id]-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  $angka .= ($halaman_aktif+2<$jmlhalaman ? "<span class='nextprev'>...</span><a href=halkategori-$_GET[id]-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <a href=halkategori-$_GET[id]-$next.html class='nextprev' >Lanjut</a>
+	$link_halaman .= " <a href=halkategori-$_GET[id]-$next class='nextprev' >Lanjut</a>
                      ";
 }
 else{
@@ -304,7 +298,7 @@ class Pagingz{
         if($halaman_aktif > 1){
             $prev = $halaman_aktif-1;
             $link_halaman .= "
-                    <a href=page-$_GET[id]-$prev.html class='nextprev'>Kembali</a>";
+                    <a href=page-$_GET[id]-$prev class='nextprev'>Kembali</a>";
         }
         else{
             $link_halaman .= "<p>&nbsp;</p>
@@ -318,23 +312,23 @@ class Pagingz{
         for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
             if ($i < 1)
                 continue;
-            $angka .= "<a href=page-$_GET[id]-$i.html>$i</a>";
+            $angka .= "<a href=page-$_GET[id]-$i>$i</a>";
         }
         $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
 
         for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
             if($i > $jmlhalaman)
                 break;
-            $angka .= "<a href=page-$_GET[id]-$i.html>$i</a>";
+            $angka .= "<a href=page-$_GET[id]-$i>$i</a>";
         }
-        $angka .= ($halaman_aktif+2<$jmlhalaman ? "<span class='nextprev'>...</span><a href=page-$_GET[id]-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+        $angka .= ($halaman_aktif+2<$jmlhalaman ? "<span class='nextprev'>...</span><a href=page-$_GET[id]-$jmlhalaman>$jmlhalaman</a>" : " ");
 
         $link_halaman .= "$angka";
 
 // Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
         if($halaman_aktif < $jmlhalaman){
             $next = $halaman_aktif+1;
-            $link_halaman .= " <a href=page-$_GET[id]-$next.html class='nextprev' >Lanjut</a>
+            $link_halaman .= " <a href=page-$_GET[id]-$next class='nextprev' >Lanjut</a>
                      ";
         }
         else{
@@ -366,44 +360,44 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<a href=halagenda-1.html class='nextprev'>Awal</a> 
-                    <a href=halagenda-$prev.html class='nextprev'>Kembali</a>";
+	$link_halaman .= "<a href=halagenda-1 class='nextprev'>Awal</a>
+                    <a href=halagenda-$prev class='nextprev'>Kembali</a>";
 }
-else{ 
-	$link_halaman .= "<span class='nextprev'>Awal</span> 
+else{
+	$link_halaman .= "<span class='nextprev'>Awal</span>
 	<span class='nextprev'>Kembali</span>  ";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=halagenda-$i.html>$i</a>";
+	  $angka .= "<a href=halagenda-$i>$i</a>";
   }
 	  $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=halagenda-$i.html>$i</a>";
+	  $angka .= "<a href=halagenda-$i>$i</a>";
     }
-	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halagenda-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halagenda-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <a href=halagenda-$next.html class='nextprev' >Lanjut</a>
-                     <a href=halagenda-$jmlhalaman.html class='nextprev'>Akhir</a>";
+	$link_halaman .= " <a href=halagenda-$next class='nextprev' >Lanjut</a>
+                     <a href=halagenda-$jmlhalaman class='nextprev'>Akhir</a>";
 }
 else{
 	$link_halaman .= "<span class='nextprev'>Lanjut</span>
@@ -435,44 +429,44 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<a href=haldownload-1.html class='nextprev'>Awal</a> 
-                    <a href=haldownload-$prev.html class='nextprev'>Kembali</a>";
+	$link_halaman .= "<a href=haldownload-1 class='nextprev'>Awal</a>
+                    <a href=haldownload-$prev class='nextprev'>Kembali</a>";
 }
-else{ 
-	$link_halaman .= "<span class='nextprev'>Awal</span> 
+else{
+	$link_halaman .= "<span class='nextprev'>Awal</span>
 	<span class='nextprev'>Kembali</span>  ";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=haldownload-$i.html>$i</a>";
+	  $angka .= "<a href=haldownload-$i>$i</a>";
   }
 	  $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=haldownload-$i.html>$i</a>";
+	  $angka .= "<a href=haldownload-$i>$i</a>";
     }
-	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=haldownload-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=haldownload-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <a href=haldownload-$next.html class='nextprev' >Lanjut</a>
-                     <a href=haldownload-$jmlhalaman.html class='nextprev'>Akhir</a>";
+	$link_halaman .= " <a href=haldownload-$next class='nextprev' >Lanjut</a>
+                     <a href=haldownload-$jmlhalaman class='nextprev'>Akhir</a>";
 }
 else{
 	$link_halaman .= "<span class='nextprev'>Lanjut</span>
@@ -507,44 +501,44 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<a href=halgaleri-1.html class='nextprev'>Awal</a> 
-                    <a href=halgaleri-$prev.html class='nextprev'>Kembali</a>";
+	$link_halaman .= "<a href=halgaleri-1 class='nextprev'>Awal</a>
+                    <a href=halgaleri-$prev class='nextprev'>Kembali</a>";
 }
-else{ 
-	$link_halaman .= "<span class='nextprev'>Awal</span> 
+else{
+	$link_halaman .= "<span class='nextprev'>Awal</span>
 	<span class='nextprev'>Kembali</span>  ";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=halgaleri-$i.html>$i</a>";
+	  $angka .= "<a href=halgaleri-$i>$i</a>";
   }
 	  $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=halgaleri-$i.html>$i</a>";
+	  $angka .= "<a href=halgaleri-$i>$i</a>";
     }
-	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halgaleri-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halgaleri-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <a href=halgaleri-$next.html class='nextprev' >Lanjut</a>
-                     <a href=halgaleri-$jmlhalaman.html class='nextprev'>Akhir</a>";
+	$link_halaman .= " <a href=halgaleri-$next class='nextprev' >Lanjut</a>
+                     <a href=halgaleri-$jmlhalaman class='nextprev'>Akhir</a>";
 }
 else{
 	$link_halaman .= "<span class='nextprev'>Lanjut</span>
@@ -574,44 +568,44 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
 // Link ke halaman pertama (Awal) dan sebelumnya (Kembali)
 if($halaman_aktif > 1){
 	$Kembali = $halaman_aktif-1;
-	$link_halaman .= "<a href=halkomentar-$_GET[judul]-1.html class='nextprev'>Awal</a>
-                    <a href=halkomentar-$_GET[judul]-$Kembali.html class='nextprev'>Kembali</a>";
+	$link_halaman .= "<a href=halkomentar-$_GET[judul]-1 class='nextprev'>Awal</a>
+                    <a href=halkomentar-$_GET[judul]-$Kembali class='nextprev'>Kembali</a>";
 }
-else{ 
+else{
 	$link_halaman .= "<span class='nextprev'>Awal</span><span class='nextprev'>Kembali</span>";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? "<span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif > 3 ? "<span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=halkomentar-$_GET[judul]-$i.html>$i</a>";
+	  $angka .= "<a href=halkomentar-$_GET[judul]-$i>$i</a>";
   }
 	  $angka .= "<span class='current'>$halaman_aktif</span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=halkomentar-$_GET[judul]-$i.html>$i</a>";
+	  $angka .= "<a href=halkomentar-$_GET[judul]-$i>$i</a>";
     }
 	  $angka .= ($halaman_aktif+2<$jmlhalaman ? "<span class='nextprev'>...</span>
-	  <a href=halkomentar-$_GET[judul]-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  <a href=halkomentar-$_GET[judul]-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$Lanjut = $halaman_aktif+1;
-	$link_halaman .= " <a href=halkomentar-$_GET[judul]-$Lanjut.html class='nextprev'>Lanjut</a>
-                     <a href=halkomentar-$_GET[judul]-$jmlhalaman.html class='nextprev'  >Akhir</a> ";
+	$link_halaman .= " <a href=halkomentar-$_GET[judul]-$Lanjut class='nextprev'>Lanjut</a>
+                     <a href=halkomentar-$_GET[judul]-$jmlhalaman class='nextprev'  >Akhir</a> ";
 }
 else{
 	$link_halaman .= "<span class='nextprev'>Lanjut</span><span class='nextprev'>Akhir</span>";
@@ -619,10 +613,6 @@ else{
 return $link_halaman;
 }
 }
-
-
-
-
 
 //SEMUA VIDEO///////////////////////////////////////////////////////////////////////
 class Paging10{
@@ -644,44 +634,44 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<a href=halplaylist-1.html class='nextprev'>Awal</a> 
-                    <a href=halplaylist-$prev.html class='nextprev'>Kembali</a>";
+	$link_halaman .= "<a href=halplaylist-1 class='nextprev'>Awal</a>
+                    <a href=halplaylist-$prev class='nextprev'>Kembali</a>";
 }
-else{ 
-	$link_halaman .= "<span class='nextprev'>Awal</span> 
+else{
+	$link_halaman .= "<span class='nextprev'>Awal</span>
 	<span class='nextprev'>Kembali</span>  ";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=halplaylist-$i.html>$i</a>";
+	  $angka .= "<a href=halplaylist-$i>$i</a>";
   }
 	  $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=halplaylist-$i.html>$i</a>";
+	  $angka .= "<a href=halplaylist-$i>$i</a>";
     }
-	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halplaylist-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halplaylist-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <a href=halplaylist-$next.html class='nextprev' >Lanjut</a>
-                     <a href=halplaylist-$jmlhalaman.html class='nextprev'>Akhir</a>";
+	$link_halaman .= " <a href=halplaylist-$next class='nextprev' >Lanjut</a>
+                     <a href=halplaylist-$jmlhalaman class='nextprev'>Akhir</a>";
 }
 else{
 	$link_halaman .= "<span class='nextprev'>Lanjut</span>
@@ -690,14 +680,6 @@ else{
 return $link_halaman;
 }
 }
-
-
-
-
-
-
-
-
 
 
 // class paging untuk halaman video
@@ -720,44 +702,44 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<a href=halvideo-1.html class='nextprev'>Awal</a> 
-                    <a href=halvideo-$prev.html class='nextprev'>Kembali</a>";
+	$link_halaman .= "<a href=halvideo-1 class='nextprev'>Awal</a>
+                    <a href=halvideo-$prev class='nextprev'>Kembali</a>";
 }
-else{ 
-	$link_halaman .= "<span class='nextprev'>Awal</span> 
+else{
+	$link_halaman .= "<span class='nextprev'>Awal</span>
 	<span class='nextprev'>Kembali</span>  ";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=halvideo-$i.html>$i</a>";
+	  $angka .= "<a href=halvideo-$i>$i</a>";
   }
 	  $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=halvideo-$i.html>$i</a>";
+	  $angka .= "<a href=halvideo-$i>$i</a>";
     }
-	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halvideo-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halvideo-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <a href=halvideo-$next.html class='nextprev' >Lanjut</a>
-                     <a href=halvideo-$jmlhalaman.html class='nextprev'>Akhir</a>";
+	$link_halaman .= " <a href=halvideo-$next class='nextprev' >Lanjut</a>
+                     <a href=halvideo-$jmlhalaman class='nextprev'>Akhir</a>";
 }
 else{
 	$link_halaman .= "<span class='nextprev'>Lanjut</span>
@@ -766,12 +748,6 @@ else{
 return $link_halaman;
 }
 }
-
-
-
-
-
-
 
 class Paging12{
 // Fungsi untuk mencek halaman dan posisi data
@@ -792,44 +768,44 @@ $jmlhalaman = ceil($jmldata/$batas);
 return $jmlhalaman;
 }
 
-// Fungsi untuk link halaman 1,2,3 
+// Fungsi untuk link halaman 1,2,3
 function navHalaman($halaman_aktif, $jmlhalaman){
 $link_halaman = "";
 
 // Link ke halaman pertama (first) dan sebelumnya (prev)
 if($halaman_aktif > 1){
 	$prev = $halaman_aktif-1;
-	$link_halaman .= "<a href=halkomentarvideo-1.html class='nextprev'>Awal</a> 
-                    <a href=halkomentarvideo-$prev.html class='nextprev'>Kembali</a>";
+	$link_halaman .= "<a href=halkomentarvideo-1 class='nextprev'>Awal</a>
+                    <a href=halkomentarvideo-$prev class='nextprev'>Kembali</a>";
 }
-else{ 
-	$link_halaman .= "<span class='nextprev'>Awal</span> 
+else{
+	$link_halaman .= "<span class='nextprev'>Awal</span>
 	<span class='nextprev'>Kembali</span>  ";
 }
 
 // Link halaman 1,2,3, ...
-$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " "); 
+$angka = ($halaman_aktif > 3 ? " <span class='nextprev'>...</span>" : " ");
 for ($i=$halaman_aktif-2; $i<$halaman_aktif; $i++){
   if ($i < 1)
   	continue;
-	  $angka .= "<a href=halkomentarvideo-$i.html>$i</a>";
+	  $angka .= "<a href=halkomentarvideo-$i>$i</a>";
   }
 	  $angka .= " <span class='current'><b>$halaman_aktif</b></span>";
-	  
+
     for($i=$halaman_aktif+1; $i<($halaman_aktif+3); $i++){
     if($i > $jmlhalaman)
       break;
-	  $angka .= "<a href=halkomentarvideo-$i.html>$i</a>";
+	  $angka .= "<a href=halkomentarvideo-$i>$i</a>";
     }
-	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halkomentarvideo-$jmlhalaman.html>$jmlhalaman</a>" : " ");
+	  $angka .= ($halaman_aktif+2<$jmlhalaman ? " <span class='nextprev'>...</span><a href=halkomentarvideo-$jmlhalaman>$jmlhalaman</a>" : " ");
 
 $link_halaman .= "$angka";
 
-// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir) 
+// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 if($halaman_aktif < $jmlhalaman){
 	$next = $halaman_aktif+1;
-	$link_halaman .= " <a href=halkomentarvideo-$next.html class='nextprev' >Lanjut</a>
-                     <a href=halkomentarvideo-$jmlhalaman.html class='nextprev'>Akhir</a>";
+	$link_halaman .= " <a href=halkomentarvideo-$next class='nextprev' >Lanjut</a>
+                     <a href=halkomentarvideo-$jmlhalaman class='nextprev'>Akhir</a>";
 }
 else{
 	$link_halaman .= "<span class='nextprev'>Lanjut</span>
@@ -838,8 +814,4 @@ else{
 return $link_halaman;
 }
 }
-
-
-
-
 ?>

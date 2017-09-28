@@ -1,98 +1,52 @@
-
 <IfModule mod_rewrite.c>
-RewriteEngine on
+  ErrorDocument 404 http://harianamanah.com/alamatpalsu.html
+  Options All -Indexes
 
-RewriteRule ^index\.php$ media.php?module=home [L]
-RewriteRule ^amanah-(.*)$ media.php?module=home [L]
+  #mengaktifkan mode tulisulang
+  RewriteEngine on
+  RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteRule ^video-(.*)\.html$ media.php?module=tes&judul=$1
-RewriteRule ^video\.html$ media.php?module=video [L]
-RewriteRule ^foto-(.*)\.html$ media.php?module=foto&judul=$1
-RewriteRule ^foto\.html$ media.php?module=beritafoto [L]
-RewriteRule ^abutours\.html$ media.php?module=abu&judul=$1 [L]
-RewriteRule ^teskategori-(.*)\.html$ media.php?module=tesdetailkategori&id=$1 [L]
-RewriteRule ^teshalkategori-(.*)-([0-9]+)\.html$ media.php?module=detailkategori&id=$1&halkategori=$2 [L]
-RewriteRule ^alamatpalsu\.html$ media.php?module=error [L]
+  RewriteRule ^news\.html$ media.php?module=news [L]
+  RewriteRule ^kalam\.html$ media.php?module=kalam [L]
+  RewriteRule ^sosok\.html$ media.php?module=sosok [L]
+  RewriteRule ^kajian\.html$ media.php?module=kajian [L]
+  RewriteRule ^lifestyle\.html$ media.php?module=lifestyle [L]
+  RewriteRule ^ummatizen\.html$ media.php?module=komunitas [L]
+  RewriteRule ^foto-(.*)$ media.php?module=detailfoto&judul=$1 [L]
+  RewriteRule ^kategori-(.*)\.html$ media.php?module=detailkategori&id=$1 [L]
+  RewriteRule ^berita-(.*)\.html$ media.php?module=detailberita&judul=$1 [L]
+  RewriteRule ^video-(.*)$ media.php?module=detailvideo&judul=$1 [L]
+  RewriteRule ^search? media.php?module=hasilcari&searchmode=all [QSA,L]
+  RewriteRule ^epaper$ media.php?module=epaper [L]
+  RewriteRule ^video$ media.php?module=video [L]
+  RewriteRule ^foto$ media.php?module=foto [L]
+  RewriteRule ^profil-kami$ media.php?module=profilkami&id=$1 [L]
+  RewriteRule ^halkomentar-(.*)-([0-9]+)$ media.php?module=detailberita&judul=$1&halkomentar=$2 [L]
+  RewriteRule ^indeks-berita$ media.php?module=indeksberita&id=$1 [L]
+  RewriteRule ^halberita-(.*)$ media.php?module=semuaberita&halberita=$1 [L]
+  RewriteRule ^kategori-(.*)$ media.php?module=detailkategori&id=$1 [L]
+  RewriteRule ^halkategori-(.*)-([0-9]+)\.html$ media.php?module=detailkategori&id=$1&halkategori=$2 [L]
+  RewriteRule ^semua-berita$ media.php?module=semuaberita&id=$1 [L]
+  RewriteRule ^album-([0-9]+)-(.*)$ media.php?module=detailalbum&id=$1 [L]
+  RewriteRule ^semua-album$ media.php?module=semuaalbum&id=$1 [L]
+  RewriteRule ^galeri-(.*)$ zoom.php?id=$1 [L]
+  RewriteRule ^halgaleri-([0-9]+)-(.*)$ media.php?module=detailalbum&id=$1&halgaleri=$2 [L]
+  RewriteRule ^semua-agenda$ media.php?module=semuaagenda&id=$1 [L]
+  RewriteRule ^agenda-(.*)$ media.php?module=detailagenda&tema=$1 [L]
+  RewriteRule ^hasil-poling$ media.php?module=hasilpoling&id=$1 [L]
+  RewriteRule ^lihat-poling$ media.php?module=lihatpoling&id=$1 [L]
+  RewriteRule ^semua-download$ media.php?module=semuadownload&id=$1 [L]
+  RewriteRule ^haldownload-(.*)$ media.php?module=semuadownload&haldownload=$1 [L]
+  RewriteRule ^play-([0-9]+)-(.*)$ media.php?module=play&id=$1 [L]
+  RewriteRule ^halkomentarvideo-([0-9]+)-(.*)$ media.php?module=play&id=$1&halkomentarvideo=$2 [L]
+  RewriteRule ^halvideo-([0-9]+)-(.*)$ media.php?module=detailplaylist&id=$1&halvideo=$2 [L]
+  RewriteRule ^playlist-([0-9]+)-(.*)$ media.php?module=detailplaylist&id=$1 [L]
+  RewriteRule ^semua-playlist$ media.php?module=semuaplaylist&id=$1 [L]
+  RewriteRule ^halplaylist-(.*)$ media.php?module=semuaplaylist&halplaylist=$1 [L]
+  RewriteRule ^hubungi-kami$ media.php?module=hubungikami&id=$1 [L]
+  RewriteRule ^not-found$ media.php?module=notfound&id=$1 [L]
 
-RewriteRule ^news\.html$ media.php?module=news [L]
-RewriteRule ^kalam\.html$ media.php?module=kalam [L]
-RewriteRule ^sosok\.html$ media.php?module=sosok [L]
-RewriteRule ^kajian\.html$ media.php?module=kajian [L]
-RewriteRule ^lifestyle\.html$ media.php?module=lifestyle [L]
-RewriteRule ^ummatizen\.html$ media.php?module=komunitas [L]
-RewriteRule ^profil-kami\.html$ media.php?module=profilkami&id=$1 [L]
-RewriteRule ^berita-(.*)\.html$ media.php?module=detailberita&judul=$1
-RewriteRule ^halkomentar-(.*)-([0-9]+)\.html$ media.php?module=detailberita&judul=$1&halkomentar=$2 [L]
-
-RewriteRule ^indeks-berita\.html$ media.php?module=indeksberita&id=$1 [L]
-RewriteRule ^halberita-(.*)\.html$ media.php?module=semuaberita&halberita=$1 [L]
-
-RewriteRule ^kategori-(.*)\.html$ media.php?module=detailkategori&id=$1 [L]
-RewriteRule ^halkategori-(.*)-([0-9]+)\.html$ media.php?module=detailkategori&id=$1&halkategori=$2 [L]
-RewriteRule ^search? media.php?module=hasilcari&searchmode=all [QSA,L]
-
-RewriteRule ^semua-berita\.html$ media.php?module=semuaberita&id=$1 [L]
-
-RewriteRule ^album-([0-9]+)-(.*)\.html$ media.php?module=detailalbum&id=$1 [L]
-RewriteRule ^semua-album\.html$ media.php?module=semuaalbum&id=$1 [L]
-RewriteRule ^galeri-(.*)\.html$ zoom.php?id=$1 [L]
-RewriteRule ^halgaleri-([0-9]+)-(.*)\.html$ media.php?module=detailalbum&id=$1&halgaleri=$2 [L]
-
-RewriteRule ^semua-agenda\.html$ media.php?module=semuaagenda&id=$1 [L]
-RewriteRule ^halagenda-(.*)\.html$ media.php?module=semuaagenda&halagenda=$1 [L]
-RewriteRule ^agenda-(.*)\.html$ media.php?module=detailagenda&tema=$1 [L]
-
-RewriteRule ^hasil-poling\.html$ media.php?module=hasilpoling&id=$1 [L]
-RewriteRule ^lihat-poling\.html$ media.php?module=lihatpoling&id=$1 [L]
-
-RewriteRule ^semua-download\.html$ media.php?module=semuadownload&id=$1 [L]
-RewriteRule ^haldownload-(.*)\.html$ media.php?module=semuadownload&haldownload=$1 [L]
-
-RewriteRule ^play-([0-9]+)-(.*)\.html$ media.php?module=play&id=$1 [L]
-RewriteRule ^halkomentarvideo-([0-9]+)-(.*)\.html$ media.php?module=play&id=$1&halkomentarvideo=$2 [L]
-RewriteRule ^halvideo-([0-9]+)-(.*)\.html$ media.php?module=detailplaylist&id=$1&halvideo=$2 [L]
-RewriteRule ^playlist-([0-9]+)-(.*)\.html$ media.php?module=detailplaylist&id=$1 [L]
-RewriteRule ^semua-playlist\.html$ media.php?module=semuaplaylist&id=$1 [L]
-RewriteRule ^halplaylist-(.*)\.html$ media.php?module=semuaplaylist&halplaylist=$1 [L]
-
-RewriteRule ^hubungi-kami\.html$ media.php?module=hubungikami&id=$1 [L]
-RewriteRule ^hubungi-aksi\.html$ media.php?module=hubungiaksi&id=$1 [L]
-
-RewriteRule ^login\.html$ media.php?module=login [L]
-RewriteRule ^daftar\.html$ media.php?module=daftar [L]
-RewriteRule ^cek-login\.html$ media.php?module=ceklogin [L]
-RewriteRule ^daftar-aksi\.html$ media.php?module=daftaraksi [L]
-RewriteRule ^logout\.html$ media.php?module=logout [L]
-
-RewriteRule ^not-found\.html$ media.php?module=notfound&id=$1 [L]
-
-RewriteRule ^hal-(.*)\.html$ media.php?module=halamanstatis&judul=$1 [L]
-
-# ErrorDocument 404 /
-
-Options All -Indexes
+  #Clean URL
+  RewriteRule ^([^\.]+)$ $1.html [NC,L]
+  RewriteRule ^index.php$ media.php?module=home [L]
 </IfModule>
-
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^http://harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://new.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://new.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://m.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://m.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.m.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.m.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://m.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://m.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.harianamanah.id$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.m.harianamanah.id/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.m.harianamanah.id$      [NC]
-
-
-
-

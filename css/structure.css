@@ -556,7 +556,7 @@ h2{
 }
 
 .featured_nav0.berita-terkait li{
-  height: 83px;
+  height: 50px;
 }
 .featured_nav0.berita-terkait li,
 .featured_nav0.berita-lainnya li{
@@ -782,7 +782,7 @@ h2{
 .featured_title>a{
 	display: block;
 	background-color: #fff;
-	padding: 15px 8px 8px 8px;
+	padding: 0 8px;
 	text-align:center;
 	font-style: normal;
     font-variant: normal;
@@ -1581,7 +1581,7 @@ h3[data-style="und-bdr"]::after
 .sub-nav-menu {
   border:1px solid rgba(51, 51, 51, 0.25);
   border-top:0;
-  padding:5px 0;
+  padding:0;
   background-color:#fff;
   overflow-x: scroll;
   white-space: nowrap;

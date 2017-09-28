@@ -644,12 +644,14 @@ error_reporting(0);
   }
 </style>
 <?php
-$terkini=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori AND b.id_berita < $_GET[urut] ORDER BY b.id_berita DESC LIMIT 150");
+$terkini=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori AND b.id_berita < $_GET[urut] ORDER BY b.id_berita DESC LIMIT 300");
 while($t=mysql_fetch_array($terkini)){
   $tgl = tgl_indo($t['tanggal']);
   $jam = trans_jam($t['jam']);
   echo "<li style='color:white;' data-berita='$t[id_berita]'>
-          <a href='berita-$t[judul_seo].html'><img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'></a>
+          <a href='berita-$t[judul_seo].html'>
+            <img class='lazy' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
+          </a>
           <div class='deskripsi-judul home'>
             <h6><a href='berita-$t[judul_seo].html' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>
             <p class='rubrik-tanggal'><a href='kategori-$t[id_kategori]-$t[kategori_seo].html'>".strtoupper($t['nama_kategori'])."</a> | $t[hari], $tgl - $jam</p>

@@ -98,7 +98,8 @@ p {margin: 0 0 20px;}
 
 #title a{
 	text-align: left;
-	color:#fff;
+  color:#fff;
+  min-height: 83px;
 	text-shadow: 0 2px 3px #000;
 }
 #title1 a{
@@ -869,12 +870,12 @@ footer .footer-3 ul li a:hover{color: #666;}
 	margin-bottom:55px;
 }
 
-.news-category > article {float:left;height:300px;width: 240px;margin:0 15px 13px 0;}
-.news-category > article .badges-cate {margin:10px 0 40px;}
+.news-category > article {float:left;height:275px;width: 240px;margin:0 15px 13px 0;}
+.news-category > article .badges-cate {margin:10px 0 0;}
 .news-category > article .badges-cate span{display: inline-block;font-size: 12px;}
-.news-category > article .badges-cate span:first-child{float: left;padding:5px; color:#fff; background-color: #052844;}
-.news-category > article .badges-cate span:last-child{float: right;padding:5px;}
-.news-category > article .captions{word-break: break-word;}
+.news-category > article .badges-cate span:first-child{padding:5px; color:#fff; background-color: #052844;}
+.news-category > article .badges-cate span:last-child{float:right;padding:5px;}
+.news-category > article .captions{word-break: break-word;font-size: 17px; line-height: 1.1;display: inline-block;font-weight: 800;}
 
 .news-category > article img
 {

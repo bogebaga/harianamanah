@@ -77,7 +77,7 @@ session_start();
   <meta property="og:type" content="article" />
   <meta property="og:url" content="<?php
   if ($d['judul_seo'] != '') {
-      echo "http://m.harianamanah.com/berita-$d[judul_seo].html";
+      echo "http://m.harianamanah.com/berita-$d[judul_seo]";
   } else {
       echo "http://m.harianamanah.com";
   }?>" />
@@ -104,7 +104,7 @@ session_start();
   }?>" />
   <meta name="twitter:url" content="<?php
   if ($d['judul_seo'] != '') {
-      echo "http://m.harianamanah.com/berita-$d[judul_seo].html";
+      echo "http://m.harianamanah.com/berita-$d[judul_seo]";
   } else {
       echo "http://m.harianamanah.com";
   }?>" />
@@ -125,33 +125,20 @@ session_start();
   <meta name="msapplication-navbutton-color" content="#1c9fa7">
   <meta name="apple-mobile-web-app-status-bar-style" content="#1c9fa7">
 
-  <!--Bootstrap Theme-->
   <link rel="shortcut icon" href="favicon.png">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <!--Bootstrap Theme-->
   <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/dream.css" type="text/css">
   <link rel="stylesheet" href="css/style.css" type="text/css">
   <link rel="stylesheet" href="css/Berita.css" type="text/css">
   <link rel="stylesheet" href="css/sidemenu.css">
-  <link rel="stylesheet" href="css/swiper.min.css" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   <!-- JS -->
-  <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script src="js/swiper.min.js"></script>
-  <!--Owl Carousel-->
-  <!-- Important Owl stylesheet -->
-  <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
-  <!-- Default Theme -->
-  <link rel="stylesheet" href="owl-carousel/owl.theme.css">
-  <!--  jQuery 1.7+  -->
-  <script src="js/jquery-1.9.1.min.js"></script>
-  <!-- Include js plugin -->
-  <script src="js/owl.carousel.js"></script>
-  <!--Owl End-->
-  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 <?php include_once("analyticstracking.php") ?>
@@ -194,7 +181,7 @@ session_start();
       <h2 class="caption">HARIANAMANAH</h2>
       <ul class="nav navbar-nav">
         <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
-        <li><i class='fa fa-2x fa-lightbulb-o' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='terkini' class='tagging'>Terkini</a></li>
+        <li><i class='fa fa-2x fa-lightbulb-o' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='./' class='tagging'>Terkini</a></li>
         <li><i class='fa fa-2x fa-flash' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='popular' class='tagging'>Popular</a></li>
         <li><i class='fa fa-2x fa-thumbs-o-up' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='rekomendasi' class='tagging'>Rekomendasi</a></li>
       </ul>
@@ -248,88 +235,45 @@ session_start();
     </div>
     </footer>
 </section>
-<script>
-    $('#loader').fadeOut('slow');
 </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#owl-demo").owlCarousel({
-            navigation : false,
-            slideSpeed : 200,
-            paginationSpeed : 400,
-            singleItem:true,
-            autoplay:true,
-            pagination:false
-            });
-
-            //iklan and tag
-            $('.close-headline').click(function(event){
-                event.preventDefault();
-                $(this).parents('.headline-text').fadeOut('slow');
-            });
-
-            $('.close-iklan').click(function(event){
-                event.preventDefault();
-                $(this).parents('.iklan-fixed').fadeOut('slow');
-            });
-
-        // Show or hide the sticky footer button
-        // $(window).scroll(function() {
-        //  if ($(this).scrollTop() > 400) {
-        //      $('.go-top').fadeIn(200);
-        //  } else {
-        //      $('.go-top').fadeOut(200);
-        //  }
-        // });
-
-        // Animate the scroll to top
-        $('.go-top').click(function(event) {
-            event.preventDefault();
-
-            $('html, body').animate({scrollTop: 0}, 300);
-        })
-
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var arah = 1;
-            $(".tutup").hide();
-
-            $(".navbar-toggle").click(function(event) {
-                $("#menuSamping").css('width', '100%');
-                $(".navbar-toggle").hide();
-                $(".tutup").show();
-            });
-
-            $(".tutup").click(function(event) {
-                $("#menuSamping").css('width', '0');
-                $(".tutup").hide();
-                $(".navbar-toggle").show();
-            });
-
-            $("#main").click(function(event) {
-                $("#menuSamping").css('width', '0');
-                $(".navbar-toggle").show();
-                $(".tutup").hide();
-            });
-        });
-    </script>
-        <script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        slidesPerView: 1,
-        paginationClickable: true,
-        spaceBetween: 30,
-        loop: true
+<script type="text/javascript">
+  $('#loader').fadeOut('slow');
+  $(document).ready(function() {
+      //iklan and tag
+      $('.close-headline').click(function(event){
+          event.preventDefault();
+          $(this).parents('.headline-text').fadeOut('slow');
+      });
+      $('.close-iklan').click(function(event){
+          event.preventDefault();
+          $(this).parents('.iklan-fixed').fadeOut('slow');
+      });
+    // Animate the scroll to top
+    $('.go-top').click(function(event) {
+        event.preventDefault();
+        $('html, body').animate({scrollTop: 0}, 300);
     });
-    </script>
-<script>
-    $('#myModal').modal('show');
-    setTimeout(function(){
-        $('#myModal').modal('hide')
-    }, 5000);
+  });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var arah = 1;
+        $(".tutup").hide();
+        $(".navbar-toggle").click(function(event) {
+            $("#menuSamping").css('width', '100%');
+            $(".navbar-toggle").hide();
+            $(".tutup").show();
+        });
+        $(".tutup").click(function(event) {
+            $("#menuSamping").css('width', '0');
+            $(".tutup").hide();
+            $(".navbar-toggle").show();
+        });
+        $("#main").click(function(event) {
+            $("#menuSamping").css('width', '0');
+            $(".navbar-toggle").show();
+            $(".tutup").hide();
+        });
+    });
 </script>
 </body>

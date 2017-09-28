@@ -36,12 +36,12 @@ echo"<img src='foto_kategori/$n[photo]'>";
 
         <div class="left-konten trend"><!-- left konten start -->
             <div class="art-social-bar">
-                <span class="fl art-count">
+                <!-- <span class="fl art-count">
 				<?php
 				$jmldata     = mysql_num_rows(mysql_query("SELECT * FROM berita WHERE id_kategori='$_GET[id]'"));
 				echo $jmldata." ARTIKEL";
 				?>
-				</span>
+				</span> -->
 
             </div>
 			<?php
@@ -66,12 +66,12 @@ echo"
   <div class='trend-left-list cf'>
     <span class='img-circle trend-bullet'></span>
     <figure>
-        <div class='left-trending-fix'><a href='berita-$r[judul_seo].html'>
+        <div class='left-trending-fix'><a href='berita-$r[judul_seo]'>
           <img src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt='$r[judul]'></a>
         </div>
     </figure>
     <div class='trend-left-info'>
-        <a href='berita-$r[judul_seo].html' style='margin-top:0;'>$r[judul]</a>
+        <a href='berita-$r[judul_seo]' style='margin-top:0;'>$r[judul]</a>
         <div class='publish-info cf'>".substr(strip_tags($r['isi_berita']), 0, 160)."</div>
         </div>
   </div>

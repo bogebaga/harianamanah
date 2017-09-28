@@ -4,7 +4,7 @@
 
 <!-- /////////////////////////////////////////Content -->
 	<div id="page-content" class="index-page container">
-		
+
 
 			<div id="sidebar">
 			<div class="col-md-12">
@@ -13,61 +13,61 @@
                 		<div class="single_blog_sidebar wow fadeInUp">
                 		<h4>Khazanah</h4></br>
                 			<ul class="featured_nav">
-                  			
-                  			
-							<?php 
+
+
+							<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '65' ORDER BY id_berita DESC limit 4 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li kode='$t[id_berita]' data-kategori='khazanah'>
-							
-							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='foto_berita/base.jpg'></a>
-                    		
+
+							<a class='featured_img' href='berita-$t[judul_seo]'><img src='foto_berita/base.jpg'></a>
+
 							<div class='featured_title'>
-                      		<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
+                      		<a class='judul_atas' href='berita-$t[judul_seo]'>$hasil</a>
                     		</div>
                     		<p style='font-size:14px;float:right;color:#b1afaf;margin: 0 15px;position:absolute;bottom:0;right:0;'>".$t[tanggal]." | ".$t[jam]."</p>
 							</li>
 							";
 							}
 							?>
-                    			
-                  			
+
+
 
                 			</ul>
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div class="col-md-6">
 					<div class="row">
                 		<div class="single_blog_sidebar1 wow fadeInUp">
                 			<h4> Legenda</h4></br>
                 				<ul class="featured_nav1">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita WHERE  id_kategori = '66' ORDER BY id_berita DESC limit 3 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 56) 
+							if (strlen($t[judul]) > 56)
 							{
 								$hasil = substr($t[judul], 0, 56)."&hellip;";
 							} else {
 								$hasil = $t[judul];
-							}	
+							}
 							echo "
 							<li kode='$t[id_berita]' data-kategori='legenda'>
-							
-							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='foto_berita/base.jpg'></a>
+
+							<a class='featured_img' href='berita-$t[judul_seo]'><img src='foto_berita/base.jpg'></a>
                     		<div class='featured_title1'>
-                      		
-							<a class='judul_atas' href='berita-$t[judul_seo].html'>$hasil</a>
+
+							<a class='judul_atas' href='berita-$t[judul_seo]'>$hasil</a>
                     		</div>
                     		<p style='font-size:14px;float:right;color:#b1afaf;margin: 0 15px;position:absolute;bottom:0;right:0;'>".$t[tanggal]." | ".$t[jam]."</p>
 							</li>
@@ -78,31 +78,31 @@
                 		</div>
                 	</div>
 				</div>
-				
+
 				<div id="" >
 				<div class="col-md-3" >
 					<div class="row">
                 		<div class="sembunyi" >
-                		<h4>Terkini</h4></br>  
+                		<h4>Terkini</h4></br>
                 			<ul class="featured_nav2">
-                  			<?php 
+                  			<?php
 							$terkini=mysql_query("SELECT * FROM berita ORDER BY id_berita DESC limit 4 ");
 							while($t=mysql_fetch_array($terkini)){
-							if (strlen($t[judul]) > 75) 
+							if (strlen($t[judul]) > 75)
 							{
 								$hasil = substr($t[judul], 0, 75)."&hellip;";
-							} 
-							else 
+							}
+							else
 							{
 								$hasil = $t[judul];
-							} 	
+							}
 							echo "
 							<li kode='$t[id_berita]' data-kategori='terkini'>
-							
-							<a class='featured_img' href='berita-$t[judul_seo].html'><img src='foto_berita/base.jpg'></a>
-                    		
+
+							<a class='featured_img' href='berita-$t[judul_seo]'><img src='foto_berita/base.jpg'></a>
+
 							<div class='featured_title'>
-                      		<a class='' href='berita-$t[judul_seo].html'>$hasil</a>
+                      		<a class='' href='berita-$t[judul_seo]'>$hasil</a>
                     		</div>
                     		<p style='font-size:14px;float:right;color:#b1afaf;margin: 0 15px;position:absolute;bottom:0;right:0;'>".$t[tanggal]." | ".$t[jam]."</p>
 							</li>
@@ -129,11 +129,11 @@
 				</div></br> -->
 			</div>
 		</div>
-		
+
 		<div id="daftar-artikel"></div>
 		<div id="more" style="display: none;">
 			<center><img src="images/loading.gif" width="170px"></center>
-		</div>			
+		</div>
 
 	</div>
 
@@ -183,7 +183,7 @@
 				// 			}
 				// 		}
 				// 	})
-					
-					
+
+
 				// });
 	</script>

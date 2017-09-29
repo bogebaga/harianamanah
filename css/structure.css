@@ -473,7 +473,10 @@ h2{
      object-fit: cover;
   width:100%;
 }
-
+#list-terkini-middle li
+{
+  min-width: 510px;
+}
 .single_blog_sidebar1.berita-terkini li
 {
   margin: 10px;

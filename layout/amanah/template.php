@@ -52,7 +52,7 @@ error_reporting(0);
   }else{
       echo "Kiblat Berita Islami - harianamanah.com";
   }?>
-</title>
+  </title>
   <meta property="og:title" content="<?php
   if($d['judul'] !=''){
       echo "$d[judul]";
@@ -263,11 +263,15 @@ error_reporting(0);
           </div>
         </div>
         <style>
-            .block {display:inline-block;vertical-align:middle;width:525px;text-align:right;}
-            .block li {display:inline-block;}
-
+          .block-top {
+            display:inline-block;
+            vertical-align:middle;
+            width:525px;
+            text-align:right;
+          }
+          .block-top li {display:inline-block;}
         </style>
-        <ul class="block">
+        <ul class="block-top">
           <li><a href="https://www.facebook.com/harianamanah/" target="_blank" style='color:#3b5999;'><i class='fa fa-2x fa-fw fa-facebook-official'></i></a></li>
           <li><a href="https://twitter.com/harianamanah" target="_blank" style='color:#55acee;'><i class='fa fa-2x fa-fw fa-twitter-square'></i></a></li>
           <li><a href="https://plus.google.com/115045050828571942973" target="_blank" style='color:#dd4b39;'><i class='fa fa-2x fa-fw fa-google-plus-square'></i></a></li>
@@ -390,12 +394,12 @@ error_reporting(0);
       <li style="width:200px;">
         <span class="title-menu">SOCIAL&nbsp;HUB</span>
         <ul class="block">
-          <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='width:30px' class='fa fa-facebook'></i>Facebook</a></li>
-          <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='width:30px' class='fa fa-twitter'></i>Twitter</a></li>
-          <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='width:30px' class='fa fa-google-plus'></i>Google+</a></li>
+          <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-facebook'></i>Facebook</a></li>
+          <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-twitter'></i>Twitter</a></li>
+          <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-google-plus'></i>Google+</a></li>
           <!-- <li><a href="">LinkedIn</a></li> -->
-          <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='width:30px' class='fa fa-instagram'></i>Instagram</a></li>
-          <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='width:30px' class='fa fa-youtube'></i>Youtube</a></li>
+          <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-instagram'></i>Instagram</a></li>
+          <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='margin-right:5px;' class='fa fa-fw fa-youtube'></i>Youtube</a></li>
         </ul>
       </li>
     </ul>

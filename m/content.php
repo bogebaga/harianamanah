@@ -12,7 +12,7 @@
 				while($t=mysql_fetch_array($terkini)){
           $tgl = tgl_indo($t["tanggal"]);
           $jam = trans_jam($t["jam"]);
-					$id1 = $t["id_berita"];
+          $id = $t['id_berita'];
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item' style='position:relative;'>
@@ -29,7 +29,7 @@
 		<section class="daftar-artikel">
 			<?php
 			$_digit = 10;
-			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND id_berita < '$id1' ORDER BY id_berita DESC LIMIT $_digit");
+			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND id_berita != '$id' ORDER BY id_berita DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);

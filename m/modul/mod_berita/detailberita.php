@@ -130,7 +130,7 @@
     </div>
       <ul style="list-style-type: none;">
           <?php
-          $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != $d[id_berita] order by id_berita DESC limit 9");
+          $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 9");
           while($p1=mysql_fetch_array($detail1)){
           echo"
             <li><a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a></li>";
@@ -191,73 +191,3 @@
       </ul>
   </div>
 </section>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var judul =  $(".jud").val();
-        // setTimeout(function(){
-        //     $.post("select.php", {jud: judul }, function(result){
-        //         $("#hasil")(result);
-        //     });
-        // }, 500);
-
-    });
-    $('.nilai').hide();
-    ul.click(function(event) {
-        $(this).toggleClass('active');
-        $('.nilai').show();
-        $('.bungkus').css('background', 'rgba(0, 0, 0, 0.4)');
-        $('.garis-bawah').css('opacity', '0.7');
-        $('.iklan').css('opacity', '0.7');
-        $('footer').css('background', 'rgba(0, 0, 0, 0.4)');
-        $('.isi-footer img').css('z-index', '-1');
-        if ($(this).hasClass('active')) {
-            for(var a = 0; a < i; a++){
-                li.eq(a).css({
-                    'transition-delay' : ""+(50*a)+"ms",
-                    'right' :(r*Math.cos(90/n*a*(Math.PI/180))),
-                    'top' : (-r*Math.sin(90/n*a*(Math.PI/180)))
-                });
-            }
-        }else{
-            li.removeAttr('style');
-            $('.nilai').hide();
-            $('.bungkus').css('background', 'white');
-            $('.garis-bawah').css('opacity', '1');
-            $('.iklan').css('opacity', '1');
-            $('footer').css('background', '#f4f4f4');
-            $('.isi-footer img').css('z-index', '1');
-        }
-    });
-</script>
-<script type="text/javascript">
-    window.onscroll = changePos;
-
-    function changePos() {
-        var header = document.getElementById("kepala");
-        var berita = document.getElementById("testtest");
-        var icon = document.getElementById("BS");
-        var icon1 = document.getElementById("BS1");
-        if (window.pageYOffset > 199) {
-            header.style.position = "fixed";
-            header.style.background = "url('assets/amanahKecil.png') center center no-repeat white";
-            header.style.width = "100%";
-            header.style.height = "57px";
-            header.style.top = 0;
-            icon.style.color = "black";
-            icon1.style.color = "black";
-            berita.style.position = "fixed";
-            berita.style.width = "100%";
-            berita.style.top = "56px";
-        } else {
-            header.style.position = "";
-            header.style.background = "transparent";
-            header.style.height = "";
-            header.style.top = "";
-            icon.style.color= "white";
-            icon1.style.color= "white";
-            berita.style.position = "";
-            berita.style.width = ""
-            berita.style.top = "";
-        }
-    }
-</script>

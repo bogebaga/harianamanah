@@ -184,10 +184,12 @@ h2.grid-flex-foto {
   bottom:0;
   font-size: 31px;
   position: absolute;
-  text-shadow: 0px 2px 0px black;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.19);
+  font-weight: bold !important;
 }
 .grid-thumb-medium h2.grid-flex-foto {
-  font-size:13px;
+  font-size:13px !important;
+  font-weight: bold !important;
 }
 .grid-thumb-medium .info-uploader,.grid-thumb-medium  .info-publish{
   font-size: 10px;

@@ -85,22 +85,19 @@ else{
    <th>Tgl. Posting</th>
    <th>Reporter</th>
    <th>Aksi</th>
-   
    </thead>
    <tbody>";
-
-
                     $p      = new Paging;
                     $batas  = 40;
                     $posisi = $p->cariPosisi($batas);
 
                     if ($_SESSION[leveluser]=='admin'){
-                        $tampil = mysql_query("SELECT * FROM berita ORDER BY id_berita DESC");}
+                        $tampil = mysql_query("SELECT * FROM berita ORDER BY id_berita DESC LIMIT 100");}
 
 
                     else{
                         $tampil=mysql_query("SELECT * FROM berita 
-                           WHERE username='$_SESSION[namauser]'       
+                           WHERE username='$_SESSION[namauser]'
                            ORDER BY id_berita DESC");}
 
 

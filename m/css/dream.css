@@ -549,7 +549,7 @@ demo-2 input#search::-webkit-input-placeholder {
 .page-loader
 {
 	height: inherit;
-	margin-top: 170px;
+	margin-top: 50%;
 }
 .page-loader center img
 {

@@ -139,19 +139,71 @@ session_start();
   <!-- JS -->
   <script type="text/javascript" src="js/bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "NewsArticle",
+    "headline": "<?php
+  if($d['judul'] !=''){
+    echo "$d[judul]";
+  }else{
+    echo "Kiblat Berita Islami - harianamanah.com";
+  }?>",
+    "datePublished": "<?php echo $d['tanggal']?>",
+    "description": "<?php
+  if($d['isi_berita'] != '')
+    echo desc($d['isi_berita']);
+  else
+    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+  ?>",
+    "image": {
+      "@type": "ImageObject",
+      "height": "350",
+      "width": "595",
+      "url": "<?php
+  if($d['gambar']!=''){
+    echo "http://harianamanah.com/foto_berita/$d[gambar]";
+  }else{
+    echo "http://harianamanah.com/images/amanah.jpg";
+  }
+  ?>"
+    },
+    "author": "harianamanah",
+    "publisher": {
+      "@type": "Organization",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://harianamanah.com/logo/assets/pp_ff.png"
+      },
+      "name": "harianamanah"
+    },
+    "articleBody": "<?php echo fullbody($d['isi_berita'])?>"
+  }
+  </script>
 </head>
 <body>
-<?php include_once("analyticstracking.php") ?>
+<!-- <style>
+@-webkit-keyframes flicker{
+    0% {opacity:1;}
+    50% {opacity:0;}
+    100% {opacity:1;}
+   }
+@keyframes flicker{
+0% {opacity:1;}
+50% {opacity:0;}
+100% {opacity:1;}
+}
+</style> -->
+<?php include_once "analyticstracking.php"; ?>
 <?php if (empty($_SESSION['cek'])) : ?>
-  <div id="loader">
+  <div id="loader" >
     <div class="page-loader">
     <center>
-      <img src="assets/amanah-flash.png" width="300px" alt="static">
-      <img src="assets/loader.gif" width="130px" alt="dinamis" style="margin-top:50px;">
+      <img src="assets/logo/pp_ff.png" width="160px" alt="dinamis" style="margin-top:50px;">
     </center>
     </div>
   </div>
-    <?php $_SESSION['cek'] = $_GET['module']; ?>
+  <?php $_SESSION['cek'] = $_GET['module']; ?>
 <?php endif ?>
     <header class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -228,6 +280,49 @@ session_start();
       <a href="#">PRIVASI</a>
       <a href="#">KONTAK</a>
         </div>
+    <div class="state-one">
+      <div class="container">
+      <ul class="menu-utama">
+        <li class="kategori">
+          <span class="title-menu">KANAL</span>
+          <ul>
+          <?php
+            $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND (id_parent = 8 || id_parent = 13 || id_parent = 14 || id_parent = 18 || id_parent = 20)");
+            while($row = mysql_fetch_array($menu_sub)){
+              echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
+            }
+            ?>
+          </ul>
+        </li>
+        <li class="kategori">
+          <span class="title-menu">MENU&nbsp;UTAMA</span>
+          <ul class="block">
+            <?php
+            $menu_parent = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent='0'");
+            while($row = mysql_fetch_array($menu_parent)){
+              echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
+            }
+            ?>
+          </ul>
+        </li>
+        <li>
+          <span class="title-menu">FIND&nbsp;US</span>
+          <ul class="block">
+            <li style="display:inline-block;">
+              <a href="https://play.google.com/store/apps/details?id=com.koran.harian.amanah&hl=in" text-decor="none" target="_blank">
+                <img src="images/googleplay.png" alt="android">
+              </a>
+            </li>
+            <li style="display:inline-block;">
+              <a href="https://itunes.apple.com/id/app/harian-amanah/id1186655456?mt=8" text-decor="none" target="_blank">
+                <img src="images/appstore.png" alt="apple">
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      </div>
+    </div>
     <div class="isi-footer">
       <span class="copyright">
         HarianAmanah&nbsp;&copy;&nbsp;2017

@@ -78,15 +78,9 @@ img{max-width:100%;	height: auto;  /* ie8 */}
 .orange {
     color: orange !important;
 }
-h1 {font-size: 38px;}
-h2 {font-size: 36px;}
-h3 {font-size: 2.7vw;}
-h4 {font-size: 28px;}
-h5 {font-size: 24px;}
-h6 {font-size: 20px;}
 
 h1,h2,h3,h4,h5,h6 {font-family: 'Roboto', sans-serif;font-weight: 300;}
-h2 {font-size: 36px;}
+h2 {font-size: 36px !important;}
 h3 {font-size: 2.7vw;}
 h4 {font-size: 28px;}
 h5 {font-size: 24px;}
@@ -866,8 +860,10 @@ footer .footer-3 ul li a:hover{color: #666;}
 
 .judul h1{
   text-align: left;
-	margin-top:30px;
-	margin-bottom:55px;
+	margin-top:20px;
+	margin-bottom:45px;
+	font-weight: bold !important;
+	font-size: 45px;
 }
 
 .news-category > article {float:left;height:275px;width: 240px;margin:0 15px 13px 0;}

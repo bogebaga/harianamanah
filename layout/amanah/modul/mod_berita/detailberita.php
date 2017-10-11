@@ -114,7 +114,7 @@ include_once('config_fb.php');
               <div class='kotak' style="width:100%;float:none">
               <br>
               <div class="row">
-                <h5 style="padding:15px;text-align:left;background:#1abc9c;color:#fff;">Berita Terkait</h5>
+                <h2 style="padding:15px;text-align:left;background:#1abc9c;color:#fff;">Berita Terkait</h2>
               </div>
                 <ul class="featured_nav0 berita-terkait">
                 <?php
@@ -137,7 +137,7 @@ include_once('config_fb.php');
               <div class='kotak' style="width:100%;margin-bottom:30px;float:none">
               <br>
               <div class='row'>
-                <h5 style="padding:15px;text-align:left;background:#16a085;color:#fff;margin-bottom:25px;">Berita Lainnya</h5>
+                <h2 style="padding:15px;text-align:left;background:#16a085;color:#fff;margin-bottom:25px;">Berita Lainnya</h2>
               </div>
                 <ul class="featured_nav0 berita-lainnya">
                 <?php
@@ -158,7 +158,7 @@ include_once('config_fb.php');
               </div>
               <div class='kotak' style="width:100%;float:none;">
               <div class="row">
-                <h5 style="padding:15px;text-align:left; background-color: #1c9fa7;background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);color:#fff;margin-bottom:20px">Berita Terkini</h5>
+                <h2 style="padding:15px;text-align:left; background-color: #1c9fa7;background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);color:#fff;margin-bottom:20px">Berita Terkini</h2>
               </div>
                 <ul class="featured_nav0">
                 <?php
@@ -173,9 +173,9 @@ include_once('config_fb.php');
                     <li style='text-align:left;float:none;'>
                         <a class='featured_img berita-terkini'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]'></a>
                         <div class='deskripsi-judul'>
-                          <h6 class='featured_title berita-terkini'>
-                          <a href='berita-$p1[judul_seo]' style='text-align:left;padding-left:0;font-weight:bold;'>$p1[judul]</a>
-                          </h6>
+                          <h3 class='featured_title berita-terkini'>
+                          <a href='berita-$p1[judul_seo]' style='font-size:20px;text-align:left;padding-left:0;font-weight:bold;'>$p1[judul]</a>
+                          </h3>
                           <p class='rubrik-tanggal'><a style='color:#052844;pointer:cursor;' href='kategori-$p1[id_kategori]-$p1[kategori_seo]'>".ucfirst($p1[nama_kategori])."</a> | $p1[hari], $tgl - $jam </p>
                           <p style='margin-left:15px;'>".substr(strip_tags($p1['isi_berita']), 0, 160)."</p>
                         </div>
@@ -204,7 +204,7 @@ include_once('config_fb.php');
 <div class="col-md-3" style="background:#ECECEC;padding-right:0;">
         <div class="single_blog_sidebar wow fadeInUp">
           <ul class="featured_nav0 read-news">
-          <!-- <?php
+          <?php
           $iklantengah=mysql_query("SELECT * FROM pasangiklan  ORDER BY id_pasangiklan DESC LIMIT 1");
           while($c=mysql_fetch_array($iklantengah))
           {
@@ -215,7 +215,7 @@ include_once('config_fb.php');
                   <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com atas' width='100%'></a>
                   </li>
                   ";
-          } ?> -->
+          } ?>
            <!-- <?php
           $iklantengah=mysql_query("SELECT * FROM pasangiklan WHERE id_pasangiklan != '$idc1'  ORDER BY id_pasangiklan DESC LIMIT 1");
           while($c=mysql_fetch_array($iklantengah))
@@ -273,20 +273,24 @@ include_once('config_fb.php');
                 </ul>
             </div>
         </li>
-         <li>
-            <div id="fixed-baca" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44);">
+         <li id="fixed-baca" data-spy="affix" style="background:#EBEBEC;">
+            <div class="single_blog_sidebar wow fadeInUp popular-rubrik" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44); margin-bottom:10px;">
               <div class="title berita-foto" style="color:#fff;padding:15px;background-color: #1c9fa7;background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);">BERITA POPULAR</div>
-              <ul class="list-berita-popular">
+              <ol class="list-berita-popular-rubrik">
               <?php
-              $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 12");
+              $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 10");
               while($row = mysql_fetch_array($berita_popular)){
-                echo "<li style='padding:0 10px 10px 10px;font-size:15px;font-weight:600;'><a href='berita-$row[judul_seo]' title='$row[judul]'>".substr($row['judul'], 0, 50)."&hellip;</a><div class='clearfix'></div></li>";
+                echo "
+                  <li>
+                    <a href='berita-$row[judul_seo]' title='$row[judul]'>".substr($row['judul'], 0, 50)."&hellip;</a>
+                    <div class='clearfix'></div>
+                  </li>";
               }
               ?>
-              <blockquote class="instagram-media" data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BYFQehmFUC6/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Harian Amanah (@harian_amanah)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-08-22T04:09:53+00:00">Aug 21, 2017 at 9:09pm PDT</time></p></div></blockquote>
-                <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
-              </ul>
+              </ol>
             </div>
+            <blockquote class="instagram-media" data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh2wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BYFQehmFUC6/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Harian Amanah (@harian_amanah)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-08-22T04:09:53+00:00">Aug 21, 2017 at 9:09pm PDT</time></p></div></blockquote>
+            <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
           </li>
         </ul>
       </div>

@@ -554,6 +554,49 @@ footer .menu-footer a {
   background:#262932;
   border-bottom:5px solid #19A2AC;
 }
+.state-one{
+	padding:7px;
+  font-size: 12px;
+  background:#262932;
+  color:#fff;
+  background: rgb(16, 17, 23);
+  border-bottom:1px solid #19A2AC;
+}
+.state-one ul
+{
+	list-style: none;
+	padding: 0;
+	text-align: left;
+}
+.state-one span.title-menu {
+	color:#E8BF0A;
+	font-size: 15px;
+	font-weight: bold;
+}
+.state-one .menu-utama li.kategori
+{
+	margin-bottom: 15px; 
+}
+.state-one .menu-utama li.kategori li
+{
+	display: inline-block;
+	border: 1px solid #fff;
+	padding: 5px;
+	margin: 0 5px 5px 0;
+	
+}
+.state-one li a
+{
+	color: #fff;
+}
+.state-one a img 
+{
+	position: relative;
+	margin-top: 7px;
+	width: 150px;
+	height: auto;
+}
+
 .isi-footer a img{
 	-webkit-transform: translateX(-50%);
 	        transform: translateX(-50%);

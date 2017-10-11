@@ -644,23 +644,43 @@ error_reporting(0);
   }
 </style>
 <?php
-$terkini=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori AND b.id_berita < $_GET[urut] ORDER BY b.id_berita DESC LIMIT 300");
+$x=1;
+$terkini=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori AND b.id_berita < $_GET[urut] ORDER BY b.id_berita DESC LIMIT 100");
 while($t=mysql_fetch_array($terkini)){
   $tgl = tgl_indo($t['tanggal']);
-  $jam = trans_jam($t['jam']);
-  echo "<li style='color:white;' data-berita='$t[id_berita]'>
-          <a href='berita-$t[judul_seo].html'>
-            <img class='lazy' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
-          </a>
-          <div class='deskripsi-judul home'>
-            <h6><a href='berita-$t[judul_seo].html' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>
-            <p class='rubrik-tanggal'><a href='kategori-$t[id_kategori]-$t[kategori_seo].html'>".strtoupper($t['nama_kategori'])."</a> | $t[hari], $tgl - $jam</p>
-            <p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($t['isi_berita']), 0, 130)."&nbsp;<a href='berita-$t[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
-            <p data-opacity='true' style='margin:0 0 0 12px;'>
-            <a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$t[judul_seo].html' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
-            <a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$t[judul_seo].html&text=$t[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
-            <a class='btn btn-social-icon' href='https://plus.google.com/share?url=http://harianamanah.com/berita-$t[judul_seo].html' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
-          </p>
-          </div>
-        </li>"; }?>
+	$jam = trans_jam($t['jam']);
+	if($x%10 == 0)
+		echo "<li style='color:white;background:#1F2126;' data-berita='$t[id_berita]'>
+		<div class='deskripsi-judul home reda' style='min-width:275px;width:275px;'>
+			<h6><a href='berita-$t[judul_seo]' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>
+			<p class='rubrik-tanggal'><a href='kategori-$t[id_kategori]-$t[kategori_seo]'>".strtoupper($t['nama_kategori'])."</a> | $t[hari], $tgl - $jam</p>
+			<p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($t['isi_berita']), 0, 180)."&nbsp;<a href='berita-$t[judul_seo]'><b style='color:yellow;'>&hellip;</b></a></p>
+			<p data-opacity='true' style='margin-bottom:0;'>
+				<a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$t[judul_seo]' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
+				<a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$t[judul_seo]&text=$t[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
+				<a class='btn btn-social-icon' href='https://plus.google.com/share?url=http://harianamanah.com/berita-$t[judul_seo]' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
+			</p>
+		</div>
+		<a href='berita-$t[judul_seo]'>
+		<img class='lazy' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:230px;height:195px;object-fit:cover;vertical-align:top;'>
+		</a>
+	</li>";
+	else
+		echo "<li style='color:white;' data-berita='$t[id_berita]'>
+		<a href='berita-$t[judul_seo].html'>
+			<img class='lazy' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
+		</a>
+		<div class='deskripsi-judul home'>
+			<h6><a href='berita-$t[judul_seo].html' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>
+			<p class='rubrik-tanggal'><a href='kategori-$t[id_kategori]-$t[kategori_seo].html'>".strtoupper($t['nama_kategori'])."</a> | $t[hari], $tgl - $jam</p>
+			<p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($t['isi_berita']), 0, 130)."&nbsp;<a href='berita-$t[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
+			<p data-opacity='true' style='margin:0 0 0 12px;'>
+			<a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$t[judul_seo].html' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
+			<a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$t[judul_seo].html&text=$t[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
+			<a class='btn btn-social-icon' href='https://plus.google.com/share?url=http://harianamanah.com/berita-$t[judul_seo].html' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
+		</p>
+		</div>
+	</li>";
+	$x++;
+ } ?>
 <?php endif; ?>

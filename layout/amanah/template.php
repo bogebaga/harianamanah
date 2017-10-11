@@ -24,6 +24,7 @@ error_reporting(0);
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="author" content="harianamanah.com">
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
   <meta name="googlebot-news" content="index, follow" />
@@ -129,7 +130,47 @@ error_reporting(0);
   <script src="js/jquery.lazy.min.js"></script>
   <script src="js/jquery.lazy.plugins.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "NewsArticle",
+    "headline": "<?php
+  if($d['judul'] !=''){
+    echo "$d[judul]";
+  }else{
+    echo "Kiblat Berita Islami - harianamanah.com";
+  }?>",
+    "datePublished": "<?php echo $d['tanggal']?>",
+    "description": "<?php
+  if($d['isi_berita'] != '')
+    echo desc($d['isi_berita']);
+  else
+    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+  ?>",
+    "image": {
+      "@type": "ImageObject",
+      "height": "350",
+      "width": "595",
+      "url": "<?php
+  if($d['gambar']!=''){
+    echo "http://harianamanah.com/foto_berita/$d[gambar]";
+  }else{
+    echo "http://harianamanah.com/images/amanah.jpg";
+  }
+  ?>"
+    },
+    "author": "harianamanah",
+    "publisher": {
+      "@type": "Organization",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://harianamanah.com/logo/assets/pp_ff.png"
+      },
+      "name": "harianamanah"
+    },
+    "articleBody": "<?php echo fullbody($d['isi_berita'])?>"
+  }
+  </script>
   <!-- mobile view -->
   <script type="text/javascript">
     var URL = window.location.href.split('/').pop();
@@ -195,6 +236,7 @@ error_reporting(0);
 		}
 
 		#radio button{
+
 			color: white;
 			background: #e74c3c;
 			position: absolute;
@@ -266,7 +308,7 @@ error_reporting(0);
           .block-top {
             display:inline-block;
             vertical-align:middle;
-            width:525px;
+            width:calc(100% - 545px);
             text-align:right;
           }
           .block-top li {display:inline-block;}
@@ -299,10 +341,10 @@ error_reporting(0);
       <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0;">
         <ul class="nav navbar-nav">
         <?php
-        $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_menu");
+        $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_parent");
         while( $row = mysql_fetch_array($result)){
           $idp = $row['id_menu'];
-          echo "<li><a href='$row[link]' style='color:#fff;font-size:15px;padding:15px;font-weight:bold;text-transform:uppercase;padding:10px 9px;' >$row[nama_menu] </a></li>";
+          echo "<li><a href='$row[link]' style='color:#fff;font-size:15px;padding:15px;font-weight:bold;text-transform:uppercase;padding:10px 9px;' >$row[nama_menu]</a></li>";
         }?>
         </ul>
         <!-- <ul class="list-inline navbar-right top-social">
@@ -318,21 +360,23 @@ error_reporting(0);
         $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
         $subrubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$pop') AND aktif='Ya'");
         while($row = mysql_fetch_array($subrubrik)){
-          echo "<li class='sub__rubrik'><a href='$row[link]' style='font-size:12px'>$row[nama_menu]</a><i>&nbsp;&nbsp;&nbsp;&bull;</i></li>";
+          echo "<li class='sub__rubrik'><a href='$row[link]' style='font-size:12px;font-weight:bolder;'>$row[nama_menu]</a><i>&nbsp;&nbsp;&nbsp;&bull;</i></li>";
         }
         ?>
         <!-- <pre> -->
-        <?php
-        //  var_export($_SERVER);
-        ?>
+        <?php //  var_export($_SERVER); ?>
         <!-- </pre> -->
       </ul>
       </div>
     </div>
   </nav>
 </header>
-<?php include_once("analyticstracking.php") ?>
-<?php include "konten.php"; ?>
+<?php 
+  include_once "analyticstracking.php";
+
+  include_once "konten.php"; 
+  
+?>
 <footer>
   <div class="footer-logo">
     <div class="container">
@@ -342,12 +386,12 @@ error_reporting(0);
   <div class="footer-menu">
     <div class="container">
       <ul class="must-know">
-        <li><a href="/">HOME</a></li>
         <li><a href="hal-tentang-kami">TENTANG</a></li>
         <li><a href="hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
         <!-- <li><a href="">PEDOMAN&nbsp;MEDIA&nbsp;SIBER</a></li> -->
         <!-- <li><a href="">ADVERTISEMENT</a></li> -->
         <li><a href="hal-kontak-kami">KONTAK</a></li>
+        <li><a href="sitemap">SITEMAP</a></li>
       </ul>
     </div>
   </div>

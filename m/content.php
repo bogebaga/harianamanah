@@ -28,8 +28,7 @@
 		</section>
 		<section class="daftar-artikel">
 			<?php
-			$_digit = 10;
-			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND id_berita != '$id' ORDER BY id_berita DESC LIMIT $_digit");
+			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND id_berita != '$id' ORDER BY id_berita DESC LIMIT 10");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);

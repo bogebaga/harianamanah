@@ -1,6 +1,6 @@
   <ul class="navbar sub-rubrik">
   <?php
-  $kalam = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[jn]')");
+  $kalam = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]')");
   while($row = mysql_fetch_array($kalam)){
     echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
   }
@@ -9,7 +9,7 @@
   <section class="container-fluid" style="background-color:white;">
 		<section class="headline row">
 			<?php
-				$terkini=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[jn]') ORDER BY berita.id_berita DESC LIMIT 1");
+				$terkini=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]') ORDER BY berita.id_berita DESC LIMIT 1");
 				while($t=mysql_fetch_array($terkini)){
           $id_berita = $t['id_berita'];
           $tgl = tgl_indo($t['tanggal']);
@@ -29,7 +29,7 @@
 		</section>
 		<section class="daftar-artikel">
       <?php
-			$artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[jn]') AND berita.id_berita < $id_berita ORDER BY berita.id_berita DESC LIMIT 10");
+			$artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]') AND berita.id_berita < $id_berita ORDER BY berita.id_berita DESC LIMIT 30");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);
@@ -55,7 +55,7 @@
 					</div>
 				</article>
 				";}	?>
-		</section>
+    </section>
 		<div class="iklan">
             <a href="abutours" title="AbuTours.com">
                 <img class="img-responsive" src="assets/abujie.jpg" alt="iklan">
@@ -65,60 +65,69 @@
 		<div id="more" style="display: none;">
 			<center><img src="assets/loading.gif" width="100px"></center>
 		</div>
-		</section>
+    </section>
+    <section class="container-fluid">
+      <h1>Popular</h1>
+      <ol>
+        <li>test</li>
+      </ol>
+    </section>
+    <section class="container-fluid">
+      <h1>Foto</h1>
+    </section>
+    <section class="container-fluid">
+      <h1>Video</h1>
+    </section>
     <script>
-$(document).ready(function(){
-  var loadMore = true;
-  $(window).scroll(function(){
-    var nearbottom = 100;
-    if($(window).scrollTop()+nearbottom >= $(document).height() - $(window).height() && loadMore)
-    {
-      loadMore = false;
-      $.ajax({
-        method: 'GET',
-        url: 'more.php',
-        data: {
-          kategori: '<?php echo $_GET['jn']?>',
-          urut: $('.artikle-text:last').attr('kode')
-        },
-        beforeSend: function()
-        {
-          $('#more').show();
-        },
-        complete: function()
-        {
-          $('#more').hide().delay(1000);
-        },
-        success: function(result)
-        {
-          if(result)
-          {
-            $('#daftar-artikel').append(result);
-            loadMore = true;
-            // $('#more')('<div class="more">MUAT LAINNYA</div>');
-            // $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
-          }
-        }
+      $(document).ready(function(){
+        // var loadMore = true;
+        // $(window).scroll(function(){
+        //   var nearbottom = 100;
+        //   if($(window).scrollTop()+nearbottom >= $(document).height() - $(window).height() && loadMore)
+        //   {
+        //     loadMore = false;
+        //     $.ajax({
+        //       method: 'GET',
+        //       url: 'more.php',
+        //       data: {
+        //         kategori: '<?php echo $_GET['jn']?>',
+        //         urut: $('.artikle-text:last').attr('kode')
+        //       },
+        //       beforeSend: function()
+        //       {
+        //         $('#more').show();
+        //       },
+        //       complete: function()
+        //       {
+        //         $('#more').hide().delay(1000);
+        //       },
+        //       success: function(result)
+        //       {
+        //         if(result)
+        //         {
+        //           $('#daftar-artikel').append(result);
+        //           loadMore = true;
+        //           // $('#more')('<div class="more">MUAT LAINNYA</div>');
+        //           // $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
+        //         }
+        //       }
+        //     });
+        //   }
+        // });
+        // $('#more').click(function(){
+        // 	$(this)('<center><img src="assets/loading.gif" width="100px"></center>');
+        // 	$.ajax({
+        // 		url: 'more.php?kategori=news&urut='+$('.artikle-text:last').attr('kode'),
+        // 		success: function(html)
+        // 		{
+        // 			if(html)
+        // 			{
+        // 				$('#daftar-artikel').append(html);
+        // 				$('#more')('<div class="more">MUAT LAINNYA</div>');
+        // 				// $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
+        // 			}
+        // 		}
+        // 	})
+        // });
       });
-    }
-  });
-			// $('#more').click(function(){
-			// 	$(this)('<center><img src="assets/loading.gif" width="100px"></center>');
-			// 	$.ajax({
-			// 		url: 'more.php?kategori=news&urut='+$('.artikle-text:last').attr('kode'),
-			// 		success: function(html)
-			// 		{
-			// 			if(html)
-			// 			{
-			// 				$('#daftar-artikel').append(html);
-			// 				$('#more')('<div class="more">MUAT LAINNYA</div>');
-			// 				// $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
-
-			// 			}
-			// 		}
-			// 	})
-
-
-			// });
-});
-</script>
+    </script>

@@ -6,6 +6,7 @@
   RewriteEngine on
   RewriteCond %{REQUEST_FILENAME} !-f
 
+  RewriteRule ^sitemap\.html$ media.php?module=sitemap [L]
   RewriteRule ^news\.html$ media.php?module=news [L]
   RewriteRule ^kalam\.html$ media.php?module=kalam [L]
   RewriteRule ^sosok\.html$ media.php?module=sosok [L]

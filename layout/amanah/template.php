@@ -1,4 +1,5 @@
 <?php
+define ('SITE_URL', site_URL());
 error_reporting(0);
 	$detail=mysql_query("SELECT * FROM berita,users,kategori
 			WHERE users.username=berita.username
@@ -38,7 +39,7 @@ error_reporting(0);
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
   else
-    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
   ?>" />
   <meta name="image"  content="<?php
   if($d['gambar']!=''){
@@ -65,7 +66,7 @@ error_reporting(0);
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
   else
-    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
   ?>" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="<?php
@@ -105,7 +106,7 @@ error_reporting(0);
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
   else
-    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
   ?>" />
   <meta name="twitter:image" content="<?php
   if($d['gambar']!=''){
@@ -117,19 +118,19 @@ error_reporting(0);
 
   <!-- Bootstrap Core CSS -->
   <link rel="shortcut icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="css/structure.css" />
-  <link rel="stylesheet" href="owl-carousel/owl.carousel.css"  />
-  <link rel="stylesheet" href="owl-carousel/owl.theme.css"  />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/new.css" />
-  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css" />
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/structure.css" />
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>owl-carousel/owl.carousel.css"  />
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>owl-carousel/owl.theme.css"  />
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/style.css" />
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/new.css" />
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css" />
 
   <!-- jQuery and Modernizr-->
-  <script src="js/jquery-2.1.1.js"></script>
-  <script src="js/jquery.lazy.min.js"></script>
-  <script src="js/jquery.lazy.plugins.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="<?php echo SITE_URL;?>js/jquery-2.1.1.js"></script>
+  <script src="<?php echo SITE_URL;?>js/jquery.lazy.min.js"></script>
+  <script src="<?php echo SITE_URL;?>js/jquery.lazy.plugins.min.js"></script>
+  <script src="<?php echo SITE_URL;?>js/bootstrap.min.js"></script>
   <script type="application/ld+json">
   {
     "@context": "http://schema.org/",
@@ -145,7 +146,7 @@ error_reporting(0);
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
   else
-    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
   ?>",
     "image": {
       "@type": "ImageObject",
@@ -251,9 +252,6 @@ error_reporting(0);
 		}
 
 		#radio audio{
-			position: absolute;
-			left: 0;
-			bottom: 0;
 			width: 100%;
 		}
 
@@ -277,8 +275,8 @@ error_reporting(0);
   }
   nav#logo{
     position:relative;
-    top: 50px;
-    margin-bottom:0;
+    top: 60px;
+    margin-bottom:35px;
   }
 
   nav#logo img {
@@ -330,7 +328,7 @@ error_reporting(0);
         <a href="/">
           <div class="logo"><img src="images/amanah.png" width="350px" alt="Logo Amanah - harianamanah.com"></div>
         </a>
-        <img style="margin-left:15px;" src="foto_banner/milad_amanah.jpg" alt="banner milad amanah">
+        <!-- <img style="margin-left:15px;" src="foto_banner/milad_amanah.jpg" alt="banner milad amanah"> -->
       </div>
     </div>
     <div class="row">
@@ -338,50 +336,66 @@ error_reporting(0);
       <div class="navbar-header">
         <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
       </div>
-      <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0;">
-        <ul class="nav navbar-nav">
-        <?php
-        $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_parent");
-        while( $row = mysql_fetch_array($result)){
-          $idp = $row['id_menu'];
-          echo "<li><a href='$row[link]' style='color:#fff;font-size:15px;padding:15px;font-weight:bold;text-transform:uppercase;padding:10px 9px;' >$row[nama_menu]</a></li>";
-        }?>
+      <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0;position:relative;">
+        <ul class="nav navbar-nav" style="position:relative;">
+          <?php
+          $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_parent");
+          while( $row = mysql_fetch_array($result)){
+            $idp = $row['id_menu'];
+            echo "
+              <li data-caption= \"$row[link]\" class=\"main-menu\" style=\"position:static;\">
+                <a href='".SITE_URL.$row[link]."' style='color:#fff;font-size:17px;padding:13px 15px;font-weight:bold;text-transform:uppercase;' >$row[nama_menu]</a>
+                <ul class=\"menu-show sub-nav-menu ".strtolower($row[link])."\">";
+                $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = '$row[id_menu]' AND aktif = 'Ya'");
+                while($row_sub = mysql_fetch_array($sub_rubrik)){
+                echo "
+                    <li class=\"sub__rubrik\">
+                      <a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;'>$row_sub[nama_menu]</a>
+                      <i>&nbsp;&nbsp;&nbsp;•</i>
+                    </li>";
+                }
+                echo "</ul></li>";
+          }?>
         </ul>
-        <!-- <ul class="list-inline navbar-right top-social">
-          <li><a href="https://www.facebook.com/harianamanah"><i class="fa fa-facebook fa-1x"></i></a></li>
-          <li><a href="https://twitter.com/harianamanah"><i class="fa fa-twitter"></i></a></li>
-          <li><a id="search"><i class="fa fa-search"></i></a></li>
-        </ul> -->
-        </div>
+        <ul class="sub-nav-menu sub-menu-rubrik">
+        <?php 
+          $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
+          // if($pop){
+            $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$pop') AND aktif = 'Ya'");
+          // }else{
+          //   $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE link = '$pop') AND aktif = 'Ya'");
+          // }
+          while($row_sub = mysql_fetch_array($sub_rubrik)){
+          echo "
+            <li class=\"sub__rubrik\">
+              <a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;'>$row_sub[nama_menu]</a>
+              <i>&nbsp;&nbsp;&nbsp;•</i>
+            </li>";
+          }
+          echo "</ul>";
+        ?>      
       </div>
-      <div id="style_1" class="container sub-nav-menu">
-      <ul>
-        <?php
-        $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
-        $subrubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$pop') AND aktif='Ya'");
-        while($row = mysql_fetch_array($subrubrik)){
-          echo "<li class='sub__rubrik'><a href='$row[link]' style='font-size:12px;font-weight:bolder;'>$row[nama_menu]</a><i>&nbsp;&nbsp;&nbsp;&bull;</i></li>";
-        }
-        ?>
-        <!-- <pre> -->
-        <?php //  var_export($_SERVER); ?>
-        <!-- </pre> -->
-      </ul>
       </div>
     </div>
   </nav>
 </header>
 <?php 
   include_once "analyticstracking.php";
-
+  include_once "config_fb.php";
+  include_once "embed.php";
   include_once "konten.php"; 
-  
 ?>
 <footer>
   <div class="footer-logo">
-    <div class="container">
-      <img src="logo/assets/pp_ff.png"  width="32px" title="Amanah" alt="logo amanah - harianamanah.com">
+    <div class="gambar-footer">
+      <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true" style="color:#00A0A5;"></span></a>
+            <!-- <a href="#">
+                <img src="assets/pp_ff.png" width="38px">
+            </a> -->
     </div>
+    <!-- <div class="container">
+      <img src="logo/assets/pp_ff.png"  width="32px" title="Amanah" alt="logo amanah - harianamanah.com">
+    </div> -->
   </div>
   <div class="footer-menu">
     <div class="container">
@@ -471,6 +485,21 @@ error_reporting(0);
     $("#b-top").click(function(){
       $("html,body").animate({scrollTop:0},1000);
       return false;
+    });
+    
+    // $(".main-menu").hover(
+    //   function(){
+    //   test = $(this).attr('data-caption');
+    //   $(".menu-show."+test).show();
+    //   console.log(test)});
+    $(".main-menu").hover(function(){
+      $(this).find('.menu-show').stop(true, true).delay(200).fadeIn(500);}, 
+      function(){$(this).find('.menu-show').stop(true, true).delay(200).fadeOut(500);}
+    );
+      
+    $('.go-top').click(function(event) {
+      event.preventDefault();
+      $('html, body').animate({scrollTop: 0}, 300);
     });
   });
 

@@ -45,7 +45,7 @@ session_start();
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
   else
-    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
   ?>" />
   <meta name="image"  content="<?php
   if($d['gambar']!=''){
@@ -72,7 +72,7 @@ session_start();
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
   else
-    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
   ?>" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="<?php
@@ -112,7 +112,7 @@ session_start();
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
   else
-    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
   ?>" />
   <meta name="twitter:image" content="<?php
   if($d['gambar']!=''){
@@ -154,7 +154,7 @@ session_start();
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
   else
-    echo "Indeks berita islam terkini dari Dunia islam, Ekonomi, Jazirah, politik, lensa syiar, muslim star, halal destination, taaruf, mozaik, berita haji dan umroh dan international";
+    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
   ?>",
     "image": {
       "@type": "ImageObject",
@@ -240,8 +240,8 @@ session_start();
       <h2 class="caption">KANAL</h2>
             <ul class="nav navbar-nav">
     <?php
-            $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_menu");
-    while ($row = mysql_fetch_array($result)) {
+      $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_parent");
+      while ($row = mysql_fetch_array($result)) {
         $idp = $row['id_menu'];
         if ($row['nama_menu']!== 'Info Alharam') {
             echo"
@@ -269,17 +269,17 @@ session_start();
     <section id="main">
     <?php include "content.php"; ?>
     <footer>
+      <div class="gambar-footer">
         <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
-        <div class="gambar-footer">
-            <a href="#">
+            <!-- <a href="#">
                 <img src="assets/pp_ff.png" width="38px">
-            </a>
-        </div>
-        <div class="menu-footer">
-      <a href="#">TENTANG</a>
-      <a href="#">PRIVASI</a>
-      <a href="#">KONTAK</a>
-        </div>
+            </a> -->
+      </div>
+      <div class="menu-footer">
+        <a href="#">TENTANG</a>
+        <a href="#">PRIVASI</a>
+        <a href="#">KONTAK</a>
+      </div>
     <div class="state-one">
       <div class="container">
       <ul class="menu-utama">

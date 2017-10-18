@@ -2,7 +2,7 @@
 $sq = mysql_query("SELECT * from kategori where id_kategori='$_GET[id]'");
 $n = mysql_fetch_array($sq);
 ?>
-<div class="wraplist">
+<div class="wraplist" style="margin-top:100px;">
 <section>
 <?php
 if($n[photo] != ''){

@@ -493,8 +493,8 @@ demo-2 input#search::-webkit-input-placeholder {
 
 /*Back To Top*/
 .go-top {
-  position: absolute;
-  top: -22px;
+  /* position: absolute;
+  top: -22px; */
 	right: 10px;
 	text-decoration: none;
   padding: 5px;
@@ -505,7 +505,8 @@ demo-2 input#search::-webkit-input-placeholder {
   height: 42px;
   line-height: 1.2;
   font-size: 25px;
-  text-align: center;
+	text-align: center;
+	display: inline-block;
 }
 /*-------------------END---------------------*/
 

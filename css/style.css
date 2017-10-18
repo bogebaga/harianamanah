@@ -150,7 +150,7 @@ a:focus {text-decoration: underline;color: #000; /*saya tambah*/}
 .post:after, .post:before, article:after, article:before, section:after, section:before{clear: both; content: '\0020'; display: block; visibility: hidden; width: 0; height: 0;}
 
 .clear{content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
-.clearfix:after, .clearfix:before{clear: both; content: '\0020'; display: block; visibility: hidden; width: 0; height: 0;}
+/* .clearfix:after, .clearfix:before{clear: both; content: '\0020'; display: block; visibility: hidden; width: 0; height: 0;} */
 
 /* --Line-- */
 hr.line{border-color: #ddd;width: 100%;padding: 0;margin:0;}
@@ -485,7 +485,7 @@ margin-bottom:-2px;
 /* -------------------------------------Content-------------------------------- */
 /* ---------------------------------------------------------------------------- */
 #page-content{padding: 0;}
-#page-content.index-page, #page-content.single-page, #page-content.archive-page{margin-top: 45px;background-color: #fff;}
+#page-content.index-page, #page-content.single-page, #page-content.archive-page{margin-top: 100px;background-color: #fff;}
 
 .archive-page .box .zoom-container{max-width: 250px;display: inline-block; margin-right: 5px;}
 
@@ -866,7 +866,7 @@ footer .footer-3 ul li a:hover{color: #666;}
 	font-size: 45px;
 }
 
-.news-category > article {float:left;height:275px;width: 240px;margin:0 15px 13px 0;}
+.news-category > article {float:left;height:275px;width: 240px;margin:0 15px 9px 0;}
 .news-category > article .badges-cate {margin:10px 0 0;}
 .news-category > article .badges-cate span{display: inline-block;font-size: 12px;}
 .news-category > article .badges-cate span:first-child{padding:5px; color:#fff; background-color: #052844;}

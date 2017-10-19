@@ -7,23 +7,17 @@
   $d   = mysql_fetch_array($detail);
   $tgl = tgl_indo($d['tanggal']);
   $jam = trans_jam($d['jam']);
-  $baca = $d['dibaca']+1;
   // var_export(array_flip($param));
-  $menu = [
-    8 => 'News',
-    13 => 'Lifestyle',
-    14 => 'Ummatizen',
-    18 => 'Kajian',
-    19 => 'Sosok',
-    20 => 'Kalam'
-  ];
+  // echo $d['id_kategori'];
+  $main_menu = mysql_query("SELECT * FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$d[id_kategori]')");
+  $menu = mysql_fetch_array($main_menu);
 ?>
 <div id="page-content" style="background-color: #ECECEC;margin-bottom:10px;margin-top:130px;" class="index-page container">
 <div class="col-md-9" style="background:#fff;">
 <div id="sidebar">
         <div class="user-panel">
         <div class="info">
-            <p class="daftar-redaksi"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".lcfirst($menu[$d[id_parent]]).">".$menu[$d[id_parent]]."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
+            <p class="daftar-redaksi"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".lcfirst($menu['link']).">".$menu['nama_menu']."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
           </div>
           <div class="judul">
               <?php echo"<h1>$d[judul]</h1>";?>
@@ -42,7 +36,7 @@
           </div>
         </div>
         <div class="info">
-          <span class="info-name"> <?php echo"$d[username]";?></span>
+          <span class="info-name"> <?php echo ucfirst($d['username']);?></span>
           <p class="daftar-redaksi" style="font-size:12px;color:rgba(49, 49, 49, 0.76);"><?php echo"$d[hari], $tgl - $jam"; ?></p>
         </div>
           <hr>
@@ -56,19 +50,10 @@
             echo "$d[isi_berita]";
             echo '</div>';
             echo "<div class='clearfix'></div>";
-            if($d[youtube]!='')
-            {
-              echo "<div class='wrap-vid'>
-                      <iframe width='100%' tabindex='0' style='background:#000; min-height: 480px;' allowfullscreen='1' src='$d[youtube]' frameborder='0' height='480' allowfullscreen></iframe>
-                    </div>";
-            }
             mysql_query("UPDATE berita SET dibaca='$d[dibaca]'+1 WHERE judul_seo='$_GET[judul]'");
             ?>
             <div class="sosial">
               <ul class="list-inline" style="text-align:right;margin:0;">
-                <!-- <li>
-                    <a class="btn btn-social-icon btn-dibaca" ><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;<?php $dibaca = round($d[dibaca]/56); echo"$dibaca";?></a>
-                </li> -->
                 <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
                 <a href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
                 <a href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
@@ -197,14 +182,9 @@
                     <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
                   </li>";
           }?> -->
-          <li style="border:1px solid #0093E9">
+          <li style="border:1px solid <?php echo $menu['color']?>">
             <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
-              <div class="title liputan-khusus" style="background-color: #0093E9;
-                background-image: -webkit-linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-                background-image: -moz-linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-                background-image: -o-linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-                background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-                padding:10px 15px;color:white;"><?php echo strtoupper($d['nama_menu'])?></div>
+              <div class="title liputan-khusus" style="padding:10px 15px;color:white;<?php echo $menu['gradient']?>"><?php echo strtoupper($d['nama_menu'])?></div>
                 <ul class="list-liputan-khusus">
             <?php
             $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='$d[id_kategori]' AND id_berita != '$d[id_berita]' ORDER BY id_berita DESC LIMIT 5");
@@ -218,7 +198,7 @@
                   <!-- <span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;position:absolute;'>$row[hari], $tgl - $jam</span> -->
                   </li>";
             }
-            echo "<a href=\"$d[link]\" style=\"display:block;text-align:center;padding:10px 0;color:#0093E9;font-weight:bold;font-size:14px;\">$d[nama_menu] Lainnya</a></a>";
+            echo "<a href=\"$d[link]\" style=\"display:block;text-align:center;padding:10px 0;color:$menu[color];font-weight:bold;font-size:14px;\">$d[nama_menu] Lainnya</a></a>";
             ?>
             </ul>
           </div>
@@ -231,9 +211,9 @@
           <div class="fb-page" data-href="https://www.facebook.com/harianamanah/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/harianamanah/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/harianamanah/">Harian Amanah</a></blockquote></div>
         </li>
          <li id="fixed-baca" data-spy="affix" style="background:#EBEBEC;">
-            <div class="single_blog_sidebar wow fadeInUp popular-rubrik" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44); margin-bottom:10px;">
-              <div class="title berita-foto" style="color:#fff;padding:15px;background-color: #1c9fa7;background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);">POPULAR <?php echo strtoupper($d['nama_menu'])?></div>
-              <ol class="list-berita-popular-rubrik" style="border:1px solid #007A7F">
+            <div class="single_blog_sidebar wow fadeInUp popular-rubrik <?php echo $menu['link']?>" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44); margin-bottom:10px;">
+              <div class="title berita-foto" style="color:#fff;padding:15px;<?php echo $menu['gradient']?>">POPULAR <?php echo strtoupper($d['nama_menu'])?></div>
+              <ol class="list-berita-popular-rubrik" style="border:1px solid <?php echo $menu['color']?>">
               <?php
               $berita_popular = mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 10");
               while($row = mysql_fetch_array($berita_popular)){

@@ -7,12 +7,6 @@
   RewriteCond %{REQUEST_FILENAME} !-f
 
   RewriteRule ^sitemap\.html$ media.php?module=sitemap [L]
-  RewriteRule ^news\.html$ media.php?module=news [L]
-  RewriteRule ^kalam\.html$ media.php?module=kalam [L]
-  RewriteRule ^sosok\.html$ media.php?module=sosok [L]
-  RewriteRule ^kajian\.html$ media.php?module=kajian [L]
-  RewriteRule ^lifestyle\.html$ media.php?module=lifestyle [L]
-  RewriteRule ^ummatizen\.html$ media.php?module=komunitas [L]
   RewriteRule ^foto-(.*)$ media.php?module=detailfoto&judul=$1 [L]
   RewriteRule ^kategori-(.*)\.html$ media.php?module=detailkategori&id=$1 [L]
   RewriteRule ^berita-(.*)\.html$ media.php?module=detailberita&judul=$1 [L]
@@ -48,6 +42,7 @@
   RewriteRule ^not-found$ media.php?module=notfound&id=$1 [L]
 
   #Clean URL
+  RewriteRule ^(.*)\.html$ media.php?module=katepage&menu=$1 [L]
   RewriteRule ^([^\.]+)$ $1.html [NC,L]
   RewriteRule ^index.php$ media.php?module=home [L]
 </IfModule>

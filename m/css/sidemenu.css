@@ -11,6 +11,56 @@
   margin-bottom: 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.39);
 }
+.news
+{
+  background-color: #06375e;
+  background-image: -webkit-linear-gradient(107deg, #06375e 25%, #2b4a5f 100%);
+  background-image: -moz-linear-gradient(107deg, #06375e 25%, #2b4a5f 100%);
+  background-image: -o-linear-gradient(107deg, #06375e 25%, #2b4a5f 100%);
+  background-image: linear-gradient(107deg, #06375e 25%, #2b4a5f 100%);
+}
+.lifestyle
+{
+  background-color: #009688;
+  background-image: -webkit-linear-gradient(85deg, #009688 0%, #1c7e76 100%);
+  background-image: -moz-linear-gradient(85deg, #009688 0%, #1c7e76 100%);
+  background-image: -o-linear-gradient(85deg, #009688 0%, #1c7e76 100%);
+  background-image: linear-gradient(85deg, #009688 0%, #1c7e76 100%);
+}
+.ummatizen
+{
+  background-color: #2196f3;
+  background-image: -webkit-linear-gradient(89deg, #2196f3 0%, #3378af 100%);
+  background-image: -moz-linear-gradient(89deg, #2196f3 0%, #3378af 100%);
+  background-image: -o-linear-gradient(89deg, #2196f3 0%, #3378af 100%);
+  background-image: linear-gradient(89deg, #2196f3 0%, #3378af 100%);
+}
+.islamic-view
+{
+  background-color: #1d6d47;
+  background-image: linear-gradient(270deg, #1d6d47 0%, #3ca775 100%);
+}
+.kalam
+{
+  background-color: #673ab7;
+  background-image: -webkit-linear-gradient(95deg, #673ab7 50%, #6a4b96 100%);
+  background-image: -moz-linear-gradient(95deg, #673ab7 50%, #6a4b96 100%);
+  background-image: -o-linear-gradient(95deg, #673ab7 50%, #6a4b96 100%);
+  background-image: linear-gradient(95deg, #673ab7 50%, #6a4b96 100%);
+}
+.alharam
+{
+  background-color: #f44336; 
+  background-image: -webkit-linear-gradient(147deg, #f44336 0%, #c6453c 74%);
+  background-image: -moz-linear-gradient(147deg, #f44336 0%, #c6453c 74%); 
+  background-image: -o-linear-gradient(147deg, #f44336 0%, #c6453c 74%); 
+  background-image: linear-gradient(147deg, #f44336 0%, #c6453c 74%);
+}
+.tekno
+{
+  background-color: #f6c626;
+  background-image: linear-gradient(270deg, #f6c626 25%, #e5287d 100%);
+}
 
 .navbar-default .navbar-toggle{
   border-color: transparent;
@@ -132,8 +182,8 @@ input[type=text]:focus {
 
 /* Menu Samping */
 .sidenav {
-    height: 100%;
-    width: 0;
+    height: 94%;
+    width:0;
     position: fixed;
     z-index: 4;
     left: 0;

@@ -540,7 +540,7 @@ ul.pagination li a{color: #444;}
 }
 #sidebar .flex-container{display: -webkit-inline-box;display: -ms-inline-flexbox;display: inline-flex;-webkit-box-orient: horizontal;-webkit-box-direction: normal;-ms-flex-direction: row;flex-direction: row;-ms-flex-wrap:wrap;flex-wrap:wrap;width: 100%;-webkit-box-pack: end;-ms-flex-pack: end;justify-content: flex-end;}
 .flex-container .item-flex{position: relative;}
-.black_layer {top:0;position: absolute;height: 100%;width: 100%;background:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));background:linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 100%);opacity: .6;}
+.black_layer {top:0;position: absolute;height: 100%;width: 100%;background:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(#000000));background:linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 100%);opacity: 1;}
 .grid-thumb-big{width: 570px;height: 328px;}
 .grid-thumb-big img{-o-object-fit: cover;object-fit: cover;height: inherit;width: inherit;}
 .grid-thumb-medium{width: 250px;height: 164px;}

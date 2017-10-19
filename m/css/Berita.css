@@ -44,6 +44,33 @@ a:hover{
   white-space: nowrap;
   overflow-x: scroll;
 }
+.line-news
+{
+	border-bottom: 5px solid rgba(6, 55, 94, 0.8)  !important;
+}
+.line-lifestyle
+{
+	border-bottom: 5px solid rgba(0, 150, 136, 0.8) !important;
+}
+.line-ummatizen
+{
+	border-bottom: 5px solid rgba(33, 150, 243, 0.8) !important;
+}
+.line-islamic-view{
+	border-bottom: 5px solid rgba(60, 167, 117, 0.82) !important;
+}
+.line-tekno
+{
+	border-bottom: 5px solid rgba(229, 40, 125, 0.82) !important;
+}
+.line-alharam
+{
+	border-bottom: 5px solid rgba(244, 67, 54, 0.8) !important;
+}
+.line-kalam
+{
+	border-bottom: 5px solid rgba(103, 58, 183, 0.83) !important;
+}
 .navbar.sub-rubrik li{
   display: inline-block;
   padding: 7px 17px;

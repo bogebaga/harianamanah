@@ -121,9 +121,20 @@ session_start();
     echo "http://harianamanah.com/images/amanah.jpg";
   }
   ?>" />
-  <meta name="theme-color" content="#1c9fa7">
-  <meta name="msapplication-navbutton-color" content="#1c9fa7">
-  <meta name="apple-mobile-web-app-status-bar-style" content="#1c9fa7">
+  <?php
+  if($_GET['jn']):
+    $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE link = '$_GET[jn]'"));
+  elseif($_GET['judul']):
+    $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = (SELECT id_kategori FROM berita WHERE judul_seo = '$_GET[judul]'))"));
+  elseif($_GET['id']):
+    $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')"));
+  else:
+    $color = ["color" => "#1c9fa7"];
+  endif;
+  ?>
+  <meta name="theme-color" content="<?php echo $color['color']?>">
+  <meta name="msapplication-navbutton-color" content="<?php echo $color['color']?>">
+  <meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $color['color']?>">
 
   <link rel="shortcut icon" href="favicon.png">
   <!--Bootstrap Theme-->
@@ -203,9 +214,12 @@ session_start();
     </center>
     </div>
   </div>
-  <?php $_SESSION['cek'] = $_GET['module']; ?>
-<?php endif ?>
-    <header class="navbar navbar-default navbar-fixed-top">
+  <?php 
+    $_SESSION['cek'] = $_GET['module'];
+    endif;
+    // $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
+  ?>
+    <header class="navbar navbar-default navbar-fixed-top <?php echo $color['link'];?>">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#menuSamping">
@@ -220,51 +234,53 @@ session_start();
           <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="query-search" placeholder="Cari berita dan peristiwa">
                 </form>
             </div>
-        </div>
-        <div id="menuSamping" class="sidenav">
-      <!-- <p>KATEGORI</p> -->
-      <ul class="nav navbar-nav social-hub"  style="margin:0;">
-        <li class="facebook"><a href="https://www.facebook.com/harianamanah/" target="_blank"><span class="fa fa-facebook-square"></span></a></li>
-        <li class="instagram"><a href="https://www.instagram.com/harian_amanah/" target="_blank"><span class="fa fa-instagram"></span></a></li>
-        <li class="twitter-nav"><a href="https://twitter.com/harianamanah" target="_blank"><span class="fa fa-twitter-square"></span></a></li>
-        <li class="youtube"><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><span class="fa fa-youtube-square"></span></a></li>
-        <li class="google"><a href='https://plus.google.com/115045050828571942973' target='_blank'><span class="fa fa-google-plus-square"></span></a></li>
-      </ul>
-      <h2 class="caption">HARIANAMANAH</h2>
-      <ul class="nav navbar-nav">
-        <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
-        <li><i class='fa fa-2x fa-lightbulb-o' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='./' class='tagging'>Terkini</a></li>
-        <li><i class='fa fa-2x fa-flash' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='popular' class='tagging'>Popular</a></li>
-        <li><i class='fa fa-2x fa-thumbs-o-up' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='rekomendasi' class='tagging'>Rekomendasi</a></li>
-      </ul>
-      <h2 class="caption">KANAL</h2>
-            <ul class="nav navbar-nav">
-    <?php
-      $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_parent");
-      while ($row = mysql_fetch_array($result)) {
-        $idp = $row['id_menu'];
-        if ($row['nama_menu']!== 'Info Alharam') {
-            echo"
-				<li>
-				<a href='$row[link]' class='tagging' >$row[nama_menu] </a>
-				<a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='fa fa-angle-down panah6'></span></a>
-				<ul class='dropdown-menu'>
-				";
-        } elseif (($row['nama_menu'] == 'Info Alharam')) {
-            echo"
-				<li>
-				<a href='$row[link]' class='tagging'>$row[nama_menu] </a>
-				<ul class='dropdown-menu'>
-				";
-        }
-        $result1 = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent=$idp ORDER BY id_menu");
-        while ($row1 = mysql_fetch_array($result1)) {
-                echo "<li><a href='$row1[link]'>$row1[nama_menu]</a></li>";
-        }
-        echo "</ul></li>";
-    }?>
-      </ul>
-        </div>
+      </div>
+      <div id="menuSamping" class="sidenav">
+        <!-- <p>KATEGORI</p> -->
+        <ul class="nav navbar-nav social-hub"  style="margin:0;">
+          <li class="facebook"><a href="https://www.facebook.com/harianamanah/" target="_blank"><span class="fa fa-facebook-square"></span></a></li>
+          <li class="instagram"><a href="https://www.instagram.com/harian_amanah/" target="_blank"><span class="fa fa-instagram"></span></a></li>
+          <li class="twitter-nav"><a href="https://twitter.com/harianamanah" target="_blank"><span class="fa fa-twitter-square"></span></a></li>
+          <li class="youtube"><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><span class="fa fa-youtube-square"></span></a></li>
+          <li class="google"><a href='https://plus.google.com/115045050828571942973' target='_blank'><span class="fa fa-google-plus-square"></span></a></li>
+        </ul>
+        <h2 class="caption">HARIANAMANAH</h2>
+        <ul class="nav navbar-nav">
+          <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
+          <li><i class='fa fa-2x fa-lightbulb-o' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='./' class='tagging'>Terkini</a></li>
+          <li><i class='fa fa-2x fa-flash' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='popular' class='tagging'>Popular</a></li>
+          <li><i class='fa fa-2x fa-thumbs-o-up' style='color:#009688;width:35px;padding:0 0 0 25px'></i><a href='rekomendasi' class='tagging'>Rekomendasi</a></li>
+        </ul>
+        <h2 class="caption">KANAL</h2>
+              <ul class="nav navbar-nav">
+      <?php
+        $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_parent");
+        while ($row = mysql_fetch_array($result)) {
+          $idp = $row['id_menu'];
+          if ($row['nama_menu']!== 'Info Alharam') {
+              echo"
+          <li>
+          <a href='$row[link]' class='tagging' >$row[nama_menu] </a>
+          <a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='fa fa-angle-down panah6'></span></a>
+          <ul class='dropdown-menu'>
+          ";
+          } elseif (($row['nama_menu'] == 'Info Alharam')) {
+              echo"
+          <li>
+          <a href='$row[link]' class='tagging'>$row[nama_menu] </a>
+          <ul class='dropdown-menu'>
+          ";
+          }
+          $result1 = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent=$idp ORDER BY id_menu");
+          while ($row1 = mysql_fetch_array($result1)) {
+                  echo "<li><a href='$row1[link]'>$row1[nama_menu]</a></li>";
+          }
+          echo "</ul>
+          </li>";
+          }?>
+          <div class='clearfix'></div>
+        </ul>
+      </div>
     </header>
     <section id="main">
     <?php include "content.php"; ?>

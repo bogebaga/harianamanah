@@ -1,6 +1,6 @@
-  <ul class="navbar sub-rubrik">
+  <ul class="navbar sub-rubrik line-<?php echo $_GET['jn']?>">
   <?php
-  $kalam = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]')");
+  $kalam = mysql_query("SELECT nama_menu, link, color FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]')");
   while($row = mysql_fetch_array($kalam)){
     echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
   }

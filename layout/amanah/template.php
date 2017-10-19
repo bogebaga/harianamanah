@@ -468,11 +468,19 @@ error_reporting(0);
   </div>
 	</footer>
 	<!-- Footer -->
-	<!-- JS -->
+  <!-- JS -->
+<?php
+  $location_img = "foto_berita/base.png";
+  $type = pathinfo($location_img, PATHINFO_EXTENSION);
+  $data = file_get_contents($location_img);
+  $base64 = "data:image/".$type.";base64,".base64_encode($data);
+?>
 <script type="text/javascript">
   $(document).ready(function()
   {
-    $('.lazy').lazy();
+    $('.lazy').lazy({
+      placeholder: "<?php echo $base64;?>"
+    });
     $(window).bind('scroll',function()
     {
       if ($(this).scrollTop()>900){

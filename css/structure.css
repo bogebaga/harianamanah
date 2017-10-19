@@ -1666,10 +1666,10 @@ ol.list-berita-popular li:before{
 	float:left;
 	font-size: 25px;
 }
-ul.list-liputan-khusus li a:hover
+/* ul.list-liputan-khusus li a:hover
 {
-	/* color:#000 !important; */
-}
+	color:#000 !important;
+} */
 ul.list-liputan-khusus li,
 ol.list-berita-popular li
 {
@@ -1741,8 +1741,36 @@ ol.list-berita-popular-rubrik
 	text-align: center;
 	font-size: 30px;
 	float: left;
-
 }
+.popular-rubrik.news li::before
+{
+	background: #06375E;
+}
+.popular-rubrik.lifestyle li::before
+{
+	background: #009688;
+}
+.popular-rubrik.ummatizen li::before
+{
+	background: #2196F3;
+}
+.popular-rubrik.islamic-view li::before
+{
+	background: #3CA775;
+}
+.popular-rubrik.kalam li::before
+{
+	background: #673ab7;
+}
+.popular-rubrik.alharam li::before
+{
+	background: #f44336;
+}
+.popular-rubrik.tekno li::before
+{
+	background: #E5287D;
+}
+
 .popular-rubrik li
 {
 	margin:0;

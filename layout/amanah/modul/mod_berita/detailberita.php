@@ -20,7 +20,7 @@
             <p class="daftar-redaksi"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".lcfirst($menu['link']).">".$menu['nama_menu']."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
           </div>
           <div class="judul">
-              <?php echo"<h1>$d[judul]</h1>";?>
+              <?php echo"<h1 style='color:$menu[color]'>$d[judul]</h1>"; ?>
           </div>
           <div class="sosial" style="float:right;width:200px;">
             <ul class="list-inline" style="text-align:left;margin:0;">
@@ -69,7 +69,7 @@
               <div class='kotak' style="width:100%;float:none">
               <br>
               <div class="row">
-                <h2 style="padding:15px;text-align:left;background:#1abc9c;color:#fff;">Berita Terkait</h2>
+                <h2 style="padding:13px 15px;text-transform:uppercase;font-weight:bold !important;text-align:left;background:#ECEFF1;color:#232d31;">Berita Terkait</h2>
               </div>
                 <ul class="featured_nav0 berita-terkait">
                 <?php
@@ -83,8 +83,7 @@
                             <a href='berita-$p1[judul_seo]' style='text-align:left;padding-left:0;font-weight:bold;font-size:15px;'>$p1[judul]</a>
                             </div>
                           </li>
-                        ";
-                    }
+                        ";}
                 ?>
                 </ul>
                 <div class='clearfix'></div>
@@ -92,7 +91,7 @@
               <div class='kotak' style="width:100%;margin-bottom:30px;float:none">
               <br>
               <div class='row'>
-                <h2 style="padding:15px;text-align:left;background:#16a085;color:#fff;margin-bottom:25px;">Berita Lainnya</h2>
+                <h2 style="padding:13px 15px;text-transform:uppercase;font-weight:bold !important;text-align:left;background:#ECEFF1;color:#232d31;margin-bottom:25px;">Berita Lainnya</h2>
               </div>
                 <ul class="featured_nav0 berita-lainnya">
                 <?php
@@ -113,7 +112,7 @@
               </div>
               <div class='kotak' style="width:100%;float:none;">
               <div class="row">
-                <h2 style="padding:15px;text-align:left; background-color: #1c9fa7;background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);color:#fff;margin-bottom:20px">Berita Terkini</h2>
+                <h2 style="padding:13px 15px;text-align:left;text-transform:uppercase !important;font-weight:bold !important; color:#fff;margin-bottom:20px;<?php echo $menu['gradient']?>"">Berita Terkini</h2>
               </div>
                 <ul class="featured_nav0">
                 <?php

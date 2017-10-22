@@ -4,9 +4,9 @@
 ?>
 <!-- /////////////////////////////////////////Content -->
 	<div id="page-content" class="index-page container" style="background-color:#ececec;">
-  <h1 style="color:<?php echo $nama_menu['color']?>;border-bottom:1px solid <?php echo $nama_menu['color']?>"><?php echo $nama_menu['nama_menu']?></h1>
+  <!-- <h1 style="color:<?php echo $nama_menu['color']?>;border-bottom:1px solid <?php echo $nama_menu['color']?>"><?php echo $nama_menu['nama_menu']?></h1> -->
     <div id="sidebar" style="padding:0;background:#ECECEC;">
-      <div class="col-xs-12" style="padding:0;float:none;margin-bottom:25px">
+      <div class="col-xs-12" style="padding:0;float:none;margin-bottom:25px;margin-top:25px">
         <div class='flex-container'>
         <?php
         $rubrik=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE m.id_parent = '$nama_menu[id_menu]' ORDER BY id_berita DESC LIMIT 5");
@@ -42,13 +42,13 @@
       </div>
       <div class="col-xs-12" style="padding:0;float:none;">
       <div class="col-xs-3" style="padding-left:0;">
-        <div style="padding:10px;<?php echo $nama_menu['gradient']?>" >
+        <div style="padding:10px;background:#fff;border-radius:5px;" >
           <ul>
-          <h1 style="color:#fff;border-bottom:1px solid #fff;margin:0 0 15px 0;"><?php echo $nama_menu['nama_menu']?></h1>
+          <h1 style="color:<?php echo $nama_menu['color']?>;border-bottom:3px solid #F44336;margin:0 0 15px 0;font-weight:bold !important;display:inline-block;"><?php echo $nama_menu['nama_menu']?></h1>
           <?php
             $submenu = mysql_query("SELECT * FROM menu WHERE id_parent='$nama_menu[id_menu]'");
             while($row = mysql_fetch_array($submenu)){
-              echo "<li style='padding-bottom:10px;'><a style='color:#fff;' href='$row[link]'>$row[nama_menu]</a></li>";
+              echo "<li style='padding-bottom:10px;'><a style='color:$nama_menu[color];' href='$row[link]'>$row[nama_menu]</a></li>";
             }
           ?>
           </ul>

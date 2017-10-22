@@ -42,7 +42,6 @@
             </div>
           </div>";}
       } 
-      
       $jumlahdata = mysql_num_rows(mysql_query("SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%' ORDER BY id_berita, judul DESC"));
       $jumlah_halaman = $hasilcari_page -> jumlahHalaman($jumlahdata,$batas);
       $link_halaman = $hasilcari_page -> navHalaman($_GET['halaman'], $jumlah_halaman); ?>

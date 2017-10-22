@@ -14,16 +14,6 @@ session_start();
 			AND judul_seo='$_GET[judul]'");
 	$d   = mysql_fetch_array($detail);
 	$tgl = tgl_indo($d['tanggal']);
-	$baca = $d['dibaca']+1;
-
-	$detail1=mysql_query("SELECT * FROM video WHERE video_seo ='$_GET[judul]'");
-	$d1   = mysql_fetch_array($detail1);
-
-	$detail2=mysql_query("SELECT * FROM gallery,users,album
-			WHERE users.username=album.username
-			AND album.id_album=gallery.id_album
-			AND album_seo='$_GET[judul]'");
-  $d2   = mysql_fetch_array($detail2);
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,9 +89,9 @@ session_start();
   <meta property="og:type" content="article" />
   <meta property="og:url" content="<?php
   if ($d['judul_seo'] != '') {
-      echo "http://m.harianamanah.com/berita-$d[judul_seo]";
+      echo "http://harianamanah.com/berita-$d[judul_seo]";
   } else {
-      echo "http://m.harianamanah.com";
+      echo "http://harianamanah.com";
   }?>" />
   <meta property="og:image" content="<?php
   if($d['gambar']!=''){
@@ -136,9 +126,9 @@ session_start();
   ?>" />
   <meta name="twitter:url" content="<?php
   if ($d['judul_seo'] != '') {
-      echo "http://m.harianamanah.com/berita-$d[judul_seo]";
+      echo "http://harianamanah.com/berita-$d[judul_seo]";
   } else {
-      echo "http://m.harianamanah.com";
+      echo "http://harianamanah.com";
   }?>" />
   <meta name="twitter:description" content="<?php
   if($d['isi_berita'] != '')
@@ -222,6 +212,14 @@ session_start();
     },
     "articleBody": "<?php echo fullbody($d['isi_berita'])?>"
   }
+  </script>
+  <!-- Website -->
+  <script type="text/javascript">
+    var URL = window.location.href.split('/').pop();
+    if(screen.width > 768)
+    {
+      document.location = 'http://harianamanah.com/'+URL;
+    }
   </script>
   <?php 
     include_once "analyticstracking.php"; 

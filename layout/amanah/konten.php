@@ -307,7 +307,6 @@
         ?>
         </ul>
       </div>
-
       <div id="fixed-right" data-spy="affix" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;border:1px solid #ff9d25;">
         <div class="title liputan-khusus" style="background-color: #ff9d25;background-image: linear-gradient(62deg, #ff9d25 0%, #ffca00 100%);padding:10px 15px;color:white;">LIPUTAN KHUSUS</div>
         <ul class="list-liputan-khusus">
@@ -449,6 +448,4 @@
    // DEATAIL HALAMAN STATIS ////////////////////////////////////////////
   elseif ($_GET['module']=='error'){
   include "$f[folder]/notfound.html";}
-
-  /////////////////////////////////////////////////////////////
   ?>

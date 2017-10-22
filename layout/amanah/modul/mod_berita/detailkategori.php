@@ -41,24 +41,20 @@ echo"<img src='foto_kategori/$n[photo]'>";
 				echo $jmldata." ARTIKEL";
 				?>
 				</span> -->
-
-            </div>
+        </div>
 			<?php
   $p      = new Paging_kategori;
   $batas  = 15;
   $posisi = $p->cariPosisi($batas);
 
-  $sql   = "SELECT * FROM berita,users WHERE users.username=berita.username
-  AND id_kategori='$_GET[id]'
-  ORDER BY id_berita DESC LIMIT $posisi,$batas";
-
-
+  $sql   = "SELECT * FROM berita,users WHERE users.username=berita.username AND id_kategori='$_GET[id]' ORDER BY id_berita DESC LIMIT $posisi,$batas";
   $hasil = mysql_query($sql);
   $jumlah = mysql_num_rows($hasil);
 
   if ($jumlah > 0){
   while($r=mysql_fetch_array($hasil)){
   $tgl = tgl_indo($r['tanggal']);
+  $jam = trans_jam($r['jam']);
 
 echo"
 <div class='trend-left-inner'>
@@ -70,9 +66,10 @@ echo"
         </div>
     </figure>
     <div class='trend-left-info'>
-        <a href='berita-$r[judul_seo]' style='margin-top:0;'>$r[judul]</a>
-        <div class='publish-info cf'>".substr(strip_tags($r['isi_berita']), 0, 160)."</div>
-        </div>
+      <a href='berita-$r[judul_seo]' style='margin-top:0;'>$r[judul]</a>
+      <p style='margin-left:10px;margin-top:3px;'>$r[hari], $tgl - $jam</p>
+      <div class='publish-info cf'>".substr(strip_tags($r['isi_berita']), 0, 160)."</div>
+      </div>
   </div>
 </div>";}
   }
@@ -84,8 +81,6 @@ echo"
      </div>
     </section><!--konten end-->
     <div class="clr"></div>
-    <section class="big-ads" id="remove-fixed23">
-
-    </section>
+    <section class="big-ads" id="remove-fixed23"></section>
 </div>
 </div>

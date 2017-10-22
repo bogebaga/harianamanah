@@ -29,10 +29,10 @@
     <li style='display:inline-block;vertical-align:top;margin-right:50px;'>
       <a style='color:#E8BF0A;font-weight:bold;font-size:40px;' href=\"$row[link]\">$row[nama_menu]</a>
       <ol style='list-style:disc;'>";
-    $submenu = mysql_query("SELECT * FROM menu WHERE id_parent = '$row[id_menu]' AND aktif='YA'");
-    while($rowsub = mysql_fetch_array($submenu)){
-      echo " <li style='color:#fff;'><a style='color:#fff;' href=\"$rowsub[link]\">$rowsub[nama_menu]</a></li>";
-    }
+      $submenu = mysql_query("SELECT * FROM menu WHERE id_parent = '$row[id_menu]' AND aktif='Ya'");
+      while($rowsub = mysql_fetch_array($submenu)){
+        echo " <li style='color:#fff;'><a style='color:#fff;' href=\"$rowsub[link]\">$rowsub[nama_menu]</a></li>";
+      }
     echo "<br>";
     echo "</ol></li>";
   }

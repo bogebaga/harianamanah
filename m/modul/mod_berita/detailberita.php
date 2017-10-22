@@ -64,7 +64,7 @@
     }
 </style>
 <?php
-  $query = mysql_query("SELECT link, nama_menu FROM menu where id_menu = (SELECT id_parent FROM menu WHERE link = '$d[link]')");
+  $query = mysql_query("SELECT color, link, nama_menu FROM menu where id_menu = (SELECT id_parent FROM menu WHERE link = '$d[link]')");
   $menu = mysql_fetch_array($query);
 ?>
 <section class="container-fluid bungkus" id="test">
@@ -95,28 +95,31 @@
       <a href="#facebook-comment" class="social-share fa fa-commenting-o"></a>
     </div>
     <div class="box left">
-        <span class="berita">
-            <?php
-            if(!empty($d['youtube'])) {
-                echo "
-						<iframe width='100%' tabindex='0' style='background:#000; min-height: 480px;' allowfullscreen='1' src='$d[youtube]' frameborder='0' height='480' allowfullscreen></iframe>
-						";
-            }
-            ?>
-				<?php
-                if (strpos($d['isi_berita'], "src='http://harianamanah.com/redaktur/") !== false) {
-                    echo(str_replace('http://harianamanah.com/redaktur/','http://harianamanah.com/redaktur/',$d['isi_berita']));
-                }else  {
-                    echo(str_replace('src="/redaktur/','src="http://harianamanah.com/redaktur/',$d['isi_berita']));
-                }
-                mysql_query("UPDATE berita SET dibaca=$d[dibaca]+1 WHERE judul_seo='$_GET[judul]'");
-                ?>
-			</span>
-        <div class="iklan">
-            <a href="https://abutours.com/" target="_blank" title="AbuTours.com">
-                <img class="img-responsive" src="http://harianamanah.com/m/assets/abujie.jpg" alt="iklan">
-            </a>
-        </div>
+      <span class="berita">
+          <?php
+          if(!empty($d['youtube'])) {
+              echo "
+          <iframe width='100%' tabindex='0' style='background:#000; min-height: 480px;' allowfullscreen='1' src='$d[youtube]' frameborder='0' height='480' allowfullscreen></iframe>
+          ";
+          }
+          ?>
+          <?php
+          if (strpos($d['isi_berita'], "src='http://harianamanah.com/redaktur/") !== false) {
+              echo(str_replace('http://harianamanah.com/redaktur/','http://harianamanah.com/redaktur/',$d['isi_berita']));
+          }else  {
+              echo(str_replace('src="/redaktur/','src="http://harianamanah.com/redaktur/',$d['isi_berita']));
+          }
+          mysql_query("UPDATE berita SET dibaca=$d[dibaca]+1 WHERE judul_seo='$_GET[judul]'");
+          ?>
+      </span>
+      <hr>
+      <span>Dibaca : <?php echo $d['dibaca']?></span>
+      <hr>
+      <div class="iklan">
+          <a href="https://abutours.com/" target="_blank" title="AbuTours.com">
+              <img class="img-responsive" src="http://harianamanah.com/m/assets/abujie.jpg" alt="iklan">
+          </a>
+      </div>
     </div>
 </section>
 <section class="container-fluid bungkus">

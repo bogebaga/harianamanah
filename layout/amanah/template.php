@@ -7,16 +7,6 @@ error_reporting(0);
 			AND judul_seo='$_GET[judul]'");
 	$d   = mysql_fetch_array($detail);
 	$tgl = tgl_indo($d['tanggal']);
-	$baca = $d['dibaca']+1;
-
-	$detail1=mysql_query("SELECT * FROM video WHERE video_seo ='$_GET[judul]'");
-	$d1   = mysql_fetch_array($detail1);
-
-	$detail2=mysql_query("SELECT * FROM gallery,users,album
-			WHERE users.username=album.username
-			AND album.id_album=gallery.id_album
-			AND album_seo='$_GET[judul]'");
-  $d2   = mysql_fetch_array($detail2);
 ?>
 <!DOCTYPE html>
 <html>
@@ -370,8 +360,19 @@ error_reporting(0);
         <!-- <img style="margin-left:15px;" src="foto_banner/milad_amanah.jpg" alt="banner milad amanah"> -->
       </div>
     </div>
+    <?php
+      if($_GET['menu']):
+        $color = mysql_fetch_array(mysql_query("SELECT gradient, color, link FROM menu WHERE link = '$_GET[menu]'"));
+      elseif($_GET['judul']):
+        $color = mysql_fetch_array(mysql_query("SELECT gradient, color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = (SELECT id_kategori FROM berita WHERE judul_seo = '$_GET[judul]'))"));
+      elseif($_GET['id']):
+        $color = mysql_fetch_array(mysql_query("SELECT gradient, color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')"));
+      else:
+        $color = ["color" => "#1c9fa7"];
+      endif;
+    ?>
     <div class="row">
-    <div class="container nav-menu" style="padding:0;">
+    <div class="container nav-menu" style="padding:0;<?php echo $color['gradient']?>">
       <div class="navbar-header">
         <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
       </div>

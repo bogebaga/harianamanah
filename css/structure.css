@@ -1597,7 +1597,7 @@ h3[data-style="und-bdr"]::after
 	width:100%;
 	position:absolute;
 	left:0;
-	padding: 8px;
+	/* padding: 8px; */
   /* overflow-x: scroll; */
   /* padding:0; */
 	/* white-space: nowrap; */

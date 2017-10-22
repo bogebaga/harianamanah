@@ -1,4 +1,5 @@
 <?php include_once('config_fb.php');?>
+
 <div id="fb-root"></div>
 <script>
     window.fbAsyncInit = function() {
@@ -17,7 +18,7 @@
     }(document, 'script', 'facebook-jssdk'));
 </script>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-TEST
+
 <div id="page-content" style="background-color: #161616;border:5px solid #00B0B2;margin-bottom:10px;margin-top:130px;padding:20px 30px;" class="index-page container">
 <h1 style="font-size:20px;">SITEMAP</h1>
 <ul>
@@ -33,11 +34,9 @@ TEST
       echo " <li style='color:#fff;'><a style='color:#fff;' href=\"$rowsub[link]\">$rowsub[nama_menu]</a></li>";
     }
     echo "<br>";
-    echo "
-      </ol>
-    </li>";
+    echo "</ol></li>";
   }
   ?>
 </ul>
 </div>
-<!-- <div class="clear">&nbsp;</div> -->
+<div class="clear">&nbsp;</div>

@@ -191,7 +191,6 @@
             <li></li>
           </ul>
         </div>
-     
       <div class="single_blog_sidebar wow fadeInUp" style="height:auto;">
         <!-- <blockquote class="twitter-tweet" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/FUB6zzRiUG">https://t.co/FUB6zzRiUG</a> <a href="https://twitter.com/hashtag/harianamanah?src=hash">#harianamanah</a> <a href="https://twitter.com/hashtag/koranamanah?src=hash">#koranamanah</a> <a href="https://twitter.com/hashtag/abucorp?src=hash">#abucorp</a> <a href="https://twitter.com/hashtag/dailyquotes?src=hash">#dailyquotes</a> <a href="https://twitter.com/hashtag/quoteoftheday?src=hash">#quoteoftheday</a> <a href="https://twitter.com/hashtag/muslimquotes?src=hash">#muslimquotes</a> <a href="https://twitter.com/hashtag/muslim?src=hash">#muslim</a> <a href="https://twitter.com/hashtag/tausiyah?src=hash">#tausiyah</a> <a href="https://twitter.com/hashtag/teladanrasul?src=hash">#teladanrasul</a> <a href="https://t.co/NF6lNauPIZ">pic.twitter.com/NF6lNauPIZ</a></p>&mdash; Harian Amanah (@HarianAmanah) <a href="https://twitter.com/HarianAmanah/status/900991240035983360">August 25, 2017</a></blockquote> -->
         <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -414,7 +413,7 @@
 
     ////////////////////////////////////////////////////////////
   elseif ($_GET['module']=='sitemap'){
-  include "$f[folder]/modul/mod_berita/sitemap.php";}
+  include "$f[folder]/sitemap.php";}
       
   // DETAIL BERITA////////////////////////////////////////////
   elseif ($_GET['module'] == 'detailberita'){

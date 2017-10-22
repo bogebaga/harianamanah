@@ -66,18 +66,31 @@
 			<center><img src="assets/loading.gif" width="100px"></center>
 		</div>
     </section>
-    <section class="container-fluid">
-      <h1>Popular</h1>
-      <ol>
-        <li>test</li>
-      </ol>
+    <section class="container-fluid" style="background:#fff; border-top:3px solid #000;padding:0 5px;">
+      <h1>POPULAR</h1>
+      <ul class="col-xs-12 rubrik-popular top-<?php echo $_GET['jn']?> ">
+        <?php
+          $popular = mysql_query("SELECT * FROM berita, menu WHERE berita.id_kategori = menu.id_menu AND id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]') ORDER BY dibaca DESC LIMIT 10");
+          while($row = mysql_fetch_array($popular))
+          {
+            echo "<li class='top-popular'><a href='berita-$row[judul_seo]'>$row[judul]</li>";
+          }
+        ?>
+      </ul>
     </section>
-    <section class="container-fluid">
-      <h1>Foto</h1>
-    </section>
-    <section class="container-fluid">
-      <h1>Video</h1>
-    </section>
+    <?php
+      $nama_menu = mysql_query("SELECT nama_menu, link FROM menu FROM menu WHERE id_parent = '0' AND aktif = 'Ya'");
+      while($main = mysql_fetch_array($nama_menu))
+      {
+        echo "
+        <article class=\"container-fluid\">
+        <h1>LIFESTYLE</h1>
+        <div class=\"content-image\">
+            <img src=\"\" alt=\"\">
+        </div>
+        </article>";
+      }
+    ?>
     <script>
       $(document).ready(function(){
         // var loadMore = true;

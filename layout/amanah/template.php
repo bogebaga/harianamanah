@@ -30,11 +30,20 @@ error_reporting(0);
   <meta name="googlebot" content="index, follow" />
   <meta name="googlebot-news" content="index, follow" />
   <meta name="title" content="<?php
-  if($d['judul'] !=''){
-    echo "$d[judul]";
-  }else{
+  if($_GET['menu']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
+    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['judul']):
+    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
+    echo $title['judul'];
+  elseif($_GET['id']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
+    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'hasilcari'):
+    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  else:
     echo "Kiblat Berita Islami - harianamanah.com";
-  }?>" />
+  endif;?>" />
   <meta name="description" content="<?php
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
@@ -49,19 +58,36 @@ error_reporting(0);
   }
   ?>" />
   <title><?php
-  if($d['judul'] !=''){
-      echo "$d[judul]";
-  }else{
-      echo "Kiblat Berita Islami - harianamanah.com";
-  }?>
-  </title>
+  if($_GET['menu']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
+    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['judul']):
+    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
+    echo $title['judul'];
+  elseif($_GET['id']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
+    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'hasilcari'):
+    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  else:
+    echo "Kiblat Berita Islami - harianamanah.com";
+  endif;
+  ?></title>
   <meta property="og:title" content="<?php
-  if($d['judul'] !=''){
-      echo "$d[judul]";
-  }else{
-      echo "Kiblat Berita Islami - harianamanah.com";
-  }
-  ?>" />
+  if($_GET['menu']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
+    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['judul']):
+    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
+    echo $title['judul'];
+  elseif($_GET['id']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
+    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'hasilcari'):
+    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  else:
+    echo "Kiblat Berita Islami - harianamanah.com";
+  endif;?>" />
   <meta property="og:description" content="<?php
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
@@ -91,11 +117,20 @@ error_reporting(0);
   <meta name="twitter:site:id" content="@harianamanah" />
   <meta name="twitter:creator" content="@harianamanah" />
   <meta name="twitter:title" content="<?php
-  if($d['judul'] !=''){
-      echo "$d[judul]";
-  }else{
-      echo "Kiblat Berita Islami - harianamanah.com";
-  }?>" />
+  if($_GET['menu']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
+    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['judul']):
+    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
+    echo $title['judul'];
+  elseif($_GET['id']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
+    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'hasilcari'):
+    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  else:
+    echo "Kiblat Berita Islami - harianamanah.com";
+  endif;?>" />
   <meta name="twitter:url" content="<?php
   if ($d['judul_seo'] != '') {
       echo "http://harianamanah.com/berita-$d[judul_seo]";
@@ -284,6 +319,10 @@ error_reporting(0);
   }
   .logo{display:inline-block;}
 </style>
+<?php
+  include_once "analyticstracking.php";
+  include_once "adsense.php";
+?>
 </head>
 <body>
 <header>
@@ -350,7 +389,7 @@ error_reporting(0);
                 while($row_sub = mysql_fetch_array($sub_rubrik)){
                 echo "
                     <li class=\"sub__rubrik\">
-                      <a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;'>$row_sub[nama_menu]</a>
+                      <a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;padding:10px 0;display:inline-block;'>$row_sub[nama_menu]</a>
                       <i>&nbsp;&nbsp;&nbsp;•</i>
                     </li>";
                 }
@@ -368,7 +407,7 @@ error_reporting(0);
           while($row_sub = mysql_fetch_array($sub_rubrik)){
           echo "
             <li class=\"sub__rubrik\">
-              <a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;'>$row_sub[nama_menu]</a>
+              <a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;padding:10px 0;display:inline-block;'>$row_sub[nama_menu]</a>
               <i>&nbsp;&nbsp;&nbsp;•</i>
             </li>";
           }
@@ -380,7 +419,6 @@ error_reporting(0);
   </nav>
 </header>
 <?php 
-  include_once "analyticstracking.php";
   include_once "config_fb.php";
   include_once "embed.php";
   include_once "konten.php"; 
@@ -481,6 +519,7 @@ error_reporting(0);
     $('.lazy').lazy({
       placeholder: "<?php echo $base64;?>"
     });
+    
     $(window).bind('scroll',function()
     {
       if ($(this).scrollTop()>900){

@@ -5,7 +5,7 @@
   $kata = $_GET['query-search'];
   // $kata = htmlentities(htmlspecialchars($kata), ENT_QUOTES);
 
-  $cari = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata' OR isi_berita LIKE '%$kata' ORDER BY id_berita, judul, isi_berita DESC LIMIT 50";
+  $cari = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%' ORDER BY id_berita, judul DESC";
   $hasil  = mysql_query($cari);
   $ketemu = mysql_num_rows($hasil);
 
@@ -30,20 +30,8 @@
 										<p class='waktu-berita'> $r[hari], $tgl - $jam </p>
 								</div>
 				</article>
-
-
-
-
   ";
   }
-
-  }
-
-
-
- ?>
-
-
+  }?>
 </section>
   </section>
-

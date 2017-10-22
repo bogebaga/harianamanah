@@ -23,8 +23,7 @@ echo"<img src='foto_kategori/$n[photo]'>";
 				</div>
         </div>
 
-        <div id="fixed-right" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-top:10px;margin-bottom:3px;">
-        <div class="title liputan-khusus" style="background-color: #8BC6EC;background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);padding:10px 15px;color:white;font-size:20px;">SOCIAL CORNER</div></div>
+        <div id="fixed-right" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-top:10px;margin-bottom:3px;"></div>
             <!-- <blockquote class="twitter-tweet" data-lang="en"><p lang="und" dir="ltr"><a href="https://t.co/FUB6zzRiUG">https://t.co/FUB6zzRiUG</a> <a href="https://twitter.com/hashtag/harianamanah?src=hash">#harianamanah</a> <a href="https://twitter.com/hashtag/koranamanah?src=hash">#koranamanah</a> <a href="https://twitter.com/hashtag/abucorp?src=hash">#abucorp</a> <a href="https://twitter.com/hashtag/dailyquotes?src=hash">#dailyquotes</a> <a href="https://twitter.com/hashtag/quoteoftheday?src=hash">#quoteoftheday</a> <a href="https://twitter.com/hashtag/muslimquotes?src=hash">#muslimquotes</a> <a href="https://twitter.com/hashtag/muslim?src=hash">#muslim</a> <a href="https://twitter.com/hashtag/tausiyah?src=hash">#tausiyah</a> <a href="https://twitter.com/hashtag/teladanrasul?src=hash">#teladanrasul</a> <a href="https://t.co/NF6lNauPIZ">pic.twitter.com/NF6lNauPIZ</a></p>&mdash; Harian Amanah (@HarianAmanah) <a href="https://twitter.com/HarianAmanah/status/900991240035983360">August 25, 2017</a></blockquote> -->
             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -45,8 +44,8 @@ echo"<img src='foto_kategori/$n[photo]'>";
 
             </div>
 			<?php
-  $p      = new Paging3;
-  $batas  = 10;
+  $p      = new Paging_kategori;
+  $batas  = 15;
   $posisi = $p->cariPosisi($batas);
 
   $sql   = "SELECT * FROM berita,users WHERE users.username=berita.username
@@ -79,16 +78,9 @@ echo"
   }
   $jmldata     = mysql_num_rows(mysql_query("SELECT * FROM berita WHERE id_kategori='$_GET[id]'"));
   $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
-  $linkHalaman = $p->navHalaman($_GET['halkategori'], $jmlhalaman);
-
-  echo "
-
-  <div class='halaman'> $linkHalaman</div>
-  ";
-
- ?>
-
-
+  $linkHalaman = $p->navHalaman($_GET['halkategori'], $jmlhalaman);?>
+    <div class="clearfix"></div>
+    <div class="halaman"> <?php echo $linkHalaman?></div>
      </div>
     </section><!--konten end-->
     <div class="clr"></div>

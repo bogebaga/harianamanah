@@ -27,8 +27,8 @@
   $d   = mysql_fetch_array($detail);
   $tgl = tgl_indo($d['tanggal']);
   $jam = trans_jam($d['jam']);
-  $baca = $d['dibaca']+1;
 ?>
+
 <style>
     .bungkus{
         padding-top:0;
@@ -95,9 +95,6 @@
       <a href="#facebook-comment" class="social-share fa fa-commenting-o"></a>
     </div>
     <div class="box left">
-        <!-- <div id="hasil"></div> -->
-        <!-- <input type="hidden" class="ip" value="<?php echo $ip; ?>" > -->
-        <!-- <input type="hidden" class="jud" value="<?php echo $_GET['judul']; ?>" > -->
         <span class="berita">
             <?php
             if(!empty($d['youtube'])) {
@@ -112,8 +109,7 @@
                 }else  {
                     echo(str_replace('src="/redaktur/','src="http://harianamanah.com/redaktur/',$d['isi_berita']));
                 }
-                $acak           = rand(44,77);
-                mysql_query("UPDATE berita SET dibaca=$d[dibaca]+$acak WHERE judul_seo='$_GET[judul]'");
+                mysql_query("UPDATE berita SET dibaca=$d[dibaca]+1 WHERE judul_seo='$_GET[judul]'");
                 ?>
 			</span>
         <div class="iklan">

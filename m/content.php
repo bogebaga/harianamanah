@@ -72,7 +72,7 @@
 		$(document).ready(function(){
 			var loadMore = true;
 			$(window).scroll(function(){
-				var nearbottom = 100;
+				var nearbottom = 110;
 				if($(window).scrollTop()+nearbottom >= $(document).height() - $(window).height() && loadMore)
 				{
 					loadMore = false;

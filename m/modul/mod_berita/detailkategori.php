@@ -70,7 +70,7 @@
 $(document).ready(function(){
   var loadMore = true;
   $(window).scroll(function(){
-    var nearbottom = 110;
+    var nearbottom = 150;
     if($(window).scrollTop()+nearbottom >= $(document).height() - $(window).height() && loadMore)
     {
       loadMore = false;

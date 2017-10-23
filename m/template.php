@@ -37,6 +37,12 @@ session_start();
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['module'] == 'hasilcari'):
     echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'home'):
+    echo "Berita Islami Terkini - harianamanah.com";
+  elseif($_GET['module'] == 'rekomendasi'):
+    echo "Rekomendasi Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'popular'):
+    echo "Berita Popular Islami - harianamanah.com";
   else:
     echo "Kiblat Berita Islami - harianamanah.com";
   endif;
@@ -60,6 +66,12 @@ session_start();
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['module'] == 'hasilcari'):
     echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'home'):
+    echo "Berita Islami Terkini - harianamanah.com";
+  elseif($_GET['module'] == 'rekomendasi'):
+    echo "Rekomendasi Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'popular'):
+    echo "Berita Popular Islami - harianamanah.com";
   else:
     echo "Kiblat Berita Islami - harianamanah.com";
   endif;
@@ -76,6 +88,12 @@ session_start();
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['module'] == 'hasilcari'):
     echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'home'):
+    echo "Berita Islami Terkini - harianamanah.com";
+  elseif($_GET['module'] == 'rekomendasi'):
+    echo "Rekomendasi Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'popular'):
+    echo "Berita Popular Islami - harianamanah.com";
   else:
     echo "Kiblat Berita Islami - harianamanah.com";
   endif;
@@ -120,6 +138,12 @@ session_start();
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['module'] == 'hasilcari'):
     echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'home'):
+    echo "Berita Islami Terkini - harianamanah.com";
+  elseif($_GET['module'] == 'rekomendasi'):
+    echo "Rekomendasi Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'popular'):
+    echo "Berita Popular Islami - harianamanah.com";
   else:
     echo "Kiblat Berita Islami - harianamanah.com";
   endif;

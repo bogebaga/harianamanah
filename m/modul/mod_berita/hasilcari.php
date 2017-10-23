@@ -1,4 +1,4 @@
-  <section class="container-fluid">
+  <section class="container-fluid" style="padding:0;">
 			<section class="daftar-artikel">
                 <span class="fl art-count">
 				<?php

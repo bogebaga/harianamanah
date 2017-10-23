@@ -474,7 +474,8 @@ margin-bottom:-2px;
 .berita-terkini .title{
   padding:10px 15px;
   border-bottom:1px solid #EFCB03;
-  color:white;
+	color:white;
+	font-weight: bold;
 }
 
 /* Carousel Header Styles */

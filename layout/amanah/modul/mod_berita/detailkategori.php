@@ -32,7 +32,6 @@ echo"<img src='foto_kategori/$n[photo]'>";
             <!-- <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fharianamanah%2Fposts%2F824693491022428%3A0&width=500" width="100%" height="400px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe> -->
         </div>
         <!-- right konten start -->
-
         <div class="left-konten trend"><!-- left konten start -->
             <div class="art-social-bar">
                 <!-- <span class="fl art-count">

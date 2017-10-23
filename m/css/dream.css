@@ -103,33 +103,35 @@ demo-2 input#search::-webkit-input-placeholder {
 	margin-bottom: 10px;
 }
 
-#owl-demo .item .judul-berita-utama{
-	position: absolute;
-  padding:0%;
-  bottom: 0;
-
-}
-
-#owl-demo .item .judul-berita-utama{
+#owl-demo .item .judul-berita-utama,
+.judul-berita-utama
+{
 	background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
 	background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
 	background: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
 	background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
 	width: 100%;
 	height: 80%;
+	position: absolute;
+  padding:0%;
+  bottom: 0;
 }
 
-#owl-demo .item .judul-berita-utama span{
+#owl-demo .item .judul-berita-utama span,
+.judul-berita-utama span{
   color:#efcb17;
   margin: 10px 15px;
   display: inline-block;
 }
 
-#owl-demo .item .judul-berita-utama .caption-dt-jd{
+#owl-demo .item .judul-berita-utama .caption-dt-jd,
+.judul-berita-utama .caption-dt-jd
+{
   position: absolute;
   bottom: 0;
 }
-#owl-demo .item .judul-berita-utama h3{
+#owl-demo .item .judul-berita-utama h3,
+.judul-berita-utama h3{
 	text-align: left;
 	margin-bottom: 0;
 	margin-left: 15px;
@@ -144,7 +146,8 @@ demo-2 input#search::-webkit-input-placeholder {
 	color: white;
 }
 
-#owl-demo .item .judul-berita-utama h3 a{
+#owl-demo .item .judul-berita-utama h3 a,
+.judul-berita-utama h3 a{
 	color: white;
 	font-size:20px;
 }

@@ -7,21 +7,21 @@
         <span class="fl art-count">
         <?php
         $kata = $_GET['query-search'];
-
+        $data_kata = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%'";
+        $hasil  = mysql_query($data_kata);
+        $data_artikel = mysql_num_rows($hasil);
+        echo $data_artikel." ARTICLES";
+        echo "</span></div>";
+        
+        // call pagination
         $hasilcari_page = new Paging_hasilcari;
         $batas = 15;
         $cariposisi = $hasilcari_page->cariPosisi($batas);
-
-        $cari = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%' ORDER BY id_berita, judul DESC";
-        $hasil  = mysql_query($cari);
-        $ketemu = mysql_num_rows($hasil);
-
-        echo $ketemu." ARTICLES";
-        echo "</span></div>";
+        // end
 
         $cari = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%' ORDER BY id_berita, judul DESC LIMIT $cariposisi, $batas";
-        $hasil  = mysql_query($cari);
-        $ketemu = mysql_num_rows($hasil);
+        $hasil_cari  = mysql_query($cari);
+        $ketemu = mysql_num_rows($hasil_cari);
 
         if ($ketemu > 0){
           while($r=mysql_fetch_array($hasil)){
@@ -42,8 +42,8 @@
             </div>
           </div>";}
       } 
-      $jumlahdata = mysql_num_rows(mysql_query("SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%' ORDER BY id_berita, judul DESC"));
-      $jumlah_halaman = $hasilcari_page -> jumlahHalaman($jumlahdata,$batas);
+
+      $jumlah_halaman = $hasilcari_page -> jumlahHalaman($data_artikel, $batas);
       $link_halaman = $hasilcari_page -> navHalaman($_GET['halaman'], $jumlah_halaman); ?>
       <div class="clearfix"></div>
       <div class="halaman">

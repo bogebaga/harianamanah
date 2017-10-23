@@ -28,7 +28,6 @@
   $tgl = tgl_indo($d['tanggal']);
   $jam = trans_jam($d['jam']);
 ?>
-
 <style>
     .bungkus{
         padding-top:0;
@@ -138,19 +137,18 @@
   </div>
 </section>
 <section class="container-fluid bungkus">
-  <div class="baca-juga">
-    <div class="garis-bawah" style="border-bottom:1px solid #a94442">
-    <h3 style="color:#a94442;border:0;">POPULAR</h3>
-    </div>
-      <ul style="list-style-type: none;">
-          <?php
-          $detail1=mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 5");
-          while($p1=mysql_fetch_array($detail1)){
-          echo"
-            <li><a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a></li>";
-          }?>
-      </ul>
-  </div>
+  <center>
+    <h1 style="display:inline-block;border-bottom:3px solid red;margin-bottom:30px;">POPULAR</h1>
+  </center>  
+  <ul class="col-xs-12 rubrik-popular top-<?php echo $_GET['jn']?> ">
+    <?php
+      $popular = mysql_query("SELECT judul, judul_seo FROM berita WHERE id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 10");
+      while($row = mysql_fetch_array($popular))
+      {
+        echo "<li class='top-popular'><a href='berita-$row[judul_seo]'>$row[judul]</a></li>";
+      }
+    ?>
+  </ul>
 </section>
 <section id='facebook-comment' class="container-fluid bungkus">
   <div class="fb-comments" data-href="" data-width="686" data-numposts="5"></div>
@@ -170,12 +168,12 @@
 </section>
 <section class="container-fluid bungkus">
   <div class="baca-juga">
-    <div class="garis-bawah" style="border-bottom:1px solid #009688;">
-    <h3 style="color:#009688;border:0;">TERKINI</h3>
+    <div class="garis-bawah" style="border-bottom:1px solid <?php echo $menu['color']?>;">
+    <h3 style="color:<?php echo $menu['color']?>;border:0;">TERKINI</h3>
     </div>
       <ul class="list-berita-terkini" style="list-style-type: none;">
           <?php
-          $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY id_berita DESC LIMIT 20");
+          $detail1=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = '$d[id_parent]' ORDER BY berita.id_berita DESC LIMIT 15");
           while($p1=mysql_fetch_array($detail1)){
           echo"
             <li>
@@ -183,7 +181,7 @@
                 <div class='caption'>".substr($p1['judul'], 0, 50)."&hellip;</div>
               </a>
               <img src='http://harianamanah.com/foto_small/$p1[gambar1]' width='85px' alt='$p1[judul]'>
-              <a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'><span>$p1[nama_kategori]</span></a>
+              <a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'><span style='background:$menu[color];'>$p1[nama_kategori]</span></a>
             </li>";
           }?>
       <div class="clearfix"></div>

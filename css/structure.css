@@ -1637,7 +1637,7 @@ h3[data-style="und-bdr"]::after
 ul.list-berita-foto img,
 ul.list-liputan-video img{
 	height:200px;
-	object-fit:contain;
+	object-fit: cover;
 	background-color: #252831;
 	background-image: -webkit-linear-gradient(90deg, #252831 0%, #404350 100%);
 	background-image: -moz-linear-gradient(90deg, #252831 0%, #404350 100%);
@@ -1666,10 +1666,12 @@ ol.list-berita-popular li:before{
 	float:left;
 	font-size: 25px;
 }
-/* ul.list-liputan-khusus li a:hover
+.title,
+.liputan-khusus
 {
-	color:#000 !important;
-} */
+	text-align: right;
+	font-weight: bold;
+}
 ul.list-liputan-khusus li,
 ol.list-berita-popular li
 {
@@ -1698,13 +1700,15 @@ ol.list-berita-popular li:last-child{
 #fixed-left.affix,
 #fixed-left.affix-bottom,
 #fixed-baca.affix,
-#fixed-right.affix{
+#fixed-right.affix
+{
   top:59px;
   width: 258px;
 }
 #fixed-right.affix-bottom,
 #fixed-right.affix{
-  width: 267px;}
+	top:59px;
+	width: 267px;}
 #fixed-left.affix-bottom,
 #fixed-right.affix-bottom,
 #fixed-baca.affix-bottom,

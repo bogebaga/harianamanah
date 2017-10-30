@@ -645,11 +645,24 @@ error_reporting(0);
 </style>
 <?php
 $x=1;
-$terkini=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori AND b.id_berita < $_GET[urut] ORDER BY b.id_berita DESC LIMIT 100");
+$terkini=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori AND b.id_berita < $_GET[urut] ORDER BY b.id_berita DESC LIMIT 50");
 while($t=mysql_fetch_array($terkini)){
   $tgl = tgl_indo($t['tanggal']);
 	$jam = trans_jam($t['jam']);
 	if($x%10 == 0)
+		echo '<li style="color:white;">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-format="fluid"
+							data-ad-layout-key="-fl+5i+7o-fb+k"
+							data-ad-client="ca-pub-4290882175389422"
+							data-ad-slot="9217631936"></ins>
+					<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</li>';
+	elseif($x%25 == 0)
 		echo "<li style='color:white;background:#1F2126;' data-berita='$t[id_berita]'>
 		<div class='deskripsi-judul home reda' style='min-width:275px;width:275px;'>
 			<h6><a href='berita-$t[judul_seo]' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>

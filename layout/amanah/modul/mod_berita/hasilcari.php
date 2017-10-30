@@ -1,6 +1,8 @@
 <div class="wraplist">
   <div id="listberita">
     <section class="container cf" style="margin-bottom:0px;padding:0;"><!--konten start-->
+      <div style="float:left;width:25%;">
+      </div>
       <!-- right konten start -->
       <div class="left-konten trend"><!-- left konten start -->
         <div class="art-social-bar">
@@ -10,7 +12,8 @@
         $data_kata = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%'";
         $hasil  = mysql_query($data_kata);
         $data_artikel = mysql_num_rows($hasil);
-        echo $data_artikel." ARTICLES";
+
+        echo "<div style='font-size:20px;font-weight:100;line-height:1.5;'>Hasil Pencarian <b>\"$kata\"</b>, $data_artikel berita yang ditemukan.</div>";
         echo "</span></div>";
         
         // call pagination
@@ -19,12 +22,12 @@
         $cariposisi = $hasilcari_page->cariPosisi($batas);
         // end
 
-        $cari = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%' ORDER BY id_berita, judul DESC LIMIT $cariposisi, $batas";
+        $cari = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%' ORDER BY id_berita DESC LIMIT $cariposisi, $batas";
         $hasil_cari  = mysql_query($cari);
         $ketemu = mysql_num_rows($hasil_cari);
 
         if ($ketemu > 0){
-          while($r=mysql_fetch_array($hasil)){
+          while($r=mysql_fetch_array($hasil_cari)){
           $tgl = tgl_indo($r['tanggal']);
           echo "
           <div class='trend-left-inner'>
@@ -42,7 +45,6 @@
             </div>
           </div>";}
       } 
-
       $jumlah_halaman = $hasilcari_page -> jumlahHalaman($data_artikel, $batas);
       $link_halaman = $hasilcari_page -> navHalaman($_GET['halaman'], $jumlah_halaman); ?>
       <div class="clearfix"></div>

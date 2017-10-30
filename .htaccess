@@ -7,6 +7,7 @@
   RewriteCond %{REQUEST_FILENAME} !-f
 
   RewriteRule ^foto-(.*)$ media.php?module=detailfoto&judul=$1 [L]
+  RewriteRule ^foto$ media.php?module=foto [L]
   RewriteRule ^kategori-(.*)\.html$ media.php?module=detailkategori&id=$1 [L]
   RewriteRule ^berita-(.*)\.html$ media.php?module=detailberita&judul=$1 [L]
   RewriteRule ^video-(.*)$ media.php?module=detailvideo&judul=$1 [L]
@@ -40,6 +41,8 @@
   RewriteRule ^hubungi-kami$ media.php?module=hubungikami&id=$1 [L]
   RewriteRule ^not-found$ media.php?module=notfound&id=$1 [L]
   RewriteRule ^sitemap\.html$ media.php?module=sitemap [L]
+  RewriteRule ^hal-(.*)\.html$ media.php?module=halamanstatis&redaksi=$1 [L]
+  RewriteRule ^googlec4c1ba331ed90473\.html$ googlec4c1ba331ed90473.html [L]
 
   #Clean URL
   RewriteRule ^(.*)\.html$ media.php?module=katepage&menu=$1 [L]

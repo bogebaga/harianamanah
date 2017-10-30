@@ -30,8 +30,7 @@ session_start();
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
-    echo $title['judul'];
+    echo $d['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -59,8 +58,7 @@ session_start();
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
-    echo $title['judul'];
+    echo $d['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -81,8 +79,7 @@ session_start();
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
-    echo $title['judul'];
+    echo $d['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -131,8 +128,7 @@ session_start();
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
-    echo $title['judul'];
+    echo $d['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -171,7 +167,7 @@ session_start();
   if($_GET['jn']):
     $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE link = '$_GET[jn]'"));
   elseif($_GET['judul']):
-    $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = (SELECT id_kategori FROM berita WHERE judul_seo = '$_GET[judul]'))"));
+    $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$d[id_kategori]')"));
   elseif($_GET['id']):
     $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')"));
   else:
@@ -246,6 +242,7 @@ session_start();
     }
   </script>
   <?php 
+    include_once "heatmap.php"; 
     include_once "analyticstracking.php"; 
     include_once "adsense.php"; 
   ?>
@@ -286,7 +283,7 @@ session_start();
                     <span class="icon-bar"></span>
                 </button>
                 <button type="button" class="tutup"><span class="big-close"></span></button>
-                <a href="./" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
+                <a href="./" class="navbar-brand"><img src="assets/amanah.png" class="img-responsive" alt="logo-amanah"></a>
                 <form method="GET" action="search" style="width:100vw;">
           <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="query-search" placeholder="Cari berita dan peristiwa">
                 </form>

@@ -80,10 +80,10 @@ else{
             }
         }
 
-        if (!empty($_POST['tag_seo'])){
-            $tag_seo = $_POST['tag_seo'];
-            $tag=implode(',',$tag_seo);
-        }
+        // if (!empty($_POST['tag_seo'])){
+        //     $tag_seo = $_POST['tag_seo'];
+        //     $tag=implode(',',$tag_seo);
+        // }
         $jud = $_POST[judul];
 
         $subjud=  $_POST[sub_judul];
@@ -98,7 +98,7 @@ else{
         $nama_user= $_SESSION[namauser];
         $isi_berita=   $_POST[editor];
         $ket_gam= $_POST[keterangan_gambar];
-
+        $tag = $_POST[tags_berita];
         $judul_seo      = seo_title($_POST[judul]);
 
 
@@ -202,10 +202,10 @@ else{
         }
 
 
-        if (!empty($_POST['tag_seo'])){
-            $tag_seo = $_POST['tag_seo'];
-            $tag=implode(',',$tag_seo);
-        }
+        // if (!empty($_POST['tag_seo'])){
+        //     $tag_seo = $_POST['tag_seo'];
+        //     $tag=implode(',',$tag_seo);
+        // }
         $jud = $_POST[judul];
         $subjud=  $_POST[sub_judul];
         $reporter=  $_POST[reporter];
@@ -219,6 +219,7 @@ else{
         $nama_user= $_SESSION[namauser];
         $isi_berita=   $_POST[editor];
         $ket_gam= $_POST[keterangan_gambar];
+        $tag = $_POST[tags_berita];
 
         $judul_seo      = seo_title($_POST[judul]);
 
@@ -256,7 +257,7 @@ else{
         }
         // Apabila gambar tidak diganti
         if (empty($ImageName)) {
-            mysql_query("UPDATE berita  berita SET judul       = '$jud',
+            mysql_query("UPDATE berita SET judul       = '$jud',
                                   sub_judul  = '$subjud',
                        youtube   = '$youtube',
                                    judul_seo   = '$judul_seo', 
@@ -306,6 +307,4 @@ else{
     }
 
 }
-
-
 ?>

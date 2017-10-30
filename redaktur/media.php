@@ -58,21 +58,13 @@ else{
 	<title>.:: HALAMAN ADMINISTRATOR ::.</title>
 	
 	<meta charset="utf-8" />
-	<link rel="dns-prefetch" href="http://fonts.googleapis.com/" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	 <link rel="shortcut icon" href="../favicon.ico" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+	<link rel="dns-prefetch" href="http://fonts.googleapis.com/" />
 	<link rel="stylesheet" href="css/zalstyle.css" />
+	<link rel="stylesheet" href="js/jQuery-tagEditor-master/jquery.tag-editor.css" />
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css" />
-	<script src="js/libs/modernizr-2.0.6.min.js"></script> 
-	
-	<script src="ckeditor/ckeditor.js"></script>
-	
-	
-	
-	
   </head>
   <body id="top">
   <div id="container">
@@ -170,37 +162,36 @@ else{
   <?php include "content.php"; ?>
   </div>
   
-  <script src="js/jquery.min.js"></script> 
-    <script>
-     $(document).ready(function() {
-        jQuery('#editberita').validate({
-          rules:{
-              kategori : { 
-                required: true
-              }
-          },
-          messages:{
-              kategori :{
-                  required : "silahkan pilih kategori"
-              }
-          },
-          onkeyup : false,
-          submitHandler: function (form){
-              form.submit();
+  <!-- <script src="js/jquery.min.js"></script> -->
+  <script src="js/jquery-1.7.min.js"></script>
+  <!-- <script src="js/jquery-2.1.1.js"></script>  -->
+  <script src="js/libs/modernizr-2.0.6.min.js"></script> 
+	<script src="ckeditor/ckeditor.js"></script>
+  <script src="js/jQuery-tagEditor-master/jquery.tag-editor.min.js"></script> 
+  <script src="js/jQuery-tagEditor-master/jquery.caret.min.js"></script> 
+  <script>
+  jQuery(document).ready(function() {
+    $('#editberita').validate({
+      rules:{
+          kategori : { 
+            required: true
           }
-        });
-     });
+      },
+      messages:{
+          kategori : {
+              required : "silahkan pilih kategori"
+          }
+      },
+      onkeyup : false,
+      submitHandler: function (form){
+          form.submit();
+      }
+    });
+  });
+  jQuery('#tags_berita').tagEditor();
   </script> 
   <script>window.jQuery||document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>');</script>
- 
   <script defer type="text/javascript" src="js/zal.js"></script>
-
- 
-
-  </body></html>
-
-
-
-  <?php
-  }
-  ?>
+  </body>
+  </html>
+  <?php } ?>

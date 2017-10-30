@@ -52,6 +52,8 @@
             echo "<div class='clearfix'></div>";
             mysql_query("UPDATE berita SET dibaca='$d[dibaca]'+1 WHERE judul_seo='$_GET[judul]'");
             ?>
+            <hr>
+            <div style="float:left;">Dibaca: <?php echo $d['dibaca']?></div>
             <div class="sosial">
               <ul class="list-inline" style="text-align:right;margin:0;">
                 <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
@@ -60,8 +62,6 @@
                 <a href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
               </ul>
             </div>
-            <hr>
-            <div>Dibaca: <?php echo $d['dibaca']?></div>
             <hr>
             <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="5"></div>
             <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
@@ -116,7 +116,7 @@
               </div>
                 <ul class="featured_nav0">
                 <?php
-                $detail1=mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_berita != '$d[id_berita]' ORDER BY berita.id_berita DESC LIMIT 6, 30");
+                $detail1=mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_berita != '$d[id_berita]' ORDER BY berita.id_berita DESC LIMIT 6, 10");
                 while($p1=mysql_fetch_array($detail1))
                 {
                   $tgl = tgl_indo($p1['tanggal']);
@@ -158,7 +158,7 @@
 <div class="col-md-3" style="background:#ECECEC;padding-right:0;">
         <div class="single_blog_sidebar wow fadeInUp">
           <ul class="featured_nav0 read-news">
-          <?php
+          <!-- <?php
           $iklantengah=mysql_query("SELECT * FROM pasangiklan  ORDER BY id_pasangiklan DESC LIMIT 1");
           while($c=mysql_fetch_array($iklantengah))
           {
@@ -169,8 +169,8 @@
                   <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com atas' width='100%'></a>
                   </li>
                   ";
-          } ?>
-           <!-- <?php
+          } ?> -->
+          <?php
           $iklantengah=mysql_query("SELECT * FROM pasangiklan WHERE id_pasangiklan != '$idc1'  ORDER BY id_pasangiklan DESC LIMIT 1");
           while($c=mysql_fetch_array($iklantengah))
           {
@@ -180,10 +180,10 @@
                     <a class='featured_img' href='$c[url]' >
                     <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
                   </li>";
-          }?> -->
+          }?>
           <li style="border:1px solid <?php echo $menu['color']?>">
             <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
-              <div class="title liputan-khusus" style="padding:10px 15px;color:white;<?php echo $menu['gradient']?>"><?php echo strtoupper($d['nama_menu'])?></div>
+              <div class="title liputan-khusus" style="padding:10px 15px;color:white;font-weight:bold;text-align:right;<?php echo $menu['gradient']?>"><?php echo strtoupper($d['nama_menu'])?></div>
                 <ul class="list-liputan-khusus">
             <?php
             $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='$d[id_kategori]' AND id_berita != '$d[id_berita]' ORDER BY id_berita DESC LIMIT 5");
@@ -193,7 +193,7 @@
               echo "
                   <li style='padding-top:0;margin:0;position:relative;'>
                     <img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:250px;'>
-                    <a href='berita-$row[judul_seo]' style='width:100%;padding:10px;display:block;font-size:20px;background:rgba(0, 0, 0, 0.78);color:#fff;position:absolute;bottom:0'>$row[judul]</a>
+                    <a href='berita-$row[judul_seo]' style='width:100%;padding:10px;display:block;font-size:15px;background:rgba(0, 0, 0, 0.78);color:#fff;position:absolute;bottom:0'>$row[judul]</a>
                   <!-- <span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;position:absolute;'>$row[hari], $tgl - $jam</span> -->
                   </li>";
             }
@@ -202,16 +202,10 @@
             </ul>
           </div>
         </li>
-        <li>
-          <blockquote class="instagram-media" data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh2wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BYFQehmFUC6/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Harian Amanah (@harian_amanah)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-08-22T04:09:53+00:00">Aug 21, 2017 at 9:09pm PDT</time></p></div></blockquote>
-          <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
-        </li>
-        <li>
-          <div class="fb-page" data-href="https://www.facebook.com/harianamanah/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/harianamanah/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/harianamanah/">Harian Amanah</a></blockquote></div>
-        </li>
-         <li id="fixed-baca" data-spy="affix" style="background:#EBEBEC;">
+        <!-- id="fixed-baca" data-spy="affix" -->
+         <li style="background:#EBEBEC;">
             <div class="single_blog_sidebar wow fadeInUp popular-rubrik <?php echo $menu['link']?>" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44); margin-bottom:10px;">
-              <div class="title berita-foto" style="color:#fff;padding:15px;<?php echo $menu['gradient']?>">POPULAR <?php echo strtoupper($d['nama_menu'])?></div>
+              <div class="title berita-foto" style="color:#fff;padding:15px;font-weight:bold;text-align:right;<?php echo $menu['gradient']?>">POPULAR <?php echo strtoupper($d['nama_menu'])?></div>
               <ol class="list-berita-popular-rubrik" style="border:1px solid <?php echo $menu['color']?>">
               <?php
               $berita_popular = mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 10");
@@ -226,6 +220,13 @@
               </ol>
             </div>
           </li>
+          <li>
+          <blockquote class="instagram-media" data-instgrm-version="7" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh2wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/BYFQehmFUC6/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Harian Amanah (@harian_amanah)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2017-08-22T04:09:53+00:00">Aug 21, 2017 at 9:09pm PDT</time></p></div></blockquote>
+          <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+        </li>
+        <li>
+          <div class="fb-page" data-href="https://www.facebook.com/harianamanah/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/harianamanah/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/harianamanah/">Harian Amanah</a></blockquote></div>
+        </li>
         </ul>
       </div>
     </div>

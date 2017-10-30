@@ -1,5 +1,5 @@
 /* ==== Google font ==== */
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,700,900);
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,300,700,900');
 @import url('http://fonts.googleapis.com/css?family=Ek+Mukta:400,600,700');
 
 /* ---------------------------------------------------------------------------- */
@@ -79,14 +79,13 @@ img{max-width:100%;	height: auto;  /* ie8 */}
     color: orange !important;
 }
 
-h1,h2,h3,h4,h5,h6 {font-family: 'Roboto', sans-serif;font-weight: 300;}
-h2 {font-size: 20px !important;}
-h3 {font-size: 2.7vw;}
-h4 {font-size: 28px;}
+h1,h2,h3,h4,h5,h6 {font-family: 'Roboto', sans-serif;font-weight: 500;}
+
+h2 {font-size: 20px;}
+h3 {font-size: 26px;}
+h4 {font-size: 25px;}
 h5 {font-size: 24px;}
 h6 {font-size: 20px;}
-
-h1,h2,h3,h4,h5,h6 {font-family: 'Roboto', sans-serif;font-weight: 500 !important;color: #14afb4;}
 
 p {margin: 0 0 20px;}
 

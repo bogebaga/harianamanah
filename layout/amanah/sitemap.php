@@ -20,7 +20,7 @@
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <div id="page-content" style="background-color: #161616;border:5px solid #00B0B2;margin-bottom:10px;margin-top:130px;padding:20px 30px;" class="index-page container">
-<h1 style="font-size:20px;">SITEMAP</h1>
+<h1 style="font-size:20px;color:#fff;">SITEMAP</h1>
 <ul>
 <?php
   $menu = mysql_query("SELECT * FROM menu WHERE id_parent='0' AND aktif='Ya'");

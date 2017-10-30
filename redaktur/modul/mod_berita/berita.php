@@ -318,6 +318,11 @@ else{
    <textarea name='editor' id='editor' class='ckeditor' style='width: 720px; height: 350px;'></textarea>
    </p> 	  
    
+   <p class=inline-small-label> 
+   <label for=field4>Tags</label>
+   <input type='text' id='tags_berita' name='tags_berita'>
+   </p> 	  
+   
 		  
    <p class=inline-small-label> 
    <label for=field4>Gambar</label>
@@ -471,7 +476,11 @@ else{
    <textarea name='editor' id='editor' class='ckeditor' style='width: 720px; height: 350px;'>$r[isi_berita]</textarea>
    </p> 	  
 
-		  
+   <p class=inline-small-label> 
+   <label for=field4>Tags</label>
+   <input type='text' id='tags_berita' name='tags_berita' value='$r[tag]'>
+   </p> 	  
+   
    <p class=inline-small-label> 
    <label for=field4>Gambar</label> ";
                 if ($r[gambar]!=''){

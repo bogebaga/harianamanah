@@ -24,8 +24,7 @@ error_reporting(0);
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
-    echo $title['judul'];
+    echo $d['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -52,8 +51,7 @@ error_reporting(0);
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
-    echo $title['judul'];
+    echo $d['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -68,8 +66,7 @@ error_reporting(0);
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
-    echo $title['judul'];
+    echo $d['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -111,8 +108,7 @@ error_reporting(0);
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
-    echo $title['judul'];
+    echo $d['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -310,9 +306,12 @@ error_reporting(0);
   .logo{display:inline-block;}
 </style>
 <?php
+  include_once "heatmap.php";
   include_once "analyticstracking.php";
   include_once "adsense.php";
-?>
+  ?>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
 </head>
 <body>
 <header>
@@ -335,7 +334,7 @@ error_reporting(0);
           .block-top {
             display:inline-block;
             vertical-align:middle;
-            width:calc(100% - 545px);
+            width:calc(100% - 550px);
             text-align:right;
           }
           .block-top li {display:inline-block;}

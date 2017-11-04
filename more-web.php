@@ -675,13 +675,13 @@ while($t=mysql_fetch_array($terkini)){
 			</p>
 		</div>
 		<a href='berita-$t[judul_seo]'>
-		<img class='lazy' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:230px;height:195px;object-fit:cover;vertical-align:top;'>
+		<img class='lazy' src='foto_berita/base_n.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:230px;height:195px;object-fit:cover;vertical-align:top;'>
 		</a>
 	</li>";
 	else
 		echo "<li style='color:white;' data-berita='$t[id_berita]'>
 		<a href='berita-$t[judul_seo].html'>
-			<img class='lazy' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
+			<img class='lazy' src='foto_berita/base_n.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
 		</a>
 		<div class='deskripsi-judul home'>
 			<h6><a href='berita-$t[judul_seo].html' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>

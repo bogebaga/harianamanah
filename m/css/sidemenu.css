@@ -108,6 +108,10 @@
     padding: 20px 30px;
 }
 
+.social-hub li a {
+    padding: 20px 0;
+}
+
 .navbar-header{
     float: left;
     text-align: center;

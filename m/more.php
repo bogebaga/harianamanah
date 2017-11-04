@@ -5,7 +5,7 @@ include 'server.php';
 
 if ($_GET['kategori']=='detail')
 {
-	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_kategori = '$_GET[id]' AND berita.id_berita < '$_GET[urut]' ORDER BY id_berita DESC LIMIT 0, 9");
+	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_kategori = '$_GET[id]' AND berita.id_berita < '$_GET[urut]' ORDER BY id_berita DESC LIMIT 15");
   while ($q = mysql_fetch_array($artikel))
   {
     $tgl = tgl_indo($q['tanggal']);
@@ -22,7 +22,7 @@ if ($_GET['kategori']=='detail')
   <article class= 'artikle' >
     <div class='list-picture'>
       <a href='berita-$q[judul_seo]'>
-        <img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
+        <img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
       </a>
     </div>
     <div class='artikle-text' kode='$q[id_berita]'>
@@ -35,7 +35,7 @@ if ($_GET['kategori']=='detail')
 }
 elseif ($_GET['kategori']=='popular')
 {
-	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND dibaca < '$_GET[urut]' ORDER BY dibaca DESC LIMIT 0, 9");
+	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND dibaca < '$_GET[urut]' ORDER BY dibaca DESC LIMIT 15");
   while ($q = mysql_fetch_array($artikel))
   {
     $tgl = tgl_indo($q['tanggal']);
@@ -52,7 +52,7 @@ elseif ($_GET['kategori']=='popular')
   <article class= 'artikle' >
     <div class='list-picture'>
       <a href='berita-$q[judul_seo]'>
-        <img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
+        <img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]' />
       </a>
     </div>
     <div class='artikle-text' data-target='popular' kode='$q[dibaca]'>
@@ -65,7 +65,7 @@ elseif ($_GET['kategori']=='popular')
 }
 elseif ($_GET['kategori']=='rekomendasi')
 {
-	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND id_berita < '$_GET[urut]' AND berita.aktif = 'Y' ORDER BY id_berita DESC LIMIT 0, 9");
+	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND id_berita < '$_GET[urut]' AND berita.aktif = 'Y' ORDER BY id_berita DESC LIMIT 15");
   while ($q = mysql_fetch_array($artikel))
   {
     $tgl = tgl_indo($q['tanggal']);
@@ -82,7 +82,7 @@ elseif ($_GET['kategori']=='rekomendasi')
   <article class= 'artikle' >
     <div class='list-picture'>
       <a href='berita-$q[judul_seo]'>
-        <img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
+        <img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
       </a>
     </div>
     <div class='artikle-text' data-target='rekomendasi' kode='$q[id_berita]'>
@@ -95,7 +95,7 @@ elseif ($_GET['kategori']=='rekomendasi')
 }
 elseif ($_GET['kategori'])
 {
-  $artikel = mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND berita.id_berita < '$_GET[urut]' AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[kategori]')  ORDER BY berita.id_berita DESC LIMIT 0, 9");
+  $artikel = mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND berita.id_berita < '$_GET[urut]' AND menu.id_parent = (SELECT id_menu FROM menu WHERE nama_menu = '$_GET[kategori]')  ORDER BY berita.id_berita DESC LIMIT 15");
   while ($q = mysql_fetch_array($artikel))
   {
     $tgl = tgl_indo($q['tanggal']);
@@ -112,7 +112,7 @@ elseif ($_GET['kategori'])
     <article class= 'artikle' >
       <div class='list-picture'>
         <a href='berita-$q[judul_seo]'>
-          <img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
+          <img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt=$q[judul]/>
         </a>
       </div>
       <div class='artikle-text' kode='$q[id_berita]'>
@@ -125,7 +125,7 @@ elseif ($_GET['kategori'])
 }
 else
 {
-	$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND berita.id_berita < '$_GET[urut]' ORDER BY id_berita DESC LIMIT 0, 9");
+	$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND berita.id_berita < '$_GET[urut]' ORDER BY id_berita DESC LIMIT 15");
 	while($q=mysql_fetch_array($artikel))
 	{
     $tgl = tgl_indo($q['tanggal']);
@@ -142,7 +142,7 @@ else
     <article class= 'artikle' >
       <div class='list-picture'>
         <a href='berita-$q[judul_seo]'>
-          <img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
+          <img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
         </a>
       </div>
       <div class='artikle-text' data-target='update' kode='$q[id_berita]'>
@@ -164,7 +164,7 @@ if($num_rows !== 0){
     </div>
     <div class='artikle-text-1'>
       <p class='link-kategori'>Abutours.com</p>
-      <div class="berita"  style="margin-bottom: 10px;">
+      <div class="berita"  style="margin-bottom: 15px;">
         <p>Aplikasi Abutours menawarkan kemudahan bagi calon haji dalam melakukan pemesanan kursi</p>
       </div>
       <p class="tag-sponsored">Sponsored</p>
@@ -181,7 +181,7 @@ if($num_rows !== 0){
       </div>
       <div class='artikle-text-1'>
       <p class='link-kategori'>Aplikasi Harian Amanah</p>
-      <div class="berita"  style="margin-bottom: 10px;">
+      <div class="berita"  style="margin-bottom: 15px;">
         <p>Download Aplikasi Harian Amanah</p>
       </div>
       <p class="tag-sponsored"></p>

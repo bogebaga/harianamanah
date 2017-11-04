@@ -1,11 +1,21 @@
 <?php
 session_start();
-  include "../config/koneksi.php";
-  include "../config/library.php";
-  include "../config/fungsi_indotgl.php";
-  include "../config/fungsi_combobox.php";
-  include "../config/class_paging.php";
-  include "../config/desc.php";
+include "../config/koneksi.php";
+include "../config/library.php";
+include "../config/fungsi_indotgl.php";
+include "../config/fungsi_combobox.php";
+include "../config/class_paging.php";
+include "../config/desc.php";
+include "../config/Mobile_Detect.php";
+define ('SITE_URL', site_URL());
+
+$automobile = new Mobile_Detect;
+$pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
+if(!$automobile->isMobile()){
+  header('Location:'.SITE_URL.$pop);
+  exit();
+}
+  // var_export($_SERVER);
   error_reporting(0);
 
 	$detail=mysql_query("SELECT * FROM berita,users,kategori
@@ -18,9 +28,9 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="refresh" content="120">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
@@ -192,6 +202,7 @@ session_start();
   <!-- JS -->
   <script type="text/javascript" src="js/bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.lazy.min.js"></script>
   <script type="application/ld+json">
   {
     "@context": "http://schema.org/",
@@ -232,14 +243,6 @@ session_start();
     },
     "articleBody": "<?php echo fullbody($d['isi_berita'])?>"
   }
-  </script>
-  <!-- Website -->
-  <script type="text/javascript">
-    var URL = window.location.href.split('/').pop();
-    if(screen.width > 768)
-    {
-      document.location = 'http://harianamanah.com/'+URL;
-    }
   </script>
   <?php 
     include_once "heatmap.php"; 
@@ -293,10 +296,11 @@ session_start();
         <!-- <p>KATEGORI</p> -->
         <ul class="nav navbar-nav social-hub"  style="margin:0;">
           <li class="facebook"><a href="https://www.facebook.com/harianamanah/" target="_blank"><span class="fa fa-facebook-square"></span></a></li>
-          <li class="instagram"><a href="https://www.instagram.com/harian_amanah/" target="_blank"><span class="fa fa-instagram"></span></a></li>
           <li class="twitter-nav"><a href="https://twitter.com/harianamanah" target="_blank"><span class="fa fa-twitter-square"></span></a></li>
+          <li class="instagram"><a href="https://www.instagram.com/harian_amanah/" target="_blank"><span class="fa fa-instagram"></span></a></li>
+          <li class="google"><a href="https://plus.google.com/115045050828571942973" target='_blank'><span class="fa fa-google-plus-square"></span></a></li>
+          <li class="linkedin"><a href="https://www.linkedin.com/company/13466134" target="_blank"><span class="fa fa-linkedin-square"></span></a></li>
           <li class="youtube"><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><span class="fa fa-youtube-square"></span></a></li>
-          <li class="google"><a href='https://plus.google.com/115045050828571942973' target='_blank'><span class="fa fa-google-plus-square"></span></a></li>
         </ul>
         <h2 class="caption">HARIANAMANAH</h2>
         <ul class="nav navbar-nav">
@@ -341,15 +345,8 @@ session_start();
     <footer>
       <div class="gambar-footer">
         <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
-            <!-- <a href="#">
-                <img src="assets/pp_ff.png" width="38px">
-            </a> -->
       </div>
-      <div class="menu-footer">
-        <a href="#">TENTANG</a>
-        <a href="#">PRIVASI</a>
-        <a href="#">KONTAK</a>
-      </div>
+      
   <div class="state-one">
       <div class="container">
       <ul class="menu-utama">
@@ -393,6 +390,11 @@ session_start();
       </ul>
       </div>
     </div>
+    <div class="menu-footer">
+        <a href="#">TENTANG</a>
+        <a href="#">PRIVASI</a>
+        <a href="#">KONTAK</a>
+      </div>
     <div class="isi-footer">
       <span class="copyright">
         HarianAmanah&nbsp;&copy;&nbsp;2017
@@ -400,8 +402,8 @@ session_start();
     </div>
     </footer>
 </section>
-</script>
 <script type="text/javascript">
+  $('.lazy').lazy();
   $('#loader').fadeOut('slow');
   $(document).ready(function() {
       //iklan and tag

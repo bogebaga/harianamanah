@@ -469,10 +469,15 @@ h2{
   height: 418px;
   object-fit: cover;
 }
+.single_blog_sidebar img.main-pic 
+{
+	height: 100%;	
+}
 .single_blog_sidebar img {
   -o-object-fit: cover;
      object-fit: cover;
-  width:100%;
+	width:100%;
+	height: 130px;
 }
 #list-terkini-middle li
 {
@@ -1709,14 +1714,17 @@ ol.list-berita-popular li:last-child{
 #fixed-right.affix{
 	top:59px;
 	width: 267px;}
+
 #fixed-left.affix-bottom,
 #fixed-right.affix-bottom,
 #fixed-baca.affix-bottom,
 #ads_news.affix-bottom{
   position: absolute;
 }
-#ads_news.affix{
-  top:59px;
+#ads_news.affix,
+#ads_news.affix-bottom
+{
+  top:45px;
 }
 #iklan-footer{
  padding:0;
@@ -1791,16 +1799,16 @@ ol.list-berita-popular-rubrik
 }
 
 .go-top {
-  /* position: absolute;
-  top: -22px; */
+  /* position: absolute; */
+  /* top: -22px; */ 
+  /* padding: 5px; */
 	right: 10px;
 	text-decoration: none;
-  padding: 5px;
   background: rgb(244, 244, 244);
   border-radius: 50px;
   border: 1px solid rgba(51, 51, 51, 0.15);
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   line-height: 1.15;
   font-size: 25px;
 	text-align: center;

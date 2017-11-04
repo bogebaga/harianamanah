@@ -1,7 +1,15 @@
 <?php
 define ('SITE_URL', site_URL());
+
+$automobile = new Mobile_Detect;
+$pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
+if($automobile->isMobile()){
+  header('Location:'.SITE_URL.'m/'.$pop);
+  exit();
+}
 error_reporting(0);
-	$detail=mysql_query("SELECT * FROM berita,users,kategori
+
+$detail=mysql_query("SELECT * FROM berita,users,kategori
 			WHERE users.username=berita.username
 			AND kategori.id_kategori=berita.id_kategori
 			AND judul_seo='$_GET[judul]'");
@@ -11,9 +19,9 @@ error_reporting(0);
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="refresh" content="120">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="author" content="harianamanah.com">
   <meta name="robots" content="index, follow" />
@@ -193,15 +201,6 @@ error_reporting(0);
     "articleBody": "<?php echo fullbody($d['isi_berita'])?>"
   }
   </script>
-  <!-- mobile view -->
-  <script type="text/javascript">
-    var URL = window.location.href.split('/').pop();
-    if(screen.width < 768)
-    {
-      document.location = 'http://m.harianamanah.com/'+URL;
-    }
-  </script>
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -277,7 +276,8 @@ error_reporting(0);
 		}
 
 		#radio img {
-			width: 400px;
+      width: 100%;
+      height:80px;
     }
 
   .row.header-row-logo-bulat
@@ -342,9 +342,9 @@ error_reporting(0);
         <ul class="block-top">
           <li><a href="https://www.facebook.com/harianamanah/" target="_blank" style='color:#3b5999;'><i class='fa fa-2x fa-fw fa-facebook-official'></i></a></li>
           <li><a href="https://twitter.com/harianamanah" target="_blank" style='color:#55acee;'><i class='fa fa-2x fa-fw fa-twitter-square'></i></a></li>
-          <li><a href="https://plus.google.com/115045050828571942973" target="_blank" style='color:#dd4b39;'><i class='fa fa-2x fa-fw fa-google-plus-square'></i></a></li>
-          <!-- <li><a href="">LinkedIn</a></li> -->
           <li><a href="https://www.instagram.com/harian_amanah/" target="_blank" style='color:#e4405f;'><i class='fa fa-2x fa-fw fa-instagram'></i></a></li>
+          <li><a href="https://plus.google.com/115045050828571942973" target="_blank" style='color:#dd4b39;'><i class='fa fa-2x fa-fw fa-google-plus-square'></i></a></li>
+          <li><a href="https://www.linkedin.com/company/13466134" target="_blank" style='color:#0077B5'><i class='fa fa-2x fa-fw fa-linkedin-square'></i></a></li>
           <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank' style='color:#cd201f;'><i class='fa fa-2x fa-fw fa-youtube-square'></i></a></li>
         </ul>
       </div>
@@ -438,12 +438,12 @@ error_reporting(0);
   <div class="footer-menu">
     <div class="container">
       <ul class="must-know">
-        <li><a href="hal-tentang-kami">TENTANG</a></li>
-        <li><a href="hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
-        <!-- <li><a href="">PEDOMAN&nbsp;MEDIA&nbsp;SIBER</a></li> -->
-        <!-- <li><a href="">ADVERTISEMENT</a></li> -->
-        <li><a href="hal-kontak-kami">KONTAK</a></li>
-        <li><a href="sitemap">SITEMAP</a></li>
+        <li><a style="color:#EFCB03;" href="hal-tentang-kami">TENTANG</a></li>
+        <li><a style="color:#EFCB03;" href="hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
+        <!-- <li><a style="color:#EFCB03;" href="">PEDOMAN&nbsp;MEDIA&nbsp;SIBER</a></li> -->
+        <!-- <li><a style="color:#EFCB03;" href="">ADVERTISEMENT</a></li> -->
+        <li><a style="color:#EFCB03;" href="hal-kontak-kami">KONTAK</a></li>
+        <li><a style="color:#EFCB03;" href="sitemap">SITEMAP</a></li>
       </ul>
     </div>
   </div>
@@ -492,9 +492,9 @@ error_reporting(0);
         <ul class="block">
           <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-facebook'></i>Facebook</a></li>
           <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-twitter'></i>Twitter</a></li>
-          <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-google-plus'></i>Google+</a></li>
-          <!-- <li><a href="">LinkedIn</a></li> -->
           <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-instagram'></i>Instagram</a></li>
+          <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-google-plus'></i>Google+</a></li>
+          <li><a href="https://www.linkedin.com/company/13466134"><i style='margin-right:5px;' class='fa fa-fw fa-linkedin'></i>LinkedIn</a></li>
           <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='margin-right:5px;' class='fa fa-fw fa-youtube'></i>Youtube</a></li>
         </ul>
       </li>
@@ -516,9 +516,7 @@ error_reporting(0);
 <script type="text/javascript">
   $(document).ready(function()
   {
-    $('.lazy').lazy({
-      placeholder: "<?php echo $base64;?>"
-    });
+    $('.lazy').lazy();
     
     $(window).bind('scroll',function()
     {

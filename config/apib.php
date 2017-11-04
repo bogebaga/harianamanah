@@ -12,7 +12,7 @@ if(function_exists($_GET['method'])) {
 //methods
 
 function getBerita(){
-    $base_url = "http://m.harianamanah.id/";
+    $base_url = "http://localhost/harianamanah/";
     $base_gambar = "http://harianamanah.com/";
     function anti_injection($data){
         $filter = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($data,ENT_QUOTES))));

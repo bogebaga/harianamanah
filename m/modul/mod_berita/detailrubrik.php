@@ -17,7 +17,7 @@
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item'>
-			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header'>
+			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header-$t[judul]'>
             <span class='judul-berita-utama'>
               <div class='caption-dt-jd'>
                 <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
@@ -29,7 +29,7 @@
 		</section>
 		<section class="daftar-artikel">
     <?php
-    $artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]') AND berita.id_berita < $id_berita ORDER BY berita.id_berita DESC LIMIT 30");
+    $artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]') AND berita.id_berita < $id_berita ORDER BY berita.id_berita DESC LIMIT 35");
     while($q=mysql_fetch_array($artikel))
     {
       $tgl = tgl_indo($q['tanggal']);
@@ -45,7 +45,7 @@
       echo "<article class= 'artikle' >
         <div class='list-picture'>
           <a href='berita-$q[judul_seo]'>
-            <img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]'/>
+            <img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
           </a>
         </div>
         <div class='artikle-text' data-target='update' kode='$q[id_berita]'>
@@ -64,9 +64,9 @@
     <div id="more" style="display:block;border:3px solid <?php echo $base_color['color']?>;color:<?php echo $base_color['color']?>;padding:10px 15px;font-weight:bold;font-size:25px;text-align:center;">MUAT LAINNYA</div>
 		<div class="iklan">
             <a href="http://abutours.com" title="AbuTours.com">
-                <img class="img-responsive" src="assets/abujie.jpg" alt="iklan">
+                <!-- <img class="img-responsive" src="assets/abujie.jpg" alt="iklan"> -->
             </a>
-        </div>
+    </div>
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">
 			<center><img src="assets/loading.gif" width="100px"></center>
@@ -166,6 +166,7 @@
         			if(html)
         			{
         				$('#daftar-artikel').append(html);
+                $('.lazy').lazy();
         				$('#more').show();
         			}
         		}

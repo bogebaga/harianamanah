@@ -14,7 +14,7 @@
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item' style='position:relative;'>
-			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header'>
+			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header-$t[judul]'>
             <span class='judul-berita-utama'>
               <div class='caption-dt-jd'>
                 <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
@@ -43,7 +43,7 @@
 				echo "<article class= 'artikle' >
 					<div class='list-picture'>
 						<a href='berita-$q[judul_seo]'>
-							<img class='picture' src='http://harianamanah.com/foto_small/$q[gambar1]' />
+							<img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]' />
 						</a>
 					</div>
 					<div class='artikle-text' data-target='popular' kode='$q[dibaca]'>
@@ -95,6 +95,7 @@
 							if(result)
 							{
 								$('#daftar-artikel').append(result);
+								$('.lazy').lazy();
 								loadMore = true;
 							}
 						}

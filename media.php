@@ -15,6 +15,7 @@
   include "config/fungsi_kalender.php";
   include "config/option.php";
   include "config/desc.php";
+  include "config/Mobile_Detect.php";
   // include_once "police/project-security.php";
 
   // Memilih template yang aktif saat ini

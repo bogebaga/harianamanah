@@ -45,7 +45,7 @@
             <?php
             echo "<div class='row'><img class='main-pic' src='http://harianamanah.com/foto_berita/$d[gambar]' alt='$d[judul]'></div>";
             echo "<p class='caption-pic'>$d[keterangan_gambar]</p>";
-            echo "<img id='ads_news' src='foto_Iklan_isiberita/ems web.png' style='float:left;margin-top:19px;width:160px'>";
+            echo "<img id='ads_news' src='foto_Iklan_isiberita/ems web.png' style='float:left;margin-top:19px;width:160px;height:100%;'>";
             echo '<div class="isi-berita">';
             echo "$d[isi_berita]";
             echo '</div>';
@@ -62,9 +62,6 @@
                 <a href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
               </ul>
             </div>
-            <hr>
-            <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="5"></div>
-            <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
             <div class="related-news">
               <div class='kotak' style="width:100%;float:none">
               <br>
@@ -136,7 +133,7 @@
                       </li>
                     ";} ?>
                 </ul>
-                <div id="iklan-footer" style="">
+                <div id="iklan-footer">
                   <?php
                   $iklantengah=mysql_query("SELECT * FROM iklanatas  ORDER BY id_iklanatas DESC LIMIT 1");
                   while($b=mysql_fetch_array($iklantengah))
@@ -144,11 +141,14 @@
                     $id1 = $b['id_iklanatas'];
                     echo "<div class='iklan' width='100%' style='position:relative;'>
                           <a href='$b[url]' target='_blank' title='$b[judul]'>
-                          <img src='foto_iklanatas/$b[gambar]' alt='abutours beriklan di harianamanah.com'></a>
+                          <img src='foto_iklanatas/$b[gambar]' alt='abutours beriklan di harianamanah.com' style='height:auto;'></a>
                           </div>";
                   }?>
                 </div>
               </div>
+              <hr>
+                <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="10"></div>
+                <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
             </div>
             </div>
       </div>
@@ -192,8 +192,8 @@
               $jam = trans_jam($row['jam']);
               echo "
                   <li style='padding-top:0;margin:0;position:relative;'>
-                    <img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:250px;'>
-                    <a href='berita-$row[judul_seo]' style='width:100%;padding:10px;display:block;font-size:15px;background:rgba(0, 0, 0, 0.78);color:#fff;position:absolute;bottom:0'>$row[judul]</a>
+                    <img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:185px;'>
+                    <a href='berita-$row[judul_seo]' style='width:100%;padding:10px;display:block;font-size:15px;background:rgba(0, 0, 0, 0.5);color:#fff;position:absolute;bottom:0'>$row[judul]</a>
                   <!-- <span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;position:absolute;'>$row[hari], $tgl - $jam</span> -->
                   </li>";
             }
@@ -231,7 +231,7 @@
       </div>
     </div>
     <div class="clearfix"></div>
-</div>
+  </div>
 <!-- <div class="container">
   <div id="iklan-footer" class="col-md-12" style="float:none;">
     <?php
@@ -246,18 +246,4 @@
     }?>
   </div>
 </div> -->
-<script>
-  // $('#ads_news').affix({
-  //   offset: {
-  //     top: $('#ads_news').offset().top
-  //     // bottom: ($('#iklan-footer').outerHeight(true)+$('.related-news').outerHeight(true)+($('.isi-berita').outerHeight(true)-$('#ads_news').outerHeight(true)))+300
-  //   }
-  // });
-  $("#fixed-baca").affix({
-    offset : {
-      top: $("#fixed-baca").offset().top,
-      bottom: $("#iklan-footer").outerHeight(true) + 705
-    }
-  });
-</script>
 <!-- <div class="clear">&nbsp;</div> -->

@@ -177,6 +177,7 @@ body.sub-page .logo {background: url(../images/bg.jpg) fixed;  }
 /* ---------------------------------------------------------------------------- */
 
 #cari {
+	height: 42px;
   text-align:left;
   display:inline-block;
   border-radius: 5px;
@@ -631,14 +632,14 @@ footer .footer-logo img{
 footer .footer-logo
 {
 	text-align: center;
-	padding: 7px 0;
+	padding: 5px 0;
   background-color: #fff;
   border-top: 1px solid rgba(0, 0, 0, 0.19);
 }
 footer > .footer-menu ul.must-know
 {
 	text-align: center;
-	padding: 20px 0;
+	padding: 10px 0 20px;
 	/* margin-bottom: 30px; */
 }
 

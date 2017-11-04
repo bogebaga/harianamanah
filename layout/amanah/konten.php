@@ -156,7 +156,7 @@
                         </p>
                       </div>
                       <a href='berita-$p1[judul_seo]'>
-                      <img class='lazy' data-src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]' style='width:230px;height:195px;object-fit:cover;vertical-align:top;'>
+                      <img class='lazy' src='foto_berita/base_n.jpg' data-src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]' style='width:230px;height:195px;object-fit:cover;vertical-align:top;'>
                       </a>
                     </li>";
                   elseif($x%10 == 0):
@@ -175,7 +175,7 @@
                   else:
                     echo "<li style='color:white;' data-berita='$p1[id_berita]'>
                     <a href='berita-$p1[judul_seo]'>
-                    <img class='lazy' data-src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
+                    <img class='lazy' src='foto_berita/base_n.jpg' data-src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
                     </a>
                     <div class='deskripsi-judul home'>
                       <h6><a href='berita-$p1[judul_seo]' title='$p1[judul]'>".substr($p1['judul'], 0, 60)."&hellip;</a></h6>
@@ -261,7 +261,7 @@
                 <i class='fa fa-2x fa-camera' style='color:#fff;padding:7px;position:absolute;top:0;'></i>
                 <div class='black_layer'></div>
                 <div style='position:absolute;bottom:0;'>
-                  <a href='berita-$row[judul_seo]' title='$row[judul]'><h1 style='color:#fff;font-size:15px;padding:0 5px;'>$row[judul]</h1></a>
+                  <a href='foto/$row[judul_seo]' title='$row[judul]'><h1 style='color:#fff;font-size:15px;padding:0 5px;'>$row[judul]</h1></a>
                 </div>
               </li>";
             }
@@ -381,15 +381,13 @@
     ////////////////////////////////////////////////////////////
   elseif ($_GET['module']=='sitemap'){
   include "$f[folder]/sitemap.php";}
-      
+
+  elseif ($_GET['module'] == 'foto')
+  include "$f[folder]/modul/mod_foto/detailfoto.php";
+
   // DETAIL BERITA////////////////////////////////////////////
   elseif ($_GET['module'] == 'detailberita'){
   include "$f[folder]/modul/mod_berita/detailberita.php";}
-  ////////////////////////////////////////////////////////////
-
-  //DETAIL FOTO////////////////////////////////////////////
-  elseif ($_GET['module']=='foto'){
-  include "$f[folder]/modul/mod_berita/detailfoto.php";}
   ////////////////////////////////////////////////////////////
 
   // BERITA FOTO////////////////////////////////////////////
@@ -416,6 +414,4 @@
   elseif ($_GET['module']=='error'){
   include "$f[folder]/notfound.html";}
 
-  elseif ($_GET['module'] == 'foto')
-  include "$f[folder]/modul/mod_foto/foto.php";
   ?>

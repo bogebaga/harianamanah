@@ -6,15 +6,14 @@
   RewriteEngine on
   RewriteCond %{REQUEST_FILENAME} !-f
 
-  RewriteRule ^foto-(.*)$ media.php?module=detailfoto&judul=$1 [L]
-  RewriteRule ^foto$ media.php?module=foto [L]
+  RewriteRule ^foto-(.*)\.html$ media.php?module=foto&judul=$1 [L]
+  # RewriteRule ^foto$ media.php?module=foto [L]
   RewriteRule ^kategori-(.*)\.html$ media.php?module=detailkategori&id=$1 [L]
   RewriteRule ^berita-(.*)\.html$ media.php?module=detailberita&judul=$1 [L]
   RewriteRule ^video-(.*)$ media.php?module=detailvideo&judul=$1 [L]
   RewriteRule ^search media.php?module=hasilcari [QSA,L]
   RewriteRule ^epaper$ media.php?module=epaper [L]
   RewriteRule ^video$ media.php?module=video [L]
-  RewriteRule ^foto$ media.php?module=foto [L]
   RewriteRule ^profil-kami$ media.php?module=profilkami&id=$1 [L]
   RewriteRule ^halkomentar-(.*)-([0-9]+)$ media.php?module=detailberita&judul=$1&halkomentar=$2 [L]
   RewriteRule ^indeks-berita$ media.php?module=indeksberita&id=$1 [L]

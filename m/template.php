@@ -12,7 +12,7 @@ define ('SITE_URL', site_URL());
 $automobile = new Mobile_Detect;
 $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
 if(!$automobile->isMobile()){
-  header('Location:'.SITE_URL.$pop);
+  header('Location: http://www.harianamanah.com/'.$pop);
   exit();
 }
   // var_export($_SERVER);
@@ -30,7 +30,7 @@ if(!$automobile->isMobile()){
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <meta http-equiv="refresh" content="120">
+  <meta http-equiv="refresh" content="180">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
@@ -403,6 +403,19 @@ if(!$automobile->isMobile()){
     </footer>
 </section>
 <script type="text/javascript">
+  var $allVideo = $('.container-video'), $fluidEle = $('.box');
+  $allVideo.each(function(){
+    $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');
+  });
+
+  $(window).resize(function(){
+      var newWidth = $fluidEle.width();
+      $allVideo.each(function(){
+        var $el = $(this);
+        $el.width(newWidth).height(newWidth * $el.attr('data-aspectratio'));
+    });
+  }).resize();
+  
   $('.lazy').lazy();
   $('#loader').fadeOut('slow');
   $(document).ready(function() {

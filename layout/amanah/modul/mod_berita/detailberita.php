@@ -48,7 +48,7 @@
             echo "<img id='ads_news' src='foto_Iklan_isiberita/ems web.png' style='float:left;margin-top:19px;width:160px;height:100%;'>";
             echo '<div class="isi-berita">';
             echo "$d[isi_berita]";
-            echo '</div>';
+            echo ' <script async defer src="//platform.instagram.com/en_US/embeds.js"></script><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>';
             echo "<div class='clearfix'></div>";
             mysql_query("UPDATE berita SET dibaca='$d[dibaca]'+1 WHERE judul_seo='$_GET[judul]'");
             ?>
@@ -62,29 +62,29 @@
                 <a href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
               </ul>
             </div>
-            <div class="related-news">
-              <div class='kotak' style="width:100%;float:none">
-              <br>
+            <hr>
+            <div class='kotak' style="width:100%;float:none">
               <div class="row">
-                <h2 style="padding:13px 15px;text-transform:uppercase;font-weight:bold !important;text-align:left;background:#ECEFF1;color:#232d31;">Berita Terkait</h2>
+                <h2 style="color:#00a0a5;font-size:17px;padding:13px 15px;text-transform:uppercase;text-align:left;">Berita Terkait</h2>
               </div>
                 <ul class="featured_nav0 berita-terkait">
                 <?php
-                $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 10");
+                $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 6");
                 while($p1=mysql_fetch_array($detail1))
                 {
                   $idarray = $p1['id_berita'];
                   echo "
-                        <li style='width:47%;text-align:left;margin-bottom:15px;padding-bottom:0;'>
+                        <li style='width:47%;text-align:left;margin-bottom:8px;padding-bottom:0;'>
                             <div class='featured_title berita-terkait'>
-                            <a href='berita-$p1[judul_seo]' style='text-align:left;padding-left:0;font-weight:bold;font-size:15px;'>$p1[judul]</a>
+                            <a href='berita-$p1[judul_seo]' style='text-align:left;padding-left:0;font-weight:100;font-size:15px;'>$p1[judul]</a>
                             </div>
                           </li>
                         ";}
                 ?>
                 </ul>
                 <div class='clearfix'></div>
-              </div>
+            </div>
+            <div class="related-news">
               <div class='kotak' style="width:100%;margin-bottom:30px;float:none">
               <br>
               <div class='row'>
@@ -113,7 +113,7 @@
               </div>
                 <ul class="featured_nav0">
                 <?php
-                $detail1=mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_berita != '$d[id_berita]' ORDER BY berita.id_berita DESC LIMIT 6, 10");
+                $detail1=mysql_query("SELECT * FROM berita, kategori WHERE username != 'alifahmi' AND berita.id_kategori = kategori.id_kategori AND berita.id_berita != '$d[id_berita]' ORDER BY berita.id_berita DESC LIMIT 6, 10");
                 while($p1=mysql_fetch_array($detail1))
                 {
                   $tgl = tgl_indo($p1['tanggal']);

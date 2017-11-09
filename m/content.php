@@ -26,6 +26,17 @@
 			  	</div>
         </div>"; }?>
 		</section>
+		<section>
+			<h4>TOPIK KHUSUS</h4>
+			<?php
+				$topik = mysql_query("SELECT topik, sub_judul FROM berita WHERE topik != '' GROUP BY topik");
+				while ($tp = mysql_fetch_array($topik))
+				{
+					echo "<i class='fa fa-hashtag' style='color:#00a0a5;'></i>&nbsp;<a href='topik-$tp[topik]'>$tp[sub_judul]</a>";
+				}
+			?>
+		</section>
+		<hr>
 		<section class="daftar-artikel">
 			<?php
 			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND id_berita < '$id' ORDER BY id_berita DESC LIMIT 10");

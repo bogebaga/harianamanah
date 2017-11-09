@@ -1,46 +1,27 @@
 <IfModule mod_rewrite.c>
-  ErrorDocument 404 http://harianamanah.com/alamatpalsu.html
+  ErrorDocument 404 http://harianamanah.com/not-found
   Options All -Indexes
 
   #mengaktifkan mode tulisulang
   RewriteEngine on
   RewriteCond %{REQUEST_FILENAME} !-f
 
-  RewriteRule ^foto-(.*)\.html$ media.php?module=foto&judul=$1 [L]
+  RewriteRule ^hal-(.*)\.html$ media.php?module=halamanstatis&redaksi=$1 [L]
+  RewriteRule ^foto-(.*)\.html$ media.php?module=detailfoto&judul=$1 [L]
+  RewriteRule ^video-(.*)$ media.php?module=detailvideo&judul=$1 [L]
   # RewriteRule ^foto$ media.php?module=foto [L]
   RewriteRule ^kategori-(.*)\.html$ media.php?module=detailkategori&id=$1 [L]
   RewriteRule ^berita-(.*)\.html$ media.php?module=detailberita&judul=$1 [L]
-  RewriteRule ^video-(.*)$ media.php?module=detailvideo&judul=$1 [L]
   RewriteRule ^search media.php?module=hasilcari [QSA,L]
   RewriteRule ^epaper$ media.php?module=epaper [L]
-  RewriteRule ^video$ media.php?module=video [L]
-  RewriteRule ^profil-kami$ media.php?module=profilkami&id=$1 [L]
-  RewriteRule ^halkomentar-(.*)-([0-9]+)$ media.php?module=detailberita&judul=$1&halkomentar=$2 [L]
+  # RewriteRule ^video$ media.php?module=video [L]
   RewriteRule ^indeks-berita$ media.php?module=indeksberita&id=$1 [L]
   RewriteRule ^halberita-(.*)$ media.php?module=semuaberita&halberita=$1 [L]
   RewriteRule ^kategori-(.*)$ media.php?module=detailkategori&id=$1 [L]
   RewriteRule ^halkategori-(.*)-([0-9]+)\.html$ media.php?module=detailkategori&id=$1&halkategori=$2 [L]
   RewriteRule ^semua-berita$ media.php?module=semuaberita&id=$1 [L]
-  RewriteRule ^album-([0-9]+)-(.*)$ media.php?module=detailalbum&id=$1 [L]
-  RewriteRule ^semua-album$ media.php?module=semuaalbum&id=$1 [L]
-  RewriteRule ^galeri-(.*)$ zoom.php?id=$1 [L]
-  RewriteRule ^halgaleri-([0-9]+)-(.*)$ media.php?module=detailalbum&id=$1&halgaleri=$2 [L]
-  RewriteRule ^semua-agenda$ media.php?module=semuaagenda&id=$1 [L]
-  RewriteRule ^agenda-(.*)$ media.php?module=detailagenda&tema=$1 [L]
-  RewriteRule ^hasil-poling$ media.php?module=hasilpoling&id=$1 [L]
-  RewriteRule ^lihat-poling$ media.php?module=lihatpoling&id=$1 [L]
-  RewriteRule ^semua-download$ media.php?module=semuadownload&id=$1 [L]
-  RewriteRule ^haldownload-(.*)$ media.php?module=semuadownload&haldownload=$1 [L]
-  RewriteRule ^play-([0-9]+)-(.*)$ media.php?module=play&id=$1 [L]
-  RewriteRule ^halkomentarvideo-([0-9]+)-(.*)$ media.php?module=play&id=$1&halkomentarvideo=$2 [L]
-  RewriteRule ^halvideo-([0-9]+)-(.*)$ media.php?module=detailplaylist&id=$1&halvideo=$2 [L]
-  RewriteRule ^playlist-([0-9]+)-(.*)$ media.php?module=detailplaylist&id=$1 [L]
-  RewriteRule ^semua-playlist$ media.php?module=semuaplaylist&id=$1 [L]
-  RewriteRule ^halplaylist-(.*)$ media.php?module=semuaplaylist&halplaylist=$1 [L]
-  RewriteRule ^hubungi-kami$ media.php?module=hubungikami&id=$1 [L]
   RewriteRule ^not-found$ media.php?module=notfound&id=$1 [L]
   RewriteRule ^sitemap\.html$ media.php?module=sitemap [L]
-  RewriteRule ^hal-(.*)\.html$ media.php?module=halamanstatis&redaksi=$1 [L]
   RewriteRule ^googlec4c1ba331ed90473\.html$ googlec4c1ba331ed90473.html [L]
 
   #Clean URL

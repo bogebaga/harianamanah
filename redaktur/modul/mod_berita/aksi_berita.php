@@ -100,10 +100,7 @@ else{
         $ket_gam= $_POST[keterangan_gambar];
         $tag = $_POST[tags_berita];
         $judul_seo      = seo_title($_POST[judul]);
-
-
-
-
+        $topik = seo_title($_POST[sub_judul]);
 
         if(!empty($TempSrc)){
             list($CurWidth,$CurHeight)=getimagesize($TempSrc);
@@ -139,6 +136,7 @@ else{
 
             mysql_query("INSERT INTO berita( judul,
                                     sub_judul,
+                                    topik,
                   youtube,
                                     judul_seo,
                                     id_kategori,
@@ -157,15 +155,14 @@ else{
                                     gambar,
                                     gambar1,
                                     reporter)
-                      VALUES('$jud','$subjud','$youtube','$judul_seo','$kategori','$dae','$headline','$aktif','$utama','$dibaca','$nama_user','$isi_berita','$ket_gam','$jam_sekarang','$tgl_sekarang','$hari_ini','$tag','$NewImageName','$NewImageName','$reporter')
+                      VALUES('$jud','$subjud','$topik','$youtube','$judul_seo','$kategori','$dae','$headline','$aktif','$utama','$dibaca','$nama_user','$isi_berita','$ket_gam','$jam_sekarang','$tgl_sekarang','$hari_ini','$tag','$NewImageName','$NewImageName','$reporter')
 
                                      ");
 
             header('location:../../media.php?module='.$module);
         }
-
-
     }
+
     // Update berita
     elseif ($module=='berita' AND $act=='update'){
         ############ Edit settings ##############
@@ -200,8 +197,6 @@ else{
                     die('Unsupported File!'); //output error and exit
             }
         }
-
-
         // if (!empty($_POST['tag_seo'])){
         //     $tag_seo = $_POST['tag_seo'];
         //     $tag=implode(',',$tag_seo);
@@ -222,9 +217,8 @@ else{
         $tag = $_POST[tags_berita];
 
         $judul_seo      = seo_title($_POST[judul]);
-
-
-
+        $topik      = seo_title($_POST[sub_judul]);
+        // $topik      = 'test';
         if(!empty($TempSrc)){
             list($CurWidth,$CurHeight)=getimagesize($TempSrc);
             $RandomNumber           = rand(1,9999);
@@ -259,7 +253,8 @@ else{
         if (empty($ImageName)) {
             mysql_query("UPDATE berita SET judul       = '$jud',
                                   sub_judul  = '$subjud',
-                       youtube   = '$youtube',
+                                    topik = '$topik',  
+                                    youtube   = '$youtube',
                                    judul_seo   = '$judul_seo', 
                                  id_kategori   = '$kategori',
                                  daerah = '$dae',
@@ -268,7 +263,7 @@ else{
                      utama     = '$utama',
                                    tag         = '$tag',
                                    isi_berita  = '$isi_berita',
-             keterangan_gambar     = '$ket_gam',
+                keterangan_gambar     = '$ket_gam',
                reporter = '$reporter'
                              WHERE id_berita   = '$_POST[id]'");
             header('location:../../media.php?module='.$module);
@@ -285,6 +280,7 @@ else{
 
                 mysql_query("UPDATE berita SET judul       = '$jud',
                              sub_judul       = '$subjud',
+                             topik = '$topik',
                     youtube      = '$youtube',
                                    judul_seo   = '$judul_seo', 
                                    id_kategori = '$kategori',

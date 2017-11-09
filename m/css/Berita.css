@@ -489,13 +489,14 @@ a.social-share.fa-commenting-o{
   float: left;
 }
 .baca-juga ul.list-berita-terkini li img{
-  float: right;
+  float: left;
 }
 
 .baca-juga ul li {
-  padding: 15px 0;
+  padding: 7px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-  float: left;
+	float: left;
+	width: 100%;
 }
 .baca-juga ul li:last-child{
   border:0;
@@ -504,12 +505,12 @@ a.social-share.fa-commenting-o{
 .baca-juga ul a{
 	display: table;
   color: #262932;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 300;
 }
 .baca-juga ul.list-berita-terkini a {
   width: calc(100% - 85px);
-  padding-right: 30px;
+  padding-left: 15px;
 }
 .baca-juga ul.list-berita-terkini a .caption{
   display: block;

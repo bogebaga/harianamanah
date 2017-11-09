@@ -4,7 +4,7 @@ define ('SITE_URL', site_URL());
 $automobile = new Mobile_Detect;
 $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
 if($automobile->isMobile()){
-  header('Location:'.SITE_URL.'m/'.$pop);
+  header('Location: http://m.harianamanah.com/'.$pop);
   exit();
 }
 error_reporting(0);
@@ -21,7 +21,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="refresh" content="120">
+  <meta http-equiv="refresh" content="180">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="author" content="harianamanah.com">
   <meta name="robots" content="index, follow" />
@@ -396,14 +396,24 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
                 echo "</ul></li>";
           }?>
         </ul>
-        <ul class="sub-nav-menu sub-menu-rubrik">
-        <?php 
-          $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
+        <ul class="sub-nav-menu sub-menu-rubrik menu-show">
+        <?php
+          // $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
           // if($pop){
-            $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$pop') AND aktif = 'Ya'");
+            // $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$pop') AND aktif = 'Ya'");
           // }else{
           //   $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE link = '$pop') AND aktif = 'Ya'");
           // }
+          if($_GET['menu']):
+            $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[menu]')");
+          elseif($_GET['judul']):
+            $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE id_menu = (SELECT id_kategori FROM berita WHERE judul_seo = '$_GET[judul]'))");
+          elseif($_GET['id']):
+            $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')");
+          else:
+            $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent != '0' AND aktif ='Ya'");
+          endif;
+          
           while($row_sub = mysql_fetch_array($sub_rubrik)){
           echo "
             <li class=\"sub__rubrik\">
@@ -412,7 +422,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
             </li>";
           }
           echo "</ul>";
-        ?>      
+        ?>
       </div>
       </div>
     </div>
@@ -516,8 +526,21 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
 <script type="text/javascript">
   $(document).ready(function()
   {
-    $('.lazy').lazy();
+    var $allVideo = $('iframe[src*="www.youtube.com"]'), $fluidEle = $('.isi-berita, .main-video');
+    $allVideo.each(function(){
+      $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');
+    });
+
+    $(window).resize(function(){
+      var newWidth = $fluidEle.width();
+
+      $allVideo.each(function(){
+        var $el = $(this);
+        $el.width(newWidth).height(newWidth * $el.attr('data-aspectratio'));
+      });
+    }).resize();
     
+    $('.lazy').lazy();
     $(window).bind('scroll',function()
     {
       if ($(this).scrollTop()>900){

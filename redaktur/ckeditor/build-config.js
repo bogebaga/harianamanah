@@ -25,7 +25,7 @@
  */
 
 var CKBUILDER_CONFIG = {
-	skin: 'moono',
+	skin: 'moono-lisa',
 	preset: 'full',
 	ignore: [
 		'.bender',
@@ -81,6 +81,8 @@ var CKBUILDER_CONFIG = {
 		'language' : 1,
 		'link' : 1,
 		'list' : 1,
+		// 'embed' : 1,
+		// 'embedbase' : 1,
 		'liststyle' : 1,
 		'magicline' : 1,
 		'maximize' : 1,

@@ -114,6 +114,19 @@
       <hr>
       <span>Dibaca : <?php echo $d['dibaca']?></span>
       <hr>
+      <div class="baca-juga">
+        <div class="garis-bawah">
+          <h3 style='margin-top:0;'>TERKAIT</h3>
+        </div>
+          <ul style="list-style-type: none;">
+              <?php
+              $detail1=mysql_query("SELECT * FROM berita WHERE username != 'alifahmi' AND id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 6");
+              while($p1=mysql_fetch_array($detail1)){
+              echo"
+                <li><a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a></li>";
+              }?>
+          </ul>
+      </div>
       <div class="iklan">
           <a href="https://abutours.com/" target="_blank" title="AbuTours.com">
               <img class="img-responsive" src="http://harianamanah.com/m/assets/abujie.jpg" alt="iklan">
@@ -123,21 +136,6 @@
 </section>
 <section id='facebook-comment' class="container-fluid bungkus">
   <div class="fb-comments" data-href="" data-width="686" data-numposts="5"></div>
-</section>
-<section class="container-fluid bungkus">
-  <div class="baca-juga">
-    <div class="garis-bawah">
-    <h3>TERKAIT</h3>
-    </div>
-      <ul style="list-style-type: none;">
-          <?php
-          $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 9");
-          while($p1=mysql_fetch_array($detail1)){
-          echo"
-            <li><a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a></li>";
-          }?>
-      </ul>
-  </div>
 </section>
 <section class="container-fluid bungkus">
   <center>
@@ -177,10 +175,10 @@
           while($p1=mysql_fetch_array($detail1)){
           echo"
             <li>
+              <img src='http://harianamanah.com/foto_small/$p1[gambar1]' width='85px' alt='$p1[judul]'>
               <a href='berita-$p1[judul_seo]' title='$p1[judul]'>
                 <div class='caption'>".substr($p1['judul'], 0, 50)."&hellip;</div>
               </a>
-              <img src='http://harianamanah.com/foto_small/$p1[gambar1]' width='85px' alt='$p1[judul]'>
               <a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'><span style='background:$menu[color];'>$p1[nama_kategori]</span></a>
             </li>";
           }?>

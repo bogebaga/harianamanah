@@ -65,7 +65,7 @@
       <div class="col-xs-9 news-category" style="background:#fff;">
           <!-- <h1 style="color:#06375E;border-bottom:1px solid #06375E"><?php echo $nama_menu['nama_menu']?></h1> -->
           <?php
-          $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '$nama_menu[id_menu]' AND b.id_berita < $id_berita ORDER BY id_berita DESC LIMIT 33");
+          $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '$nama_menu[id_menu]' AND b.id_berita < $id_berita ORDER BY id_berita DESC LIMIT 27");
 					while($t=mysql_fetch_array($terkini)){
             $tgl = tgl_indo_short($t['tanggal']);
             $jam = trans_jam($t['jam']);

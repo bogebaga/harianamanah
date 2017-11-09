@@ -71,7 +71,7 @@
               </div>
                 <ul class="featured_nav0">
                 <?php
-                $detail1=mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_berita != '$d[id_berita]' ORDER BY berita.id_berita DESC LIMIT 6, 9");
+                $detail1=mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_berita != '$d[id_berita]' AND username = 'alifahmi' ORDER BY berita.id_berita DESC LIMIT 6, 9");
                 while($p1=mysql_fetch_array($detail1))
                 {
                   $tgl = tgl_indo($p1['tanggal']);
@@ -79,10 +79,12 @@
                   $idarray = $p1['id_berita'];
                   echo "
                     <li style='margin-bottom:5px;text-align:left;float:none;width:32.87%;box-sizing:border-box;display:inline-block;position:relative;'>
-											<a class='featured_img berita-terkini'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' style='height:200px;width:100%;' alt='$p1[judul]'>
-											<i class='fa fa-2x fa-photo'></i>
-											<div class='black_layer'></div>
-											</a>
+											<a href='foto-$p1[judul_seo]' class='featured_img berita-terkini' style='display:inline-block;'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' style='height:200px;width:100%;' alt='$p1[judul]'>
+                        <div class='black_layer' style='z-index:1;'></div>
+                        <span style='z-index:2;display:inline-block;color:#fff;position:absolute;bottom:10px;line-height:1.1;font-size:15px;padding:0 5px;'>
+                          <!-- <span style=display:block;>$p1[nama_kategori]</span> -->$p1[judul]
+                        </span>
+                      </a>
 										</li>
 										";
 								}?>
@@ -136,27 +138,6 @@
                     <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
                   </li>";
           }?>
-          <li style="border:1px solid <?php echo $menu['color']?>">
-            <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
-              <div class="title liputan-khusus" style="padding:10px 15px;color:white;font-weight:bold;text-align:right;<?php echo $menu['gradient']?>"><?php echo strtoupper($d['nama_menu'])?></div>
-                <ul class="list-liputan-khusus">
-            <?php
-            $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='$d[id_kategori]' AND id_berita != '$d[id_berita]' ORDER BY id_berita DESC LIMIT 5");
-            while($row = mysql_fetch_array($liputan_khusus)){
-              $tgl = tgl_indo($row['tanggal']);
-              $jam = trans_jam($row['jam']);
-              echo "
-                  <li style='padding-top:0;margin:0;position:relative;'>
-                    <img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:185px;'>
-                    <a href='berita-$row[judul_seo]' style='width:100%;padding:10px;display:block;font-size:15px;background:rgba(0, 0, 0, 0.78);color:#fff;position:absolute;bottom:0'>$row[judul]</a>
-                  <!-- <span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;position:absolute;'>$row[hari], $tgl - $jam</span> -->
-                  </li>";
-            }
-            echo "<a href=\"$d[link]\" style=\"display:block;text-align:center;padding:10px 0;color:$menu[color];font-weight:bold;font-size:14px;\">$d[nama_menu] Lainnya</a></a>";
-            ?>
-            </ul>
-          </div>
-        </li>
         <!-- id="fixed-baca" data-spy="affix" -->
          <li style="background:#EBEBEC;">
             <div class="single_blog_sidebar wow fadeInUp popular-rubrik <?php echo $menu['link']?>" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44); margin-bottom:10px;">
@@ -169,9 +150,7 @@
                   <li>
                     <a href='berita-$row[judul_seo]' title='$row[judul]'>".substr($row['judul'], 0, 50)."&hellip;</a>
                     <div class='clearfix'></div>
-                  </li>";
-              }
-              ?>
+                  </li>"; }?>
               </ol>
             </div>
           </li>

@@ -664,7 +664,7 @@ while($t=mysql_fetch_array($terkini)){
 				</li>';
 	elseif($t['username'] == 'alifahmi')
 		echo "<li style='color:white;background:#1F2126;' data-berita='$t[id_berita]'>
-		<div class='deskripsi-judul home reda' style='min-width:275px;width:275px;'>
+		<div class='deskripsi-judul home reda'>
 			<h6><a href='foto-$t[judul_seo]' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>
 			<p class='rubrik-tanggal'><a href='kategori-$t[id_kategori]-$t[kategori_seo]'>".strtoupper($t['nama_kategori'])."</a> | $t[hari], $tgl - $jam</p>
 			<p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($t['isi_berita']), 0, 180)."&nbsp;<a href='foto-$t[judul_seo]'><b style='color:yellow;'>&hellip;</b></a></p>
@@ -675,13 +675,13 @@ while($t=mysql_fetch_array($terkini)){
 			</p>
 		</div>
 		<a href='foto-$t[judul_seo]'>
-		<img class='lazy' src='foto_berita/base_n.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:230px;height:195px;object-fit:cover;vertical-align:top;'>
+		<img class='lazy' src='foto_statis/base_n.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:230px;height:195px;object-fit:cover;vertical-align:top;'>
 		</a>
 	</li>";
 	else
 		echo "<li style='color:white;' data-berita='$t[id_berita]'>
 		<a href='berita-$t[judul_seo].html'>
-			<img class='lazy' src='foto_berita/base_n.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
+			<img class='lazy' src='foto_statis/base_n.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
 		</a>
 		<div class='deskripsi-judul home'>
 			<h6><a href='berita-$t[judul_seo].html' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>

@@ -49,18 +49,19 @@
 						</a>
 					</div>
 					<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
-            <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-            <a class='link-kategori'>$q[nama_kategori]</a>
+            <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+						<!-- <a class='link-kategori'>$q[nama_kategori]</a> -->
+						<br>
             <p class='waktu-berita'>  $q[hari], $tgl - $jam </p>
 					</div>
 				</article>
 				";} ?>
 		</section>
-		<div class="iklan">
+		<!-- <div class="iklan">
       <a href="abutours" title="AbuTours.com">
         <img class="img-responsive" src="assets/abujie.jpg" alt="iklan">
       </a>
-    </div>
+    </div> -->
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">
 			<center><img src="assets/loading.gif" width="100px"></center>

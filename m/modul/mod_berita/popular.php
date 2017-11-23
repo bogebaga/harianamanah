@@ -59,7 +59,7 @@
 					</div>
 					<div class='artikle-text' data-target='popular' kode='$q[dibaca]'>
             <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-            <a href='#' class='link-kategori'>$q[nama_kategori]</a>
+            <a href='kategori-$q[id_kategori]-$q[kategori_seo]' class='link-kategori'>$q[nama_kategori]</a>
             <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 					</div>
 				</article>
@@ -67,11 +67,11 @@
 			}
 		?>
 		</section>
-		<div class="iklan">
+		<!-- <div class="iklan">
       <a href="abutours" title="AbuTours.com">
         <img class="img-responsive" src="assets/abujie.jpg" alt="iklan">
       </a>
-    </div>
+    </div> -->
 
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">

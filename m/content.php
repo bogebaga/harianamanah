@@ -16,7 +16,7 @@
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item' style='position:relative;'>
-			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]'>
+			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='height:285px;object-fit:cover;'>
             <span class='judul-berita-utama'>
               <div class='caption-dt-jd'>
                 <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
@@ -27,52 +27,91 @@
         </div>"; }?>
 		</section>
 		<section>
-			<h4>TOPIK KHUSUS</h4>
+			<h4 style="color:#00a0a5;">TOPIK KHUSUS</h4>
 			<?php
 				$topik = mysql_query("SELECT topik, sub_judul FROM berita WHERE topik != '' GROUP BY topik");
 				while ($tp = mysql_fetch_array($topik))
 				{
-					echo "<i class='fa fa-hashtag' style='color:#00a0a5;'></i>&nbsp;<a href='topik-$tp[topik]'>$tp[sub_judul]</a>";
+					echo "<i class='fa fa-hashtag' style='color:#00a0a5;'></i>&nbsp;<a style='text-transform:uppercase;' href='topik-$tp[topik]'>$tp[sub_judul]</a>";
 				}
 			?>
 		</section>
 		<hr>
 		<section class="daftar-artikel">
 			<?php
-			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND id_berita < '$id' ORDER BY id_berita DESC LIMIT 10");
+			$x = 1;
+			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND id_berita != $id ORDER BY id_berita DESC LIMIT 10");
 			while($q=mysql_fetch_array($artikel))
 			{
-        $tgl = tgl_indo($q['tanggal']);
-        $jam = trans_jam($q['jam']);
+				$tgl = tgl_indo($q['tanggal']);
+				$jam = trans_jam($q['jam']);
 				if (strlen($q['judul']) > 60)
-        {
-          $hasil = substr($q['judul'], 0, 60)."&hellip;";
-        }
-        else
-        {
-          $hasil = $q['judul'];
-        }
-				echo "<article class= 'artikle' >
-					<div class='list-picture'>
-						<a href='berita-$q[judul_seo]'>
-							<img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
-						</a>
-					</div>
-					<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
-            <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-            <a href='#' class='link-kategori'>$q[nama_kategori]</a>
-            <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
-					</div>
-				</article>
-				";
+				{
+					$hasil = substr($q['judul'], 0, 60)."&hellip;";
+				}
+				else
+				{
+					$hasil = $q['judul'];
+				}
+				
+				if($q['jenis_berita'] == 'foto'):
+					echo "<article class= 'artikle' >
+									<div class='list-picture'>
+										<a href='berita-$q[judul_seo]'>
+											<img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$q[gambar1]' alt='$q[judul]' style='width:100%;height:auto;object-fit:cover;'>
+										</a>
+									</div>
+									<div class='artikle-text' data-target='update' kode='$q[id_berita]' style='width:100%;padding:0;margin-top:10px;'>
+										<a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+										<!-- <a href='#' class='link-kategori'>$q[nama_kategori]</a> -->
+										<br>
+										<p class='waktu-berita'> $q[hari], $tgl - $jam </p> 
+									</div>
+								</article>";
+				else:
+					echo "<article class= 'artikle' >
+									<div class='list-picture'>
+										<a href='berita-$q[judul_seo]'>
+											<img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
+										</a>
+									</div>
+									<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
+										<a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+										<!-- <a href='#' class='link-kategori'>$q[nama_kategori]</a> -->
+										<br>
+										<p class='waktu-berita'> $q[hari], $tgl - $jam </p> 
+									</div>
+								</article>";
+				endif;
+				$x++;
 			}
 		?>
 		</section>
-		<div class="iklan">
+		<h5 style="color:#00a0a5">REKOMENDASI BERITA</h5>
+		<section style="white-space:nowrap;overflow:auto;">
+			<?php
+				$topik = mysql_query("SELECT * FROM berita WHERE aktif = 'Y' ORDER BY id_berita DESC LIMIT 5");
+				while ($tp = mysql_fetch_array($topik))
+				{
+					echo "<article class= 'artikle' style='border:0;width:200px;display:inline-block;padding-right:15px;white-space:normal;vertical-align:top;'>
+									<div class='list-picture'>
+										<a href='berita-$tp[judul_seo]'>
+											<img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$tp[gambar1]' alt='$tp[judul]' style='width:100%;object-fit:cover;height:115px;'>
+										</a>
+									</div>
+									<div class='artikle-text' data-target='update' kode='$tp[id_berita]' style='width:100%;padding:0;margin-top:10px;'>
+										<a href='berita-$tp[judul_seo]' class='berita' title='$tp[judul]' style='font-weight:100;font-size:14px;'>$tp[judul]</a>
+										<br>
+									</div>
+								</article>";
+				}
+			?>
+		</section>
+		<!-- <div class="iklan">
       <a href="abutours" title="AbuTours.com">
         <img class="img-responsive" src="assets/abujie.jpg" alt="iklan banner bawah harianamanah.com - kiblat berita islami">
       </a>
-    </div>
+    </div> -->
 
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">

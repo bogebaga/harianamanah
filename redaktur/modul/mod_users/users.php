@@ -74,7 +74,7 @@ echo "";
     $posisi = $p->cariPosisi($batas);
 
    if ($_SESSION[leveluser]=='admin'){
-      $tampil = mysql_query("SELECT * FROM users ORDER BY id_session DESC LIMIT $posisi,$batas");
+      $tampil = mysql_query("SELECT * FROM users ORDER BY id_session DESC");
     }
     else{
       $tampil=mysql_query("SELECT * FROM users WHERE username='$_SESSION[namauser]'");

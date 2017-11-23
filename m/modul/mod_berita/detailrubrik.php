@@ -49,9 +49,9 @@
           </a>
         </div>
         <div class='artikle-text' data-target='update' kode='$q[id_berita]'>
-          <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-          <a href='$q[link]'class='link-kategori'>$q[nama_kategori]</a>
-          <p class='waktu-berita'>$q[hari], $tgl - $jam </p>
+        <a href='$q[link]'class='link-kategori'>$q[nama_kategori]</a>
+        <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
+        <p class='waktu-berita'>$q[hari], $tgl - $jam </p>
         </div>
       </article>
       ";}	?>

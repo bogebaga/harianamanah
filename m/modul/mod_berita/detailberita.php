@@ -66,15 +66,15 @@
   $query = mysql_query("SELECT color, link, nama_menu FROM menu where id_menu = (SELECT id_parent FROM menu WHERE link = '$d[link]')");
   $menu = mysql_fetch_array($query);
 ?>
-<section class="container-fluid bungkus" id="test">
-    <p class="daftar-redaksi" style="margin:10px 0 0;font-size:12px;"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=$menu[link]>$menu[nama_menu]</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
+<section class="container-fluid bungkus" id="test" style="margin-bottom:0;">
+    <p class="daftar-redaksi" style="margin:10px 0 0;font-size:10px;"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=$menu[link]>$menu[nama_menu]</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
           </div>
-    <h1 class="read_berita"><?php echo $d['judul'];?></h1>
+    <h1 class="read_berita" style="margin-top:3px;"><?php echo $d['judul'];?></h1>
     <span class="tanggal-release"><?php echo $d['hari'].", ".$tgl." - ".$jam ?></span>&nbsp;Oleh&nbsp;<span><?php echo $d['username']?></span>
     <div class="box-header row">
         <div class="gambar-berita" style="position:relative;margin:0 0 7px;">
           <span id="toggle-info" class="fa fa-info-circle" style="font-size:35px;position:absolute;right:10px;bottom:10px"></span>
-          <img src='http://harianamanah.com/foto_berita/<?php echo $d['gambar']?>' class='img-responsive' alt='img'>
+          <img style="height:230px;object-fit:cover;" src='http://harianamanah.com/foto_berita/<?php echo $d['gambar']?>' class='img-responsive' alt='<?php echo $d['judul']?>'>
         </div>
         <div id="info-gambarku" style="padding:0 7px;font-size:12px;display:none;"><?php echo $d['keterangan_gambar']?></div>
     </div>
@@ -96,13 +96,6 @@
     <div class="box left">
       <span class="berita">
           <?php
-          if(!empty($d['youtube'])) {
-              echo "
-          <iframe width='100%' tabindex='0' style='background:#000; min-height: 480px;' allowfullscreen='1' src='$d[youtube]' frameborder='0' height='480' allowfullscreen></iframe>
-          ";
-          }
-          ?>
-          <?php
           if (strpos($d['isi_berita'], "src='http://harianamanah.com/redaktur/") !== false) {
               echo(str_replace('http://harianamanah.com/redaktur/','http://harianamanah.com/redaktur/',$d['isi_berita']));
           }else  {
@@ -111,45 +104,31 @@
           mysql_query("UPDATE berita SET dibaca=$d[dibaca]+1 WHERE judul_seo='$_GET[judul]'");
           ?>
       </span>
-      <hr>
+      <!-- <hr>
       <span>Dibaca : <?php echo $d['dibaca']?></span>
-      <hr>
+      <hr> -->
       <div class="baca-juga">
-        <div class="garis-bawah">
-          <h3 style='margin-top:0;'>TERKAIT</h3>
-        </div>
+          <h3 style='margin-top:0;font-size:19px;color:#00a1a2;'>TERKAIT</h3>
           <ul style="list-style-type: none;">
               <?php
-              $detail1=mysql_query("SELECT * FROM berita WHERE username != 'alifahmi' AND id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 6");
+              $detail1=mysql_query("SELECT * FROM berita WHERE username != 'alifahmi' AND id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 5");
               while($p1=mysql_fetch_array($detail1)){
               echo"
                 <li><a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a></li>";
               }?>
           </ul>
       </div>
-      <div class="iklan">
+      </div>
+      <!-- <div class="iklan">
           <a href="https://abutours.com/" target="_blank" title="AbuTours.com">
               <img class="img-responsive" src="http://harianamanah.com/m/assets/abujie.jpg" alt="iklan">
           </a>
-      </div>
+      </div> -->
     </div>
 </section>
-<section id='facebook-comment' class="container-fluid bungkus">
+<section id='facebook-comment' class="container-fluid bungkus" style="background: transparent;">
+  <h4 style='margin-top:20px;'>Tinggalkan Jejakmu Wahai Cendekianwan</h4>
   <div class="fb-comments" data-href="" data-width="686" data-numposts="5"></div>
-</section>
-<section class="container-fluid bungkus">
-  <center>
-    <h1 style="display:inline-block;border-bottom:3px solid red;margin-bottom:30px;">POPULAR</h1>
-  </center>  
-  <ul class="col-xs-12 rubrik-popular top-<?php echo $_GET['jn']?> ">
-    <?php
-      $popular = mysql_query("SELECT judul, judul_seo FROM berita WHERE id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 10");
-      while($row = mysql_fetch_array($popular))
-      {
-        echo "<li class='top-popular'><a href='berita-$row[judul_seo]'>$row[judul]</a></li>";
-      }
-    ?>
-  </ul>
 </section>
 <section class="container-fluid bungkus nav-nex-pre">
   <?php
@@ -165,6 +144,20 @@
   ?>
 </section>
 <section class="container-fluid bungkus">
+  <center>
+    <h1 style="display:inline-block;border-bottom:3px solid red;margin-bottom:30px;">POPULAR</h1>
+  </center>  
+  <ul class="col-xs-12 rubrik-popular top-<?php echo $_GET['jn']?> ">
+    <?php
+      $popular = mysql_query("SELECT judul, judul_seo FROM berita WHERE id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 10");
+      while($row = mysql_fetch_array($popular))
+      {
+        echo "<li class='top-popular'><a href='berita-$row[judul_seo]'>$row[judul]</a></li>";
+      }
+    ?>
+  </ul>
+</section>
+<section class="container-fluid bungkus">
   <div class="baca-juga">
     <div class="garis-bawah" style="border-bottom:1px solid <?php echo $menu['color']?>;">
     <h3 style="color:<?php echo $menu['color']?>;border:0;">TERKINI</h3>
@@ -175,11 +168,11 @@
           while($p1=mysql_fetch_array($detail1)){
           echo"
             <li>
-              <img src='http://harianamanah.com/foto_small/$p1[gambar1]' width='85px' alt='$p1[judul]'>
+              <img src='http://harianamanah.com/foto_small/$p1[gambar1]' width='100px' alt='$p1[judul]'>
               <a href='berita-$p1[judul_seo]' title='$p1[judul]'>
-                <div class='caption'>".substr($p1['judul'], 0, 50)."&hellip;</div>
+                <div class='caption' style='font-size:16px;font-weight:500;'>$p1[judul]</div>
               </a>
-              <a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'><span style='background:$menu[color];'>$p1[nama_kategori]</span></a>
+              <!-- <a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'><span style='background:$menu[color];'>$p1[nama_kategori]</span></a> -->
             </li>";
           }?>
       <div class="clearfix"></div>

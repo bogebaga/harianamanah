@@ -26,8 +26,9 @@ if ($_GET['kategori']=='detail')
       </a>
     </div>
     <div class='artikle-text' kode='$q[id_berita]'>
-    <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-    <a class='link-kategori'>$q[nama_kategori]</a>
+    <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+    <!-- <a class='link-kategori'>$q[nama_kategori]</a> -->
+    <br>
     <p class='waktu-berita' idk='$q[id_kategori]'> $q[hari], $tgl - $jam </p>
     </div>
   </article>
@@ -56,8 +57,9 @@ elseif ($_GET['kategori']=='popular')
       </a>
     </div>
     <div class='artikle-text' data-target='popular' kode='$q[dibaca]'>
-    <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-    <a class='link-kategori'>$q[nama_kategori]</a>
+    <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+    <!-- <a class='link-kategori'>$q[nama_kategori]</a> -->
+    <br>
     <p class='waktu-berita' idk='$q[id_kategori]'> $q[hari], $tgl - $jam </p>
     </div>
   </article>
@@ -86,8 +88,9 @@ elseif ($_GET['kategori']=='rekomendasi')
       </a>
     </div>
     <div class='artikle-text' data-target='rekomendasi' kode='$q[id_berita]'>
-    <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-    <a class='link-kategori'>$q[nama_kategori]</a>
+    <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+    <!-- <a class='link-kategori'>$q[nama_kategori]</a> -->
+    <br>
     <p class='waktu-berita' idk='$q[id_kategori]'> $q[hari], $tgl - $jam </p>
     </div>
   </article>
@@ -125,12 +128,13 @@ elseif ($_GET['kategori'])
 }
 else
 {
+  $x = 1;
 	$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND berita.id_berita < '$_GET[urut]' ORDER BY id_berita DESC LIMIT 15");
 	while($q=mysql_fetch_array($artikel))
 	{
     $tgl = tgl_indo($q['tanggal']);
     $jam = trans_jam($q['jam']);
-		if (strlen($q['judul']) > 60)
+    if (strlen($q['judul']) > 60)
     {
       $hasil = substr($q['judul'], 0, 60)."&hellip;";
     }
@@ -138,20 +142,37 @@ else
     {
       $hasil = $q['judul'];
     }
-    echo "
-    <article class= 'artikle' >
+    if($x%5 == 0):
+      echo "<article class= 'artikle' >
       <div class='list-picture'>
         <a href='berita-$q[judul_seo]'>
-          <img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
+          <img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$q[gambar1]' alt='$q[judul]' style='width:100%;height:220px;object-fit:cover;'>
         </a>
       </div>
-      <div class='artikle-text' data-target='update' kode='$q[id_berita]'>
-      <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
-      <a href='#' class='link-kategori'>$q[nama_kategori]</a>
-          <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
+      <div class='artikle-text' data-target='update' kode='$q[id_berita]' style='width:100%;padding:0;margin-top:10px;'>
+        <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+        <!-- <a href='#' class='link-kategori'>$q[nama_kategori]</a> -->
+        <br>
+        <p class='waktu-berita'> $q[hari], $tgl - $jam </p> 
       </div>
-    </article>
-  ";}
+    </article>";
+    else:
+      echo "
+      <article class= 'artikle' >
+        <div class='list-picture'>
+          <a href='berita-$q[judul_seo]'>
+            <img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
+          </a>
+        </div>
+        <div class='artikle-text' data-target='update' kode='$q[id_berita]'>
+          <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+          <!-- <a href='#' class='link-kategori'>$q[nama_kategori]</a> -->
+          <br>
+          <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
+        </div>
+      </article>";   
+    endif;
+  }
 }
 $num_rows = mysql_num_rows($artikel);
 if($num_rows !== 0){

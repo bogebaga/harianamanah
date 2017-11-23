@@ -6,7 +6,6 @@
     }
 </script>
 
-
 <?php
 session_start();
 if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])){
@@ -84,50 +83,51 @@ else{
    <th>Uploader</th>
    <th>Tgl. Posting</th>
    <th>Reporter</th>
+   <th>Dibaca</th>
    <th>Aksi</th>
    </thead>
    <tbody>";
-                    $p      = new Paging;
-                    $batas  = 40;
-                    $posisi = $p->cariPosisi($batas);
+        $p      = new Paging;
+        $posisi = $p->cariPosisi($batas);
 
-                    if ($_SESSION[leveluser]=='admin'){
-                        $tampil = mysql_query("SELECT * FROM berita ORDER BY id_berita DESC LIMIT 100");}
-
-
-                    else{
-                        $tampil=mysql_query("SELECT * FROM berita 
-                           WHERE username='$_SESSION[namauser]'
-                           ORDER BY id_berita DESC");}
+        if ($_SESSION[leveluser]=='admin'){
+            $tampil = mysql_query("SELECT * FROM berita ORDER BY id_berita DESC LIMIT 100");}
 
 
-                    $no = $posisi+1;
+        else{
+            $tampil=mysql_query("SELECT * FROM berita 
+            WHERE username='$_SESSION[namauser]'
+            ORDER BY id_berita DESC");}
 
-                    while($r=mysql_fetch_array($tampil)){
-                        $tgl_posting=tgl_indo($r[tanggal]);
-                        $lebar=strlen($no);
-                        switch($lebar){
-                            case 1:
-                            {
-                                $g="0".$no;
-                                break;
-                            }
-                            case 2:
-                            {
-                                $g=$no;
-                                break;
-                            }
-                        }
 
-                        $tampil1 = mysql_query("SELECT * FROM users WHERE username = '$r[username]' ");
-                        $s = mysql_fetch_array($tampil1);
-                        echo "<tr class=gradeX>
+        $no = $posisi+1;
+
+        while($r=mysql_fetch_array($tampil)){
+            $tgl_posting=tgl_indo($r[tanggal]);
+            $lebar=strlen($no);
+            switch($lebar){
+                case 1:
+                {
+                    $g="0".$no;
+                    break;
+                }
+                case 2:
+                {
+                    $g=$no;
+                    break;
+                }
+            }
+
+            $tampil1 = mysql_query("SELECT * FROM users WHERE username = '$r[username]' ");
+            $s = mysql_fetch_array($tampil1);
+            echo "<tr class=gradeX>
    
    <td><center>$g</center></td>
    <td>$r[judul]</td>
    <td>$s[nama_lengkap]</td>
    <td>$tgl_posting</td>
    <td>$r[reporter]</td>
+   <td>$r[dibaca]</td>
    <td width=80>
    
    <a href=?module=berita&act=editberita&id=$r[id_berita] title='Edit' class='with-tip'>
@@ -255,6 +255,12 @@ else{
 
                 echo "</select>";
 
+    echo " <p class=inline-small-label> 
+            <label for=field4>Jenis Berita</label>
+            <input type=checkbox name='jenis_berita' value='foto'>Foto 
+            <input type=checkbox name='jenis_berita' value='video'>Video
+            </p>";
+             
                 if ($r[headline]=='Y'){
                     echo "
    <p class=inline-small-label> 
@@ -318,6 +324,11 @@ else{
    <textarea name='editor' id='editor' class='ckeditor' style='width: 720px; height: 350px;'></textarea>
    </p> 	  
    
+   <p class=inline-small-label> 
+   <label for=field4>Deskripsi Berita</label>
+   <input type='text' name='deskripsi'>
+   </p> 	  
+
    <p class=inline-small-label> 
    <label for=field4>Tags</label>
    <input type='text' id='tags_berita' name='tags_berita'>
@@ -412,8 +423,12 @@ else{
                         echo "<option value=$w[id_kategori]>$w[nama_kategori]</option> </p> ";}}
 
                 echo "</select>";
-
-
+                
+    echo"<p class=inline-small-label>
+    <label for=field4>Jenis Berita</label>
+    <input type=checkbox name='jenis_berita' value='foto' ".($r['jenis_berita'] == 'foto' ? 'checked' : '').">Foto 
+    <input type=checkbox name='jenis_berita' value='video' ".($r['jenis_berita'] == 'video' ? 'checked' : '').">Video
+    </p>";
                 if ($r[headline]=='Y'){
                     echo "
    <p class=inline-small-label> 
@@ -475,6 +490,11 @@ else{
    <label for=field4>Isi Berita</label>
    <textarea name='editor' id='editor' class='ckeditor' style='width: 720px; height: 350px;'>$r[isi_berita]</textarea>
    </p> 	  
+
+   <p class=inline-small-label> 
+   <label for=field4>Deskripsi Berita</label>
+   <input type='text' name='deskripsi' value='$r[deskripsi]'>
+   </p> 	 
 
    <p class=inline-small-label> 
    <label for=field4>Tags</label>

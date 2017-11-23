@@ -21,7 +21,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="refresh" content="180">
+  <meta http-equiv="refresh" content="900">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="author" content="harianamanah.com">
   <meta name="robots" content="index, follow" />
@@ -390,7 +390,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
                 echo "
                     <li class=\"sub__rubrik\">
                       <a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;padding:10px 0;display:inline-block;'>$row_sub[nama_menu]</a>
-                      <i>&nbsp;&nbsp;&nbsp;•</i>
                     </li>";
                 }
                 echo "</ul></li>";
@@ -410,8 +409,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
             $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE id_menu = (SELECT id_kategori FROM berita WHERE judul_seo = '$_GET[judul]'))");
           elseif($_GET['id']):
             $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')");
-          else:
-            $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent != '0' AND aktif ='Ya'");
           endif;
           
           while($row_sub = mysql_fetch_array($sub_rubrik)){
@@ -436,7 +433,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
 <footer>
   <div class="footer-logo">
     <div class="gambar-footer">
-      <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true" style="color:#00A0A5;"></span></a>
+      <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true" style="color:#1f2126;"></span></a>
             <!-- <a href="#">
                 <img src="assets/pp_ff.png" width="38px">
             </a> -->
@@ -445,18 +442,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       <img src="logo/assets/pp_ff.png"  width="32px" title="Amanah" alt="logo amanah - harianamanah.com">
     </div> -->
   </div>
-  <div class="footer-menu">
-    <div class="container">
-      <ul class="must-know">
-        <li><a style="color:#EFCB03;" href="hal-tentang-kami">TENTANG</a></li>
-        <li><a style="color:#EFCB03;" href="hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
-        <!-- <li><a style="color:#EFCB03;" href="">PEDOMAN&nbsp;MEDIA&nbsp;SIBER</a></li> -->
-        <!-- <li><a style="color:#EFCB03;" href="">ADVERTISEMENT</a></li> -->
-        <li><a style="color:#EFCB03;" href="hal-kontak-kami">KONTAK</a></li>
-        <li><a style="color:#EFCB03;" href="sitemap">SITEMAP</a></li>
-      </ul>
-    </div>
-  </div>
   <div class="footer-menu-expand">
     <div class="container">
     <ul class="menu-utama">
@@ -464,7 +449,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
         <span class="title-menu">KANAL</span>
         <ul>
         <?php
-          $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND (id_parent = 8 || id_parent = 13 || id_parent = 14 || id_parent = 18 || id_parent = 20)");
+          $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent != 0;");
           while($row = mysql_fetch_array($menu_sub)){
             echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
           }
@@ -482,6 +467,17 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
           ?>
         </ul>
       </li>
+      <li style="width:200px;">
+        <span class="title-menu">SOCIAL&nbsp;HUB</span>
+        <ul class="block">
+          <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-facebook'></i>Facebook</a></li>
+          <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-twitter'></i>Twitter</a></li>
+          <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-instagram'></i>Instagram</a></li>
+          <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-google-plus'></i>Google+</a></li>
+          <li><a href="https://www.linkedin.com/company/13466134"><i style='margin-right:5px;' class='fa fa-fw fa-linkedin'></i>LinkedIn</a></li>
+          <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='margin-right:5px;' class='fa fa-fw fa-youtube'></i>Youtube</a></li>
+        </ul>
+      </li>
       <li style="width:260px;">
         <span class="title-menu">FIND&nbsp;US</span>
         <ul class="block">
@@ -497,36 +493,34 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
           </li>
         </ul>
       </li>
-      <li style="width:200px;">
-        <span class="title-menu">SOCIAL&nbsp;HUB</span>
-        <ul class="block">
-          <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-facebook'></i>Facebook</a></li>
-          <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-twitter'></i>Twitter</a></li>
-          <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-instagram'></i>Instagram</a></li>
-          <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-google-plus'></i>Google+</a></li>
-          <li><a href="https://www.linkedin.com/company/13466134"><i style='margin-right:5px;' class='fa fa-fw fa-linkedin'></i>LinkedIn</a></li>
-          <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='margin-right:5px;' class='fa fa-fw fa-youtube'></i>Youtube</a></li>
-        </ul>
-      </li>
     </ul>
     </div>
   </div>
+  <div class="footer-menu">
+    <div class="container">
+      <ul class="must-know">
+        <li><a style="color:#EFCB03;" href="hal-tentang-kami">TENTANG KAMI</a></li>
+        <li><a style="color:#EFCB03;" href="hal-redaksi">REDAKSI</a></li>
+        <li><a style="color:#EFCB03;" href="hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
+        <li><a style="color:#EFCB03;" href="hal-kontak-kami">KONTAK</a></li>
+        <li><a style="color:#EFCB03;" href="sitemap">SITEMAP</a></li>
+      </ul>
+    </div>
+  </div>
   <div class="copy-right">
-    <p style="margin:0;">HarianAmanah&nbsp;&copy;&nbsp;2017</p>
+    <div class="container">
+      <p style="margin:0;">&copy;&nbsp;2017&nbsp;harianamanah.com - All Rights Reserved.</p>
+    </div>
   </div>
 	</footer>
 	<!-- Footer -->
   <!-- JS -->
-<?php
-  $location_img = "foto_berita/base.png";
-  $type = pathinfo($location_img, PATHINFO_EXTENSION);
-  $data = file_get_contents($location_img);
-  $base64 = "data:image/".$type.";base64,".base64_encode($data);
-?>
 <script type="text/javascript">
   $(document).ready(function()
   {
-    var $allVideo = $('iframe[src*="www.youtube.com"]'), $fluidEle = $('.isi-berita, .main-video');
+    var $allVideo = $('iframe[src*="www.youtube.com"]'),
+        $fluidEle = $('.isi-berita, .main-video');
+
     $allVideo.each(function(){
       $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');
     });

@@ -97,10 +97,12 @@ else{
         $dibaca= $_POST[dibaca];
         $nama_user= $_SESSION[namauser];
         $isi_berita=   $_POST[editor];
+        $deskripsi = $_POST[deskripsi];
         $ket_gam= $_POST[keterangan_gambar];
         $tag = $_POST[tags_berita];
         $judul_seo      = seo_title($_POST[judul]);
         $topik = seo_title($_POST[sub_judul]);
+        $jenis_berita = $_POST[jenis_berita];
 
         if(!empty($TempSrc)){
             list($CurWidth,$CurHeight)=getimagesize($TempSrc);
@@ -137,6 +139,7 @@ else{
             mysql_query("INSERT INTO berita( judul,
                                     sub_judul,
                                     topik,
+                                    jenis_berita,
                   youtube,
                                     judul_seo,
                                     id_kategori,
@@ -147,6 +150,7 @@ else{
                     dibaca,
                                     username,
                                     isi_berita,
+                                    deskripsi,
                   keterangan_gambar,
                                     jam,
                                     tanggal,
@@ -155,7 +159,7 @@ else{
                                     gambar,
                                     gambar1,
                                     reporter)
-                      VALUES('$jud','$subjud','$topik','$youtube','$judul_seo','$kategori','$dae','$headline','$aktif','$utama','$dibaca','$nama_user','$isi_berita','$ket_gam','$jam_sekarang','$tgl_sekarang','$hari_ini','$tag','$NewImageName','$NewImageName','$reporter')
+                      VALUES('$jud','$subjud','$topik','$jenis_berita','$youtube','$judul_seo','$kategori','$dae','$headline','$aktif','$utama','$dibaca','$nama_user','$isi_berita','$deskripsi','$ket_gam','$jam_sekarang','$tgl_sekarang','$hari_ini','$tag','$NewImageName','$NewImageName','$reporter')
 
                                      ");
 
@@ -213,8 +217,10 @@ else{
         $dibaca= $_POST[dibaca];
         $nama_user= $_SESSION[namauser];
         $isi_berita=   $_POST[editor];
+        $deskripsi = $_POST[deskripsi];
         $ket_gam= $_POST[keterangan_gambar];
         $tag = $_POST[tags_berita];
+        $jenis_berita = $_POST[jenis_berita];
 
         $judul_seo      = seo_title($_POST[judul]);
         $topik      = seo_title($_POST[sub_judul]);
@@ -254,6 +260,7 @@ else{
             mysql_query("UPDATE berita SET judul       = '$jud',
                                   sub_judul  = '$subjud',
                                     topik = '$topik',  
+                                    jenis_berita = '$jenis_berita',
                                     youtube   = '$youtube',
                                    judul_seo   = '$judul_seo', 
                                  id_kategori   = '$kategori',
@@ -263,6 +270,7 @@ else{
                      utama     = '$utama',
                                    tag         = '$tag',
                                    isi_berita  = '$isi_berita',
+                                   deskripsi    = '$deskripsi',
                 keterangan_gambar     = '$ket_gam',
                reporter = '$reporter'
                              WHERE id_berita   = '$_POST[id]'");
@@ -281,6 +289,7 @@ else{
                 mysql_query("UPDATE berita SET judul       = '$jud',
                              sub_judul       = '$subjud',
                              topik = '$topik',
+                             jenis_berita = '$jenis_berita',
                     youtube      = '$youtube',
                                    judul_seo   = '$judul_seo', 
                                    id_kategori = '$kategori',

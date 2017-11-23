@@ -1,23 +1,21 @@
 <?php
 session_start();
-include "../config/koneksi.php";
-include "../config/library.php";
-include "../config/fungsi_indotgl.php";
-include "../config/fungsi_combobox.php";
-include "../config/class_paging.php";
-include "../config/desc.php";
-include "../config/Mobile_Detect.php";
-define ('SITE_URL', site_URL());
+  include "../config/koneksi.php";
+  include "../config/library.php";
+  include "../config/fungsi_indotgl.php";
+  include "../config/fungsi_combobox.php";
+  include "../config/class_paging.php";
+  include "../config/desc.php";
+  include "../config/Mobile_Detect.php";
 
-$automobile = new Mobile_Detect;
-$pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
-if(!$automobile->isMobile()){
-  header('Location: http://www.harianamanah.com/'.$pop);
-  exit();
-}
-  // var_export($_SERVER);
+  $automobile = new Mobile_Detect;
+  $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
+  if(!$automobile->isMobile()){
+    header('Location: http://www.harianamanah.com/'.$pop);
+    exit();
+  }
+
   error_reporting(0);
-
 	$detail=mysql_query("SELECT * FROM berita,users,kategori
 			WHERE users.username=berita.username
 			AND kategori.id_kategori=berita.id_kategori
@@ -28,9 +26,9 @@ if(!$automobile->isMobile()){
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <meta http-equiv="refresh" content="900">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
@@ -40,7 +38,8 @@ if(!$automobile->isMobile()){
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
+    echo $title['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -68,7 +67,8 @@ if(!$automobile->isMobile()){
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
+    echo $title['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -89,7 +89,8 @@ if(!$automobile->isMobile()){
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
+    echo $title['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -138,7 +139,8 @@ if(!$automobile->isMobile()){
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    $title = mysql_fetch_array(mysql_query("SELECT judul FROM berita WHERE judul_seo = '$_GET[judul]'"));
+    echo $title['judul'];
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -177,7 +179,7 @@ if(!$automobile->isMobile()){
   if($_GET['jn']):
     $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE link = '$_GET[jn]'"));
   elseif($_GET['judul']):
-    $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$d[id_kategori]')"));
+    $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = (SELECT id_kategori FROM berita WHERE judul_seo = '$_GET[judul]'))"));
   elseif($_GET['id']):
     $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')"));
   else:
@@ -202,7 +204,6 @@ if(!$automobile->isMobile()){
   <!-- JS -->
   <script type="text/javascript" src="js/bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/jquery.lazy.min.js"></script>
   <script type="application/ld+json">
   {
     "@context": "http://schema.org/",
@@ -243,6 +244,14 @@ if(!$automobile->isMobile()){
     },
     "articleBody": "<?php echo fullbody($d['isi_berita'])?>"
   }
+  </script>
+  <!-- Website -->
+  <script type="text/javascript">
+    var URL = window.location.href.split('/').pop();
+    if(screen.width > 768)
+    {
+      document.location = 'http://harianamanah.com/'+URL;
+    }
   </script>
   <?php 
     include_once "heatmap.php"; 
@@ -286,7 +295,7 @@ if(!$automobile->isMobile()){
                     <span class="icon-bar"></span>
                 </button>
                 <button type="button" class="tutup"><span class="big-close"></span></button>
-                <a href="./" class="navbar-brand"><img src="assets/amanah.png" class="img-responsive" alt="logo-amanah"></a>
+                <a href="./" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
                 <form method="GET" action="search" style="width:100vw;">
           <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="query-search" placeholder="Cari berita dan peristiwa">
                 </form>
@@ -296,11 +305,10 @@ if(!$automobile->isMobile()){
         <!-- <p>KATEGORI</p> -->
         <ul class="nav navbar-nav social-hub"  style="margin:0;">
           <li class="facebook"><a href="https://www.facebook.com/harianamanah/" target="_blank"><span class="fa fa-facebook-square"></span></a></li>
-          <li class="twitter-nav"><a href="https://twitter.com/harianamanah" target="_blank"><span class="fa fa-twitter-square"></span></a></li>
           <li class="instagram"><a href="https://www.instagram.com/harian_amanah/" target="_blank"><span class="fa fa-instagram"></span></a></li>
-          <li class="google"><a href="https://plus.google.com/115045050828571942973" target='_blank'><span class="fa fa-google-plus-square"></span></a></li>
-          <li class="linkedin"><a href="https://www.linkedin.com/company/13466134" target="_blank"><span class="fa fa-linkedin-square"></span></a></li>
+          <li class="twitter-nav"><a href="https://twitter.com/harianamanah" target="_blank"><span class="fa fa-twitter-square"></span></a></li>
           <li class="youtube"><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><span class="fa fa-youtube-square"></span></a></li>
+          <li class="google"><a href='https://plus.google.com/115045050828571942973' target='_blank'><span class="fa fa-google-plus-square"></span></a></li>
         </ul>
         <h2 class="caption">HARIANAMANAH</h2>
         <ul class="nav navbar-nav">
@@ -345,23 +353,30 @@ if(!$automobile->isMobile()){
     <footer>
       <div class="gambar-footer">
         <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
+            <!-- <a href="#">
+                <img src="assets/pp_ff.png" width="38px">
+            </a> -->
       </div>
-      
+      <div class="menu-footer">
+        <a href="#">TENTANG</a>
+        <a href="#">PRIVASI</a>
+        <a href="#">KONTAK</a>
+      </div>
   <div class="state-one">
-      <div class="container" style="padding:0;">
+      <div class="container">
       <ul class="menu-utama">
         <li class="kategori">
-          <!-- <span class="title-menu">KANAL</span> -->
+          <span class="title-menu">KANAL</span>
           <ul>
           <?php
-            $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent != 0");
+            $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND (id_parent = 8 || id_parent = 13 || id_parent = 14 || id_parent = 18 || id_parent = 20)");
             while($row = mysql_fetch_array($menu_sub)){
               echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
             }
             ?>
           </ul>
         </li>
-        <!-- <li class="kategori">
+        <li class="kategori">
           <span class="title-menu">MENU&nbsp;UTAMA</span>
           <ul class="block">
             <?php
@@ -371,7 +386,7 @@ if(!$automobile->isMobile()){
             }
             ?>
           </ul>
-        </li> -->
+        </li>
         <li>
           <span class="title-menu">FIND&nbsp;US</span>
           <ul class="block">
@@ -390,33 +405,15 @@ if(!$automobile->isMobile()){
       </ul>
       </div>
     </div>
-    <div class="menu-footer">
-        <a href="#">TENTANG</a>
-        <a href="#">PRIVASI</a>
-        <a href="#">KONTAK</a>
-      </div>
     <div class="isi-footer">
       <span class="copyright">
-        &copy;&nbsp;2017&nbsp;harianamanah.com
+        HarianAmanah&nbsp;&copy;&nbsp;2017
       </span>
     </div>
     </footer>
 </section>
+</script>
 <script type="text/javascript">
-  var $allVideo = $('.container-video'), $fluidEle = $('.box');
-  $allVideo.each(function(){
-    $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');
-  });
-
-  $(window).resize(function(){
-      var newWidth = $fluidEle.width();
-      $allVideo.each(function(){
-        var $el = $(this);
-        $el.width(newWidth).height(newWidth * $el.attr('data-aspectratio'));
-    });
-  }).resize();
-  
-  $('.lazy').lazy();
   $('#loader').fadeOut('slow');
   $(document).ready(function() {
       //iklan and tag

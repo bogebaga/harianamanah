@@ -11,6 +11,9 @@
   // echo $d['id_kategori'];
   $main_menu = mysql_query("SELECT * FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$d[id_kategori]')");
   $menu = mysql_fetch_array($main_menu);
+  
+  echo $d['id_kategori'];
+  echo $d['judul'];
 ?>
 <div id="page-content" style="background-color: #ECECEC;margin-bottom:10px;margin-top:130px;" class="index-page container">
 <div class="col-md-9" style="background:#fff;">
@@ -43,26 +46,16 @@
       <div class="dua-atas">
             <div class="single_blog_sidebar wow fadeInUp">
             <?php
-            echo "<div class='row'><img class='main-pic' src='http://harianamanah.com/foto_berita/$d[gambar]' alt='$d[judul]'></div>";
+            echo "<div class='row'><img class='main-pic lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$d[gambar]' alt='$d[judul]'></div>";
             echo "<p class='caption-pic'>$d[keterangan_gambar]</p>";
-            echo "<img id='ads_news' src='foto_Iklan_isiberita/ems web.png' style='float:left;margin-top:19px;width:160px;height:100%;'>";
+            echo "<img id='ads_news' src='foto_Iklan_isiberita/ems web.png' style='float:left;margin-top:19px;margin-right:10px;width:160px;height:100%;'>";
             echo '<div class="isi-berita">';
             echo "$d[isi_berita]";
             echo ' <script async defer src="//platform.instagram.com/en_US/embeds.js"></script><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>';
             echo "<div class='clearfix'></div>";
             mysql_query("UPDATE berita SET dibaca='$d[dibaca]'+1 WHERE judul_seo='$_GET[judul]'");
             ?>
-            <hr>
-            <div style="float:left;">Dibaca: <?php echo $d['dibaca']?></div>
-            <div class="sosial">
-              <ul class="list-inline" style="text-align:right;margin:0;">
-                <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
-                <a href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
-                <a href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
-                <a href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
-              </ul>
-            </div>
-            <hr>
+            
             <div class='kotak' style="width:100%;float:none">
               <div class="row">
                 <h2 style="color:#00a0a5;font-size:17px;padding:13px 15px;text-transform:uppercase;text-align:left;">Berita Terkait</h2>
@@ -74,8 +67,9 @@
                 {
                   $idarray = $p1['id_berita'];
                   echo "
-                        <li style='width:47%;text-align:left;margin-bottom:8px;padding-bottom:0;'>
-                            <div class='featured_title berita-terkait'>
+                        <li style='width:48%;text-align:left;margin-top:5px;padding-bottom:0;border:0;'>
+                            <img class='lazy' src='foto_statis/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar]' alt='$p1[judul]' style='width:19%;height:65px;'>
+                            <div class='featured_title berita-terkait' style='display:inline-block;width:75%;vertical-align:top;'>
                             <a href='berita-$p1[judul_seo]' style='text-align:left;padding-left:0;font-weight:100;font-size:15px;'>$p1[judul]</a>
                             </div>
                           </li>
@@ -84,8 +78,18 @@
                 </ul>
                 <div class='clearfix'></div>
             </div>
+            <hr>
+            <!-- <div style="float:left;">Dibaca: <?php echo $d['dibaca']?></div> -->
+            <div class="sosial">
+              <ul class="list-inline" style="text-align:right;margin:0;">
+                <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
+                <a href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
+                <a href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
+                <a href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
+              </ul>
+            </div>
             <div class="related-news">
-              <div class='kotak' style="width:100%;margin-bottom:30px;float:none">
+              <div class='kotak' style="width:100%;margin-bottom:10px;float:none">
               <br>
               <div class='row'>
                 <h2 style="padding:13px 15px;text-transform:uppercase;font-weight:bold !important;text-align:left;background:#ECEFF1;color:#232d31;margin-bottom:25px;">Berita Lainnya</h2>
@@ -97,7 +101,7 @@
                 {
                   echo"
                         <li style='width:190px;margin:0 0 10px;padding-right:7px;height:185px;'>
-                          <a class='featured_img' href='berita-$p2[judul_seo]'><img src='http://harianamanah.com/foto_berita/$p2[gambar]' alt='$p2[judul]'></a>
+                          <a class='featured_img' href='berita-$p2[judul_seo]'><img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$p2[gambar]' alt='$p2[judul]'></a>
                           <div class='featured_title berita-lainnya' style='font-size:14px;'>
                             <a class='' href='berita-$p2[judul_seo]' style='margin-top:0;padding-top:5px;text-align:left;width:auto;font-weight:bold;'>$p2[judul]</a>
                           </div>
@@ -122,7 +126,7 @@
                   $idarray = $p1['id_berita'];
                   echo "
                     <li style='text-align:left;float:none;'>
-                        <a class='featured_img berita-terkini'><img src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]'></a>
+                        <a class='featured_img berita-terkini'><img class='lazy' src='foto_statis/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar]' alt='$p1[judul]'></a>
                         <div class='deskripsi-judul'>
                           <h3 class='featured_title berita-terkini'>
                           <a href='berita-$p1[judul_seo]' style='font-size:20px;text-align:left;padding-left:0;font-weight:bold;'>$p1[judul]</a>
@@ -170,17 +174,7 @@
                   </li>
                   ";
           } ?> -->
-          <?php
-          $iklantengah=mysql_query("SELECT * FROM pasangiklan WHERE id_pasangiklan != '$idc1'  ORDER BY id_pasangiklan DESC LIMIT 1");
-          while($c=mysql_fetch_array($iklantengah))
-          {
-            $idc2 = $c['id_pasangiklan'];
-            echo "
-                  <li>
-                    <a class='featured_img' href='$c[url]' >
-                    <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
-                  </li>";
-          }?>
+      
           <li style="border:1px solid <?php echo $menu['color']?>">
             <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
               <div class="title liputan-khusus" style="padding:10px 15px;color:white;font-weight:bold;text-align:right;<?php echo $menu['gradient']?>"><?php echo strtoupper($d['nama_menu'])?></div>
@@ -192,16 +186,28 @@
               $jam = trans_jam($row['jam']);
               echo "
                   <li style='padding-top:0;margin:0;position:relative;'>
-                    <img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:185px;'>
+                    <img class='lazy' src='foto_statis/base_n.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:185px;'>
                     <a href='berita-$row[judul_seo]' style='width:100%;padding:10px;display:block;font-size:15px;background:rgba(0, 0, 0, 0.5);color:#fff;position:absolute;bottom:0'>$row[judul]</a>
                   <!-- <span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;position:absolute;'>$row[hari], $tgl - $jam</span> -->
                   </li>";
             }
             echo "<a href=\"$d[link]\" style=\"display:block;text-align:center;padding:10px 0;color:$menu[color];font-weight:bold;font-size:14px;\">$d[nama_menu] Lainnya</a></a>";
             ?>
+           
             </ul>
           </div>
         </li>
+        <?php
+          $iklantengah=mysql_query("SELECT * FROM pasangiklan WHERE id_pasangiklan != '$idc1'  ORDER BY id_pasangiklan DESC LIMIT 1");
+          while($c=mysql_fetch_array($iklantengah))
+          {
+            $idc2 = $c['id_pasangiklan'];
+            echo "
+                  <li>
+                    <a class='featured_img' href='$c[url]' >
+                    <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
+                  </li>";
+          }?>
         <!-- id="fixed-baca" data-spy="affix" -->
          <li style="background:#EBEBEC;">
             <div class="single_blog_sidebar wow fadeInUp popular-rubrik <?php echo $menu['link']?>" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44); margin-bottom:10px;">

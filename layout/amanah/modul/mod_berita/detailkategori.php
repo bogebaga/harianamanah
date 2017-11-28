@@ -52,7 +52,7 @@
             <span class='img-circle trend-bullet'></span>
             <figure>
                 <div class='left-trending-fix'><a href='berita-$r[judul_seo]'>
-                  <img src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt='$r[judul]'></a>
+                  <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt='$r[judul]' style='height:auto;'>
                 </div>
             </figure>
             <div class='trend-left-info'>

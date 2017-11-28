@@ -20,7 +20,7 @@
           <a href='berita-$row[judul_seo]' title='$row[judul]'><h2 class='grid-flex-foto'>$row[judul]</h2></a>
           <span class='info-uploader'>Oleh&nbsp;$row[username]&nbsp;|&nbsp;$row[hari], $tgl - $jam</span>
           <div class='black_layer'></div>
-          <img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'>
+          <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'>
         </div>";
         $i++;
         }
@@ -83,7 +83,7 @@
                 <span style='background:$nama_menu[color]'><a style='color:#fff;' href='kategori-$t[id_kategori]-$t[kategori_seo]'>$t[nama_kategori]</a></span>
               </div>
               <a href='berita-$t[judul_seo]'>
-                <img src='http://harianamanah.com/foto_berita/$t[gambar]' alt=''>
+                <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]'>
               </a>
               <span style='font-size:10px;'>".$tgl." | ".$jam."</span>
               <a href='berita-$t[judul_seo]' class='captions'>$hasil</a>

@@ -34,8 +34,10 @@
             <div class='trend-left-list cf'>
               <span class='img-circle trend-bullet'></span>
               <figure>
-                <div class='left-trending-fix'><a href='berita-$r[judul_seo]' title='$r[judul]'>
-                  <img class='lazy' data-src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt='$r[judul]'></a>
+                <div class='left-trending-fix'>
+                <a href='berita-$r[judul_seo]' title='$r[judul]'>
+                  <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt='$r[judul]' style='height:auto;'>
+                </a>
                 </div>
               </figure>
               <div class='trend-left-info'>

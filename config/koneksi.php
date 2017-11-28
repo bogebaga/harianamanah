@@ -1,7 +1,7 @@
 <?php
 $server =  "localhost";
 $username = "root";
-$password = "";
+$password = "mysql";
 $database = "harianamanah";
 
 // Koneksi dan memilih database di server

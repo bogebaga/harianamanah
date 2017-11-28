@@ -663,15 +663,15 @@ while($t=mysql_fetch_array($terkini)){
 					</script>
 				</li>';
 	elseif($t['username'] == 'alifahmi')
-		echo "<li style='color:white;background:#1F2126;' data-berita='$t[id_berita]'>
+		echo "<li style='color:white;background:#252831;' data-berita='$t[id_berita]'>
 		<div class='deskripsi-judul home reda'>
-			<h6><a href='foto-$t[judul_seo]' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>
+			<h6><a style='color:#fff;' href='foto-$t[judul_seo]' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>
 			<p class='rubrik-tanggal'><a href='kategori-$t[id_kategori]-$t[kategori_seo]'>".strtoupper($t['nama_kategori'])."</a> | $t[hari], $tgl - $jam</p>
-			<p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($t['isi_berita']), 0, 180)."&nbsp;<a href='foto-$t[judul_seo]'><b style='color:yellow;'>&hellip;</b></a></p>
-			<p data-opacity='true' style='margin-bottom:0;'>
-				<a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/foto-$t[judul_seo]' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
-				<a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/foto$t[judul_seo]&text=$t[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
-				<a class='btn btn-social-icon' href='https://plus.google.com/share?url=http://harianamanah.com/foto$t[judul_seo]' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
+			<p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($t['isi_berita']), 0, 180)."&nbsp;<a href='foto-$t[judul_seo]'><b style='color:#009688;'>&hellip;</b></a></p>
+			<p data-opacity='true' style='margin-bottom:0;font-size:20px;margin-top:7px;'>
+				<a style='color:#fff;' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/foto-$t[judul_seo]' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
+				<a style='color:#fff;' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/foto$t[judul_seo]&text=$t[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
+				<a style='color:#fff;' href='https://plus.google.com/share?url=http://harianamanah.com/foto$t[judul_seo]' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
 			</p>
 		</div>
 		<a href='foto-$t[judul_seo]'>
@@ -685,12 +685,12 @@ while($t=mysql_fetch_array($terkini)){
 		</a>
 		<div class='deskripsi-judul home'>
 			<h6><a href='berita-$t[judul_seo].html' title='$t[judul]'>".substr($t['judul'], 0, 60)."&hellip;</a></h6>
-			<p class='rubrik-tanggal'><a href='kategori-$t[id_kategori]-$t[kategori_seo].html'>".strtoupper($t['nama_kategori'])."</a> | $t[hari], $tgl - $jam</p>
-			<p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($t['isi_berita']), 0, 130)."&nbsp;<a href='berita-$t[judul_seo].html'><b style='color:yellow;'>&hellip;</b></a></p>
-			<p data-opacity='true' style='margin:0 0 0 12px;'>
-			<a class='btn btn-social-icon' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$t[judul_seo].html' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
-			<a class='btn btn-social-icon' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$t[judul_seo].html&text=$t[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
-			<a class='btn btn-social-icon' href='https://plus.google.com/share?url=http://harianamanah.com/berita-$t[judul_seo].html' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
+			<p style='margin-left:7px;' class='rubrik-tanggal'><a href='kategori-$t[id_kategori]-$t[kategori_seo].html'>".strtoupper($t['nama_kategori'])."</a> | $t[hari], $tgl - $jam</p>
+			<p style='margin-bottom:0;'>".substr(strip_tags($t['isi_berita']), 0, 130)."&nbsp;<a href='berita-$t[judul_seo].html'><b style='color:#009688;'>&hellip;</b></a></p>
+			<p data-opacity='true' style='margin:0 0 0 7px;font-size:15px;margin-top:7px;'>
+			<a href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$t[judul_seo].html' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
+			<a href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$t[judul_seo].html&text=$t[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
+			<a href='https://plus.google.com/share?url=http://harianamanah.com/berita-$t[judul_seo].html' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
 		</p>
 		</div>
 	</li>";

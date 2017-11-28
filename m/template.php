@@ -40,7 +40,7 @@ if(!$automobile->isMobile()){
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    echo htmlentities($d['judul']);
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -68,7 +68,7 @@ if(!$automobile->isMobile()){
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    echo htmlentities($d['judul']);
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -89,7 +89,7 @@ if(!$automobile->isMobile()){
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    echo htmlentities($d['judul']);
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -138,7 +138,7 @@ if(!$automobile->isMobile()){
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    echo htmlentities($d['judul']);
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";

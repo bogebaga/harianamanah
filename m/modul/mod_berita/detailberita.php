@@ -127,7 +127,7 @@
     </div>
 </section>
 <section id='facebook-comment' class="container-fluid bungkus" style="background: transparent;">
-  <h4 style='margin-top:20px;'>Tinggalkan Jejakmu Wahai Cendekianwan</h4>
+  <h4 style='margin-top:20px;'>Tinggalkan Jejakmu disini</h4>
   <div class="fb-comments" data-href="" data-width="686" data-numposts="5"></div>
 </section>
 <section class="container-fluid bungkus nav-nex-pre">

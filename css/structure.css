@@ -487,11 +487,11 @@ h2{
 .single_blog_sidebar1.berita-terkini li
 {
   padding: 10px;
-  border-bottom: 1px solid #d7a11f;
+  border-bottom: 1px solid #ececec;
 }
-.single_blog_sidebar1.berita-terkini li:last-child{
+/* .single_blog_sidebar1.berita-terkini li:last-child{
   border-bottom:0;
-}
+} */
 
 .single_blog_sidebar1{
 	/* display: inline; */
@@ -744,7 +744,7 @@ h2{
 
 }
 .deskripsi-judul > p.rubrik-tanggal a{
-  color:#EFCB17;
+  color:#009688;
 }
 .deskripsi-judul > p.rubrik-tanggal
 {
@@ -767,12 +767,12 @@ color: rgb(158, 158, 158);
 }
 .deskripsi-judul.home a:hover,
 .deskripsi-judul.home a:active{
-  color:#EFCB17;
+  color:#009688;
   text-decoration: none;
 }
 .deskripsi-judul.home a
 {
-  color:#fff;
+  color:#000;
   text-align:left;
   padding-left:0;
   font-weight:normal;
@@ -1382,7 +1382,8 @@ margin:auto;
 .daftar-redaksi
 {
   margin: 0 !important;
-  line-height: 1.2;
+	line-height: 1.2;
+	display: inline-block;
 }
 .daftar-redaksi a{
   color:#262932 !important;
@@ -1667,16 +1668,13 @@ ol.list-berita-popular li
 }
 ol.list-berita-popular li:before{
 	content:counter(item);
-	margin-right:10px;
-	background:#1c9fa7;
 	border-radius:100%;
-	color:white;
-	width:40px;
-	height:40px;
-	line-height:1.6;
+	color:#35a0a4;
+	width:56px;
+	line-height:1;
 	text-align:center;
 	float:left;
-	font-size: 25px;
+	font-size: 50px;
 }
 .title,
 .liputan-khusus
@@ -1695,9 +1693,9 @@ ol.list-berita-popular li
 	margin:0 10px;
 	border-bottom:1px solid rgba(25, 162, 172, 0.38);
 }
-											ul.list-liputan-khusus li{
-												border-bottom:1px solid rgba(239, 203, 23, 0.45);
-											}
+ul.list-liputan-khusus li{
+	border-bottom:1px solid #e9ebee;
+}
 ul.list-liputan-khusus li:last-child,
 ol.list-berita-popular li:last-child{
 	padding-bottom:25px;
@@ -1771,31 +1769,31 @@ ol.list-berita-popular-rubrik
 }
 .popular-rubrik.news li::before
 {
-	background: #06375E;
+	color: #06375E;
 }
 .popular-rubrik.lifestyle li::before
 {
-	background: #009688;
+	color: #009688;
 }
 .popular-rubrik.ummatizen li::before
 {
-	background: #2196F3;
+	color: #2196F3;
 }
 .popular-rubrik.islamic-view li::before
 {
-	background: #3CA775;
+	color: #3CA775;
 }
 .popular-rubrik.kalam li::before
 {
-	background: #673ab7;
+	color: #673ab7;
 }
 .popular-rubrik.alharam li::before
 {
-	background: #f44336;
+	color: #f44336;
 }
 .popular-rubrik.tekno li::before
 {
-	background: #E5287D;
+	color: #E5287D;
 }
 
 .popular-rubrik li

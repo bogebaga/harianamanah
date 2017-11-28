@@ -29,7 +29,7 @@
 		<section class="daftar-artikel">
 			<?php
 			$_digit = 10;
-			$artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori WHERE berita.id_berita < '$id1' AND berita.id_kategori = '$_GET[id]' ORDER BY id_berita DESC LIMIT $_digit");
+			$artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori WHERE berita.id_berita != '$id1' AND berita.id_kategori = '$_GET[id]' ORDER BY id_berita DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);

@@ -32,7 +32,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    echo htmlentities($d['judul']);
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -59,7 +59,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    echo htmlentities($d['judul']);
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -74,7 +74,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    echo htmlentities($d['judul']);
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -116,7 +116,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
     echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
   elseif($_GET['judul']):
-    echo $d['judul'];
+    echo htmlentities($d['judul']);
   elseif($_GET['id']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
     echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
@@ -330,23 +330,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
           </form>
           </div>
         </div>
-        <style>
-          .block-top {
-            display:inline-block;
-            vertical-align:middle;
-            width:calc(100% - 550px);
-            text-align:right;
-          }
-          .block-top li {display:inline-block;}
-        </style>
-        <ul class="block-top">
-          <li><a href="https://www.facebook.com/harianamanah/" target="_blank" style='color:#3b5999;'><i class='fa fa-2x fa-fw fa-facebook-official'></i></a></li>
-          <li><a href="https://twitter.com/harianamanah" target="_blank" style='color:#55acee;'><i class='fa fa-2x fa-fw fa-twitter-square'></i></a></li>
-          <li><a href="https://www.instagram.com/harian_amanah/" target="_blank" style='color:#e4405f;'><i class='fa fa-2x fa-fw fa-instagram'></i></a></li>
-          <li><a href="https://plus.google.com/115045050828571942973" target="_blank" style='color:#dd4b39;'><i class='fa fa-2x fa-fw fa-google-plus-square'></i></a></li>
-          <li><a href="https://www.linkedin.com/company/13466134" target="_blank" style='color:#0077B5'><i class='fa fa-2x fa-fw fa-linkedin-square'></i></a></li>
-          <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank' style='color:#cd201f;'><i class='fa fa-2x fa-fw fa-youtube-square'></i></a></li>
-        </ul>
       </div>
     </div>
   </nav>

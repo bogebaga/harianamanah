@@ -205,7 +205,7 @@ else{
         //     $tag_seo = $_POST['tag_seo'];
         //     $tag=implode(',',$tag_seo);
         // }
-        $jud = $_POST[judul];
+        $jud = mysql_escape_string($_POST[judul]);
         $subjud=  $_POST[sub_judul];
         $reporter=  $_POST[reporter];
         $youtube= $_POST[youtube];
@@ -225,6 +225,7 @@ else{
         $judul_seo      = seo_title($_POST[judul]);
         $topik      = seo_title($_POST[sub_judul]);
         // $topik      = 'test';
+
         if(!empty($TempSrc)){
             list($CurWidth,$CurHeight)=getimagesize($TempSrc);
             $RandomNumber           = rand(1,9999);

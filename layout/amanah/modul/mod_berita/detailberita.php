@@ -19,18 +19,26 @@
 <div class="col-md-9" style="background:#fff;">
 <div id="sidebar">
         <div class="user-panel">
-        <div class="info">
+          <div class="info">
             <p class="daftar-redaksi"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".lcfirst($menu['link']).">".$menu['nama_menu']."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
+            <ul class="block-top" style="width:auto;float:right;">
+              <li style="display:inline-block;width:28px;"><a href="https://www.facebook.com/harianamanah/" target="_blank" style='color:#3b5999;'><i class='fa fa-2x fa-fw fa-facebook-official'></i></a></li>
+              <li style="display:inline-block;width:28px;"><a href="https://twitter.com/harianamanah" target="_blank" style='color:#55acee;'><i class='fa fa-2x fa-fw fa-twitter-square'></i></a></li>
+              <li style="display:inline-block;width:28px;"><a href="https://www.instagram.com/harian_amanah/" target="_blank" style='color:#e4405f;'><i class='fa fa-2x fa-fw fa-instagram'></i></a></li>
+              <li style="display:inline-block;width:28px;"><a href="https://plus.google.com/115045050828571942973" target="_blank" style='color:#dd4b39;'><i class='fa fa-2x fa-fw fa-google-plus-square'></i></a></li>
+              <li style="display:inline-block;width:28px;"><a href="https://www.linkedin.com/company/13466134" target="_blank" style='color:#0077B5'><i class='fa fa-2x fa-fw fa-linkedin-square'></i></a></li>
+              <li style="display:inline-block;width:28px;"><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank' style='color:#cd201f;'><i class='fa fa-2x fa-fw fa-youtube-square'></i></a></li>
+            </ul>
           </div>
           <div class="judul">
               <?php echo"<h1 style='color:$menu[color]'>$d[judul]</h1>"; ?>
           </div>
           <div class="sosial" style="float:right;width:200px;">
             <ul class="list-inline" style="text-align:left;margin:0;">
-              <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
-              <a href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
-              <a href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
-              <a href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
+              <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 2.4;" href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
+              <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 2.4;" href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
+              <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 2.4;" href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
+              <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 2.4;" href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
               <!-- <a href="https://line.me/R/msg/text/?<?php echo "$d[judul] http://harianamanah.com/berita-$d[judul_seo]"?>" class="social-share line" target="_blank"></a> -->
               <!-- <a href="whatsapp://send?text=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="social-share fa fa-whatsapp" target="_blank"></a> -->
               <!-- <a href="https://telegram.me/share/url?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>" class="social-share fa fa-paper-plane" target="_blank"></a> -->
@@ -82,10 +90,10 @@
             <!-- <div style="float:left;">Dibaca: <?php echo $d['dibaca']?></div> -->
             <div class="sosial">
               <ul class="list-inline" style="text-align:right;margin:0;">
-                <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
-                <a href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
-                <a href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
-                <a href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
+                <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 2.4;" href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
+                <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 2.4;" href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
+                <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 2.4;" href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
+                <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 2.4;" href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
               </ul>
             </div>
             <div class="related-news">
@@ -175,9 +183,9 @@
                   ";
           } ?> -->
       
-          <li style="border:1px solid <?php echo $menu['color']?>">
-            <div class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-bottom:10px;">
-              <div class="title liputan-khusus" style="padding:10px 15px;color:white;font-weight:bold;text-align:right;<?php echo $menu['gradient']?>"><?php echo strtoupper($d['nama_menu'])?></div>
+          <li style="background:transparent;">
+            <div class="single_blog_sidebar wow fadeInUp" style="height:auto;margin-bottom:10px;">
+              <h1 class="title liputan-khusus" style="margin-top:0;padding:0 0 15px 0;font-weight:bold;text-align:right;"><?php echo strtoupper($d['nama_menu'])?></h1>
                 <ul class="list-liputan-khusus">
             <?php
             $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='$d[id_kategori]' AND id_berita != '$d[id_berita]' ORDER BY id_berita DESC LIMIT 5");

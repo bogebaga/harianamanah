@@ -16,7 +16,7 @@
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item' style='position:relative;'>
-			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='height:285px;object-fit:cover;'>
+			  		<img class='lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='height:285px;object-fit:cover;'>
             <span class='judul-berita-utama'>
               <div class='caption-dt-jd'>
                 <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
@@ -171,4 +171,6 @@
 		include 'modul/mod_berita/foto.php';
 	elseif ($_GET['module']=='detailfoto')
 		include 'modul/mod_berita/detailfoto.php';
+	elseif ($_GET['module']=='halaman-statis')
+		include 'modul/mod_berita/halaman-statis.php';
 ?>

@@ -58,7 +58,7 @@ elseif ($_GET['kategori']=='popular')
     </div>
     <div class='artikle-text' data-target='popular' kode='$q[dibaca]'>
     <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
-    <!-- <a class='link-kategori'>$q[nama_kategori]</a> -->
+    <a class='link-kategori'>$q[nama_kategori]</a>
     <br>
     <p class='waktu-berita' idk='$q[id_kategori]'> $q[hari], $tgl - $jam </p>
     </div>
@@ -89,7 +89,7 @@ elseif ($_GET['kategori']=='rekomendasi')
     </div>
     <div class='artikle-text' data-target='rekomendasi' kode='$q[id_berita]'>
     <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
-    <!-- <a class='link-kategori'>$q[nama_kategori]</a> -->
+    <a class='link-kategori'>$q[nama_kategori]</a>
     <br>
     <p class='waktu-berita' idk='$q[id_kategori]'> $q[hari], $tgl - $jam </p>
     </div>

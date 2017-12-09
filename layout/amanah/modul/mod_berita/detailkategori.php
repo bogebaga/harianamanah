@@ -29,7 +29,7 @@
             <div class="art-social-bar">
                 <!-- <span class="fl art-count">
 				<?php
-				$jmldata     = mysql_num_rows(mysql_query("SELECT * FROM berita WHERE id_kategori='$_GET[id]'"));
+				$jmldata     = mysql_num_rows(mysql_query("SELECT * FROM berita, users WHERE users.username = berita.username AND id_kategori='$_GET[id]'"));
 				echo $jmldata." ARTIKEL";
 				?>
 				</span> -->
@@ -64,7 +64,6 @@
         </div>";
       }
     }
-  $jmldata     = mysql_num_rows(mysql_query("SELECT * FROM berita WHERE id_kategori='$_GET[id]'"));
   $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
   $linkHalaman = $p->navHalaman($_GET['halkategori'], $jmlhalaman);?>
       <div class="clearfix"></div>

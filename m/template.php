@@ -286,7 +286,7 @@ if(!$automobile->isMobile()){
                     <span class="icon-bar"></span>
                 </button>
                 <button type="button" class="tutup"><span class="big-close"></span></button>
-                <a href="./" class="navbar-brand"><img src="assets/amanah.png" class="img-responsive" alt="logo-amanah"></a>
+                <a href="./" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
                 <form method="GET" action="search" style="width:100vw;">
           <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="query-search" placeholder="Cari berita dan peristiwa">
                 </form>
@@ -312,12 +312,13 @@ if(!$automobile->isMobile()){
         <h2 class="caption">KANAL</h2>
               <ul class="nav navbar-nav">
       <?php
-        $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_parent");
+        $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY menu_order");
         while ($row = mysql_fetch_array($result)) {
           $idp = $row['id_menu'];
           if ($row['nama_menu']!== 'Info Alharam') {
               echo"
           <li>
+          <i class='fa fa-2x fa-fw fa-$row[icon]' style='color:#009688;width:35px;padding:0 0 0 25px'></i>
           <a href='$row[link]' class='tagging' >$row[nama_menu] </a>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='fa fa-angle-down panah6'></span></a>
           <ul class='dropdown-menu'>
@@ -391,19 +392,20 @@ if(!$automobile->isMobile()){
       </div>
     </div>
     <div class="menu-footer">
-        <a href="#">TENTANG</a>
-        <a href="#">PRIVASI</a>
-        <a href="#">KONTAK</a>
+        <a href="hal-tentang-kami">Tentang Kami</a>
+        <a href="hal-privacy-policy">Privasi</a>
+        <a href="hal-kontak-kami">Kontak</a>
+        <a href="hal-redaksi">Redaksi</a>
       </div>
     <div class="isi-footer">
       <span class="copyright">
-        &copy;&nbsp;2017&nbsp;harianamanah.com
+        &copy;&nbsp;2017&nbsp;PT. Harian Amanah Alharam - All Rights Reserved.
       </span>
     </div>
     </footer>
 </section>
 <script type="text/javascript">
-  var $allVideo = $('.container-video'), $fluidEle = $('.box');
+  var $allVideo = $('iframe[src*="www.youtube.com"]'), $fluidEle = $('.box');
   $allVideo.each(function(){
     $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');
   });

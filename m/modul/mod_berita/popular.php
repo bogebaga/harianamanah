@@ -14,7 +14,7 @@
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item' style='position:relative;'>
-			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header-$t[judul]'>
+			  		<img class='lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header-$t[judul]'>
             <span class='judul-berita-utama'>
               <div class='caption-dt-jd'>
                 <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
@@ -38,7 +38,7 @@
 		<section id='daftar-artikel' class="daftar-artikel">
 			<?php
 			$_digit = 10;
-			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
+			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN '2017-11-27' AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);

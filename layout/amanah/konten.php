@@ -68,7 +68,7 @@
           </div>
           <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
             <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 15px;color:#31708f; border-bottom:3px solid #31708f">ENSIKLOPEDI MUSLIM</h1>
-              <ul class="list-liputan-khusus" style="background:#fff">
+              <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
               <?php
               $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='60' ORDER BY id_berita DESC LIMIT 6");
               $x=1;
@@ -91,7 +91,7 @@
             </div>
             <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
               <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 15px;color:#3f51b5; border-bottom:3px solid #3f51b5;">KONSULTASI</h1>
-                <ul class="list-liputan-khusus" style="background:#fff">
+                <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
                 <?php
                 $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='6' ORDER BY id_berita DESC LIMIT 3");
                 while($row = mysql_fetch_array($liputan_khusus)){
@@ -107,7 +107,7 @@
             </div>
             <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
             <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 15px;color:#f44336; border-bottom:3px solid #f44336;">MUAMALAH</h1>
-              <ul class="list-liputan-khusus" style="background:#fff">
+              <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
               <?php
               $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='72' ORDER BY id_berita DESC LIMIT 6");
               $x=1;
@@ -130,7 +130,7 @@
             </div>
             <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
               <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 15px;color:#2196f3; border-bottom:3px solid #2196f3;">ISLAMIC VIEW</h1>
-                <ul class="list-liputan-khusus" style="background:#fff">
+                <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
                 <?php
                 $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='67' ORDER BY id_berita DESC LIMIT 6");
                 $x=1;
@@ -163,7 +163,7 @@
           <div class="col-md-8" style="padding:0;">
             <h1 style="margin-top:0;">BERITA TERKINI</h1>
             <div class="single_blog_sidebar1 berita-terkini wow fadeInUp">
-              <ul id="list-terkini-middle">
+              <ul id="list-terkini-middle" style="box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
               <?php
                 $x=1;
                 $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY b.id_berita DESC LIMIT 39");
@@ -200,9 +200,21 @@
                                   (adsbygoogle = window.adsbygoogle || []).push({});
                               </script>
                             </li>';
-                  elseif($x == 6):
-                    echo "<li style='color:white;' data-berita='$p1[id_berita]'>
-                      <img class='lazy' src='foto_statis/base.jpg' data-src='foto_iklanheader/trans_makasar.jpg' alt='$p1[judul]' style=''>
+                  elseif($x == 5):
+                    echo "<li style='color:white;'>
+                    <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_iklanheader/trans_makasar.jpg' alt='$p1[judul]'>
+                    </li>";
+                  elseif($x == 11):
+                    echo "<li style='color:white;'>
+                    <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_politik/pol_1.jpeg' alt='nasdem politik - harianamanah.com' style='width:100%;'>
+                    </li>";
+                  elseif($x == 15):
+                    echo "<li style='color:white;'>
+                      <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_politik/pol_2.jpg' alt='diaji - harianamanah.com' style='width:100%;'>
+                    </li>";
+                  elseif($x == 22):
+                    echo "<li style='color:white;'>
+                      <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_iklanheader/ulang_tahun_abu.jpg' alt='gebyar ulang tahun abutours ke 8 - harianamanah.com' style='width:100%;'>
                     </li>";
                   else:
                     echo "<li style='color:white;' data-berita='$p1[id_berita]'>
@@ -283,7 +295,7 @@
             while($row = mysql_fetch_array($foto)){
               echo "
               <li style='position:relative;margin-bottom:2px;'>
-                <img src='http://harianamanah.com/foto_berita/$row[gambar]'>
+                <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' style='height:auto'>
                 <div class='black_layer'></div>
                 <div style='position:absolute;bottom:0;'>
                   <a href='foto-$row[judul_seo]' title='$row[judul]'><h1 style='color:#fff;font-size:15px;padding:0 5px;'>$row[judul]</h1></a>
@@ -301,7 +313,7 @@
             while($row = mysql_fetch_array($foto)){
               echo "
               <li style='position:relative;margin-bottom:2px;'>
-                <img src='http://harianamanah.com/foto_berita/$row[gambar]'>
+                <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' style='height:auto;'>
                 <i class='fa fa-2x fa-camera' style='color:#fff;padding:7px;position:absolute;top:0;left:0;'></i>
                 <div class='black_layer'></div>
                 <div style='position:absolute;bottom:0;'>
@@ -320,7 +332,7 @@
             while($row = mysql_fetch_array($video)){
               echo "
                 <li style='position:relative;margin-bottom:2px;'>
-                  <img src='http://harianamanah.com/foto_berita/$row[gambar]'>
+                  <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' style='height:auto;'>
                   <i class='fa fa-3x fa-play-circle' style='color:#fff;padding:7px;position:absolute;top:0;left:0'></i>
                   <div class='black_layer'></div>
                   <div style='position:absolute;bottom:0;'>

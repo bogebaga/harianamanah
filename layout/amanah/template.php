@@ -337,7 +337,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     <div class="row">
       <div class="container" style="padding:0;">
         <a href="/">
-          <div class="logo"><img src="images/amanah.png" width="350px" alt="Logo Amanah - harianamanah.com"></div>
+          <div class="logo"><img src="images/amanah.png" width="400px" alt="Logo Amanah - harianamanah.com"></div>
         </a>
         <!-- <img style="margin-left:15px;" src="foto_banner/milad_amanah.jpg" alt="banner milad amanah"> -->
       </div>
@@ -361,7 +361,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0;position:relative;">
         <ul class="nav navbar-nav" style="position:relative;">
           <?php
-          $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY id_parent");
+          $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY menu_order");
           while( $row = mysql_fetch_array($result)){
             $idp = $row['id_menu'];
             echo "
@@ -492,7 +492,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   </div>
   <div class="copy-right">
     <div class="container">
-      <p style="margin:0;">&copy;&nbsp;2017&nbsp;harianamanah.com - All Rights Reserved.</p>
+      <p style="margin:0;">&copy;&nbsp;2017&nbsp;PT. Harian Amanah Alharam - All Rights Reserved.</p>
     </div>
   </div>
 	</footer>

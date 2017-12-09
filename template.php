@@ -407,7 +407,7 @@ session_start();
     </div>
     <div class="isi-footer">
       <span class="copyright">
-        HarianAmanah&nbsp;&copy;&nbsp;2017
+        PT. HarianAmanah Alharam Media&nbsp;&copy;&nbsp;2017
       </span>
     </div>
     </footer>

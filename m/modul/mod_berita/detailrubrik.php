@@ -17,7 +17,7 @@
 			 echo"
 			 <div id='owl-demo' class='owl-carousel owl-theme'>
 			  	<div class='item'>
-			  		<img src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header-$t[judul]'>
+			  		<img class='lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header-$t[judul]'>
             <span class='judul-berita-utama'>
               <div class='caption-dt-jd'>
                 <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
@@ -99,7 +99,7 @@
           $jam = trans_jam($fill['jam']);
           echo "
           <div class=\"content-image\" style='position:relative;'>
-            <img src=\"http://harianamanah.com/foto_berita/$fill[gambar]\" width='100%' alt=\"$fill[judul]\" style='object-fit:cover;height:215px;'>
+            <img class='lazy' src='assets/base.jpg' data-src=\"http://harianamanah.com/foto_berita/$fill[gambar]\" width='100%' alt=\"$fill[judul]\" style='object-fit:cover;height:215px;'>
             <div>
             <span class='judul-berita-utama'>
               <div class='caption-dt-jd'>

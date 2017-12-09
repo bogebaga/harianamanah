@@ -108,3 +108,9 @@ ul.rubrik-popular .top-popular a
     width: calc(100% - 80px);
     padding-bottom: 10px;
 }
+
+ul.pagination span,
+ul.pagination a
+{
+    color:#1c9fa7;
+}

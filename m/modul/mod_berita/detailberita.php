@@ -74,7 +74,7 @@
     <div class="box-header row">
         <div class="gambar-berita" style="position:relative;margin:0 0 7px;">
           <span id="toggle-info" class="fa fa-info-circle" style="font-size:35px;position:absolute;right:10px;bottom:10px"></span>
-          <img style="height:230px;object-fit:cover;" src='http://harianamanah.com/foto_berita/<?php echo $d['gambar']?>' class='img-responsive' alt='<?php echo $d['judul']?>'>
+          <img style="height:230px;object-fit:cover;" class='lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/<?php echo $d['gambar']?>' class='img-responsive' alt='<?php echo $d['judul']?>'>
         </div>
         <div id="info-gambarku" style="padding:0 7px;font-size:12px;display:none;"><?php echo $d['keterangan_gambar']?></div>
     </div>
@@ -88,13 +88,12 @@
       <a href="https://twitter.com/intent/tweet?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="social-share fa fa-twitter" target="_blank"></a>
       <a href="https://plus.google.com/share?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share fa fa-google-plus" target="_blank"></a>
       <a href="https://line.me/R/msg/text/?<?php echo "$d[judul] http://m.harianamanah.com/berita-$d[judul_seo]"?>" class="social-share line" target="_blank"></a>
-      <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
       <a href="whatsapp://send?text=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share fa fa-whatsapp" target="_blank"></a>
       <a href="https://telegram.me/share/url?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>" class="social-share fa fa-paper-plane" target="_blank"></a>
       <a href="#facebook-comment" class="social-share fa fa-commenting-o"></a>
     </div>
     <div class="box left">
-      <span class="berita">
+      <div class="berita">
           <?php
           if (strpos($d['isi_berita'], "src='http://harianamanah.com/redaktur/") !== false) {
               echo(str_replace('http://harianamanah.com/redaktur/','http://harianamanah.com/redaktur/',$d['isi_berita']));
@@ -103,7 +102,7 @@
           }
           mysql_query("UPDATE berita SET dibaca=$d[dibaca]+1 WHERE judul_seo='$_GET[judul]'");
           ?>
-      </span>
+      </div>
       <!-- <hr>
       <span>Dibaca : <?php echo $d['dibaca']?></span>
       <hr> -->
@@ -168,7 +167,7 @@
           while($p1=mysql_fetch_array($detail1)){
           echo"
             <li>
-              <img src='http://harianamanah.com/foto_small/$p1[gambar1]' width='100px' alt='$p1[judul]'>
+              <img class='lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar1]' width='100px' alt='$p1[judul]'>
               <a href='berita-$p1[judul_seo]' title='$p1[judul]'>
                 <div class='caption' style='font-size:16px;font-weight:500;'>$p1[judul]</div>
               </a>

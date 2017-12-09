@@ -24,9 +24,8 @@
 
         $cari = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%' ORDER BY id_berita DESC LIMIT $cariposisi, $batas";
         $hasil_cari  = mysql_query($cari);
-        $ketemu = mysql_num_rows($hasil_cari);
 
-        if ($ketemu > 0){
+        if ($data_artikel > 0){
           while($r=mysql_fetch_array($hasil_cari)){
           $tgl = tgl_indo($r['tanggal']);
           echo "

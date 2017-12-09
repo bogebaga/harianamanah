@@ -1,10 +1,8 @@
 <?php
 // connect to db
-include "koneksi.php";
-include "library.php";
+include"koneksi.php";
 error_reporting(0);
 
-define ('SITE_URL', site_URL());
 // call the passed function
 
 if(function_exists($_GET['method'])) {
@@ -14,6 +12,8 @@ if(function_exists($_GET['method'])) {
 //methods
 
 function getBerita(){
+    $base_url = "http://localhost/harianamanah/";
+    $base_gambar = "http://harianamanah.com/";
     function anti_injection($data){
         $filter = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($data,ENT_QUOTES))));
         return $filter;
@@ -34,9 +34,9 @@ function getBerita(){
                 hari,
                 tanggal,
                 '1' as urutan,
-                CONCAT('".SITE_URL."foto_berita/',gambar) as gambar,
-                CONCAT('".SITE_URL."foto_small/',gambar1) as gambar1,
-                CONCAT('".SITE_URL."berita-',judul_seo) as judul_seo,
+                CONCAT('".$base_gambar."foto_berita/',gambar) as gambar,
+                CONCAT('".$base_gambar."foto_small/',gambar1) as gambar1,
+                CONCAT(CONCAT('".$base_url."berita-',judul_seo),'.html') as judul_seo,
                 jam,
                 b.id_kategori,
                 nama_kategori,
@@ -51,11 +51,11 @@ function getBerita(){
         $menu = $row_menu['nama_menu'];
         $berita = mysql_query("select ".$field." from berita b
         JOIN kategori k ON k.id_kategori = b.id_kategori
-        where (b.id_kategori = '88' OR b.id_kategori = '76')
+        where (b.id_kategori = '88' OR b.id_kategori = '76') and k.aktif='Y'
         ORDER BY tanggal DESC, jam DESC $limit");
         $berita_num = mysql_query("select ".$field." from berita b
         JOIN kategori k ON k.id_kategori = b.id_kategori
-        where (b.id_kategori = '88' OR b.id_kategori = '76')");
+        where (b.id_kategori = '88' OR b.id_kategori = '76') and k.aktif='Y'");
         while($row = mysql_fetch_assoc($berita)){
             $row_berita[] = $row;
           }
@@ -70,11 +70,11 @@ function getBerita(){
         $val_menu =  implode("','",$row_kategori);
         $berita = mysql_query("select ".$field." from berita b
         JOIN kategori k ON k.id_kategori = b.id_kategori
-        where k.nama_kategori IN ('$val_menu')
+        where k.nama_kategori IN ('$val_menu') and k.aktif='Y'
         ORDER BY tanggal DESC, jam DESC $limit");
         $berita_num = mysql_query("select ".$field." from berita b
         JOIN kategori k ON k.id_kategori = b.id_kategori
-        where k.nama_kategori IN ('$val_menu')");
+        where k.nama_kategori IN ('$val_menu') and k.aktif='Y'");
         while($row = mysql_fetch_assoc($berita)){
             $row_berita[] = $row;
         }
@@ -89,9 +89,9 @@ function getBerita(){
             'N' as aktif,
             '2' as urutan,
             tanggal,
-            CONCAT('".SITE_URL."img_video/',gbr_video) as gambar,
-            CONCAT('".SITE_URL."img_video/kecil_',gbr_video) as gambar1,
-            CONCAT('".SITE_URL."video-',video_seo) as judul_seo,
+            CONCAT('".$base_gambar."img_video/',gbr_video) as gambar,
+            CONCAT('".$base_gambar."img_video/kecil_',gbr_video) as gambar1
+            ,CONCAT(CONCAT('".$base_url."video-',video_seo),'.html') as judul_seo,
             jam,'81' as id_kategori,
             youtube,
             'video' as nama_kategori,
@@ -108,9 +108,9 @@ function getBerita(){
                     jdl_album as judul,
                     hari,
                     tgl_posting as tanggal,
-                    CONCAT('".SITE_URL."img_album/', gbr_album) as gambar,
-                    CONCAT('".SITE_URL."img_album/', gbr_album) as gambar1,
-                    CONCAT('".SITE_URL."foto-',album_seo) as judul_seo,
+                    CONCAT('".$base_gambar."img_album/', gbr_album) as gambar,
+                    CONCAT('".$base_gambar."img_album/', gbr_album) as gambar1,
+                    CONCAT(CONCAT('".$base_url."foto-',album_seo),'.html') as judul_seo,
                     jam,
                     '75' as id_kategori,
                     'Berita Foto' as nama_kategori,
@@ -129,11 +129,11 @@ function getBerita(){
             $menu = $row_menu['nama_menu'];
             $berita = mysql_query("select ".$field." from berita b
             JOIN kategori k ON k.id_kategori = b.id_kategori
-            where k.nama_kategori = '$menu' 
+            where k.nama_kategori = '$menu' and k.aktif='Y'
             ORDER BY tanggal DESC, jam DESC $limit");
             $berita_num = mysql_query("select ".$field." from berita b
             JOIN kategori k ON k.id_kategori = b.id_kategori
-            where k.nama_kategori = '$menu'");
+            where k.nama_kategori = '$menu' and k.aktif='Y'");
             while($row = mysql_fetch_assoc($berita)){
                 $row_berita[] = $row;
             }
@@ -143,12 +143,12 @@ function getBerita(){
         $berita = mysql_query("select distinct ".$field." from berita b
         JOIN kategori k ON k.id_kategori = b.id_kategori
         JOIN menu m ON k.nama_kategori = m.nama_menu
-        where m.aktif='YA'
+        where k.aktif='Y' and m.aktif='YA'
         ORDER BY tanggal DESC, jam DESC $limit");
         $berita_num = mysql_query("select ".$field." from berita b
         JOIN kategori k ON k.id_kategori = b.id_kategori
         JOIN menu m ON k.nama_kategori = m.nama_menu
-        where m.aktif='YA'");
+        where k.aktif='Y' and m.aktif='YA'");
         while($row = mysql_fetch_assoc($berita)){
             $row_berita[] = $row;
         }
@@ -177,12 +177,14 @@ function getBerita(){
 
 function getBeritaFromIntent(){
   $getjudul = $_GET['judul'];
+  $base_url = "http://m.harianamanah.id/";
+  $base_gambar = "http://harianamanah.com/";
   $field = "judul,
               tanggal,
               id_kategori,
-              CONCAT('".SITE_URL."foto_berita/',gambar) as gambar,
-              CONCAT('".SITE_URL."foto_small/',gambar1) as gambar1,
-              CONCAT('".SITE_URL."berita-',judul_seo) as judul_seo,
+              CONCAT('".$base_gambar."foto_berita/',gambar) as gambar,
+              CONCAT('".$base_gambar."foto_small/',gambar1) as gambar1,
+              CONCAT(CONCAT('".$base_url."berita-',judul_seo),'.html') as judul_seo,
               jam,
               hari,
               isi_berita,
@@ -253,6 +255,8 @@ function getBeritaFromIntent(){
 }
 
 function getCari(){
+    $base_url = "http://m.harianamanah.id/";
+    $base_gambar = "http://harianamanah.com/";
     function anti_injection($data){
         $filter = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($data,ENT_QUOTES))));
         return $filter;
@@ -273,9 +277,9 @@ function getCari(){
                 berita.aktif,
                 hari,
                 tanggal,
-                CONCAT('".SITE_URL."foto_berita/',gambar) as gambar,
-                CONCAT('".SITE_URL."foto_small/',gambar1) as gambar1,
-                CONCAT('".SITE_URL."berita-',judul_seo) as judul_seo,
+                CONCAT('".$base_gambar."foto_berita/',gambar) as gambar,
+                CONCAT('".$base_gambar."foto_small/',gambar1) as gambar1,
+                CONCAT(CONCAT('".$base_url."berita-',judul_seo),'.html') as judul_seo,
                 jam,
                 berita.id_kategori,
                 nama_kategori,
@@ -325,15 +329,17 @@ function getCari(){
 function getHeadline(){
     $tgl_skrg = date("Y-m-d");
     $tgl_sepekan = date("Y-m-d", strtotime("-1 week")) ;
+    $base_url = "http://m.harianamanah.id/";
+    $base_gambar = "http://harianamanah.id/";
     $field = "judul,
                 headline,
                 utama,
                 aktif,
                 hari,
                 tanggal,
-                CONCAT('".SITE_URL."foto_berita/',gambar) as gambar,
-                CONCAT('".SITE_URL."foto_small/',gambar1) as gambar1,
-                CONCAT('".SITE_URL."berita-',judul_seo) as judul_seo,
+                CONCAT('".$base_gambar."foto_berita/',gambar) as gambar,
+                CONCAT('".$base_gambar."foto_small/',gambar1) as gambar1,
+                CONCAT(CONCAT('".$base_url."berita-',judul_seo),'.html') as judul_seo,
                 jam,
                 isi_berita,
                 youtube";
@@ -409,6 +415,8 @@ function getMenuBaruLagi(){
 function getBeritaTerkait(){
     $tgl_skrg = date("Y-m-d");
     $tgl_sepekan = date("Y-m-d", strtotime("-1 week")) ;
+    $base_url = "http://m.harianamanah.id/";
+    $base_gambar = "http://harianamanah.com/";
     $gethasil = $_GET['judul'];
     $kategori = $_GET['kategori'];
     $arrayhasil = explode("-", $gethasil);
@@ -425,9 +433,9 @@ function getBeritaTerkait(){
     $field = "judul,
                 tanggal,
                 id_kategori,
-                CONCAT('".SITE_URL."foto_berita/',gambar) as gambar,
-                CONCAT('".SITE_URL."foto_small/',gambar1) as gambar1,
-                CONCAT('".SITE_URL."berita-',judul_seo) as judul_seo,
+                CONCAT('".$base_gambar."foto_berita/',gambar) as gambar,
+                CONCAT('".$base_gambar."foto_small/',gambar1) as gambar1,
+                CONCAT(CONCAT('".$base_url."berita-',judul_seo),'.html') as judul_seo,
                 jam,
                 hari,
                 isi_berita,
@@ -471,12 +479,14 @@ function getBeritaTerkait(){
 }
 
 function getViralNews(){
+    $base_url = "http://m.harianamanah.id/";
+    $base_gambar = "http://harianamanah.com/";
     $field = "judul,
                 tanggal,
                 id_kategori,
-                CONCAT('".SITE_URL."foto_berita/',gambar) as gambar,
-                CONCAT('".SITE_URL."foto_small/',gambar1) as gambar1,
-                CONCAT('".SITE_URL."berita-',judul_seo) as judul_seo,
+                CONCAT('".$base_gambar."foto_berita/',gambar) as gambar,
+                CONCAT('".$base_gambar."foto_small/',gambar1) as gambar1,
+                CONCAT(CONCAT('".$base_url."berita-',judul_seo),'.html') as judul_seo,
                 jam,
                 hari,
                 isi_berita";
@@ -539,9 +549,10 @@ function getJadwalSalatKota(){
 
 function getMuslimNote(){
   $getTanggal = $_GET['tanggal'];
+  $base_gambar = "http://harianamanah.com/";
   $field = "judul,
             isi,
-            CONCAT('".SITE_URL."foto_berita/',gambar) as gambar";
+            CONCAT('".$base_gambar."foto_berita/',gambar) as gambar";
 
   $sql = mysql_query("SELECT ".$field." from muslimnote WHERE tanggal='".$getTanggal."'");
   // $sql = mysql_query("SELECT * from muslimnote WHERE tanggal='2017-04-20'");
@@ -576,9 +587,11 @@ function cekUpdate(){
 
 function getDetailBeritaFoto(){
   $getId = $_GET['id'];
+  $base_url = "http://m.harianamanah.id/";
+  $base_gambar = "http://harianamanah.com/";
   $sql = mysql_query("SELECT keterangan,
-                    CONCAT('".SITE_URL."img_galeri/', gbr_gallery) as gbr_gallery
-                    FROM gallery WHERE id_album = '$getId'");
+                    CONCAT('".$base_gambar."img_galeri/', gbr_gallery) as gbr_gallery
+                    FROM gallery WHERE id_album = ".$getId);
   while ($data = mysql_fetch_assoc($sql)) {
     $respon[] = $data;
   }

@@ -70,6 +70,60 @@ function navHalaman($halaman_aktif, $jmlhalaman){
 	}
 }
 
+class Paging_hasilcari_mob{
+// Fungsi untuk mencek halaman dan posisi data
+function cariPosisi($batas){
+	if(empty($_GET['halaman']))
+	{
+		$posisi=0;
+		$_GET['halaman']=1;
+	}
+	else
+	{
+		$posisi = ($_GET['halaman']-1) * $batas;
+	}
+
+	return $posisi;
+}
+
+// Fungsi untuk menghitung total halaman
+function jumlahHalaman($jmldata, $batas){
+	$jmlhalaman = ceil($jmldata/$batas);
+	
+	return $jmlhalaman;
+}
+
+// Fungsi untuk link halaman 1,2,3
+function navHalaman($halaman_aktif, $jmlhalaman){
+	$link_halaman = "";
+
+	// Link ke halaman pertama (first) dan sebelumnya (prev)
+	if($halaman_aktif > 1)
+	{
+		$prev = $halaman_aktif-1;
+		$link_halaman .= "<li><a href=?query-search=".$_GET['query-search']."&halaman=1 class='nextprev'>Awal</a></li>
+		<li><a href=?query-search=".$_GET['query-search']."&halaman=$prev class='nextprev'>Kembali</a></li>";
+	}
+	else
+	{
+		$link_halaman .= "<li><span class='nextprev'>Awal</span><span class='nextprev'>Kembali</span></li>  ";
+	}
+		
+	$link_halaman .= " <li><span class='current'><b>$halaman_aktif</b></span></li>";
+
+	// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
+		if($halaman_aktif < $jmlhalaman){
+			$next = $halaman_aktif+1;
+			$link_halaman .= " <li><a href=?query-search=".$_GET['query-search']."&halaman=$next class='nextprev' >Lanjut</a></li>
+												<li><a href=?query-search=".$_GET['query-search']."&halaman=$jmlhalaman class='nextprev'>Akhir</a></li>";
+		}
+		else
+		{
+			$link_halaman .= "<li><span class='nextprev'>Lanjut</span><span class='nextprev'>Akhir</span></li>";
+		}
+	return $link_halaman;
+	}
+}
 
 // KATEGORI BERITA////////////////////////////////////////////////////////////////////////////////////
 class Paging_kategori{
@@ -125,8 +179,7 @@ function navHalaman($halaman_aktif, $jmlhalaman){
 	// Link ke halaman berikutnya (Lanjut) dan terakhir (Akhir)
 	if($halaman_aktif < $jmlhalaman){
 		$next = $halaman_aktif+1;
-		$link_halaman .= " <a href=halkategori-$_GET[id]-$next class='nextprev' >Lanjut</a>
-											";
+		$link_halaman .= " <a href=halkategori-$_GET[id]-$next class='nextprev' >Lanjut</a>";
 	}
 	else{
 		$link_halaman .= "<span class='nextprev'>Lanjut</span>

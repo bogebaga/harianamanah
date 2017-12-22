@@ -9,6 +9,7 @@
   RewriteRule ^hal-(.*)\.html$ media.php?module=halamanstatis&redaksi=$1 [L]
   RewriteRule ^foto-(.*)\.html$ media.php?module=detailfoto&judul=$1 [L]
   RewriteRule ^video-(.*)$ media.php?module=detailvideo&judul=$1 [L]
+  RewriteRule ^tag/(.*) media.php?module=detailtag&tag=$1 [QSA,L]
   # RewriteRule ^foto$ media.php?module=foto [L]
   RewriteRule ^kategori-(.*)\.html$ media.php?module=detailkategori&id=$1 [L]
   RewriteRule ^berita-(.*)\.html$ media.php?module=detailberita&judul=$1 [L]

@@ -1,2 +1,0 @@
-[07-Nov-2016 15:21:58 Asia/Jakarta] PHP Warning:  file_get_contents(): php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/harj8127/public_html/redaktur/kcfinder/core/browser.php on line 613
-[07-Nov-2016 15:21:58 Asia/Jakarta] PHP Warning:  file_get_contents(http://kcfinder.sunhater.com:80/checkVersion.php): failed to open stream: php_network_getaddresses: getaddrinfo failed: Name or service not known in /home/harj8127/public_html/redaktur/kcfinder/core/browser.php on line 613

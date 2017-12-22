@@ -3,7 +3,7 @@
     <li><a href='popular'>Popular</a></li>
     <li class='active'><a href='rekomendasi'>Rekomendasi</a></li>
   </ul>
- 	<section class="container-fluid" style="background-color:white;">
+ 	<section class="container-fluid" style="background-color:white;padding:0 10px;">
 		<section class="headline row">
       <?php
 				$terkini=mysql_query("SELECT * FROM berita WHERE aktif = 'Y' ORDER BY id_berita DESC LIMIT 1");
@@ -35,6 +35,17 @@
 			?>
 		</section>
 		<hr>
+		<section>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- Mobile Banner -->
+			<ins class="adsbygoogle"
+					style="display:inline-block;width:320px;height:50px"
+					data-ad-client="ca-pub-4290882175389422"
+					data-ad-slot="6679890438"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</section>
 		<section class="daftar-artikel">
 			<?php
 			$_digit = 10;

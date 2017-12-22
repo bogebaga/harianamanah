@@ -254,10 +254,10 @@ p {
     margin-top: 0 !important;
 }
 .left-konten {
-    float: right;
     width: 70%;
     margin-top: .5%;
     text-align: start;
+    float: left;
 }
 
 
@@ -306,7 +306,7 @@ p {
 }
 
 .trend-left-inner {
-    width: 96.56538%;
+    width: 99%;
     float: right;
     border-left: 3px solid #dbdbdb;
 }
@@ -334,7 +334,7 @@ p {
 .trend-left-list figure {
     width: 37.2634%;
     float: left;
-    padding: 15px;
+    padding: 15px 10px 15px 15px;
 }
 
 .trend-left-list:nth-child(1) {
@@ -399,7 +399,7 @@ Pseudo ::after element
 .trend-left-list figure img {
     display: block;
     object-fit: cover;
-    height: 120px;
+    height: 150px;
     /* width: 245px; */
     width: 100%;
 }
@@ -460,7 +460,7 @@ a:active, a:hover, a:visited {
     color: #000;
     display: block;
     text-decoration:none;
-    margin:5px 10px;
+    margin:5px 10px 5px 0;
     text-align: left;
     font-weight: bold;
 }
@@ -477,8 +477,8 @@ a:active, a:hover, a:visited {
 }
 .publish-info {
   line-height: 1.2;
-  margin-top:20px;
-  margin-left: 12px;
+  margin-top: 20px;
+  margin-left: 0;
 }
 
 figure{
@@ -496,6 +496,35 @@ figure{
 }
 .fr {
     float: right;
+}
+
+.baca-juga-berita 
+{
+    padding: 10px 15px;
+    background: #efefef;;
+    border-radius: 7px;
+}
+
+.baca-juga-berita > p:first-child
+{
+    margin:0;
+    margin-bottom: 10px;
+}
+
+.baca-juga-berita li
+{
+	padding-bottom:7px;
+	border-bottom: 1px solid rgba(176, 190, 197, 0.29);
+}
+
+.baca-juga-berita li + li
+{
+	padding-top:7px;
+}
+
+.baca-juga-berita li:last-child
+{
+	border: none;
 }
 
 @media screen and (max-width:1023px){.konten{margin:2% .5% 0;width:99%}.news-panel{margin-left:1%;width:30%}.life-panel{margin:0 0 0 3.2%;width:65%}.trending-panel{float:left;width:98%}.top-slide-left{font-size:1.3em;height:49px}.top-slide-right{height:49px;padding:16px 1% 13px 1.9%}.graf,.long-left{display:none}.left-konten{width:100%}.right-konten{margin-top:2%;max-width:100%;width:96%}.left-konten{float:left;margin-left:1%;width:98%}.small-logo{float:left;margin-right:2%}.trend-left-inner{border:0 none;width:100%}footer .footer h2,.trend-left-list{width:100%}.video-slide{max-width:900px}}

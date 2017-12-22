@@ -1,4 +1,15 @@
-  <section class="container-fluid" style="padding:0;">
+<section>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Mobile Banner -->
+  <ins class="adsbygoogle"
+      style="display:inline-block;width:320px;height:50px"
+      data-ad-client="ca-pub-4290882175389422"
+      data-ad-slot="6679890438"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</section>
+  <section class="container-fluid" style="padding:0;background:#fff;">
 			<section class="daftar-artikel">
         <span class="fl art-count">
 				<?php
@@ -9,7 +20,7 @@
           $hasil  = mysql_query($cari);
           $ketemu = mysql_num_rows($hasil);
 
-          echo "<div style='font-size:20px;font-weight:100;line-height:1.5;'>Hasil Pencarian <b>\"$kata\"</b>, $ketemu berita yang ditemukan.</div>";
+          echo "<div style='font-size:20px;font-weight:100;line-height:1;margin-bottom:20px;'>Hasil Pencarian <b>\"$kata\"</b>, $ketemu berita yang ditemukan.</div>";
           
           $hasilcari_page = new Paging_hasilcari_mob;
           $batas = 15;
@@ -48,4 +59,15 @@
     </ul>
   </div>
   </section>
+</section>
+<section>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Mobile Banner -->
+  <ins class="adsbygoogle"
+      style="display:inline-block;width:320px;height:50px"
+      data-ad-client="ca-pub-4290882175389422"
+      data-ad-slot="6679890438"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </section>

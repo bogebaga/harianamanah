@@ -12,6 +12,7 @@
   RewriteRule ^berita-(.*)\.html$ template.php?module=detailberita&judul=$1 [L]
   RewriteRule ^video-(.*)$ template.php?module=detailvideo&judul=$1 [L]
   RewriteRule ^search? template.php?module=hasilcari&searchmode=all [QSA,L]
+  RewriteRule ^tag/(.*) template.php?module=hasiltag&tag=$1 [QSA,L]
   RewriteRule ^epaper$ template.php?module=epaper [L]
   RewriteRule ^video$ template.php?module=video [L]
   RewriteRule ^foto$ template.php?module=foto [L]

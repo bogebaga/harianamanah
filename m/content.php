@@ -5,7 +5,7 @@
     <li><a href='popular'>Popular</a></li>
     <li><a href='rekomendasi'>Rekomendasi</a></li>
   </ul>
- 	<section class="container-fluid" style="background-color:white;">
+ 	<section class="container-fluid" style="background-color:white;padding:0 10px;">
 		<section class="headline row">
       <?php
 				$terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY id_berita DESC LIMIT 1");
@@ -37,6 +37,17 @@
 			?>
 		</section>
 		<hr>
+		<section>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- Mobile Banner -->
+			<ins class="adsbygoogle"
+					style="display:inline-block;width:320px;height:50px"
+					data-ad-client="ca-pub-4290882175389422"
+					data-ad-slot="6679890438"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</section>
 		<section class="daftar-artikel">
 			<?php
 			$x = 1;
@@ -87,7 +98,7 @@
 			}
 		?>
 		</section>
-		<h5 style="color:#00a0a5">REKOMENDASI BERITA</h5>
+		<h5 style="color:#00a0a5">BERITA REKOMENDASI</h5>
 		<section style="white-space:nowrap;overflow:auto;">
 			<?php
 				$topik = mysql_query("SELECT * FROM berita WHERE aktif = 'Y' ORDER BY id_berita DESC LIMIT 5");
@@ -100,7 +111,7 @@
 										</a>
 									</div>
 									<div class='artikle-text' data-target='update' kode='$tp[id_berita]' style='width:100%;padding:0;margin-top:10px;'>
-										<a href='berita-$tp[judul_seo]' class='berita' title='$tp[judul]' style='font-weight:100;font-size:14px;'>$tp[judul]</a>
+										<a href='berita-$tp[judul_seo]' class='berita' title='$tp[judul]' style='font-weight:500;font-size:12px;'>$tp[judul]</a>
 										<br>
 									</div>
 								</article>";
@@ -163,6 +174,8 @@
     include "modul/mod_berita/detailvideo.php";}
 	elseif ($_GET['module']=='hasilcari'){
   	include "modul/mod_berita/hasilcari.php";}
+	elseif ($_GET['module']=='hasiltag'){
+  	include "modul/mod_berita/hasiltag.php";}
   elseif ($_GET['module']=='rubrik')
     include "modul/mod_berita/detailrubrik.php";
 	elseif ($_GET['module']=='video')

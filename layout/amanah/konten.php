@@ -22,7 +22,7 @@
                       <a href='berita-$t[judul_seo]'>
                         <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='display:inline-block;vertical-align:top;'>
                       </a>
-                      <div class='desc-home' style='display:inline-block;width:200px;bottom:0;right:0;position:absolute;background:rgba(2, 2, 2, 0.7686274509803922);padding:10px;height:100%'>
+                      <div class='desc-home' style='display:inline-block;width:290px;bottom:15px;right:15px;position:absolute;background:rgba(2, 2, 2, 0.7686274509803922);padding:12px 12px 20px;'>
                         <a href='kategori-$t[id_kategori]-$t[kategori_seo]' style='background-color:#EFCB17;padding:5px 8px;display:inline-block;color:#000;margin:0 3px'>".strtoupper($t['nama_kategori'])."</a>
                         <p style='font-size:14px;color:#ddd;line-height:1.5;margin:10px 3px 0;word-wrap:break-word;'>".substr(strip_tags($t['isi_berita']), 0, 160).".&nbsp;<a href='berita-$t[judul_seo]'><b style='color:yellow;'>Selanjutnya</b></a></p>
                       </div>
@@ -62,96 +62,18 @@
             </div>
           </div><!-- /carousel -->
         <div class="col-xs-12" style="margin-top:7px;padding:0;">
-          <div class="col-xs-12 col-sm-12 col-md-4" style="padding-left:0;">
-          <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
-            <img src="foto_iklanheader/gammara.jpg" alt="iklan gammara untuk funday harianamanah.com" style="height:auto">
-          </div>
-          <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
-            <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 15px;color:#31708f; border-bottom:3px solid #31708f">ENSIKLOPEDI MUSLIM</h1>
-              <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
-              <?php
-              $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='60' ORDER BY id_berita DESC LIMIT 6");
-              $x=1;
-              while($row = mysql_fetch_array($liputan_khusus)){
-                $tgl = tgl_indo($row['tanggal']);
-                $jam = trans_jam($row['jam']);
-                if($x == 1){
-                  echo "<li style='padding-top:0;margin:0;'><img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
-               }else
-               {
-                 echo "<li style='margin:0;'><img class='lazy' src='foto_statis/base_n.jpg' style='width: 65px;height: 65px;padding-left: 5px;box-sizing: content-box;' data-src='http://harianamanah.com/foto_small/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding: 2px 5px;display:inline-block;font-size: 14px;vertical-align: middle;width: calc(100% - 70px);'>$row[judul]</a></li>";
-               }
-                $x++;
-              }
-              $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '60'");
-              $kategori = mysql_fetch_array($liputan_khusus);
-              echo "<a href=\"$kategori[link]\" style=\"background:#fff;display:block;text-align:center;padding:10px 0;color:#31708f;font-weight:bold;font-size:14px;\"><i class='fa fa-2x fa-search' aria-hidden='true' style='background:#31708f;color:#fff;display:inline-block;padding:5px;border-radius:50px;width:38px;height:38px;'></i><br>Baca Lainnya</a>";
-              ?>
-              </ul>
-            </div>
-            <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
-              <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 15px;color:#3f51b5; border-bottom:3px solid #3f51b5;">KONSULTASI</h1>
-                <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
-                <?php
-                $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='6' ORDER BY id_berita DESC LIMIT 3");
-                while($row = mysql_fetch_array($liputan_khusus)){
-                  $tgl = tgl_indo($row['tanggal']);
-                  $jam = trans_jam($row['jam']);
-                  echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
-                }
-                $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '6'");
-                $kategori = mysql_fetch_array($liputan_khusus);
-                echo "<a href=\"$kategori[link]\" style=\"background:#fff;display:block;text-align:center;padding:10px 0;color:#3f51b5;font-weight:bold;font-size:14px;\"><i class='fa fa-2x fa-search' aria-hidden='true' style='background:#3f51b5;color:#fff;display:inline-block;padding:5px;border-radius:50px;width:38px;height:38px;'></i><br>Baca Lainnya</a>";
-                ?>
-                </ul>
-            </div>
-            <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
-            <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 15px;color:#f44336; border-bottom:3px solid #f44336;">MUAMALAH</h1>
-              <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
-              <?php
-              $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='72' ORDER BY id_berita DESC LIMIT 6");
-              $x=1;
-              while($row = mysql_fetch_array($liputan_khusus)){
-                $tgl = tgl_indo($row['tanggal']);
-                $jam = trans_jam($row['jam']);
-                if($x == 1){
-                  echo "<li style='padding-top:0;margin:0;'><img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
-               }else
-               {
-                 echo "<li style='margin:0;'><img class='lazy' src='foto_statis/base_n.jpg' style='width: 65px;height: 65px;padding-left: 5px;box-sizing: content-box;' data-src='http://harianamanah.com/foto_small/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding: 2px 5px;display:inline-block;font-size: 14px;vertical-align: middle;width: calc(100% - 70px);'>$row[judul]</a></li>";
-               }
-                $x++;
-              }
-              $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '72'");
-              $kategori = mysql_fetch_array($liputan_khusus);
-              echo "<a href=\"$kategori[link]\" style=\"background:#fff;display:block;text-align:center;padding:10px 0;color:#f44336;font-weight:bold;font-size:14px;\"><i class='fa fa-2x fa-search' aria-hidden='true' style='background:#f44336;color:#fff;display:inline-block;padding:5px;border-radius:50px;width:38px;height:38px;'></i><br>Baca Lainnya</a>";
-              ?>
-              </ul>
-            </div>
-            <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
-              <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 15px;color:#2196f3; border-bottom:3px solid #2196f3;">ISLAMIC VIEW</h1>
-                <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
-                <?php
-                $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='67' ORDER BY id_berita DESC LIMIT 6");
-                $x=1;
-                while($row = mysql_fetch_array($liputan_khusus)){
-                  $tgl = tgl_indo($row['tanggal']);
-                  $jam = trans_jam($row['jam']);
-                  if($x == 1){
-                    echo "<li style='padding-top:0;margin:0;'><img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
-                 }else
-                 {
-                   echo "<li style='margin:0;'><img class='lazy' src='foto_statis/base_n.jpg' style='width: 65px;height: 65px;padding-left: 5px;box-sizing: content-box;' data-src='http://harianamanah.com/foto_small/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding: 2px 5px;display:inline-block;font-size: 14px;vertical-align: middle;width: calc(100% - 70px);'>$row[judul]</a></li>";
-                 }
-                  $x++;
-                }
-                $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '71'");
-                $kategori = mysql_fetch_array($liputan_khusus);
-                echo "<a href=\"$kategori[link]\" style=\"background:#fff;display:block;text-align:center;padding:10px 0;color:#2196f3;font-weight:bold;font-size:14px;\"><i class='fa fa-2x fa-search' aria-hidden='true' style='background:#2196f3;color:#fff;display:inline-block;padding:5px;border-radius:50px;width:38px;height:38px;'></i><br>Baca Lainnya</a>";
-                ?>
-                </ul>
-              </div>
-          </div>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- Billboard -->
+          <ins class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-4290882175389422"
+              data-ad-slot="8030159807"
+              data-ad-format="auto"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+        <div class="col-xs-12" style="margin-top:7px;padding:0;">
           <style>
            li p[data-opacity='true']{
             opacity:0;
@@ -160,34 +82,39 @@
             opacity: 1;
           }
           </style>
-          <div class="col-md-8" style="padding:0;">
-            <h1 style="margin-top:0;">BERITA TERKINI</h1>
+            <h1 style="margin-top:0;font-weight:900;">BERITA TERKINI</h1>
             <div class="single_blog_sidebar1 berita-terkini wow fadeInUp">
               <ul id="list-terkini-middle" style="box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
               <?php
                 $x=1;
-                $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY b.id_berita DESC LIMIT 39");
+                $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY b.id_berita DESC LIMIT 48");
                 while($p1=mysql_fetch_array($detail1))
                 {
                   $tgl = tgl_indo($p1['tanggal']);
                   $jam = trans_jam($p1['jam']);
-                  if($p1['username'] == 'alifahmi'):
-                      echo "<li style='color:white;background:#252831' data-berita='$p1[id_berita]'>
+                  if($x%11 == 0):
+                    if($state):
+                      $add_q = "AND id_berita < '$test'";
+                    else:
+                      $add_q = ''; 
+                    endif;
+                    $inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = 'alifahmi' $add_q ORDER BY b.id_berita DESC LIMIT 1");
+                    while($foto=mysql_fetch_array($inilah)):
+                      echo "<li style='color:white;background:#252831' data-berita-foto='$foto[id_berita]'>
                       <div class='deskripsi-judul home reda'>
-                        <h6><a style='color:#fff;' href='foto-$p1[judul_seo]' title='$p1[judul]'>".substr($p1['judul'], 0, 60)."&hellip;</a></h6>
-                        <p class='rubrik-tanggal'><a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'>".strtoupper($p1['nama_kategori'])."</a> | $p1[hari], $tgl - $jam</p>
-                        <p style='color:#fff;margin-bottom:0;'>".substr(strip_tags($p1['isi_berita']), 0, 180)."&nbsp;<a href='foto-$p1[judul_seo]'><b style='color:#009688;'>&hellip;</b></a></p>
-                        <p data-opacity='true' style='margin-bottom:0;font-size:20px;margin-top:7px;'>
-                          <a style='color:#fff;' href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/foto-$p1[judul_seo]' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
-                          <a style='color:#fff;' href='https://twitter.com/intent/tweet?url=http://harianamanah.com/foto-$p1[judul_seo]&text=$p1[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
-                          <a style='color:#fff;' href='https://plus.google.com/share?url=http://harianamanah.com/foto-$p1[judul_seo]' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
-                        </p>
+                        <h6 ><a style='color:#fff;font-size:30px;' href='foto-$foto[judul_seo]' title='$foto[judul]'>$foto[judul]</a></h6>
+                        <p class='rubrik-tanggal'><a href='kategori-$foto[id_kategori]-$foto[kategori_seo]'>".strtoupper($foto['nama_kategori'])."</a>&nbsp;$foto[hari], $tgl - $jam</p>
                       </div>
-                      <a href='foto-$p1[judul_seo]'>
-                      <img class='lazy' src='foto_statis/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar]' alt='$p1[judul]' style='width:230px;height:195px;object-fit:cover;vertical-align:top;'>
+                      <a href='foto-$foto[judul_seo]'>
+                        <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$foto[gambar]' alt='$foto[judul]' style='object-fit:cover;width:100%;height:400px;'>
                       </a>
                     </li>";
-                  elseif($x%10 == 0):
+                    $state = true;
+                    $test = $foto['id_berita'];
+                    endwhile;
+
+                    // echo 'test';
+                  elseif($x == 3):
                       echo '<li style="color:white;">
                               <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                               <ins class="adsbygoogle"
@@ -200,30 +127,45 @@
                                   (adsbygoogle = window.adsbygoogle || []).push({});
                               </script>
                             </li>';
-                  elseif($x == 5):
+                  elseif($x == 6):
                     echo "<li style='color:white;'>
-                    <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_iklanheader/trans_makasar.jpg' alt='$p1[judul]'>
+                    <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_iklanheader/trans_makasar.jpg' alt='$p1[judul]' style='width:100%;height:285px'>
                     </li>";
-                  elseif($x == 11):
+                  elseif($x == 16):
                     echo "<li style='color:white;'>
-                    <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_politik/pol_1.jpeg' alt='nasdem politik - harianamanah.com' style='width:100%;'>
+                    <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_politik/pol_1.jpeg' alt='nasdem politik - harianamanah.com' style='width:100%;height:285px'>
                     </li>";
-                  elseif($x == 15):
-                    echo "<li style='color:white;'>
-                      <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_politik/pol_2.jpg' alt='diaji - harianamanah.com' style='width:100%;'>
-                    </li>";
+                  elseif($x == 17):
+                    echo "<ul class='featured_nav0 berita-lainnya' style='border-bottom:1px solid #ececec;'><h6 style='font-weight:900;padding-left:10px;'>REKOMENDASI</h6>";
+                          $detail2=mysql_query("SELECT * FROM berita WHERE utama='Y' order by id_berita DESC limit 8");
+                          while($p2=mysql_fetch_array($detail2))
+                          {
+                            echo"
+                                  <li style='width:190px;margin:0 0 10px;padding-right:7px;height:185px;'>
+                                    <a class='featured_img' href='berita-$p2[judul_seo]'><img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$p2[gambar]' alt='$p2[judul]'></a>
+                                    <div class='featured_title berita-lainnya' style='font-size:14px;'>
+                                      <a class='' href='berita-$p2[judul_seo]' style='margin-top:0;padding-top:5px;text-align:left;width:auto;font-weight:normal;'>$p2[judul]</a>
+                                    </div>
+                                  </li>
+                                ";
+                          }
+                    echo "<div class='clearfix'></div></ul>";
                   elseif($x == 22):
+                    echo "<li style='color:white;'>
+                      <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_politik/pol_2.jpg' alt='diaji - harianamanah.com' style='width:100%;height:285px'>
+                    </li>";
+                  elseif($x == 27):
                     echo "<li style='color:white;'>
                       <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_iklanheader/ulang_tahun_abu.jpg' alt='gebyar ulang tahun abutours ke 8 - harianamanah.com' style='width:100%;'>
                     </li>";
                   else:
                     echo "<li style='color:white;' data-berita='$p1[id_berita]'>
                     <a href='berita-$p1[judul_seo]'>
-                    <img class='lazy' src='foto_statis/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar]' alt='$p1[judul]' style='width:140px;height:140px;object-fit:cover;vertical-align:top;'>
+                    <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$p1[gambar]' alt='$p1[judul]' style='width:230px;height:140px;object-fit:cover;vertical-align:top;'>
                     </a>
                     <div class='deskripsi-judul home'>
-                      <h6><a href='berita-$p1[judul_seo]' title='$p1[judul]'>".substr($p1['judul'], 0, 60)."&hellip;</a></h6>
-                      <p style='margin-left:7px;' class='rubrik-tanggal'><a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'>".strtoupper($p1['nama_kategori'])."</a> | $p1[hari], $tgl - $jam</p>
+                      <p style='margin-left:7px;' class='rubrik-tanggal'><a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'>".strtoupper($p1['nama_kategori'])."</a>&nbsp;$p1[hari], $tgl - $jam</p>
+                      <h6><a href='berita-$p1[judul_seo]' title='$p1[judul]'>$p1[judul]</a></h6>
                       <p style='margin-bottom:0;'>".substr(strip_tags($p1['isi_berita']), 0, 130)."&nbsp;<a href='berita-$p1[judul_seo]'><b style='color:#009688;'>&hellip;</b></a></p>
                       <p data-opacity='true' style='margin:0 0 0 7px;font-size:15px;margin-top:7px;'>
                         <a href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$p1[judul_seo]' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
@@ -237,8 +179,7 @@
                 } ?>
               </ul>
               <style>
-                #more,#more_indeks {margin-bottom:10px;display:inline-block;padding:7px; border:1px solid #009688;color:#009688;cursor:pointer; transition:background .5s ease;}
-                #more:hover, #more_indeks:hover {background:#009688; color:#fff}
+                #more,#more_indeks {margin-bottom:10px;display:inline-block;padding:7px 40px;box-shadow:0px 1px 5px 0px rgba(0, 0, 0, 0.5686274509803921);border-radius:50px; background:#009688;color:#fff;cursor:pointer;font-weight:700; transition:background .5s ease;}
               </style>
               <div id="more_animasi" style="text-align:center;margin-top:10px;">
                 <div id="more">BERITA LAINNYA</div>
@@ -247,17 +188,16 @@
             <div class="row">
               <div id="iklan-footer" style="padding-bottom:10px;margin-top:10px;">
                 <div class="iklan">
-                  <img src="foto_pasangiklan/adhomebanner.jpg" width="100%">
+                  <img src="foto_pasangiklan/adhomebanner.jpg" width="96%">
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
       <!-- break -->
-      <div class="col-xs-12 col-lg-3 hidden-xs hidden-sm hidden-md" style="padding:0">
+      <div class="col-xs-12 col-lg-3 hidden-sm hidden-md" style="padding:0">
         <div class="single_blog_sidebar wow fadeInUp" style="margin-bottom:50px;">
-        <h1 style="font-weight:bold;margin-top:0;font-size:40px;line-height:.8;background:#00A0A4;padding:5px;color:#fff;">TOPIK KHUSUS</h1>
+        <h1 style="font-weight:bold;margin-top:0;font-size:40px;line-height:.8;background:#00A0A4;padding:5px;color:#fff;">TOPIK UTAMA</h1>
           <ul class="featured_nav2 list-topik-khusus">
             <?php
             $liputan_khusus = mysql_query("SELECT sub_judul, topik FROM berita WHERE topik != '' GROUP BY topik");
@@ -270,7 +210,18 @@
           </ul>
         </div>
         <div class="single_blog_sidebar berita-popular wow fadeInUp">
-          <h1>BERITA POPULAR</h1>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- Rectangle Ads -->
+          <ins class="adsbygoogle"
+              style="display:inline-block;width:336px;height:280px"
+              data-ad-client="ca-pub-4290882175389422"
+              data-ad-slot="6394354949"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+        <div class="single_blog_sidebar berita-popular wow fadeInUp">
+          <h1 style="font-weight:900;">BERITA POPULAR</h1>
           <ol class="list-berita-popular">
           <?php
           $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 10");
@@ -286,7 +237,96 @@
           ?>
           </ol>
         </div>
-        <div id="fixed-right" data-spy="affix">
+        <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
+          <img src="foto_iklanheader/gammara.jpg" alt="iklan gammara untuk funday harianamanah.com" style="height:auto">
+        </div>
+        <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
+          <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 0;color:#31708f; border-bottom:3px solid #31708f">ENSIKLOPEDI MUSLIM</h1>
+            <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
+            <?php
+            $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='60' ORDER BY id_berita DESC LIMIT 6");
+            $x=1;
+            while($row = mysql_fetch_array($liputan_khusus)){
+              $tgl = tgl_indo($row['tanggal']);
+              $tgl = tgl_indo($row['tanggal']);
+              $jam = trans_jam($row['jam']);
+              if($x == 1){
+                echo "<li style='padding-top:0;margin:0;'><img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+              }else
+              {
+                echo "<li style='margin:0;'><img class='lazy' src='foto_statis/base_n.jpg' style='width: 65px;height: 65px;padding-left: 5px;box-sizing: content-box;' data-src='http://harianamanah.com/foto_small/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding: 2px 5px;display:inline-block;font-size: 14px;vertical-align: middle;width: calc(100% - 70px);'>$row[judul]</a></li>";
+              }
+              $x++;
+            }
+            $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '60'");
+            $kategori = mysql_fetch_array($liputan_khusus);
+            echo "<a href=\"$kategori[link]\" style=\"background:#fff;display:block;text-align:center;padding:10px 0;color:#31708f;font-weight:bold;font-size:14px;\"><i class='fa fa-2x fa-search' aria-hidden='true' style='background:#31708f;color:#fff;display:inline-block;padding:5px;border-radius:50px;width:38px;height:38px;'></i><br>Baca Lainnya</a>";
+            ?>
+            </ul>
+          </div>
+          <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
+            <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 0;color:#3f51b5; border-bottom:3px solid #3f51b5;">KONSULTASI</h1>
+              <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
+              <?php
+              $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='6' ORDER BY id_berita DESC LIMIT 3");
+              while($row = mysql_fetch_array($liputan_khusus)){
+                $tgl = tgl_indo($row['tanggal']);
+                $jam = trans_jam($row['jam']);
+                echo "<li style='padding-top:0;margin:0;'><img src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+              }
+              $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '6'");
+              $kategori = mysql_fetch_array($liputan_khusus);
+              echo "<a href=\"$kategori[link]\" style=\"background:#fff;display:block;text-align:center;padding:10px 0;color:#3f51b5;font-weight:bold;font-size:14px;\"><i class='fa fa-2x fa-search' aria-hidden='true' style='background:#3f51b5;color:#fff;display:inline-block;padding:5px;border-radius:50px;width:38px;height:38px;'></i><br>Baca Lainnya</a>";
+              ?>
+              </ul>
+          </div>
+          <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
+          <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 0;color:#f44336; border-bottom:3px solid #f44336;">MUAMALAH</h1>
+            <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
+            <?php
+            $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='72' ORDER BY id_berita DESC LIMIT 6");
+            $x=1;
+            while($row = mysql_fetch_array($liputan_khusus)){
+              $tgl = tgl_indo($row['tanggal']);
+              $jam = trans_jam($row['jam']);
+              if($x == 1){
+                echo "<li style='padding-top:0;margin:0;'><img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+              }else
+              {
+                echo "<li style='margin:0;'><img class='lazy' src='foto_statis/base_n.jpg' style='width: 65px;height: 65px;padding-left: 5px;box-sizing: content-box;' data-src='http://harianamanah.com/foto_small/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding: 2px 5px;display:inline-block;font-size: 14px;vertical-align: middle;width: calc(100% - 70px);'>$row[judul]</a></li>";
+              }
+              $x++;
+            }
+            $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '72'");
+            $kategori = mysql_fetch_array($liputan_khusus);
+            echo "<a href=\"$kategori[link]\" style=\"background:#fff;display:block;text-align:center;padding:10px 0;color:#f44336;font-weight:bold;font-size:14px;\"><i class='fa fa-2x fa-search' aria-hidden='true' style='background:#f44336;color:#fff;display:inline-block;padding:5px;border-radius:50px;width:38px;height:38px;'></i><br>Baca Lainnya</a>";
+            ?>
+            </ul>
+          </div>
+        <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
+          <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 0;color:#2196f3; border-bottom:3px solid #2196f3;">ISLAMIC VIEW</h1>
+            <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
+            <?php
+            $liputan_khusus = mysql_query("SELECT * FROM berita WHERE id_kategori='67' ORDER BY id_berita DESC LIMIT 6");
+            $x=1;
+            while($row = mysql_fetch_array($liputan_khusus)){
+              $tgl = tgl_indo($row['tanggal']);
+              $jam = trans_jam($row['jam']);
+              if($x == 1){
+                echo "<li style='padding-top:0;margin:0;'><img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding:10px 10px 0;display:inline-block;font-size:20px;'>$row[judul]</a><span style='display:inline-block;font-weight:300;font-size:11px;padding:5px 10px;'>$row[hari], $tgl - $jam</span></li>";
+              }else
+              {
+                echo "<li style='margin:0;'><img class='lazy' src='foto_statis/base_n.jpg' style='width: 65px;height: 65px;padding-left: 5px;box-sizing: content-box;' data-src='http://harianamanah.com/foto_small/$row[gambar]' alt='$row[judul]'><a href='berita-$row[judul_seo]' style='padding: 2px 5px;display:inline-block;font-size: 14px;vertical-align: middle;width: calc(100% - 70px);'>$row[judul]</a></li>";
+              }
+              $x++;
+            }
+            $liputan_khusus = mysql_query("SELECT * FROM menu WHERE id_menu = '71'");
+            $kategori = mysql_fetch_array($liputan_khusus);
+            echo "<a href=\"$kategori[link]\" style=\"background:#fff;display:block;text-align:center;padding:10px 0;color:#2196f3;font-weight:bold;font-size:14px;\"><i class='fa fa-2x fa-search' aria-hidden='true' style='background:#2196f3;color:#fff;display:inline-block;padding:5px;border-radius:50px;width:38px;height:38px;'></i><br>Baca Lainnya</a>";
+            ?>
+            </ul>
+        </div>
+        <div id='scroll-fixed'>
           <div class="single_blog_sidebar berita-foto wow fadeInUp">
             <h1 class="title" style="margin-top:0px;">INFOGRAFIS</h1>
             <ul class="list-berita-foto">
@@ -355,11 +395,10 @@
                 <div class="clearfix"></div>
               </ul>
             </div>
-            <div class="fb-page" data-href="https://www.facebook.com/harianamanah/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/harianamanah/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/harianamanah/">Harian Amanah</a></blockquote></div>
           </div>
         </div>
     </div>
-    <div class="clearfix"></div>
+    <!-- <div class="clearfix"></div> -->
   </div>
   </div>
   <script>
@@ -369,7 +408,8 @@
       method: 'GET',
       url: 'more-web.php',
       data: {
-        urut: $('li[data-berita]:last-child').attr('data-berita')
+        urut: $('li[data-berita]:last-child').attr('data-berita'),
+        urut_foto: $('li[data-berita-foto]:nth-last-child(5)').attr('data-berita-foto')
       },
       success: function(html)
       {
@@ -414,21 +454,6 @@
 			}
 		});
   </script> -->
-  <script>
-   $("#fixed-right").affix({
-     offset : {
-       top: $('#fixed-right').offset().top,
-       bottom: 950
-     }
-   });
-
-   $("#fixed-left").affix({
-     offset : {
-       top: $('#fixed-left').offset().top,
-       bottom: 950
-     }
-   });
-  </script>
   <?php  }
   elseif ($_GET['module']=='katepage'){
   include "$f[folder]/menupage.php";}
@@ -448,6 +473,9 @@
   elseif ($_GET['module']=='detailkategori'){
   include "$f[folder]/modul/mod_berita/detailkategori.php";}
 
+  elseif ($_GET['module']=='detailtag'){
+  include "$f[folder]/modul/mod_halaman/hasiltag.php";}
+  
   elseif ($_GET['module']=='hasilcari'){
   include "$f[folder]/modul/mod_berita/hasilcari.php";}
 

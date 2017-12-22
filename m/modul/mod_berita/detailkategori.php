@@ -4,7 +4,18 @@
 	</div>
  -->
 	<!-- Content -->
-  <section class="container-fluid" style="background-color:white;">
+	<section>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- Mobile Banner -->
+		<ins class="adsbygoogle"
+				style="display:inline-block;width:320px;height:50px"
+				data-ad-client="ca-pub-4290882175389422"
+				data-ad-slot="6679890438"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</section>
+  <section class="container-fluid" style="background-color:white;padding:0 10px;">
 		<section class="headline row">
     <span id="id" style="display:none;"><?php echo $_GET['id']?></span>
     <?php
@@ -66,6 +77,17 @@
 		<div id="more" style="display: none;">
 			<center><img src="assets/loading.gif" width="100px"></center>
 		</div>
+		</section>
+		<section>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- Mobile Banner -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;width:320px;height:50px"
+          data-ad-client="ca-pub-4290882175389422"
+          data-ad-slot="6679890438"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
 		</section>
 <script>
 $(document).ready(function(){

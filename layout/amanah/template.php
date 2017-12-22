@@ -24,9 +24,9 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   <meta http-equiv="refresh" content="900">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="author" content="harianamanah.com">
-  <meta name="robots" content="index, follow" />
-  <meta name="googlebot" content="index, follow" />
-  <meta name="googlebot-news" content="index, follow" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <meta name="googlebot-news" content="noindex, nofollow" />
   <meta name="title" content="<?php
   if($_GET['menu']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
@@ -104,9 +104,8 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   }?>" />
   <meta property="og:site_name" content="harianamanah.com" />
   <meta property="og:locale" content="id_ID" />
-  <meta property="fb:admins" content="490830364408744" />
-  <meta property="fb:pages" content="824693407689103" />
-  <meta property="fb:app_id" content="168067490271817" />
+  <meta property="fb:app_id" content="490830364408744" />
+  <meta property="fb:pages" content="490830364408744" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@harianamanah" />
   <meta name="twitter:site:id" content="@harianamanah" />
@@ -146,19 +145,20 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   ?>" />
 
   <!-- Bootstrap Core CSS -->
-  <link rel="shortcut icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/structure.css" />
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>owl-carousel/owl.carousel.css"  />
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>owl-carousel/owl.theme.css"  />
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/style.css" />
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/new.css" />
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css" />
-
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/structure.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>owl-carousel/owl.carousel.css" >
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>owl-carousel/owl.theme.css" >
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/style.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/new.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL;?>font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900">
   <!-- jQuery and Modernizr-->
   <script src="<?php echo SITE_URL;?>js/jquery-2.1.1.js"></script>
   <script src="<?php echo SITE_URL;?>js/jquery.lazy.min.js"></script>
   <script src="<?php echo SITE_URL;?>js/jquery.lazy.plugins.min.js"></script>
+  <script src="<?php echo SITE_URL;?>js/jquery-scrolltofixed-min.js"></script>
   <script src="<?php echo SITE_URL;?>js/bootstrap.min.js"></script>
   <script type="application/ld+json">
   {
@@ -310,8 +310,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   include_once "analyticstracking.php";
   include_once "adsense.php";
   ?>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
 </head>
 <body>
 <header>
@@ -320,7 +318,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     <div class="row header-row-logo-bulat">
       <div class="container" style="padding:0;">
         <a href="/" style="display:inline-block; padding:13px 30px 13px 0;border-right:1px solid rgba(38, 41, 50, 0.12);">
-          <img src="logo/assets/pp_ff.png" width="30" alt="Logo bulat Amanah - harianamanah.com">
+          <img src="<?php echo SITE_URL?>logo/assets/pp_ff.png" width="30" alt="Logo bulat Amanah - harianamanah.com">
         </a>
         <div id="cari">
           <div class="mid1">
@@ -337,9 +335,19 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     <div class="row">
       <div class="container" style="padding:0;">
         <a href="/">
-          <div class="logo"><img src="images/amanah.png" width="400px" alt="Logo Amanah - harianamanah.com"></div>
+          <div class="logo"><img src="<?php echo SITE_URL?>images/amanah.png" width="400px" alt="Logo Amanah - harianamanah.com"></div>
         </a>
-        <!-- <img style="margin-left:15px;" src="foto_banner/milad_amanah.jpg" alt="banner milad amanah"> -->
+        <!-- <img width="665" src="foto_banner/milad_amanah.jpg" alt="banner milad amanah"> -->
+      <div style="vertical-align:middle;display:inline-block;">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Banner Top 2 -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:665px;height:120px"
+            data-ad-client="ca-pub-4290882175389422"
+            data-ad-slot="6871376407"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script></div>
       </div>
     </div>
     <?php
@@ -409,7 +417,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   </nav>
 </header>
 <?php 
-  include_once "config_fb.php";
   include_once "embed.php";
   include_once "konten.php"; 
 ?>
@@ -434,7 +441,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
         <?php
           $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent != 0;");
           while($row = mysql_fetch_array($menu_sub)){
-            echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
+            echo "<li><a href='".SITE_URL.$row[link]."'>$row[nama_menu]</a></li>";
           }
           ?>
         </ul>
@@ -445,7 +452,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
           <?php
           $menu_parent = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent='0'");
           while($row = mysql_fetch_array($menu_parent)){
-            echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
+            echo "<li><a href='".SITE_URL.$row[link]."'>$row[nama_menu]</a></li>";
           }
           ?>
         </ul>
@@ -462,16 +469,15 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
         </ul>
       </li>
       <li style="width:260px;">
-        <span class="title-menu">FIND&nbsp;US</span>
         <ul class="block">
           <li style="width:100%">
             <a href="https://play.google.com/store/apps/details?id=com.koran.harian.amanah&hl=in" text-decor="none" target="_blank">
-							<img src="images/googleplay.png" alt="android" style="max-width:100%; height:55px; margin-top:10px;">
+							<img src="<?php echo SITE_URL?>images/googleplay.png" alt="android" style="max-width:100%; height:55px; margin-top:10px;">
 						</a>
 					</li>
           <li style="width:100%;">
             <a href="https://itunes.apple.com/id/app/harian-amanah/id1186655456?mt=8" text-decor="none" target="_blank">
-							<img src="images/appstore.png" alt="apple" style="max-width:100%; height:55px; margin-top: 10px; ">
+							<img src="<?php echo SITE_URL?>images/appstore.png" alt="apple" style="max-width:100%; height:55px; margin-top: 10px; ">
 						</a>
           </li>
         </ul>
@@ -482,11 +488,11 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   <div class="footer-menu">
     <div class="container">
       <ul class="must-know">
-        <li><a style="color:#EFCB03;" href="hal-tentang-kami">TENTANG KAMI</a></li>
-        <li><a style="color:#EFCB03;" href="hal-redaksi">REDAKSI</a></li>
-        <li><a style="color:#EFCB03;" href="hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
-        <li><a style="color:#EFCB03;" href="hal-kontak-kami">KONTAK</a></li>
-        <li><a style="color:#EFCB03;" href="sitemap">SITEMAP</a></li>
+        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>hal-tentang-kami">TENTANG KAMI</a></li>
+        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>hal-redaksi">REDAKSI</a></li>
+        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
+        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>hal-kontak-kami">KONTAK</a></li>
+        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>sitemap">SITEMAP</a></li>
       </ul>
     </div>
   </div>
@@ -517,6 +523,24 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       });
     }).resize();
     
+    $("#scroll-fixed").scrollToFixed({
+        marginTop: function(){
+          var marginTop = $(window).height() - $("#scroll-fixed").outerHeight(true) - 20;
+          if(marginTop >= 0) return 20;
+          return marginTop;
+          }, 
+        limit: $("footer").offset().top - $("#scroll-fixed").outerHeight(true),
+        // postAbsolute: function(){$("#scroll-fixed").css('left', '0 !important');},
+        unfixed: function(){$("#scroll-fixed").css('left', 0);}
+    });
+    
+    // $("#scroll-fixed").scrollToFixed({
+    //   marginTop: 25
+    // });
+    $("#ads_news").scrollToFixed({
+      marginTop: 60
+    });
+
     $('.lazy').lazy();
     $(window).bind('scroll',function()
     {
@@ -532,11 +556,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       return false;
     });
     
-    // $(".main-menu").hover(
-    //   function(){
-    //   test = $(this).attr('data-caption');
-    //   $(".menu-show."+test).show();
-    //   console.log(test)});
     $(".main-menu").hover(function(){
       $(this).find('.menu-show').stop(true, true).delay(200).fadeIn(500);}, 
       function(){$(this).find('.menu-show').stop(true, true).delay(200).fadeOut(500);}
@@ -547,7 +566,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       $('html, body').animate({scrollTop: 0}, 300);
     });
   });
-
   $(".flex-container .item-flex:first-child").addClass('grid-thumb-big');
   $(".flex-container .item-flex + .item-flex").addClass('grid-thumb-medium');
   $(".item:first, li[data-target='#carousel-example-generic']:first").addClass('active');

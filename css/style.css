@@ -1,18 +1,7 @@
-/* ==== Google font ==== */
-@import url('http://fonts.googleapis.com/css?family=Roboto:400,300,700,900');
-@import url('http://fonts.googleapis.com/css?family=Ek+Mukta:400,600,700');
-
 /* ---------------------------------------------------------------------------- */
-/* ------------------------------------Html-Body------------------------------- */
-/* ---------------------------------------------------------------------------- */
-body {font-family: 'Roboto','Ek Mukta', sans-serif;color:#000007;background-color: #ECECEC ;font-size: 18px;line-height: 1.5;font-weight: 100;}
+body {font-family: 'Roboto', sans-serif;color:#000007;background-color: #ECECEC ;font-size: 18px;line-height: 1.5;font-weight: 400; color:#343741;}
 html, body {width:100%; padding:0; margin:0;}
 
-::-moz-selection{background:#000;color:#fff;text-shadow:none}
-::selection{background:#000;color:#fff;text-shadow:none}
-/* ---------------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------------- */
-/* ---------------------------------------------------------------------------- */
 img{max-width:100%;	height: auto;  /* ie8 */}
 
 .play  img{
@@ -23,63 +12,6 @@ img{max-width:100%;	height: auto;  /* ie8 */}
 	margin-top:-43%;
 	margin-left:37%;
 }
-
-.tosca
-{
-	color: #14afb4;
-	text-decoration: none;
-}
-.tosca:hover
-{
-	text-decoration: none;
-}
-
-.blue {
-    color: #466FC7 !important;
-}
-
-.purple {
-    color: #9A67D1 !important;
-}
-
-.purple1 {
-    color: #833375 !important;
-}
-
-.red {
-    color: #F86060 !important;
-}
-
-.green {
-    color: #89D465 !important;
-}
-.green1 {
-    color: #4db2b5 !important;
-}
-
-.yellow {
-    color: #FCCC53 !important;
-}
-.gray {
-    color: #ECBA85 !important;
-}
-.gray1 {
-    color: #B6644A !important;
-}
-
-.pink {
-    color: #FFA0CA !important;
-}
-
-.white {
-    color: #fff !important;
-}
-
-.orange {
-    color: orange !important;
-}
-
-h1,h2,h3,h4,h5,h6 {font-family: 'Roboto', sans-serif;font-weight: 500;}
 
 h2 {font-size: 20px;}
 h3 {font-size: 26px;}
@@ -102,8 +34,6 @@ p {margin: 0 0 20px;width: auto;height: 100%;}
 	background-color:#fff;
 	font-weight:bold;
 }
-
-
 
 @media(max-width:420px){
 	#title1 a{font-size:90%;}
@@ -128,7 +58,8 @@ p {margin: 0 0 20px;width: auto;height: 100%;}
 }
 
 a {
-   color: #000;
+   /* color: #000; */
+   color: #343741;
    -webkit-transition: all .2s ease-in-out;
    transition: all .2s ease-in-out;
 }
@@ -895,7 +826,6 @@ footer .footer-3 ul li a:hover{color: #666;}
 
 .info{
 	max-width: 100%;
-  /* padding-left: 60px; */
 }
 
 .info .info-name{
@@ -904,54 +834,6 @@ footer .footer-3 ul li a:hover{color: #666;}
   font-size: 16px;
   display: block;
 }
-
-.tips:hover .teks-foto{
-	border: 2px  solid gray;
-	height: auto;
-	width: 200px;
-	-webkit-box-sizing: content-box;
-	        box-sizing: content-box;
-}
-
-
-.tips a{
-	text-decoration: none;
-}
-
-.tips:hover a{
-	text-decoration: none;
-}
-
-.tips:hover .teks-foto .pone{
-	color: #89D465;
-}
-
-.tips:hover .teks-foto .ptwo{
-	color: #F86060;
-}
-
-.tips:hover .teks-foto .pthird{
-	color: orange;
-}
-
-.tips:hover .teks-foto .pfour{
-	color: #2980b9;
-}
-
-.tips{
-	cursor: pointer;
-}
-
-.tips img{
-	height: 150px;
-}
-
-.tips .teks-foto{
-	height: auto;
-	width: 200px;
-	margin: 7px auto 0;
-	border-bottom: 1.2px solid #ccc;
-	border-top: 2px solid transparent;
 }
 
 .tips .teks-foto h4{
@@ -960,21 +842,6 @@ footer .footer-3 ul li a:hover{color: #666;}
 	margin-top: 6px;
 }
 
-.tips .teks-foto .jone{
-	color: #63af3f;
-}
-
-.tips .teks-foto .jtwo{
-	color: #ea4f4f;
-}
-
-.tips .teks-foto .jthird{
-	color: rgb(247, 127, 21);
-}
-
-.tips .teks-foto .jfour{
-	color: #407192;
-}
 
 .tips .teks-foto p{
 	margin: 0;
@@ -987,4 +854,25 @@ footer .footer-3 ul li a:hover{color: #666;}
 .sosial ul.list-inline > li
 {
   padding: 0;
+}
+
+.tagline
+{
+	margin-bottom: 20px;
+}
+.tagline > span 
+{
+ display: block;	
+ margin-bottom: 10px;
+ font-weight: bold;
+ font-size: 20px;
+}
+
+.tagline > a
+{
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 50px;
+	background: #ebebec;
+	margin-bottom: 7px;
 }

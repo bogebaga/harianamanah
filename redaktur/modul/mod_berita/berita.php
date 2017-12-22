@@ -321,7 +321,7 @@ else{
 
 	 <p class=inline-small-label>
 	 <label for=field4>Isi Berita</label>
-	 <textarea name='editor' id='editor' class='ckeditor' style='width: 720px; height: 350px;'></textarea>
+	 <textarea name='editor' id='editor' style='width: 720px; height: 350px;'></textarea>
 	 </p>
 
 	 <p class=inline-small-label>
@@ -344,7 +344,7 @@ else{
 	 <label for=field4>Infografis</label>
 	 <input type=file name='grafis_upload' size=40 required>
 	 </p>
-	 
+
 	 <p class=inline-small-label>
 	 <label for=field4>Keterangan Gbr</label>
 

@@ -1,3 +1,14 @@
+ <section>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Mobile Banner -->
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:320px;height:50px"
+        data-ad-client="ca-pub-4290882175389422"
+        data-ad-slot="6679890438"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+ </section>
   <ul class="navbar sub-rubrik line-<?php echo $_GET['jn']?>">
   <?php
   $kalam = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]')");
@@ -6,7 +17,7 @@
   }
   ?>
 </ul>
-  <section class="container-fluid" style="background-color:white;">
+  <section class="container-fluid" style="background-color:white;padding: 0 10px;">
 		<section class="headline row">
 			<?php
 				$terkini=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[jn]') ORDER BY berita.id_berita DESC LIMIT 1");
@@ -57,14 +68,16 @@
       ";}	?>
     </section>
     <section class="daftar-artikel" id="daftar-artikel"></section>
-    <br>
     <?php 
     $kalam = mysql_query("SELECT color FROM menu WHERE link = '$_GET[jn]'");
     $base_color = mysql_fetch_array($kalam)?>
-    <div id="more" style="display:block;border:3px solid <?php echo $base_color['color']?>;color:<?php echo $base_color['color']?>;padding:10px 15px;font-weight:bold;font-size:25px;text-align:center;">MUAT LAINNYA</div>
+    <center>
+      <div id="more" style="display:inline-block;background:<?php echo $base_color['color']?>;color:#fff;padding:7px 20px;font-weight:bold;font-size:15px;border-radius:50px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.8);">BERITA LAINNYA</div>
+    </center>
+    <br>
 		<div class="iklan">
             <a href="http://abutours.com" title="AbuTours.com">
-                <!-- <img class="img-responsive" src="assets/abujie.jpg" alt="iklan"> -->
+                <img class="img-responsive" src="assets/abujie.jpg" alt="iklan">
             </a>
     </div>
 		<section id="daftar-artikel"></section>
@@ -72,7 +85,7 @@
 			<center><img src="assets/loading.gif" width="100px"></center>
 		</div>
     </section>
-    <section class="container-fluid" style="background:#fff; padding:0 5px;">
+    <!-- <section class="container-fluid" style="background:#fff; padding:0 5px;">
       <center>
         <h1 style="display:inline-block;border-bottom:3px solid red;margin-bottom:30px;">POPULAR</h1>
       </center>
@@ -85,7 +98,7 @@
           }
         ?>
       </ul>
-    </section>
+    </section> -->
     <section class="container-fluid" style="background:#fff;padding:0;">
     <?php
       $rubrik = mysql_query("SELECT nama_menu, link, gradient FROM menu WHERE id_parent = '0' AND link != '$_GET[jn]' AND aktif = 'Ya'");
@@ -113,6 +126,17 @@
         echo "</article>";
       }
     ?>
+    </section>
+    <section>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- Mobile Banner -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;width:320px;height:50px"
+          data-ad-client="ca-pub-4290882175389422"
+          data-ad-slot="6679890438"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </section>
     <script>
       $(document).ready(function(){
@@ -166,8 +190,8 @@
         			if(html)
         			{
         				$('#daftar-artikel').append(html);
-                $('.lazy').lazy();
         				$('#more').show();
+                $('.lazy').lazy();
         			}
         		}
         	})

@@ -134,22 +134,34 @@ span.tanggal-release{
   height: 45px;
 }
 .social-optimize{
-  margin-top: 9px;
-  text-align: center;
+  margin-top: 10px;
+  text-align: left;
 }
+
 .social-optimize a.line {
-  background: #00e461 url(http://cdn1.tstatic.net/img/logo/linebutton.png) no-repeat center center/ 22px 22px;
+  background: #00e461 url(http://cdn1.tstatic.net/img/logo/linebutton.png) no-repeat center center/ 17px 17px;
   display: inline-block;
   vertical-align: top;
 }
 a.social-share {
-  width: 42px;
-  height:42px;
+  width: 32px;
+  height:32px;
   border-radius:50px;
   color:white;
-  font-size: 17px;
+  font-size: 13px;
   line-height: 2.5;
   text-align: center;
+}
+
+a.social-share.big
+{
+	width: 42px;
+	height: 42px;
+	font-size: 17px;
+}
+a.social-optimize a.line.big
+{
+	background-size: 22px 22px;
 }
 a.social-share:active, a.social-share:hover{
   text-decoration: none;
@@ -402,6 +414,7 @@ a.social-share.fa-commenting-o{
 	color: #00A0A5;
 	letter-spacing: 0.1em;
 	font-size: 10px;
+	text-shadow: 0 0 15px black;
 }
 
 .gambar-berita img{
@@ -456,88 +469,6 @@ a.social-share.fa-commenting-o{
 	color: #14afb4;
 	font-weight: bold;
 }
-/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
-
-/* bagian baca juga */
-.baca-juga{
-	clear: both;
-}
-
-.baca-juga .garis-bawah{
-	border-bottom: 1px solid rgba(0, 0, 0, 0.47);
-}
-
-.baca-juga .garis-bawah h3,
-.baca-juga .garis-bawah h4{
-	display: inline-block;
-	padding: 8px 8px 8px 0;
-	letter-spacing: 1px;
-	color: #262932;
-	margin-bottom: 0;
-  margin-top: 25px;
-}
-
-.baca-juga ul{
-  padding-left: 0px;
-  margin-top: 12px;
-}
-
-.baca-juga ul.list-berita-terkini li {
-  width: 100%;
-}
-.baca-juga ul.list-berita-terkini li a{
-  float: left;
-}
-.baca-juga ul.list-berita-terkini li img{
-  float: left;
-}
-
-.baca-juga ul li {
-  padding: 7px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-	float: left;
-	width: 100%;
-}
-.baca-juga ul li:last-child{
-  border:0;
-}
-
-.baca-juga ul a{
-	display: table;
-  color: #262932;
-  font-size: 15px;
-  font-weight: 300;
-}
-.baca-juga ul.list-berita-terkini a {
-  width: calc(100% - 100px);
-  padding-left: 7px;
-}
-.baca-juga ul.list-berita-terkini a .caption{
-  display: block;
-}
-.baca-juga ul.list-berita-terkini a span{
-  display: inline-block;
-}
-
-.baca-juga ul a span{
-	display: table-cell;
-	padding: 3px 6px;
-  margin-top: 15px;
-  font-size: 11px;
-  border-radius: 2px;
-  color:#fff;
-  background-color: #1c9fa7;
-
-  font-weight: 500;
-}
-
-.baca-juga ul a li{
-	list-style: none;
-	display: table-cell;
-	color: black;
-}
-/* |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
-
 
 .more{
 	text-align: center;
@@ -713,9 +644,146 @@ footer .menu-footer a {
 	z-index: -1;
 }
 
-.gambar-berita span#toggle-info{
-  display: none;
+/* bagian baca juga */
+.baca-juga{
+	clear: both;
 }
+
+.baca-juga .garis-bawah{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.47);
+}
+
+.baca-juga .garis-bawah h3,
+.baca-juga .garis-bawah h4{
+	display: inline-block;
+	padding: 8px 8px 8px 0;
+	letter-spacing: 1px;
+	color: #262932;
+	margin-bottom: 0;
+  margin-top: 25px;
+}
+
+.baca-juga ul{
+  padding-left: 0px;
+  margin-top: 12px;
+}
+
+.baca-juga ul.list-berita-terkini li {
+  width: 100%;
+}
+.baca-juga ul.list-berita-terkini li a{
+  float: left;
+}
+.baca-juga ul.list-berita-terkini li img{
+  float: right;
+}
+
+.baca-juga ul li {
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  float: left;
+}
+.baca-juga ul li:last-child{
+  border:0;
+}
+
+.baca-juga ul a{
+	display: inline-block;
+	color: #262932;
+  font-size: 15px;
+	font-weight: 300;
+	width: calc(100% - 50px);
+	vertical-align: middle;
+	padding-left: 5px;
+}
+.baca-juga ul.list-berita-terkini li a {
+  width: calc(100% - 125px);
+}
+.baca-juga ul.list-berita-terkini a .caption{
+  display: block;
+}
+.baca-juga ul.list-berita-terkini a span{
+  display: inline-block;
+}
+
+.baca-juga ul a span{
+	display: table-cell;
+	padding: 3px 6px;
+  margin-top: 15px;
+  font-size: 11px;
+  border-radius: 2px;
+  color:#fff;
+  background-color: #1c9fa7;
+
+  font-weight: 500;
+}
+
+.baca-juga ul a li{
+	list-style: none;
+	display: table-cell;
+	color: black;
+}
+
+/* .gambar-berita span#toggle-info{
+  display: none;
+} */
 .gambar-berita:hover span#toggle-info{
   display: block;
+}
+
+.tagline
+{
+	margin-bottom: 20px;
+}
+.tagline > span 
+{
+ display: block;	
+ margin-bottom: 10px;
+ font-weight: bold;
+ font-size: 20px;
+}
+
+.tagline > a
+{
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 50px;
+	background: #ebebec;
+	margin-bottom: 7px;
+}
+
+.baca-juga-berita
+{
+    padding: 10px 15px;
+    background: #ebebec;
+    border-radius: 7px;
+}
+
+.baca-juga-berita ul
+{
+	margin: 0;
+	padding:0;
+	padding-left: 20px;
+}
+
+.baca-juga-berita > p:first-child
+{
+    margin:0;
+    margin-bottom: 10px;
+}
+
+.baca-juga-berita li
+{
+	padding-bottom:7px;
+	border-bottom: 1px solid rgba(176, 190, 197, 0.29);
+}
+
+.baca-juga-berita li + li
+{
+	padding-top:7px;
+}
+
+.baca-juga-berita li:last-child
+{
+	border: none;
 }

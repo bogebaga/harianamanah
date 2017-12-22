@@ -7,11 +7,11 @@ include "../config/fungsi_combobox.php";
 include "../config/class_paging.php";
 include "../config/desc.php";
 include "../config/Mobile_Detect.php";
-define ('SITE_URL', site_URL());
+define ('SITE_URL', site_URL()."m/");
 
 $automobile = new Mobile_Detect;
 $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
-if(!$automobile->isMobile()){
+if(! $automobile->isMobile()){
   header('Location: http://www.harianamanah.com/'.$pop);
   exit();
 }
@@ -32,9 +32,9 @@ if(!$automobile->isMobile()){
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta http-equiv="refresh" content="900">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <meta name="robots" content="index, follow" />
-  <meta name="googlebot" content="index, follow" />
-  <meta name="googlebot-news" content="index, follow" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <meta name="googlebot-news" content="noindex, nofollow" />
   <meta name="title" content="<?php
   if($_GET['jn']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
@@ -126,9 +126,8 @@ if(!$automobile->isMobile()){
   }?>" />
   <meta property="og:site_name" content="harianamanah.com" />
   <meta property="og:locale" content="id_ID" />
-  <meta property="fb:admins" content="490830364408744" />
-  <meta property="fb:pages" content="824693407689103" />
-  <meta property="fb:app_id" content="168067490271817" />
+  <meta property="fb:app_id" content="490830364408744" />
+  <meta property="fb:pages" content="490830364408744" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@harianamanah" />
   <meta name="twitter:site:id" content="@harianamanah" />
@@ -187,22 +186,24 @@ if(!$automobile->isMobile()){
   <meta name="theme-color" content="<?php echo $color['color']?>">
   <meta name="msapplication-navbutton-color" content="<?php echo $color['color']?>">
   <meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $color['color']?>">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   <link rel="shortcut icon" href="favicon.png">
   <!--Bootstrap Theme-->
   <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/dream.css" type="text/css">
-  <link rel="stylesheet" href="css/style.css" type="text/css">
-  <link rel="stylesheet" href="css/Berita.css" type="text/css">
-  <link rel="stylesheet" href="css/sidemenu.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/bootstrap.min.css" >
+  <link rel="stylesheet" href="<?php echo SITE_URL?>fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/dream.css" type="text/css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/style.css" type="text/css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/Berita.css" type="text/css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/sidemenu.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   <!-- JS -->
-  <script type="text/javascript" src="js/bower_components/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/jquery.lazy.min.js"></script>
+  <script src="<?php echo SITE_URL?>js/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+  <script src="<?php echo SITE_URL?>js/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="<?php echo SITE_URL?>js/jquery.lazy.min.js" type="text/javascript"></script>
+
   <script type="application/ld+json">
   {
     "@context": "http://schema.org/",
@@ -267,7 +268,7 @@ if(!$automobile->isMobile()){
   <div id="loader" >
     <div class="page-loader">
     <center>
-      <img src="assets/logo/pp_ff.png" width="160px" alt="dinamis" style="margin-top:50px;">
+      <img src="<?php echo SITE_URL?>assets/logo/pp_ff.png" width="160px" alt="dinamis" style="margin-top:50px;">
     </center>
     </div>
   </div>
@@ -286,7 +287,7 @@ if(!$automobile->isMobile()){
                     <span class="icon-bar"></span>
                 </button>
                 <button type="button" class="tutup"><span class="big-close"></span></button>
-                <a href="./" class="navbar-brand"><img src="assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
+                <a href="./" class="navbar-brand"><img src="<?php echo SITE_URL?>assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
                 <form method="GET" action="search" style="width:100vw;">
           <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="query-search" placeholder="Cari berita dan peristiwa">
                 </form>
@@ -357,7 +358,7 @@ if(!$automobile->isMobile()){
           <?php
             $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent != 0");
             while($row = mysql_fetch_array($menu_sub)){
-              echo "<li><a href='$row[link]'>$row[nama_menu]</a></li>";
+              echo "<li><a href='".SITE_URL.$row[link]."'>$row[nama_menu]</a></li>";
             }
             ?>
           </ul>
@@ -374,16 +375,15 @@ if(!$automobile->isMobile()){
           </ul>
         </li> -->
         <li>
-          <span class="title-menu">FIND&nbsp;US</span>
           <ul class="block">
             <li style="display:inline-block;">
               <a href="https://play.google.com/store/apps/details?id=com.koran.harian.amanah&hl=in" text-decor="none" target="_blank">
-                <img src="images/googleplay.png" alt="android">
+                <img src="<?php echo SITE_URL?>images/googleplay.png" alt="android">
               </a>
             </li>
             <li style="display:inline-block;">
               <a href="https://itunes.apple.com/id/app/harian-amanah/id1186655456?mt=8" text-decor="none" target="_blank">
-                <img src="images/appstore.png" alt="apple">
+                <img src="<?php echo SITE_URL?>images/appstore.png" alt="apple">
               </a>
             </li>
           </ul>
@@ -392,10 +392,10 @@ if(!$automobile->isMobile()){
       </div>
     </div>
     <div class="menu-footer">
-        <a href="hal-tentang-kami">Tentang Kami</a>
-        <a href="hal-privacy-policy">Privasi</a>
-        <a href="hal-kontak-kami">Kontak</a>
-        <a href="hal-redaksi">Redaksi</a>
+        <a href="<?php echo SITE_URL?>hal-tentang-kami">Tentang Kami</a>
+        <a href="<?php echo SITE_URL?>hal-privacy-policy">Privasi</a>
+        <a href="<?php echo SITE_URL?>hal-kontak-kami">Kontak</a>
+        <a href="<?php echo SITE_URL?>hal-redaksi">Redaksi</a>
       </div>
     <div class="isi-footer">
       <span class="copyright">

@@ -3,6 +3,7 @@ include '../config/koneksi.php';
 include '../config/fungsi_indotgl.php';
 include 'server.php';
 
+
 if ($_GET['kategori']=='detail')
 {
 	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_kategori = '$_GET[id]' AND berita.id_berita < '$_GET[urut]' ORDER BY id_berita DESC LIMIT 15");
@@ -36,19 +37,11 @@ if ($_GET['kategori']=='detail')
 }
 elseif ($_GET['kategori']=='popular')
 {
-	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND dibaca < '$_GET[urut]' ORDER BY dibaca DESC LIMIT 15");
+	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN DATE_SUB('2017-11-28', INTERVAL 7 DAY) AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$_GET[urut]' ORDER BY dibaca DESC LIMIT 10");
   while ($q = mysql_fetch_array($artikel))
   {
     $tgl = tgl_indo($q['tanggal']);
     $jam = trans_jam($q['jam']);
-    if (strlen($q['judul']) > 60)
-      {
-        $hasil = substr($q['judul'], 0, 60)."&hellip;";
-      }
-      else
-      {
-        $hasil = $q['judul'];
-      }
   echo"
   <article class= 'artikle' >
     <div class='list-picture'>
@@ -62,8 +55,8 @@ elseif ($_GET['kategori']=='popular')
     <br>
     <p class='waktu-berita' idk='$q[id_kategori]'> $q[hari], $tgl - $jam </p>
     </div>
-  </article>
-  ";}
+  </article>";
+  }
 }
 elseif ($_GET['kategori']=='rekomendasi')
 {

@@ -420,6 +420,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   include_once "embed.php";
   include_once "konten.php"; 
 ?>
+<!-- <div class="clearfix"></div> -->
 <footer>
   <div class="footer-logo">
     <div class="gambar-footer">
@@ -507,6 +508,10 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
 <script type="text/javascript">
   $(document).ready(function()
   {
+    $(window).scroll(function(){
+      console.log(window.scrollY-$('footer').height());
+    })
+    
     var $allVideo = $('iframe[src*="www.youtube.com"]'),
         $fluidEle = $('.isi-berita, .main-video');
 
@@ -522,21 +527,23 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
         $el.width(newWidth).height(newWidth * $el.attr('data-aspectratio'));
       });
     }).resize();
-    
-    $("#scroll-fixed").scrollToFixed({
-        marginTop: function(){
-          var marginTop = $(window).height() - $("#scroll-fixed").outerHeight(true) - 20;
-          if(marginTop >= 0) return 20;
-          return marginTop;
-          }, 
-        limit: $("footer").offset().top - $("#scroll-fixed").outerHeight(true),
-        // postAbsolute: function(){$("#scroll-fixed").css('left', '0 !important');},
-        unfixed: function(){$("#scroll-fixed").css('left', 0);}
-    });
-    
     // $("#scroll-fixed").scrollToFixed({
     //   marginTop: 25
     // });
+    $("#scroll-fixed").scrollToFixed({
+      marginTop: function(){
+        var marginTop = $(window).height() - $("#scroll-fixed").outerHeight(true) - 20;
+        if(marginTop >= 0) return 20;
+        return marginTop;
+        }, 
+      // postAbsolute: function(){$("#scroll-fixed").css('left', '0 !important');},
+      limit: $('footer').offset().top - $('#scroll-fixed').outerHeight(true) - 100,
+      unfixed: function(){$("#scroll-fixed").css({
+        left: 0,
+        top: $('footer').offset().top - $('#scroll-fixed').outerHeight(true) - 330
+      })}
+    })
+    
     $("#ads_news").scrollToFixed({
       marginTop: 60
     });
@@ -566,6 +573,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       $('html, body').animate({scrollTop: 0}, 300);
     });
   });
+
   $(".flex-container .item-flex:first-child").addClass('grid-thumb-big');
   $(".flex-container .item-flex + .item-flex").addClass('grid-thumb-medium');
   $(".item:first, li[data-target='#carousel-example-generic']:first").addClass('active');

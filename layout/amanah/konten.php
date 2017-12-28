@@ -1,7 +1,7 @@
 <?php if ($_GET['module']=='home'){ ?>
 	<div class="featured container" style="top:20px;" >
 		<div class="row" style="margin-top: 20px;">
-			<div class="col-xs-12 col-lg-9" style='padding-left:0;padding-right:7px;'>
+			<div class="col-xs-12 col-lg-9" style='padding-left:0;padding-right:20px;'>
           <!-- Carousel -->
           <div id="carousel-example-generic" class="carousel slide carousel-fade hl-slider" data-ride="carousel" style="background-color:#000;height:auto;">
             <!-- Wrapper for slides -->
@@ -420,9 +420,9 @@
           $('.lazy').lazy();
         }
       }
-    })
-  });
-  </script>
+  })
+})
+</script>
  <!-- <script>
 		var loadMore = true;
 		var page = 1;

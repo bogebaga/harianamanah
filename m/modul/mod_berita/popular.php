@@ -6,7 +6,9 @@
  	<section class="container-fluid" style="background-color:white;padding:0 10px;">
 		<section class="headline row">
       <?php
-				$terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY dibaca DESC LIMIT 1");
+				// $today = date('Y-m-d');
+				// $terkini=mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN DATE_SUB('$today', INTERVAL 7 DAY) AND '$today' ORDER BY dibaca LIMIT 1;");
+				$terkini=mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN DATE_SUB('2017-11-28', INTERVAL 7 DAY) AND '2017-11-28' ORDER BY dibaca DESC LIMIT 1;");
 				while($t=mysql_fetch_array($terkini)){
           $tgl = tgl_indo($t["tanggal"]);
           $jam = trans_jam($t["jam"]);
@@ -49,7 +51,8 @@
 		<section id='daftar-artikel' class="daftar-artikel">
 			<?php
 			$_digit = 10;
-			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN '2017-11-27' AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
+			// $artikel=mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN '2017-11-27' AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
+			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN DATE_SUB('2017-11-28', INTERVAL 7 DAY) AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);
@@ -118,7 +121,7 @@
 							{
 								$('#daftar-artikel').append(result);
 								$('.lazy').lazy();
-								loadMore = true;
+									loadMore = true;
 							}
 						}
 					});

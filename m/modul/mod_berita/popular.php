@@ -51,20 +51,38 @@
 		<section id='daftar-artikel' class="daftar-artikel">
 			<?php
 			$_digit = 10;
+			$x=1;
 			// $artikel=mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN '2017-11-27' AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
 			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN DATE_SUB('2017-11-28', INTERVAL 7 DAY) AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);
-        $jam = trans_jam($q['jam']);
-				if (strlen($q['judul']) > 60)
-        {
-          $hasil = substr($q['judul'], 0, 60)."&hellip;";
-        }
-        else
-        {
-          $hasil = $q['judul'];
-        }
+				$jam = trans_jam($q['jam']);
+			if($x%5 == 0):
+				if($state):
+					$add_q = "AND id_berita < '$test'";
+				else:
+					$add_q = ''; 
+				endif;
+				$inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = 'alifahmi' $add_q ORDER BY b.id_berita DESC LIMIT 1");
+				while($foto=mysql_fetch_array($inilah)):
+					echo "<article class= 'artikle' >
+					<div class='list-picture'>
+						<a href='berita-$q[judul_seo]'>
+							<img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$q[gambar1]' alt='$q[judul]' style='width:100%;height:auto;object-fit:cover;'>
+						</a>
+					</div>
+					<div class='artikle-text' data-target='update' kode='$q[id_berita]' style='width:100%;padding:0;margin-top:10px;'>
+						<a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+						<!-- <a href='#' class='link-kategori'>$q[nama_kategori]</a> -->
+						<br>
+						<p class='waktu-berita'> $q[hari], $tgl - $jam </p> 
+					</div>
+				</article>";
+				$state = true;
+				$test = $foto['id_berita'];
+				endwhile;
+			else:
 				echo "<article class= 'artikle' >
 					<div class='list-picture'>
 						<a href='berita-$q[judul_seo]'>
@@ -72,12 +90,13 @@
 						</a>
 					</div>
 					<div class='artikle-text' data-target='popular' kode='$q[dibaca]'>
-            <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$hasil</a>
+            <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
             <a href='kategori-$q[id_kategori]-$q[kategori_seo]' class='link-kategori'>$q[nama_kategori]</a>
             <p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 					</div>
-				</article>
-				";
+				</article>";
+			endif;
+			$x++;
 			}
 		?>
 		</section>

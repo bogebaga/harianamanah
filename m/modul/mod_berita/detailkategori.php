@@ -1,8 +1,3 @@
-	<!-- Foto Kategori -->
-	<!-- div class="foto-Kategori">
-		<img src="assets/muslimStar.png" class="img-responsive" alt="Muslim Star">
-	</div>
- -->
 	<!-- Content -->
 	<section>
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -40,39 +35,54 @@
 		<section class="daftar-artikel">
 			<?php
 			$_digit = 10;
+			$x=1;
 			$artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori WHERE berita.id_berita != '$id1' AND berita.id_kategori = '$_GET[id]' ORDER BY id_berita DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);
         $jam = trans_jam($q['jam']);
-				if (strlen($q['judul']) > 60)
-							{
-								$hasil = substr($q['judul'], 0, 60)."&hellip;";
-							}
-							else
-							{
-								$hasil = $q['judul'];
-							}
-				echo "<article class= 'artikle' >
-					<div class='list-picture'>
-						<a href='berita-$q[judul_seo]'>
-							<img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
-						</a>
-					</div>
-					<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
-            <a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
-						<!-- <a class='link-kategori'>$q[nama_kategori]</a> -->
-						<br>
-            <p class='waktu-berita'>  $q[hari], $tgl - $jam </p>
-					</div>
-				</article>
-				";} ?>
+				if($x%5 == 0):
+					if($state):
+						$add_q = "AND id_berita < '$test'";
+					else:
+						$add_q = ''; 
+					endif;
+					$inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = 'alifahmi' $add_q ORDER BY b.id_berita DESC LIMIT 1");
+					while($foto=mysql_fetch_array($inilah)):
+						echo "<article class= 'artikle' >
+						<div class='list-picture'>
+							<a href='berita-$q[judul_seo]'>
+								<img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$q[gambar1]' alt='$q[judul]' style='width:100%;height:auto;object-fit:cover;'>
+							</a>
+						</div>
+						<div class='artikle-text' data-target='update' kode='$q[id_berita]' style='width:100%;padding:0;margin-top:10px;'>
+							<a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+							<!-- <a href='#' class='link-kategori'>$q[nama_kategori]</a> -->
+							<br>
+							<p class='waktu-berita'> $q[hari], $tgl - $jam </p> 
+						</div>
+					</article>";
+					$state = true;
+					$test = $foto['id_berita'];
+					endwhile;
+				else:
+					echo "<article class= 'artikle' >
+						<div class='list-picture'>
+							<a href='berita-$q[judul_seo]'>
+								<img class='picture lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$q[gambar1]' alt='$q[judul]'/>
+							</a>
+						</div>
+						<div class='artikle-text' data-target='update' kode='$q[id_berita]'>
+							<a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
+							<!-- <a class='link-kategori'>$q[nama_kategori]</a> -->
+							<br>
+							<p class='waktu-berita'>  $q[hari], $tgl - $jam </p>
+						</div>
+					</article>";
+				endif;
+				$x++;
+				} ?>
 		</section>
-		<!-- <div class="iklan">
-      <a href="abutours" title="AbuTours.com">
-        <img class="img-responsive" src="assets/abujie.jpg" alt="iklan">
-      </a>
-    </div> -->
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">
 			<center><img src="assets/loading.gif" width="100px"></center>
@@ -122,27 +132,10 @@ $(document).ready(function(){
             loadMore = true;
             // $('#more')('<div class="more">MUAT LAINNYA</div>');
             // $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
-
           }
         }
       });
     }
   });
-			// $('#more').click(function(){
-			// 	$(this)('<center><img src="assets/loading.gif" width="100px"></center>');
-			// 	$.ajax({
-			// 		url: 'more.php?kategori=kajian&urut='+$('.artikle-text:last').attr('kode'),
-			// 		success: function(html)
-			// 		{
-			// 			if(html)
-			// 			{
-			// 				$('#daftar-artikel').append(html);
-			// 				$('#more')('<div class="more">MUAT LAINNYA</div>');
-			// 				// $('.iklan')('<a href="https://abutours.com/" target="_blank" title="AbuTours.com"><img class="img-responsive" src="../foto_iklantengah/917737Iklan-Web-Amanah-2.gif" alt="iklan"></a>');
-
-			// 			}
-			// 		}
-			// 	});
-			// });
 		});
 </script>

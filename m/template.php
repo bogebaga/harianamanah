@@ -349,19 +349,19 @@ if(! $automobile->isMobile()){
         <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true"></span></a>
       </div>
       
-  <div class="state-one">
+  <!-- <div class="state-one">
       <div class="container" style="padding:0;">
       <ul class="menu-utama">
         <li class="kategori">
           <!-- <span class="title-menu">KANAL</span> -->
-          <ul>
+          <!-- <ul>
           <?php
             $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent != 0");
             while($row = mysql_fetch_array($menu_sub)){
               echo "<li><a href='".SITE_URL.$row[link]."'>$row[nama_menu]</a></li>";
             }
             ?>
-          </ul>
+          </ul> -->
         </li>
         <!-- <li class="kategori">
           <span class="title-menu">MENU&nbsp;UTAMA</span>
@@ -374,20 +374,6 @@ if(! $automobile->isMobile()){
             ?>
           </ul>
         </li> -->
-        <li>
-          <ul class="block">
-            <li style="display:inline-block;">
-              <a href="https://play.google.com/store/apps/details?id=com.koran.harian.amanah&hl=in" text-decor="none" target="_blank">
-                <img src="<?php echo SITE_URL?>images/googleplay.png" alt="android">
-              </a>
-            </li>
-            <li style="display:inline-block;">
-              <a href="https://itunes.apple.com/id/app/harian-amanah/id1186655456?mt=8" text-decor="none" target="_blank">
-                <img src="<?php echo SITE_URL?>images/appstore.png" alt="apple">
-              </a>
-            </li>
-          </ul>
-        </li>
       </ul>
       </div>
     </div>
@@ -396,6 +382,20 @@ if(! $automobile->isMobile()){
         <a href="<?php echo SITE_URL?>hal-privacy-policy">Privasi</a>
         <a href="<?php echo SITE_URL?>hal-kontak-kami">Kontak</a>
         <a href="<?php echo SITE_URL?>hal-redaksi">Redaksi</a>
+      </div>
+      <div class="state-one">
+        <ul class="block">
+          <li style="display:inline-block;">
+            <a href="https://play.google.com/store/apps/details?id=com.koran.harian.amanah&hl=in" text-decor="none" target="_blank">
+              <img src="<?php echo SITE_URL?>images/googleplay.png" alt="android">
+            </a>
+          </li>
+          <li style="display:inline-block;">
+            <a href="https://itunes.apple.com/id/app/harian-amanah/id1186655456?mt=8" text-decor="none" target="_blank">
+              <img src="<?php echo SITE_URL?>images/appstore.png" alt="apple">
+            </a>
+          </li>
+        </ul>
       </div>
     <div class="isi-footer">
       <span class="copyright">

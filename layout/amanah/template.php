@@ -511,7 +511,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     $(window).scroll(function(){
       console.log(window.scrollY-$('footer').height());
     })
-    
     var $allVideo = $('iframe[src*="www.youtube.com"]'),
         $fluidEle = $('.isi-berita, .main-video');
 
@@ -527,27 +526,37 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
         $el.width(newWidth).height(newWidth * $el.attr('data-aspectratio'));
       });
     }).resize();
-    // $("#scroll-fixed").scrollToFixed({
-    //   marginTop: 25
-    // });
     $("#scroll-fixed").scrollToFixed({
       marginTop: function(){
         var marginTop = $(window).height() - $("#scroll-fixed").outerHeight(true) - 20;
         if(marginTop >= 0) return 20;
         return marginTop;
         }, 
-      // postAbsolute: function(){$("#scroll-fixed").css('left', '0 !important');},
-      limit: $('footer').offset().top - $('#scroll-fixed').outerHeight(true) - 100,
+      limit: function(){
+        return $('footer').offset().top - $('#scroll-fixed').outerHeight(true) - 100;
+      },
       unfixed: function(){$("#scroll-fixed").css({
         left: 0,
         top: $('footer').offset().top - $('#scroll-fixed').outerHeight(true) - 330
       })}
     })
-    
-    $("#ads_news").scrollToFixed({
-      marginTop: 60
-    });
 
+    $("#ads_news").scrollToFixed({
+      marginTop: 60,
+      limit: function(){
+        return $('.tagline').offset().top - $(this).height();
+      },
+      fixed: function(){
+        $('#ads_news').css('width', 'auto');
+        $('#ads_news').next().css('float', 'left');
+      },
+      unfixed: function(){
+        $('#ads_news').css({
+          left: 17,
+          top: $('.tagline').offset().top - $(this).height() - ($('.isi-berita').height() - $(this).outerHeight(true))
+        });
+      }
+    });
     $('.lazy').lazy();
     $(window).bind('scroll',function()
     {
@@ -557,23 +566,19 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
         $("#b-top").fadeOut(500);
       }
     });
-
     $("#b-top").click(function(){
       $("html,body").animate({scrollTop:0},1000);
       return false;
     });
-    
     $(".main-menu").hover(function(){
       $(this).find('.menu-show').stop(true, true).delay(200).fadeIn(500);}, 
       function(){$(this).find('.menu-show').stop(true, true).delay(200).fadeOut(500);}
     );
-      
     $('.go-top').click(function(event) {
       event.preventDefault();
       $('html, body').animate({scrollTop: 0}, 300);
     });
   });
-
   $(".flex-container .item-flex:first-child").addClass('grid-thumb-big');
   $(".flex-container .item-flex + .item-flex").addClass('grid-thumb-medium');
   $(".item:first, li[data-target='#carousel-example-generic']:first").addClass('active');

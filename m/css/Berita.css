@@ -499,7 +499,7 @@ footer .gambar-footer
 }
 
 footer .menu-footer{
-	text-align: left;
+	text-align: center;
   padding:10px 0;
   border-bottom :1px solid rgba(51, 51, 51, 0.15);
 }
@@ -528,7 +528,7 @@ footer .menu-footer a {
 {
 	list-style: none;
 	padding: 0;
-	text-align: left;
+	text-align: center;
 }
 .state-one span.title-menu {
 	color:#E8BF0A;
@@ -555,7 +555,7 @@ footer .menu-footer a {
 {
 	position: relative;
 	margin-top: 7px;
-	width: 150px;
+	width: 90px;
 	height: auto;
 }
 

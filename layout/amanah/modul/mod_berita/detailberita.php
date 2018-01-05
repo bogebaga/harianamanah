@@ -84,27 +84,10 @@
             ?>
             <div class="tagline">
             <span><i class="fa fa-"></i>TAGS</span>
-              <a href="tag/test1">test1</a>
+              <!-- <a href="tag/test1">test1</a>
               <a href="tag/test1">TEST!TEST!TEST!</a>
               <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">test1TEST!TEST!</a>
-              <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">test1</a>
-              <a href="tag/test1">TEST!TEST!TEST!</a>
-              <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">test1</a>
-              <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">TEST!TEST!TEST!</a>
-              <a href="tag/test1">test1</a>
-              <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">test1TEST!TEST!TEST!TEST!</a>
-              <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">test1</a>
-              <a href="tag/test1">TEST!</a>
-              <a href="tag/test1">TEST!</a>
+              <a href="tag/test1">test1TEST!TEST!</a> -->
             </div>
             <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="10"></div>
             <!-- <div style="float:left;">Dibaca: <?php echo $d['dibaca']?></div> -->

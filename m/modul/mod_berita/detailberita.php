@@ -57,7 +57,7 @@
 <section>
 <div style="text-align:center;">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- Mobile Banner -->
+  <!-- M_Banner -->
   <ins class="adsbygoogle"
       style="display:inline-block;width:320px;height:50px"
       data-ad-client="ca-pub-4290882175389422"
@@ -130,13 +130,13 @@
       </div> 
       <div class="tagline">
         <span>TAGS</span>
-        <a href="tag/test1">test1</a>
+    <!--     <a href="tag/test1">test1</a>
         <a href="tag/test1">TEST!</a>
-        <a href="tag/test1">TEST!</a>
+        <a href="tag/test1">TEST!</a> -->
       </div>
-      <section>
+      <section style="text-align:center;margin-bottom:10px;">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Mobile Banner -->
+        <!-- M_Banner -->
         <ins class="adsbygoogle"
             style="display:inline-block;width:320px;height:50px"
             data-ad-client="ca-pub-4290882175389422"
@@ -232,7 +232,7 @@
               <h5>BERITA REKOMENDASI</h5>
               <section style="white-space:nowrap;overflow:auto;border-bottom:1px solid #e0e0e0;">
                 <?php
-                  $topik = mysql_query("SELECT judul, judul_seo, gambar FROM berita, menu WHERE id_kategori = id_menu AND berita.aktif = 'Y' AND nama_menu = '$d[nama_menu]' ORDER BY id_berita DESC LIMIT 7");
+                  $topik = mysql_query("SELECT judul, judul_seo, gambar FROM berita, menu WHERE id_kategori = id_menu AND berita.aktif = 'Y' AND nama_menu = '$d[nama_menu]' ORDER BY id_berita DESC LIMIT 15");
                   while ($tp = mysql_fetch_array($topik))
                   {
                     echo "<article class= 'artikle' style='border:0;width:200px;display:inline-block;padding-right:15px;white-space:normal;vertical-align:top;'>
@@ -252,7 +252,8 @@
               <h5>BERITA POPULAR</h5>
               <section style="white-space:nowrap;overflow:auto;border-bottom:1px solid #e0e0e0;">
                 <?php
-                  $topik = mysql_query("SELECT * FROM berita, menu WHERE id_kategori = id_menu AND nama_menu = '$d[nama_menu]' ORDER BY dibaca DESC LIMIT 7");
+                  $date = date('Y-m-d');
+                  $topik = mysql_query("SELECT * FROM berita, menu WHERE tanggal BETWEEN date_sub('$date', INTERVAL 30 DAY) AND '$date' AND id_kategori = id_menu AND nama_menu = '$d[nama_menu]' ORDER BY dibaca DESC LIMIT 15");
                   while ($tp = mysql_fetch_array($topik))
                   {
                     echo "<article class= 'artikle' style='border:0;width:200px;display:inline-block;padding-right:15px;white-space:normal;vertical-align:top;'>
@@ -272,15 +273,17 @@
             <?php
             elseif($x == 11): 
             ?>
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <!-- Stopper Ads -->
-                <ins class="adsbygoogle"
-                    style="display:inline-block;width:300px;height:250px"
-                    data-ad-client="ca-pub-4290882175389422"
-                    data-ad-slot="2144258369"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <div style="text-align:center;">
+                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <!-- Stopper Ads -->
+                  <ins class="adsbygoogle"
+                      style="display:inline-block;width:300px;height:250px"
+                      data-ad-client="ca-pub-4290882175389422"
+                      data-ad-slot="2144258369"></ins>
+                  <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                </div>
             <?php 
             else:
               echo"
@@ -302,7 +305,7 @@
 <br>
 <section style="text-align:center;">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- Mobile Banner -->
+  <!-- M_Banner -->
   <ins class="adsbygoogle"
       style="display:inline-block;width:320px;height:50px"
       data-ad-client="ca-pub-4290882175389422"

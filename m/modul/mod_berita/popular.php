@@ -37,23 +37,24 @@
 			?>
 		</section>
 		<hr>
-		<section>
+		<section style="text-align:center;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- Mobile Banner -->
+			<!-- M_Banner -->
 			<ins class="adsbygoogle"
 					style="display:inline-block;width:320px;height:50px"
 					data-ad-client="ca-pub-4290882175389422"
 					data-ad-slot="6679890438"></ins>
 			<script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
-	</script>
+			</script>
 		</section>
 		<section id='daftar-artikel' class="daftar-artikel">
 			<?php
 			$_digit = 10;
 			$x=1;
 			// $artikel=mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN '2017-11-27' AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
-			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN DATE_SUB('2017-11-28', INTERVAL 7 DAY) AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
+			$date = date('Y-m-d');
+			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN DATE_SUB('$date', INTERVAL 7 DAY) AND '$date' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$id1' ORDER BY dibaca DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);
@@ -64,7 +65,7 @@
 				else:
 					$add_q = ''; 
 				endif;
-				$inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = 'alifahmi' $add_q ORDER BY b.id_berita DESC LIMIT 1");
+				$inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = '19' $add_q ORDER BY b.id_berita DESC LIMIT 1");
 				while($foto=mysql_fetch_array($inilah)):
 					echo "<article class= 'artikle' >
 					<div class='list-picture'>

@@ -117,20 +117,16 @@
                             <ins class="adsbygoogle"
                                 style="display:block"
                                 data-ad-format="fluid"
-                                data-ad-layout-key="-fb+6s-3g-ed+13b"
+                                data-ad-layout-key="-bs+2q-4a-fy+1so"
                                 data-ad-client="ca-pub-4290882175389422"
                                 data-ad-slot="9217631936"></ins>
                             <script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>          
+                            </script>      
                           </li>';
                   elseif($x == 6):
                     echo "<li style='color:white;'>
                     <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_iklanheader/trans_makasar.jpg' alt='$p1[judul]' style='width:100%;height:285px'>
-                    </li>";
-                  elseif($x == 16):
-                    echo "<li style='color:white;'>
-                    <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_politik/pol_1.jpeg' alt='nasdem politik - harianamanah.com' style='width:100%;height:285px'>
                     </li>";
                   elseif($x == 17):
                     echo "<ul class='featured_nav0 berita-lainnya' style='border-bottom:1px solid #ececec;'><h6 style='font-weight:900;padding-left:10px;'>REKOMENDASI</h6>";
@@ -147,7 +143,7 @@
                                 ";
                           }
                     echo "<div class='clearfix'></div></ul>";
-                  elseif($x == 22):
+                  elseif($x == 23):
                     echo "<li style='color:white;'>
                       <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_politik/pol_2.jpg' alt='diaji - harianamanah.com' style='width:100%;height:285px'>
                     </li>";
@@ -222,7 +218,7 @@
           <ol class="list-berita-popular">
           <?php
           $date = date('Y-m-d');
-          $berita_popular = mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN date_sub('$date', INTERVAL 30 DAY) AND '$date' ORDER BY dibaca DESC LIMIT 10");
+          $berita_popular = mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN date_sub('$date', INTERVAL 7 DAY) AND '$date' ORDER BY dibaca DESC LIMIT 10");
           $x=1;
           while($row = mysql_fetch_array($berita_popular)){
             if($x == 1){

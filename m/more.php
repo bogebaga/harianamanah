@@ -37,7 +37,8 @@ if ($_GET['kategori']=='detail')
 }
 elseif ($_GET['kategori']=='popular')
 {
-	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN DATE_SUB('2017-11-28', INTERVAL 7 DAY) AND '2017-11-28' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$_GET[urut]' ORDER BY dibaca DESC LIMIT 10");
+  $date = date('Y-m-d');
+	$artikel = mysql_query("SELECT * FROM berita, kategori WHERE tanggal BETWEEN DATE_SUB('$date', INTERVAL 7 DAY) AND '$date' AND kategori.id_kategori = berita.id_kategori AND dibaca < '$_GET[urut]' ORDER BY dibaca DESC LIMIT 10");
   while ($q = mysql_fetch_array($artikel))
   {
     $tgl = tgl_indo($q['tanggal']);

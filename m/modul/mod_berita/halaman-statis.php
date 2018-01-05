@@ -1,6 +1,6 @@
-<section>
+<section style="text-align:center;">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- Mobile Banner -->
+  <!-- M_Banner -->
   <ins class="adsbygoogle"
       style="display:inline-block;width:320px;height:50px"
       data-ad-client="ca-pub-4290882175389422"
@@ -25,13 +25,13 @@
     </a>
   </div> -->
 </section>
-<section>
+<section style='text-align:center;'>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- Stopper Ads -->
+  <!-- B_Square Ads -->
   <ins class="adsbygoogle"
-      style="display:inline-block;width:300px;height:250px"
+      style="display:inline-block;width:250px;height:250px"
       data-ad-client="ca-pub-4290882175389422"
-      data-ad-slot="2144258369"></ins>
+      data-ad-slot="4401462448"></ins>
   <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
   </script>

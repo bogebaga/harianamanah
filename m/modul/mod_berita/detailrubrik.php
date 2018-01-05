@@ -1,10 +1,10 @@
- <section>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Mobile Banner -->
+ <section style="text-align:center;">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- M_Banner -->
     <ins class="adsbygoogle"
-        style="display:inline-block;width:320px;height:50px"
-        data-ad-client="ca-pub-4290882175389422"
-        data-ad-slot="6679890438"></ins>
+          style="display:inline-block;width:320px;height:50px"
+          data-ad-client="ca-pub-4290882175389422"
+          data-ad-slot="6679890438"></ins>
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
@@ -147,9 +147,9 @@
       }
     ?>
     </section>
-    <section>
+    <section style="text-align:center;">
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- Mobile Banner -->
+      <!-- M_Banner -->
       <ins class="adsbygoogle"
           style="display:inline-block;width:320px;height:50px"
           data-ad-client="ca-pub-4290882175389422"

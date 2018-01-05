@@ -568,7 +568,7 @@ footer .footer-logo
 footer > .footer-menu ul.must-know
 {
 	text-align: right;
-	padding: 10px 0;
+	padding: 10px 0 15px;
 	/* border-top: 1px solid #E8BF0A; */
 	/* margin-bottom: 30px; */
 }

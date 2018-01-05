@@ -37,9 +37,9 @@
 			?>
 		</section>
 		<hr>
-		<section>
+		<section style="text-align:center;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- Mobile Banner -->
+			<!-- M_Banner -->
 			<ins class="adsbygoogle"
 					style="display:inline-block;width:320px;height:50px"
 					data-ad-client="ca-pub-4290882175389422"
@@ -63,7 +63,7 @@
 					else:
 						$add_q = ''; 
 					endif;
-					$inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = 'alifahmi' $add_q ORDER BY b.id_berita DESC LIMIT 1");
+					$inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = '19' $add_q ORDER BY b.id_berita DESC LIMIT 1");
 					while($foto=mysql_fetch_array($inilah)):
 						echo "<article class= 'artikle' >
 						<div class='list-picture'>
@@ -103,7 +103,7 @@
 		<h5 style="color:#00a0a5">BERITA REKOMENDASI</h5>
 		<section style="white-space:nowrap;overflow:auto;">
 			<?php
-				$topik = mysql_query("SELECT * FROM berita WHERE aktif = 'Y' ORDER BY id_berita DESC LIMIT 5");
+				$topik = mysql_query("SELECT * FROM berita WHERE aktif = 'Y' ORDER BY id_berita DESC LIMIT 10");
 				while ($tp = mysql_fetch_array($topik))
 				{
 					echo "<article class= 'artikle' style='border:0;width:200px;display:inline-block;padding-right:15px;white-space:normal;vertical-align:top;'>
@@ -120,11 +120,6 @@
 				}
 			?>
 		</section>
-		<!-- <div class="iklan">
-      <a href="abutours" title="AbuTours.com">
-        <img class="img-responsive" src="assets/abujie.jpg" alt="iklan banner bawah harianamanah.com - kiblat berita islami">
-      </a>
-    </div> -->
 
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">

@@ -9,7 +9,7 @@
       <div class="col-xs-12" style="padding:0;float:none;margin-bottom:25px;margin-top:25px">
         <div class='flex-container'>
         <?php
-        $rubrik=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE m.id_parent = '$nama_menu[id_menu]' ORDER BY id_berita DESC LIMIT 5");
+        $rubrik=mysql_query("SELECT u.username, judul, judul_seo, id_berita, tanggal, jam, kategori_seo, k.id_kategori, nama_kategori, hari, gambar FROM users u JOIN (berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori) ON b.username = u.ID WHERE m.id_parent = '$nama_menu[id_menu]' ORDER BY id_berita DESC LIMIT 5");
         $i=0;
         while($row = mysql_fetch_array($rubrik)){
           $tgl = tgl_indo_short($row['tanggal']);
@@ -18,7 +18,7 @@
           echo "<div class='item-flex grid-$i'>
           <span class='kategori-grid' style='background:$nama_menu[background]'><a style='color:#fff;' href='kategori-$row[id_kategori]-$row[kategori_seo]'>$row[nama_kategori]</a></span>
           <a href='berita-$row[judul_seo]' title='$row[judul]'><h2 class='grid-flex-foto'>$row[judul]</h2></a>
-          <span class='info-uploader'>Oleh&nbsp;$row[username]&nbsp;|&nbsp;$row[hari], $tgl - $jam</span>
+          <span class='info-uploader' style='margin-left:5px;'>Oleh&nbsp;".ucfirst($row[username])."&nbsp;|&nbsp;$row[hari], $tgl - $jam</span>
           <div class='black_layer'></div>
           <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'>
         </div>";

@@ -63,12 +63,11 @@
           </div><!-- /carousel -->
         <div class="col-xs-12" style="margin-top:7px;padding:0;">
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- Billboard -->
+          <!-- Billboard Ads -->
           <ins class="adsbygoogle"
-              style="display:block"
+              style="display:inline-block;width:795px;height:125px"
               data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="8030159807"
-              data-ad-format="auto"></ins>
+              data-ad-slot="3495752496"></ins>
           <script>
           (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
@@ -98,7 +97,7 @@
                     else:
                       $add_q = ''; 
                     endif;
-                    $inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = 'alifahmi' $add_q ORDER BY b.id_berita DESC LIMIT 1");
+                    $inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = '19' $add_q ORDER BY b.id_berita DESC LIMIT 1");
                     while($foto=mysql_fetch_array($inilah)):
                       echo "<li style='color:white;background:#252831' data-berita-foto='$foto[id_berita]'>
                       <div class='deskripsi-judul home reda'>
@@ -112,21 +111,19 @@
                     $state = true;
                     $test = $foto['id_berita'];
                     endwhile;
-
-                    // echo 'test';
                   elseif($x == 3):
-                      echo '<li style="color:white;">
-                              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                              <ins class="adsbygoogle"
-                                  style="display:block"
-                                  data-ad-format="fluid"
-                                  data-ad-layout-key="-fl+5i+7o-fb+k"
-                                  data-ad-client="ca-pub-4290882175389422"
-                                  data-ad-slot="9217631936"></ins>
-                              <script>
-                                  (adsbygoogle = window.adsbygoogle || []).push({});
-                              </script>
-                            </li>';
+                    echo '<li style="color:white;">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <ins class="adsbygoogle"
+                                style="display:block"
+                                data-ad-format="fluid"
+                                data-ad-layout-key="-fb+6s-3g-ed+13b"
+                                data-ad-client="ca-pub-4290882175389422"
+                                data-ad-slot="9217631936"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>          
+                          </li>';
                   elseif($x == 6):
                     echo "<li style='color:white;'>
                     <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_iklanheader/trans_makasar.jpg' alt='$p1[judul]' style='width:100%;height:285px'>
@@ -211,11 +208,11 @@
         </div>
         <div class="single_blog_sidebar berita-popular wow fadeInUp">
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- Rectangle Ads -->
+          <!-- Custom Square Ads -->
           <ins class="adsbygoogle"
-              style="display:inline-block;width:336px;height:280px"
+              style="display:inline-block;width:270px;height:270px"
               data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="6394354949"></ins>
+              data-ad-slot="1205411324"></ins>
           <script>
           (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
@@ -224,7 +221,8 @@
           <h1 style="font-weight:900;">BERITA POPULAR</h1>
           <ol class="list-berita-popular">
           <?php
-          $berita_popular = mysql_query("SELECT * FROM berita ORDER BY dibaca DESC LIMIT 10");
+          $date = date('Y-m-d');
+          $berita_popular = mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN date_sub('$date', INTERVAL 30 DAY) AND '$date' ORDER BY dibaca DESC LIMIT 10");
           $x=1;
           while($row = mysql_fetch_array($berita_popular)){
             if($x == 1){
@@ -349,7 +347,7 @@
             <h1 class="title" style="color: #4158D0;">FOTO</h1>
             <ul class="list-berita-foto">
             <?php
-            $foto = mysql_query("SELECT * FROM berita WHERE username = 'alifahmi' ORDER BY id_berita DESC LIMIT 1");
+            $foto = mysql_query("SELECT * FROM berita WHERE username = '19' ORDER BY id_berita DESC LIMIT 1");
             while($row = mysql_fetch_array($foto)){
               echo "
               <li style='position:relative;margin-bottom:2px;'>

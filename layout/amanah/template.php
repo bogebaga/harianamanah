@@ -10,7 +10,7 @@ if($automobile->isMobile()){
 error_reporting(0);
 
 $detail=mysql_query("SELECT * FROM berita,users,kategori
-			WHERE users.username=berita.username
+			WHERE users.id=berita.username
 			AND kategori.id_kategori=berita.id_kategori
 			AND judul_seo='$_GET[judul]'");
 	$d   = mysql_fetch_array($detail);
@@ -302,6 +302,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
 
   nav#logo img {
     padding:15px 0 10px;
+    margin-right: 20px;
   }
   .logo{display:inline-block;}
 </style>
@@ -339,15 +340,16 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
         </a>
         <!-- <img width="665" src="foto_banner/milad_amanah.jpg" alt="banner milad amanah"> -->
       <div style="vertical-align:middle;display:inline-block;">
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Banner Top 2 -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Banner Top Ads -->
         <ins class="adsbygoogle"
-            style="display:inline-block;width:665px;height:120px"
+            style="display:inline-block;width:640px;height:95px"
             data-ad-client="ca-pub-4290882175389422"
-            data-ad-slot="6871376407"></ins>
+            data-ad-slot="5899334806"></ins>
         <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
-        </script></div>
+        </script>
+        </div>
       </div>
     </div>
     <?php
@@ -437,7 +439,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     <div class="container">
     <ul class="menu-utama">
       <li class="kategori">
-        <span class="title-menu">KANAL</span>
+        <!-- <span class="title-menu">KANAL</span> -->
         <ul>
         <?php
           $menu_sub = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent != 0;");
@@ -447,7 +449,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
           ?>
         </ul>
       </li>
-      <li style="width:220px;">
+      <!-- <li style="width:220px;">
         <span class="title-menu">MENU&nbsp;UTAMA</span>
         <ul class="block">
           <?php
@@ -457,43 +459,45 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
           }
           ?>
         </ul>
-      </li>
-      <li style="width:200px;">
-        <span class="title-menu">SOCIAL&nbsp;HUB</span>
-        <ul class="block">
-          <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-facebook'></i>Facebook</a></li>
-          <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-twitter'></i>Twitter</a></li>
-          <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-instagram'></i>Instagram</a></li>
-          <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='margin-right:5px;' class='fa fa-fw fa-google-plus'></i>Google+</a></li>
-          <li><a href="https://www.linkedin.com/company/13466134"><i style='margin-right:5px;' class='fa fa-fw fa-linkedin'></i>LinkedIn</a></li>
-          <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='margin-right:5px;' class='fa fa-fw fa-youtube'></i>Youtube</a></li>
-        </ul>
-      </li>
-      <li style="width:260px;">
-        <ul class="block">
-          <li style="width:100%">
-            <a href="https://play.google.com/store/apps/details?id=com.koran.harian.amanah&hl=in" text-decor="none" target="_blank">
-							<img src="<?php echo SITE_URL?>images/googleplay.png" alt="android" style="max-width:100%; height:55px; margin-top:10px;">
-						</a>
-					</li>
-          <li style="width:100%;">
-            <a href="https://itunes.apple.com/id/app/harian-amanah/id1186655456?mt=8" text-decor="none" target="_blank">
-							<img src="<?php echo SITE_URL?>images/appstore.png" alt="apple" style="max-width:100%; height:55px; margin-top: 10px; ">
-						</a>
-          </li>
-        </ul>
-      </li>
+      </li> -->
     </ul>
     </div>
   </div>
   <div class="footer-menu">
     <div class="container">
       <ul class="must-know">
-        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>hal-tentang-kami">TENTANG KAMI</a></li>
-        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>hal-redaksi">REDAKSI</a></li>
-        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
-        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>hal-kontak-kami">KONTAK</a></li>
-        <li><a style="color:#EFCB03;" href="<?php echo SITE_URL?>sitemap">SITEMAP</a></li>
+        <li><a style="color:#eee;" href="<?php echo SITE_URL?>hal-tentang-kami">TENTANG KAMI</a></li>
+        <li><a style="color:#eee;" href="<?php echo SITE_URL?>hal-redaksi">REDAKSI</a></li>
+        <li><a style="color:#eee;" href="<?php echo SITE_URL?>hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
+        <li><a style="color:#eee;" href="<?php echo SITE_URL?>hal-kontak-kami">KONTAK</a></li>
+        <li><a style="color:#eee;" href="<?php echo SITE_URL?>sitemap">SITEMAP</a></li>
+      </ul>
+      <ul class="menu-utama">
+        <li style="text-align:right;">
+          <!-- <span class="title-menu">SOCIAL&nbsp;HUB</span> -->
+          <ul class="block" style="display:block;">
+            <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='' class='fa fa-fw fa-facebook'></i></a></li>
+            <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='' class='fa fa-fw fa-twitter'></i></a></li>
+            <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='' class='fa fa-fw fa-instagram'></i></a></li>
+            <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='' class='fa fa-fw fa-google-plus'></i></a></li>
+            <li><a href="https://www.linkedin.com/company/13466134"><i style='' class='fa fa-fw fa-linkedin'></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='' class='fa fa-fw fa-youtube'></i></a></li>
+          </ul>
+        </li>
+        <li>
+          <ul class="block-2">
+            <li>
+              <a href="https://play.google.com/store/apps/details?id=com.koran.harian.amanah&hl=in" text-decor="none" target="_blank" >
+                <img src="<?php echo SITE_URL?>images/googleplay.png" alt="android" style="width:140px">
+              </a>
+            </li>
+            <li>
+              <a href="https://itunes.apple.com/id/app/harian-amanah/id1186655456?mt=8" text-decor="none" target="_blank">
+                <img src="<?php echo SITE_URL?>images/appstore.png" alt="apple" style="width:140px">
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
@@ -553,7 +557,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       unfixed: function(){
         $('#ads_news').css({
           left: 17,
-          top: $('.tagline').offset().top - $(this).height() - ($('.isi-berita').height() - $(this).outerHeight(true))
+          top: $('.tagline').offset().top - $(this).height() - ($('.isi-berita').height() - $(this).height())
         });
       }
     });

@@ -54,17 +54,15 @@
         <?php echo $link_halaman;?>
       </div>
       </div>
-      <div style="float:right;width:25%;">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- Banner Side -->
-          <ins class="adsbygoogle"
-              style="display:inline-block;width:300px;height:1050px"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="9517721043"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-      </div>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Banner Side -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:300px;height:1050px"
+            data-ad-client="ca-pub-4290882175389422"
+            data-ad-slot="9517721043"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </section><!--konten end-->
       <div class="clr"></div>
       <section class="big-ads" id="remove-fixed23">

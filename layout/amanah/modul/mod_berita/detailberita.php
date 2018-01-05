@@ -1,6 +1,6 @@
 <?php
   $detail=mysql_query("SELECT * FROM berita,users,kategori,menu
-            WHERE users.username=berita.username
+            WHERE users.id=berita.username
             AND kategori.id_kategori=berita.id_kategori
             AND kategori.id_kategori=menu.id_menu
             AND judul_seo='$_GET[judul]'");
@@ -16,17 +16,6 @@
   // echo $d['judul'];
 ?>
 <div id="page-content" style="background-color: #ECECEC;margin-bottom:10px;margin-top:130px;" class="index-page container">
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Billboard Category -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4290882175389422"
-     data-ad-slot="6347211346"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<br>
 <div class="col-md-9" style="background:#fff;">
 <div id="sidebar">
         <div class="user-panel">
@@ -40,18 +29,6 @@
               <li style="display:inline-block;width:28px;"><a href="https://www.linkedin.com/company/13466134" target="_blank" style='color:#abb3b7;'><i class='fa fa-2x fa-fw fa-linkedin-square'></i></a></li>
               <li style="display:inline-block;width:28px;"><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank' style='color:#abb3b7;'><i class='fa fa-2x fa-fw fa-youtube-square'></i></a></li>
             </ul>
-          </div>
-          <div class="ads">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Billboard -->
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4290882175389422"
-                data-ad-slot="8030159807"
-                data-ad-format="auto"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
           </div>
           <div class="judul">
               <?php echo"<h1 style='color:$menu[color]'>$d[judul]</h1>"; ?>
@@ -79,34 +56,24 @@
             <?php
             echo "<div class='row'><img class='main-pic lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$d[gambar]' alt='$d[judul]'></div>";
             echo "<p class='caption-pic'>$d[keterangan_gambar]</p>";
-            ?>
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Billboard -->
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-4290882175389422"
-                data-ad-slot="8030159807"
-                data-ad-format="auto"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-            <?php
+            echo "<hr style='margin-right:-15px;margin-left:-15px;'>";
             echo "<div id='ads_news'><img src='foto_Iklan_isiberita/ems web.png' style='float:left;width:160px;height:100%;'></div>";
             echo '<div class="isi-berita">';
             $konten = explode('</p>', $d['isi_berita']);
             for($i = 0; $i < count($konten); $i++):
               if($i == 1): 
               ?>
+               <p style="text-align:center;">
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- B_Center Ads -->
                 <ins class="adsbygoogle"
-                    style="display:block; text-align:center;"
-                    data-ad-layout="in-article"
-                    data-ad-format="fluid"
+                    style="display:inline-block;width:300px;height:250px"
                     data-ad-client="ca-pub-4290882175389422"
-                    data-ad-slot="2736775994"></ins>
+                    data-ad-slot="1158479752"></ins>
                 <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
+               </p>
               <?php  
               endif;
               echo $konten[$i].'</p>';
@@ -170,15 +137,16 @@
                 ?>
                 </ul>
                 <div class='clearfix'></div>
-                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                  <!-- Ads Last Content -->
-                  <ins class="adsbygoogle"
-                      style="display:inline-block;width:336px;height:280px"
-                      data-ad-client="ca-pub-4290882175389422"
-                      data-ad-slot="1334557814"></ins>
-                  <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-                  </script>
+            </div>
+            <div style="margin-top:10px;text-align:center;">
+              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+              <!-- W_Banner Top Ads -->
+              <ins class="adsbygoogle"
+                  style="display:inline-block;width:640px;height:95px"
+                  data-ad-client="ca-pub-4290882175389422"
+              <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
             </div>
             <div class="related-news">
               <div class='kotak' style="width:100%;margin-bottom:10px;float:none">
@@ -221,7 +189,7 @@
                         <div class='deskripsi-judul'>
                           <h3 class='featured_title berita-terkini'>
                           <a href='berita-$p1[judul_seo]' style='font-size:20px;text-align:left;padding-left:0;font-weight:bold;'>$p1[judul]</a>
-                          </h3>
+                        </h3>
                           <p class='rubrik-tanggal'><a style='color:#052844;pointer:cursor;' href='kategori-$p1[id_kategori]-$p1[kategori_seo]'>".ucfirst($p1[nama_kategori])."</a> | $p1[hari], $tgl - $jam </p>
                           <p style='margin-left:15px;display:inline-block;'>".substr(strip_tags($p1['isi_berita']), 0, 160)."</p>
                         </div>
@@ -248,14 +216,24 @@
 </div>
 <div class="col-md-3" style="background:#ECECEC;padding-right:0;">
         <div class="single_blog_sidebar wow fadeInUp">
-          <ul class="featured_nav0 read-news">
+        <ul class="featured_nav0 read-news">
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- W_Right Banner Ads -->
+          <ins class="adsbygoogle"
+              style="display:inline-block;width:270px;height:350px"
+              data-ad-client="ca-pub-4290882175389422"
+              data-ad-slot="1385019502"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
         <!-- id="fixed-baca" data-spy="affix" -->
          <li style="background:#EBEBEC;">
             <h1 class="title berita-foto" style="color:<?php echo $menu['color']?>;font-weight:bold;text-align:left;margin-top:0;">POPULAR <?php echo strtoupper($d['nama_menu'])?></h1>
             <div class="single_blog_sidebar wow fadeInUp popular-rubrik <?php echo $menu['link']?>" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44); margin-bottom:10px;">
               <ol class="list-berita-popular-rubrik">
               <?php
-              $berita_popular = mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 5");
+              $date = date('Y-m-d');
+              $berita_popular = mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN date_sub('$date', INTERVAL 30 DAY) AND '$date' AND id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 5");
               $x=1;
               while($row = mysql_fetch_array($berita_popular)){
               if ($x == 1):
@@ -288,17 +266,15 @@
                     <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
                   </li>";
           }?>
-          <li>
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Banner Side -->
-            <ins class="adsbygoogle"
-                style="display:inline-block;width:300px;height:1050px"
-                data-ad-client="ca-pub-4290882175389422"
-                data-ad-slot="9517721043"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </li>
+           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- W_Right Banner Ads -->
+          <ins class="adsbygoogle"
+              style="display:inline-block;width:270px;height:350px"
+              data-ad-client="ca-pub-4290882175389422"
+              data-ad-slot="1385019502"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
         </ul>
       </div>
     </div>

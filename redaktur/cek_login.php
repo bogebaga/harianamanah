@@ -22,6 +22,7 @@ else{
         session_start();
 
         $_SESSION[namauser]     = $r[username];
+        $_SESSION[id]           = $r[ID];
         $_SESSION[namalengkap]  = $r[nama_lengkap];
         $_SESSION[daerah]       = $r[daerah];
         $_SESSION[passuser]     = $r[password];

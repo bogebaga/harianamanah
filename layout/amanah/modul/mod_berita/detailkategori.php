@@ -1,4 +1,5 @@
 <?php
+echo $_GET['id'];
   $sq = mysql_query("SELECT * from kategori where id_kategori='$_GET[id]'");
   $n = mysql_fetch_array($sq);
 ?>
@@ -32,7 +33,7 @@
             <div class="art-social-bar">
                 <!-- <span class="fl art-count">
 				<?php
-				$jmldata     = mysql_num_rows(mysql_query("SELECT * FROM berita, users WHERE users.username = berita.username AND id_kategori='$_GET[id]'"));
+				$jmldata     = mysql_num_rows(mysql_query("SELECT * FROM berita, users WHERE users.id = berita.username AND id_kategori='$_GET[id]'"));
 				echo $jmldata." ARTIKEL";
 				?>
 				</span> -->
@@ -41,7 +42,7 @@
       $p      = new Paging_kategori;
       $batas  = 15;
       $posisi = $p->cariPosisi($batas);
-      $sql   = "SELECT * FROM berita,users WHERE users.username=berita.username AND id_kategori='$_GET[id]' ORDER BY id_berita DESC LIMIT $posisi,$batas";
+      $sql   = "SELECT * FROM berita,users WHERE users.id=berita.username AND id_kategori='$_GET[id]' ORDER BY id_berita DESC LIMIT $posisi,$batas";
       $hasil = mysql_query($sql);
       $jumlah = mysql_num_rows($hasil);
       if ($jumlah > 0){

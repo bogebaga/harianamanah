@@ -19,7 +19,7 @@ if(! $automobile->isMobile()){
   error_reporting(0);
 
 	$detail=mysql_query("SELECT * FROM berita,users,kategori
-			WHERE users.username=berita.username
+			WHERE users.id=berita.username
 			AND kategori.id_kategori=berita.id_kategori
 			AND judul_seo='$_GET[judul]'");
 	$d   = mysql_fetch_array($detail);

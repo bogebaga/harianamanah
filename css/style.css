@@ -567,9 +567,9 @@ footer .footer-logo
 }
 footer > .footer-menu ul.must-know
 {
-	text-align: left;
+	text-align: right;
 	padding: 10px 0;
-	border-top: 1px solid #E8BF0A;
+	/* border-top: 1px solid #E8BF0A; */
 	/* margin-bottom: 30px; */
 }
 
@@ -580,7 +580,7 @@ footer > .footer-menu ul.must-know > li + li
 }
 footer > .footer-menu-expand
 {
-	margin-bottom: 30px;
+	/* margin-bottom: 30px; */
 	padding-top: 15px;
 }
 footer > .footer-menu-expand ul.menu-utama > li

@@ -258,9 +258,8 @@ p {
     margin-top: .5%;
     text-align: start;
     float: left;
+    margin-right: 20px;
 }
-
-
 
 @media screen and (max-width: 767px){
 .article-header .readTitle, .facebook_new span, .twitter_new span, .reddit span, .gmail_new span, .left-konten .art-social-bar, .left-konten .art-social-bar, .smallSlider .rhs, .rightarrow, .leftarrow, .card-line, .featureds {

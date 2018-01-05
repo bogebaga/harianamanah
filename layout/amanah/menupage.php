@@ -65,29 +65,16 @@
           ?>
           </ul>
         </div>
-        <div id="fixed-right" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-top:10px;margin-bottom:3px;">
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- Banner Side -->
-          <ins class="adsbygoogle"
-              style="display:inline-block;width:300px;height:1050px"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="9517721043"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-        <div id="fixed-right" class="single_blog_sidebar wow fadeInUp" style="background-color: #fff;height:auto;margin-top:10px;margin-bottom:3px;">
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- Banner Side -->
-          <ins class="adsbygoogle"
-              style="display:inline-block;width:300px;height:1050px"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="9517721043"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-
+        <br>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- B_Square Ads -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:250px;height:250px"
+             data-ad-client="ca-pub-4290882175389422"
+             data-ad-slot="4401462448"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
       <div class="col-xs-9 news-category" style="background:#fff;">
           <!-- <h1 style="color:#06375E;border-bottom:1px solid #06375E"><?php echo $nama_menu['nama_menu']?></h1> -->

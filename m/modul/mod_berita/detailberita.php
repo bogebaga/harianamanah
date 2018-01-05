@@ -9,7 +9,7 @@
 
 <?php
   $detail = mysql_query("SELECT * FROM berita, users, kategori, menu
-                          WHERE users.username=berita.username
+                          WHERE users.id=berita.username
                           AND kategori.id_kategori=berita.id_kategori
                           AND kategori.id_kategori=menu.id_menu
                           AND judul_seo='$_GET[judul]'");
@@ -55,6 +55,7 @@
   $menu = mysql_fetch_array($query);
 ?>
 <section>
+<div style="text-align:center;">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <!-- Mobile Banner -->
   <ins class="adsbygoogle"
@@ -64,6 +65,7 @@
   <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
+</div>
 </section>
 <section class="container-fluid bungkus" id="test" style="margin-bottom:0;">
     <p class="daftar-redaksi" style="margin:10px 0 0;font-size:10px;"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=$menu[link]>$menu[nama_menu]</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
@@ -99,16 +101,17 @@
       $konten = explode('</p>', $d['isi_berita']);
       for($i = 0; $i < count($konten); $i++):
         if($i == 1): ?>
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <ins class="adsbygoogle"
-              style="display:block; text-align:center;"
-              data-ad-layout="in-article"
-              data-ad-format="fluid"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="2736775994"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
+          <p style="text-align:center;">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- B_Center Ads -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:300px;height:250px"
+                data-ad-client="ca-pub-4290882175389422"
+                data-ad-slot="1158479752"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </p>
         <?php
         endif;
         echo $konten[$i]."</p>";
@@ -169,6 +172,7 @@
     </div>
 </section>
 <section>
+<div style="text-align:center;">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <!-- Center Ads -->
   <ins class="adsbygoogle"
@@ -178,6 +182,7 @@
   <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
+</div>
 </section>
 <section id='facebook-comment' class="container-fluid bungkus" style="background: transparent;">
   <h4 style='margin-top:20px;'>Tinggalkan Jejakmu disini</h4>
@@ -198,6 +203,7 @@
   ?>
 </section>
 <section>
+<div style="text-align:center;"> 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <!-- Mobile Banner -->
   <ins class="adsbygoogle"
@@ -207,6 +213,7 @@
   <script>
   (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
+</div>
 </section>
 <section class="container-fluid bungkus">
   <section class="container-fluid bungkus" style="padding:0;">
@@ -292,7 +299,8 @@
     </div>
   </section>
 </section>
-<section>
+<br>
+<section style="text-align:center;">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <!-- Mobile Banner -->
   <ins class="adsbygoogle"

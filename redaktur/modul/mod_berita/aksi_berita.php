@@ -95,7 +95,7 @@ else{
         $aktif=  $_POST[aktif];
         $utama= $_POST[utama];
         $dibaca= $_POST[dibaca];
-        $nama_user= $_SESSION[namauser];
+        $nama_user= $_SESSION[id];
         $isi_berita=   $_POST[editor];
         $deskripsi = $_POST[deskripsi];
         $ket_gam= $_POST[keterangan_gambar];
@@ -215,7 +215,7 @@ else{
         $aktif=  $_POST[aktif];
         $utama= $_POST[utama];
         $dibaca= $_POST[dibaca];
-        $nama_user= $_SESSION[namauser];
+        $nama_user= $_SESSION[id];
         $isi_berita=   $_POST[editor];
         $deskripsi = $_POST[deskripsi];
         $ket_gam= $_POST[keterangan_gambar];

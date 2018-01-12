@@ -186,12 +186,13 @@ demo-2 input#search::-webkit-input-placeholder {
 	margin: 0;
 	text-align: left;
 }
+:nth
 
 .artikle .artikle-text .berita {
 	font-size: 16px;
 	font-weight: 500;
 	text-decoration: none;
-	color: #000;
+	color: #333333;
   display: block;
   line-height: 1.4;
 }

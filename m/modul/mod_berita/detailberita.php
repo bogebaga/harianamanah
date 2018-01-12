@@ -134,6 +134,17 @@
         <a href="tag/test1">TEST!</a>
         <a href="tag/test1">TEST!</a> -->
       </div>
+      <div class="match_content">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-format="autorelaxed"
+            data-ad-client="ca-pub-4290882175389422"
+            data-ad-slot="9556530284"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
       <section style="text-align:center;margin-bottom:10px;">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- M_Banner -->
@@ -171,10 +182,9 @@
       </div> -->
     </div>
 </section>
-<section>
-<div style="text-align:center;">
+<div style="text-align:center;margin-top: 20px;">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- Center Ads -->
+  <!-- B_Center Ads -->
   <ins class="adsbygoogle"
       style="display:inline-block;width:300px;height:250px"
       data-ad-client="ca-pub-4290882175389422"
@@ -183,7 +193,6 @@
   (adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 </div>
-</section>
 <section id='facebook-comment' class="container-fluid bungkus" style="background: transparent;">
   <h4 style='margin-top:20px;'>Tinggalkan Jejakmu disini</h4>
   <div class="fb-comments" data-href="" data-width="686" data-numposts="5"></div>
@@ -205,7 +214,7 @@
 <section>
 <div style="text-align:center;"> 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- Mobile Banner -->
+  <!-- M_Banner -->
   <ins class="adsbygoogle"
       style="display:inline-block;width:320px;height:50px"
       data-ad-client="ca-pub-4290882175389422"
@@ -256,17 +265,17 @@
                   $topik = mysql_query("SELECT * FROM berita, menu WHERE tanggal BETWEEN date_sub('$date', INTERVAL 30 DAY) AND '$date' AND id_kategori = id_menu AND nama_menu = '$d[nama_menu]' ORDER BY dibaca DESC LIMIT 15");
                   while ($tp = mysql_fetch_array($topik))
                   {
-                    echo "<article class= 'artikle' style='border:0;width:200px;display:inline-block;padding-right:15px;white-space:normal;vertical-align:top;'>
-                            <div class='list-picture'>
-                              <a href='berita-$tp[judul_seo]' style='width:100%;'>
-                                <img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$tp[gambar1]' alt='$tp[judul]' style='object-fit:cover;height:115px;width:100%;'>
-                              </a>
-                            </div>
-                            <div class='artikle-text' data-target='update' kode='$tp[id_berita]' style='padding:0;margin-top:10px;width:100% !important'>
-                              <a href='berita-$tp[judul_seo]' class='berita' title='$tp[judul]' style='font-weight:500;font-size:12px;width:100% !important'>$tp[judul]</a>
-                              <br>
-                            </div>
-                          </article>";
+                  echo "<article class= 'artikle' style='border:0;width:200px;display:inline-block;padding-right:15px;white-space:normal;vertical-align:top;'>
+                          <div class='list-picture'>
+                            <a href='berita-$tp[judul_seo]' style='width:100%;'>
+                              <img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$tp[gambar1]' alt='$tp[judul]' style='object-fit:cover;height:115px;width:100%;'>
+                            </a>
+                          </div>
+                          <div class='artikle-text' data-target='update' kode='$tp[id_berita]' style='padding:0;margin-top:10px;width:100% !important'>
+                            <a href='berita-$tp[judul_seo]' class='berita' title='$tp[judul]' style='font-weight:500;font-size:12px;width:100% !important'>$tp[judul]</a>
+                            <br>
+                          </div>
+                        </article>";
                   }
                 ?>
               </section>

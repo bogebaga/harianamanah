@@ -1,7 +1,7 @@
 <?php
 	// var_export($_SERVER);
   $detail=mysql_query("SELECT * FROM berita,users,kategori,menu
-            WHERE users.username=berita.username
+            WHERE users.id=berita.username
             AND kategori.id_kategori=berita.id_kategori
             AND kategori.id_kategori=menu.id_menu
             AND judul_seo='$_GET[judul]'");

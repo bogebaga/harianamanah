@@ -32,9 +32,9 @@ if(! $automobile->isMobile()){
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta http-equiv="refresh" content="900">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="googlebot" content="noindex, nofollow" />
-  <meta name="googlebot-news" content="noindex, nofollow" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="googlebot-news" content="index, follow" />
   <meta name="title" content="<?php
   if($_GET['jn']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
@@ -303,6 +303,28 @@ if(! $automobile->isMobile()){
           <li class="linkedin"><a href="https://www.linkedin.com/company/13466134" target="_blank"><span class="fa fa-linkedin-square"></span></a></li>
           <li class="youtube"><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><span class="fa fa-youtube-square"></span></a></li>
         </ul>
+        <h2 class="caption">#PILGUB 2018</h2>
+        <ul class="nav navbar-nav container-log">
+          <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
+          <li class='tagging-pilgub'><a href='./' ></a></li>
+          <li class='tagging-pilgub'><a href='popular'>Popular</a></li>
+          <li class='tagging-pilgub'><a href='rekomendasi'>Rekomendasi</a></li>
+        </ul>
+        <h2 class="caption">#PILWALKOT 2018</h2>
+        <ul class="nav navbar-nav container-log">
+          <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
+          <li class='tagging-walkot'>
+            <a href='./' >
+              <img src="http://localhost/harianamanah/pilkada/appicicu.png" alt="appicicu - harianamanah.com">
+            </a>
+          </li>
+          <li class='tagging-walkot'>
+            <a href='popular'>
+              <img src="http://localhost/harianamanah/pilkada/diami.png" alt="diami - harianamanah.com">
+            </a>
+          </li>
+        </ul>
+        <hr>
         <h2 class="caption">HARIANAMANAH</h2>
         <ul class="nav navbar-nav">
           <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->

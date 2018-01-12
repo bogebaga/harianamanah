@@ -362,7 +362,7 @@
             <h1 class="title liputan-khusus" style="color:#cd201f;">VIDEO</h1>
             <ul class="list-liputan-video">
             <?php
-            $video = mysql_query("SELECT * FROM berita WHERE username = 'kahfi' ORDER BY id_berita DESC LIMIT 1");
+            $video = mysql_query("SELECT * FROM berita WHERE username = '20' ORDER BY id_berita DESC LIMIT 1");
             while($row = mysql_fetch_array($video)){
               echo "
                 <li style='position:relative;margin-bottom:2px;'>
@@ -389,6 +389,17 @@
                 <div class="clearfix"></div>
               </ul>
             </div>
+          </div>
+          <div style="text-align:center;">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- W_Custom Square Ads -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:270px;height:270px"
+                data-ad-client="ca-pub-4290882175389422"
+                data-ad-slot="1205411324"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
           </div>
         </div>
     </div>

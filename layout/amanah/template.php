@@ -24,9 +24,9 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   <meta http-equiv="refresh" content="900">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="author" content="harianamanah.com">
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="googlebot" content="noindex, nofollow" />
-  <meta name="googlebot-news" content="noindex, nofollow" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="googlebot-news" content="index, follow" />
   <meta name="title" content="<?php
   if($_GET['menu']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
@@ -512,9 +512,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
 <script type="text/javascript">
   $(document).ready(function()
   {
-    $(window).scroll(function(){
-      console.log(window.scrollY-$('footer').height());
-    })
     var $allVideo = $('iframe[src*="www.youtube.com"]'),
         $fluidEle = $('.isi-berita, .main-video');
 

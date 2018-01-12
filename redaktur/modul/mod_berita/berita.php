@@ -95,8 +95,8 @@ else{
 
 
 		else{
-			$tampil=mysql_query("SELECT * FROM berita
-			WHERE username='$_SESSION[namauser]'
+			$tampil=mysql_query("SELECT * FROM berita b, users u
+			WHERE b.username = u.ID AND u.username='$_SESSION[namauser]'
 			ORDER BY id_berita DESC");}
 
 

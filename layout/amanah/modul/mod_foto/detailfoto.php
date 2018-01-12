@@ -1,7 +1,7 @@
 <?php
 	// var_export($_SERVER);
   $detail=mysql_query("SELECT * FROM berita,users,kategori,menu
-            WHERE users.username=berita.username
+            WHERE users.id=berita.username
             AND kategori.id_kategori=berita.id_kategori
             AND kategori.id_kategori=menu.id_menu
             AND judul_seo='$_GET[judul]'");
@@ -71,7 +71,7 @@
               </div>
                 <ul class="featured_nav0">
                 <?php
-                $detail1=mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_berita != '$d[id_berita]' AND username = 'alifahmi' ORDER BY berita.id_berita DESC LIMIT 6, 9");
+                $detail1=mysql_query("SELECT * FROM berita, kategori WHERE berita.id_kategori = kategori.id_kategori AND berita.id_berita != '$d[id_berita]' AND username = '19' ORDER BY berita.id_berita DESC LIMIT 6, 9");
                 while($p1=mysql_fetch_array($detail1))
                 {
                   $tgl = tgl_indo($p1['tanggal']);

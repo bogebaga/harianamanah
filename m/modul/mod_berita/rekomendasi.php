@@ -48,7 +48,7 @@
 		</section>
 		<section class="daftar-artikel">
 			<?php
-			$_digit = 10;
+			$_digit = 50;
 			$x=1;
 			$artikel=mysql_query("SELECT * FROM berita, kategori WHERE kategori.id_kategori = berita.id_kategori AND berita.id_berita < '$id1' AND berita.aktif = 'Y' ORDER BY id_berita DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
@@ -61,19 +61,19 @@
 					else:
 						$add_q = ''; 
 					endif;
-					$inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = '19' $add_q ORDER BY b.id_berita DESC LIMIT 1");
+					$inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE jenis_berita = 'foto' $add_q ORDER BY b.id_berita DESC LIMIT 1");
 					while($foto=mysql_fetch_array($inilah)):
 						echo "<article class= 'artikle' >
 						<div class='list-picture'>
-							<a href='berita-$q[judul_seo]'>
-								<img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$q[gambar1]' alt='$q[judul]' style='width:100%;height:auto;object-fit:cover;'>
+							<a href='berita-$foto[judul_seo]'>
+								<img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$foto[gambar1]' alt='$foto[judul]' style='width:100%;height:auto;object-fit:cover;'>
 							</a>
 						</div>
-						<div class='artikle-text' data-target='update' kode='$q[id_berita]' style='width:100%;padding:0;margin-top:10px;'>
-							<a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
-							<!-- <a href='#' class='link-kategori'>$q[nama_kategori]</a> -->
+						<div class='artikle-text' data-target='update' kode='$foto[id_berita]' style='width:100%;padding:0;margin-top:10px;'>
+							<a href='berita-$foto[judul_seo]' class='berita' title='$foto[judul]'>$foto[judul]</a>
+							<!-- <a href='#' class='link-kategori'>$foto[nama_kategori]</a> -->
 							<br>
-							<p class='waktu-berita'> $q[hari], $tgl - $jam </p> 
+							<p class='waktu-berita'> $foto[hari], $tgl - $jam </p> 
 						</div>
 					</article>";
 					$state = true;

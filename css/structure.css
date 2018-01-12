@@ -755,7 +755,7 @@ color: rgb(158, 158, 158);
   font-size: 12px;
   margin-top: 7px;
   margin-left: 7px;
-  color: #424242;
+  color: #333333;
 }
 .deskripsi-judul.home > p
 {
@@ -768,7 +768,7 @@ color: rgb(158, 158, 158);
 }
 .deskripsi-judul.home a
 {
-  color:#000;
+  columns: #333333;;
   text-align:left;
   padding-left:0;
   font-weight:900;
@@ -1669,8 +1669,8 @@ ol.list-berita-popular-rubrik
 }
 .popular-rubrik li a 
 {
-	float: right;
-	width: 170px;
+	float: left;
+	width: 75%;
 }
 
 .go-top {

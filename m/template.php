@@ -194,10 +194,10 @@ if(! $automobile->isMobile()){
   <link rel="stylesheet" href="<?php echo SITE_URL?>css/bootstrap.min.css" >
   <link rel="stylesheet" href="<?php echo SITE_URL?>fontawesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php echo SITE_URL?>css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo SITE_URL?>css/dream.css" type="text/css">
-  <link rel="stylesheet" href="<?php echo SITE_URL?>css/style.css" type="text/css">
-  <link rel="stylesheet" href="<?php echo SITE_URL?>css/Berita.css" type="text/css">
-  <link rel="stylesheet" href="<?php echo SITE_URL?>css/sidemenu.css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/dream.css?v=1.00" type="text/css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/style.css?v=1.00" type="text/css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/Berita.css?v=1.00" type="text/css">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/sidemenu.css?v=1.00">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   <!-- JS -->
   <script src="<?php echo SITE_URL?>js/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
@@ -306,21 +306,26 @@ if(! $automobile->isMobile()){
         <h2 class="caption">#PILGUB 2018</h2>
         <ul class="nav navbar-nav container-log">
           <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
-          <li class='tagging-pilgub'><a href='./' ></a></li>
-          <li class='tagging-pilgub'><a href='popular'>Popular</a></li>
-          <li class='tagging-pilgub'><a href='rekomendasi'>Rekomendasi</a></li>
+          <li class='tagging-pilgub'><a href='./' >
+            <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com"></a></li>
+          <li class='tagging-pilgub'><a href='popular'>  
+            <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com"></a></li>
+          <li class='tagging-pilgub'><a href='rekomendasi'>  
+            <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com"></a></li>
+          <li class='tagging-pilgub'><a href='rekomendasi'>  
+            <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com"></a></li>
         </ul>
         <h2 class="caption">#PILWALKOT 2018</h2>
         <ul class="nav navbar-nav container-log">
           <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
           <li class='tagging-walkot'>
             <a href='./' >
-              <img src="http://localhost/harianamanah/pilkada/appicicu.png" alt="appicicu - harianamanah.com">
+              <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com">
             </a>
           </li>
           <li class='tagging-walkot'>
             <a href='popular'>
-              <img src="http://localhost/harianamanah/pilkada/diami.png" alt="diami - harianamanah.com">
+              <img src="pilkada/diami.png" alt="diami - harianamanah.com">
             </a>
           </li>
         </ul>
@@ -341,7 +346,6 @@ if(! $automobile->isMobile()){
           if ($row['nama_menu']!== 'Info Alharam') {
               echo"
           <li>
-          <i class='fa fa-2x fa-fw fa-$row[icon]' style='color:#009688;width:35px;padding:0 0 0 25px'></i>
           <a href='$row[link]' class='tagging' >$row[nama_menu] </a>
           <a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='fa fa-angle-down panah6'></span></a>
           <ul class='dropdown-menu'>
@@ -364,6 +368,7 @@ if(! $automobile->isMobile()){
         </ul>
       </div>
     </header>
+    
     <section id="main">
     <?php include "content.php"; ?>
     <footer>

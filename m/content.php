@@ -4,7 +4,7 @@
     <li class='active'><a href='./'>Terkini</a></li>
     <li><a href='popular'>Popular</a></li>
     <li><a href='rekomendasi'>Rekomendasi</a></li>
-  </ul>
+	</ul>
  	<section class="container-fluid" style="background-color:white;padding:0 10px;">
 		<section class="headline row">
       <?php

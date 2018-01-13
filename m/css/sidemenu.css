@@ -104,6 +104,11 @@
     color: #009688 !important;
 }
 
+.nav li.tagging-walkot a,
+.nav li.tagging-pilgub a  {
+  padding: 0;
+}
+
 .nav li a {
     padding: 20px 30px;
 }

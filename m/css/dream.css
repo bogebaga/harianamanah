@@ -174,12 +174,6 @@ demo-2 input#search::-webkit-input-placeholder {
 	border-bottom: 1px solid #ececec;
 }
 
-.artikle .link-kategori {
-	font-size: 12px;
-	font-weight: bold;
-	color: #14afb4;
-}
-
 .artikle .artikle-text .berita p{
 	font-size: 14px;
 	font-weight: 600;
@@ -620,7 +614,8 @@ demo-2 input#search::-webkit-input-placeholder {
 	font-size: 11px;
 	font-weight: 300;
   color: #14afb4;
-  margin-bottom: 5px;
+	margin-bottom: 5px;
+	display: block;
 }
 
 .artikle .artikle-text-1 .berita p{

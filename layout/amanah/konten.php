@@ -97,7 +97,7 @@
                     else:
                       $add_q = ''; 
                     endif;
-                    $inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE username = '19' $add_q ORDER BY b.id_berita DESC LIMIT 1");
+                    $inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE jenis_berita = 'foto' $add_q ORDER BY b.id_berita DESC LIMIT 1");
                     while($foto=mysql_fetch_array($inilah)):
                       echo "<li style='color:white;background:#252831' data-berita-foto='$foto[id_berita]'>
                       <div class='deskripsi-judul home reda'>

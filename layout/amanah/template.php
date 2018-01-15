@@ -102,6 +102,27 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   }else{
   echo "http://harianamanah.com/images/amanah.jpg";
   }?>" />
+  <meta property="og:image:alt" content="<?php
+  if($_GET['jn']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
+    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['judul']):
+    echo htmlentities($d['judul']);
+  elseif($_GET['id']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
+    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'hasilcari'):
+    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'home'):
+    echo "Berita Islami Terkini - harianamanah.com";
+  elseif($_GET['module'] == 'rekomendasi'):
+    echo "Rekomendasi Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'popular'):
+    echo "Berita Popular Islami - harianamanah.com";
+  else:
+    echo "Kiblat Berita Islami - harianamanah.com";
+  endif;
+  ?>">
   <meta property="og:site_name" content="harianamanah.com" />
   <meta property="og:locale" content="id_ID" />
   <meta property="fb:app_id" content="490830364408744" />
@@ -145,21 +166,15 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   ?>" />
 
   <!-- Bootstrap Core CSS -->
-  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" type="image/png" href="<?php echo SITE_URL?>favicon.png">
   <link rel="stylesheet" href="<?php echo SITE_URL;?>css/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="<?php echo SITE_URL;?>css/structure.css">
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>owl-carousel/owl.carousel.css" >
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>owl-carousel/owl.theme.css" >
   <link rel="stylesheet" href="<?php echo SITE_URL;?>css/style.css">
   <link rel="stylesheet" href="<?php echo SITE_URL;?>css/new.css">
   <link rel="stylesheet" href="<?php echo SITE_URL;?>font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900">
-  <!-- jQuery and Modernizr-->
   <script src="<?php echo SITE_URL;?>js/jquery-2.1.1.js"></script>
-  <script src="<?php echo SITE_URL;?>js/jquery.lazy.min.js"></script>
-  <script src="<?php echo SITE_URL;?>js/jquery.lazy.plugins.min.js"></script>
-  <script src="<?php echo SITE_URL;?>js/jquery-scrolltofixed-min.js"></script>
-  <script src="<?php echo SITE_URL;?>js/bootstrap.min.js"></script>
+  
   <script type="application/ld+json">
   {
     "@context": "http://schema.org/",
@@ -197,8 +212,7 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
         "url": "http://harianamanah.com/logo/assets/pp_ff.png"
       },
       "name": "harianamanah"
-    },
-    "articleBody": "<?php echo fullbody($d['isi_berita'])?>"
+    }
   }
   </script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -207,105 +221,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
   <![endif]-->
-<style>
-#err{
-	background-image: url("images/404.jpg");
-	background-repeat: no-repeat;
-	background-size: 100% auto;
-	margin-bottom:-50px;
-	}
-
-@media(max-width:629px){
-	#err{
-	background-image: url("images/404.jpg");
-	background-repeat: no-repeat;
-	background-size: 150% auto;
-	margin-bottom:-50px;
-	}
-}
-
-	@media(max-width:476px){
-	#err{
-	background-image: url("images/404.jpg");
-	background-repeat: no-repeat;
-	background-size: 180% auto;
-	margin-bottom:-50px;
-	}
-}
-@media(max-width:421px){
-	#err{
-	background-image: url("images/404.jpg");
-	background-repeat: no-repeat;
-	background-size: 210% auto;
-	margin-bottom:-50px;
-	}
-}
-@media(max-width:373px){
-	#err{
-	background-image: url("images/404.jpg");
-	background-repeat: no-repeat;
-	background-size: 210% auto;
-	margin-bottom:-80px;
-	}
-}
-
-		#radio{
-			text-align: center;
-			position: relative;
-			width: fit-content;
-			height: fit-content;
-		}
-
-		#radio button{
-
-			color: white;
-			background: #e74c3c;
-			position: absolute;
-			left: 30px;
-			bottom: 30px;
-			font-size: 35px;
-			width: 50px;
-			height: 50px;
-			border-radius: 50px;
-			border: 1px solid transparent;
-			cursor: pointer;
-		}
-
-		#radio audio{
-			width: 100%;
-		}
-
-		#radio img {
-      width: 100%;
-      height:80px;
-    }
-
-  .row.header-row-logo-bulat
-  {
-    background-color: white;
-    box-shadow: -9px -4px 20px 0px black;
-    /* background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);     */
-  }
-  .container.nav-menu
-  {
-    background-color: #1c9fa7;
-    background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
-    background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
-    background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
-    background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
-  }
-  nav#logo{
-    position:relative;
-    top: 60px;
-    margin-bottom:35px;
-  }
-
-  nav#logo img {
-    padding:15px 0 10px;
-    margin-right: 20px;
-  }
-  .logo{display:inline-block;}
-</style>
 <?php
   include_once "heatmap.php";
   include_once "analyticstracking.php";
@@ -509,81 +424,11 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
 	</footer>
 	<!-- Footer -->
   <!-- JS -->
-<script type="text/javascript">
-  $(document).ready(function()
-  {
-    var $allVideo = $('iframe[src*="www.youtube.com"], iframe[src*="docs.google.com"]'),
-        $fluidEle = $('.isi-berita, .main-video, #row');
-
-    $allVideo.each(function(){
-      $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');
-    });
-
-    $(window).resize(function(){
-      var newWidth = $fluidEle.width();
-
-      $allVideo.each(function(){
-        var $el = $(this);
-        $el.width(newWidth).height(newWidth * $el.attr('data-aspectratio'));
-      });
-    }).resize();
-    $("#scroll-fixed").scrollToFixed({
-      marginTop: function(){
-        var marginTop = $(window).height() - $("#scroll-fixed").outerHeight(true) - 20;
-        if(marginTop >= 0) return 20;
-        return marginTop;
-        }, 
-      limit: function(){
-        return $('footer').offset().top - $('#scroll-fixed').outerHeight(true) - 100;
-      },
-      unfixed: function(){$("#scroll-fixed").css({
-        left: 0,
-        top: $('footer').offset().top - $('#scroll-fixed').outerHeight(true) - 330
-      })}
-    })
-
-    $("#ads_news").scrollToFixed({
-      marginTop: 60,
-      limit: function(){
-        return $('.tagline').offset().top - $(this).height();
-      },
-      fixed: function(){
-        $('#ads_news').css('width', 'auto');
-        $('#ads_news').next().css('float', 'left');
-      },
-      unfixed: function(){
-        $('#ads_news').css({
-          left: 17,
-          top: $('.tagline').offset().top - $(this).height() - ($('.isi-berita').height() - $(this).height())
-        });
-      }
-    });
-    $('.lazy').lazy();
-    $(window).bind('scroll',function()
-    {
-      if ($(this).scrollTop()>900){
-        $("#b-top").fadeIn();
-        } else {
-        $("#b-top").fadeOut(500);
-      }
-    });
-    $("#b-top").click(function(){
-      $("html,body").animate({scrollTop:0},1000);
-      return false;
-    });
-    $(".main-menu").hover(function(){
-      $(this).find('.menu-show').stop(true, true).delay(200).fadeIn(500);}, 
-      function(){$(this).find('.menu-show').stop(true, true).delay(200).fadeOut(500);}
-    );
-    $('.go-top').click(function(event) {
-      event.preventDefault();
-      $('html, body').animate({scrollTop: 0}, 300);
-    });
-  });
-  $(".flex-container .item-flex:first-child").addClass('grid-thumb-big');
-  $(".flex-container .item-flex + .item-flex").addClass('grid-thumb-medium');
-  $(".item:first, li[data-target='#carousel-example-generic']:first").addClass('active');
-  $("#carousel-example-generic").carousel({interval: 3000});
-  </script>
+  <!-- jQuery and Modernizr-->
+  <script src="<?php echo SITE_URL;?>js/bootstrap.min.js"></script>
+  <script src="<?php echo SITE_URL;?>js/jquery.lazy.min.js"></script>
+  <script src="<?php echo SITE_URL;?>js/jquery.lazy.plugins.min.js"></script>
+  <script src="<?php echo SITE_URL;?>js/jquery-scrolltofixed-min.js"></script>
+  <script src="<?php echo SITE_URL;?>js/ha.js"></script>
 </body>
 </html>

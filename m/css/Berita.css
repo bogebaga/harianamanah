@@ -187,7 +187,7 @@ a.social-share.fa-paper-plane{
 a.social-share.fa-commenting-o{
   background: #00BF8F;
 }
-.box-header {margin-top: 15px;}
+.box-header {margin: 15px -10px 0;}
 .big-close:hover::before, .big-close:hover::after
 {
   background: #fff;
@@ -786,4 +786,31 @@ footer .menu-footer a {
 .baca-juga-berita li:last-child
 {
 	border: none;
+}
+
+.bungkus{
+	padding-top:0;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	background-color:white;
+}
+
+.bungkus.nav-nex-pre {
+	padding:0;
+}
+
+.bungkus.nav-nex-pre .berita-next {text-align:right;}
+.bungkus.nav-nex-pre .berita-next span {right:10px;}
+.bungkus.nav-nex-pre span {position:absolute;display:block;color:#19A2AC;font-size:22px;bottom:10px;}
+.bungkus.nav-nex-pre a:first-child {border-right:1px solid rgba(0, 0, 0, 0.2);}
+.bungkus.nav-nex-pre a {
+	width:50%;
+	padding:10px 10px 40px;
+	float:left;
+	font-size:17px;
+	color:#333;
+	font-weight:300;
+	min-height:195px;
+	position:relative;
 }

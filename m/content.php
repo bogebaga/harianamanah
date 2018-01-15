@@ -4,30 +4,39 @@
     <li class='active'><a href='./'>Terkini</a></li>
     <li><a href='popular'>Popular</a></li>
     <li><a href='rekomendasi'>Rekomendasi</a></li>
-	</ul>
-	<a href="lombamewarnaiislami">
-		<img src="img_lomba/Banner Mewarnai.jpg" alt="Lomba Mewarnai Islami - harianamanah.com" style="width:100%;">
-	</a>
+  </ul>
+  <a href="lombamewarnaiislami">
+    <img src="img_lomba/Proposal Lomba Mewarnai.jpg" alt="Lomba Mewarnai Islami - harianamanah.com" style="width:100%;margin-bottom:5px;">
+  </a>
  	<section class="container-fluid" style="background-color:white;padding:0 10px;">
-		<section class="headline row">
-      <?php
-				$terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY id_berita DESC LIMIT 1");
-				while($t=mysql_fetch_array($terkini)){
-          $tgl = tgl_indo($t["tanggal"]);
-          $jam = trans_jam($t["jam"]);
-          $id = $t['id_berita'];
-			 echo"
-			 <div id='owl-demo' class='owl-carousel owl-theme'>
-			  	<div class='item' style='position:relative;'>
-			  		<img class='lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='height:285px;object-fit:cover;'>
-            <span class='judul-berita-utama'>
-              <div class='caption-dt-jd'>
-                <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
-                <span class='tanggal-release home'>$t[hari], $tgl - $jam</span>
-              </div>
-            </span>
-			  	</div>
-        </div>"; }?>
+		<section class="headline">
+		<div id='home-carousel' class='carousel slide' data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#home-carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#home-carousel" data-slide-to="1"></li>
+				<li data-target="#home-carousel" data-slide-to="2"></li>
+				<!-- <li data-target="#home-carousel" data-slide-to="3"></li> -->
+				<!-- <li data-target="#home-carousel" data-slide-to="4"></li> -->
+			</ol>
+      <div class="carousel-inner"> 
+				<?php
+					$terkini=mysql_query("SELECT * FROM berita WHERE headline='Y' ORDER BY id_berita DESC LIMIT 3");
+					while($t=mysql_fetch_array($terkini)){
+						$tgl = tgl_indo($t["tanggal"]);
+						$jam = trans_jam($t["jam"]);
+						$id = $t['id_berita'];
+				echo"
+						<div class='item'>
+							<img class='lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:100%;height:285px;object-fit:cover;'>
+							<span class='judul-berita-utama'>
+								<div class='caption-dt-jd'>
+									<h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
+									<span class='tanggal-release home'>$t[hari], $tgl - $jam</span>
+								</div>
+							</span>
+						</div>"; }?>
+			</div>
+			</div>
 		</section>
 		<section>
 			<h4 style="color:#00a0a5;">TOPIK KHUSUS</h4>
@@ -59,12 +68,12 @@
 			{
 				$tgl = tgl_indo($q['tanggal']);
 				$jam = trans_jam($q['jam']);
-			
+
 				if($x%5 == 0):
 					if($state):
 						$add_q = "AND id_berita < '$test'";
 					else:
-						$add_q = ''; 
+						$add_q = '';
 					endif;
 					$inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE jenis_berita = 'foto' $add_q ORDER BY b.id_berita DESC LIMIT 1");
 					while($foto=mysql_fetch_array($inilah)):
@@ -78,7 +87,7 @@
 							<a href='berita-$foto[judul_seo]' class='berita' title='$foto[judul]'>$foto[judul]</a>
 							<!-- <a href='#' class='link-kategori'>$foto[nama_kategori]</a> -->
 							<br>
-							<p class='waktu-berita'> $foto[hari], $tgl - $jam </p> 
+							<p class='waktu-berita'> $foto[hari], $tgl - $jam </p>
 						</div>
 					</article>";
 					$state = true;
@@ -105,7 +114,7 @@
 							}
 						?>
 					</section> <?php
-				elseif($x == '4' || $x=='8'|| $x == '13' || $x=='17'):
+				elseif($x == '6' || $x=='11'|| $x == '17' || $x=='21'):
 					echo '<article class="artikle">
 						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 						<ins class="adsbygoogle"
@@ -118,7 +127,7 @@
 								(adsbygoogle = window.adsbygoogle || []).push({});
 						</script>
 					</article>';
-				else:
+        else:
 					echo "<article class= 'artikle' >
 									<div class='list-picture'>
 										<a href='berita-$q[judul_seo]'>
@@ -129,7 +138,7 @@
 										<a href='berita-$q[judul_seo]' class='berita' title='$q[judul]'>$q[judul]</a>
 										<!-- <a href='#' class='link-kategori'>$q[nama_kategori]</a> -->
 										<br>
-										<p class='waktu-berita'> $q[hari], $tgl - $jam </p> 
+										<p class='waktu-berita'> $q[hari], $tgl - $jam </p>
 									</div>
 								</article>";
 				endif;
@@ -137,10 +146,10 @@
 			}
 		?>
 		</section>
-		
+
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">
-			<center><img src="assets/loading.gif" width="100px"></center>
+			<center><i class="fa fa-4x fa-spin fa-circle-o-notch" style="color:#1c9fa7;margin:10px 0;"></i></center>
 		</div>
 		</section>
 <script>
@@ -169,7 +178,7 @@
 						success: function(result)
 						{
 							if(result)
-							{	
+							{
 								$('#daftar-artikel').append(result);
 								$('.lazy').lazy();
 								loadMore = true;
@@ -205,6 +214,10 @@
 		include 'modul/mod_berita/detailfoto.php';
 	elseif ($_GET['module']=='halaman-statis')
 		include 'modul/mod_berita/halaman-statis.php';
-	elseif ($_GET['module']=='warnaislam')
-		include 'modul/mod_berita/warnaislami.php';
+  elseif ($_GET['module']=='warnaislam')
+  	include 'modul/mod_berita/warnaislami.php';
+  elseif ($_GET['module']=='pilkd')
+  	include 'modul/mod_berita/pilkd.php';
+  elseif ($_GET['module']=='pilkd-daerah')
+  	include 'modul/mod_berita/pilkd-daerah.php';
 ?>

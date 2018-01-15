@@ -56,13 +56,23 @@ $menu = mysql_fetch_array($main_menu);
         echo "<div class='row'><img class='main-pic lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$d[gambar]' alt='$d[judul]'></div>";
         echo "<p class='caption-pic'>$d[keterangan_gambar]</p>";
         echo "<hr style='margin-right:-15px;margin-left:-15px;'>";
-        echo "<div id='ads_news'><img src='foto_Iklan_isiberita/ems web.png' style='float:left;width:160px;height:100%;'></div>";
+        echo "<div id='ads_news' style='width:160px;float:left;'><!-- <img src='foto_Iklan_isiberita/ems web.png' style='float:left;width:160px;height:100%;'> -->
+                <script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
+                <!-- W_Half_page_ads -->
+                <ins class=\"adsbygoogle\"
+                    style=\"display:inline-block;width:160px;height:600px\"
+                    data-ad-client=\"ca-pub-4290882175389422\"
+                    data-ad-slot=\"4658060817\"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+              </div>";
         echo '<div class="isi-berita">';
         $konten = explode('</p>', $d['isi_berita']);
         for($i = 0; $i < count($konten); $i++):
           if($i == 1): 
           ?>
-          <p style="text-align:center;">
+          <p id="iklan-google-p" style="text-align:center;">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- B_Center Ads -->
             <ins class="adsbygoogle"
@@ -82,7 +92,7 @@ $menu = mysql_fetch_array($main_menu);
         mysql_query("UPDATE berita SET dibaca='$d[dibaca]'+1 WHERE judul_seo='$_GET[judul]'");
         ?>
         <div class="tagline">
-        <span><i class="fa fa-"></i>TAGS</span>
+        <span>TAGS</span>
           <!-- <a href="tag/test1">test1</a>
           <a href="tag/test1">TEST!TEST!TEST!</a>
           <a href="tag/test1">TEST!</a>
@@ -123,7 +133,7 @@ $menu = mysql_fetch_array($main_menu);
                     <li style='width:48%;text-align:left;margin-top:5px;padding-bottom:0;border:0;'>
                         <img class='lazy' src='foto_statis/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar]' alt='$p1[judul]' style='width:19%;height:65px;'>
                         <div class='featured_title berita-terkait' style='display:inline-block;width:75%;vertical-align:top;'>
-                        <a href='berita-$p1[judul_seo]' style='text-align:left;padding-left:0;font-weight:100;font-size:15px;'>$p1[judul]</a>
+                        <a href='berita-$p1[judul_seo]' style='text-align:left;padding-left:0;font-weight:bold;font-size:15px;'>$p1[judul]</a>
                         </div>
                       </li>
                     ";}

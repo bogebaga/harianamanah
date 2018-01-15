@@ -1,10 +1,10 @@
 <?php if ($_GET['module']=='home'){ ?>
-	<div class="featured container" style="top:20px;" >
-		<div class="row" style="margin-top: 20px;">
+	<div class="featured container" style="top:35px;" >
+		<div class="row">
+    <a href="lombamewarnaiislami" style="margin-bottom:10px;display:block;">
+      <img src="img_lomba/Proposal Lomba Mewarnai.jpg" alt="Lomba Mewarnai Islami - harianamanah.com">
+    </a>
 			<div class="col-xs-12 col-lg-9" style='padding-left:0;padding-right:20px;'>
-          <a href="lombamewarnaiislami">
-            <img src="img_lomba/Banner Mewarnai.jpg" alt="Lomba Mewarnai Islami - harianamanah.com">
-          </a>
           <!-- Carousel -->
           <div id="carousel-example-generic" class="carousel slide carousel-fade hl-slider" data-ride="carousel" style="background-color:#000;height:auto;">
             <!-- Wrapper for slides -->
@@ -64,13 +64,13 @@
               </ol>
             </div>
           </div><!-- /carousel -->
-        <div class="col-xs-12" style="margin-top:7px;padding:0;">
+        <div class="col-xs-12" style="margin-top:7px;padding:0;text-align:center;">
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- Billboard Ads -->
+          <!-- W_Banner Bottom -->
           <ins class="adsbygoogle"
-              style="display:inline-block;width:795px;height:125px"
+              style="display:inline-block;width:728px;height:90px"
               data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="3495752496"></ins>
+              data-ad-slot="4948221961"></ins>
           <script>
           (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
@@ -89,7 +89,7 @@
               <ul id="list-terkini-middle" style="box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
               <?php
                 $x=1;
-                $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori ORDER BY b.id_berita DESC LIMIT 48");
+                $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori AND jenis_berita != 'foto' ORDER BY b.id_berita DESC LIMIT 48");
                 while($p1=mysql_fetch_array($detail1))
                 {
                   $tgl = tgl_indo($p1['tanggal']);
@@ -98,7 +98,7 @@
                     if($state):
                       $add_q = "AND id_berita < '$test'";
                     else:
-                      $add_q = ''; 
+                      $add_q = '';
                     endif;
                     $inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE jenis_berita = 'foto' $add_q ORDER BY b.id_berita DESC LIMIT 1");
                     while($foto=mysql_fetch_array($inilah)):
@@ -114,23 +114,18 @@
                     $state = true;
                     $test = $foto['id_berita'];
                     endwhile;
-                  elseif($x == 3):
+                  elseif($x == 32):
                     echo '<li style="color:white;">
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <ins class="adsbygoogle"
                                 style="display:block"
-                                data-ad-format="fluid"
-                                data-ad-layout-key="-bs+2q-4a-fy+1so"
+                                data-ad-format="autorelaxed"
                                 data-ad-client="ca-pub-4290882175389422"
-                                data-ad-slot="9217631936"></ins>
+                                data-ad-slot="9556530284"></ins>
                             <script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>      
+                            </script>
                           </li>';
-                  elseif($x == 6):
-                    echo "<li style='color:white;'>
-                    <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_iklanheader/trans_makasar.jpg' alt='$p1[judul]' style='width:100%;height:285px'>
-                    </li>";
                   elseif($x == 17):
                     echo "<ul class='featured_nav0 berita-lainnya' style='border-bottom:1px solid #ececec;'><h6 style='font-weight:900;padding-left:10px;'>REKOMENDASI</h6>";
                           $detail2=mysql_query("SELECT * FROM berita WHERE utama='Y' order by id_berita DESC limit 8");
@@ -146,14 +141,17 @@
                                 ";
                           }
                     echo "<div class='clearfix'></div></ul>";
-                  elseif($x == 23):
-                    echo "<li style='color:white;'>
-                      <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_politik/pol_2.jpg' alt='diaji - harianamanah.com' style='width:100%;height:285px'>
-                    </li>";
-                  elseif($x == 27):
-                    echo "<li style='color:white;'>
-                      <img class='lazy' src='foto_statis/base.jpg' data-src='".SITE_URL."foto_iklanheader/ulang_tahun_abu.jpg' alt='gebyar ulang tahun abutours ke 8 - harianamanah.com' style='width:100%;'>
-                    </li>";
+                  elseif($x==6 || $x==12 || $x==18 || $x==23 || $x ==31 || $x==39):
+                    echo '<li style="text-align:center;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                          <!-- W_Banner Bottom -->
+                          <ins class="adsbygoogle"
+                              style="display:inline-block;width:728px;height:90px"
+                              data-ad-client="ca-pub-4290882175389422"
+                              data-ad-slot="4948221961"></ins>
+                          <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                          </script></li>';
+                  
                   else:
                     echo "<li style='color:white;' data-berita='$p1[id_berita]'>
                     <a href='berita-$p1[judul_seo]'>
@@ -184,7 +182,16 @@
             <div class="row">
               <div id="iklan-footer" style="padding-bottom:10px;margin-top:10px;">
                 <div class="iklan">
-                  <img src="foto_pasangiklan/adhomebanner.jpg" width="96%">
+                  <!-- <img src="foto_pasangiklan/adhomebanner.jpg" width="96%"> -->
+                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <!-- W_Home_Bottom_Banner -->
+                  <ins class="adsbygoogle"
+                      style="display:inline-block;width:782px;height:200px"
+                      data-ad-client="ca-pub-4290882175389422"
+                      data-ad-slot="3687949871"></ins>
+                  <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
                 </div>
               </div>
             </div>
@@ -205,17 +212,29 @@
             } ?>
           </ul>
         </div>
-        <div class="single_blog_sidebar berita-popular wow fadeInUp">
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- Custom Square Ads -->
-          <ins class="adsbygoogle"
-              style="display:inline-block;width:270px;height:270px"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="1205411324"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
+        <div class="single_blog_sidebar wow fadeInUp" style="margin-bottom:50px;">
+        <h1 style="font-weight:bold;margin-top:0;font-size:40px;line-height:.8;background:#333;padding:5px;color:#fff;">PILKADA SULSEL 2018</h1>
+          <ul class="featured_nav2 list-topik-khusus">
+            <?php 
+              $query = mysql_query("SELECT DISTINCT kategori_pilkada FROM pilkada");
+              while($row = mysql_fetch_array($query)):
+                echo "<li style='background: transparent;'>
+                <i class='fa fa-hashtag' style='font-size:20px;margin-right:10px;color:#333'></i>
+                <a style='color:#41454f;font-size:20px;display:inline-block;width:calc(100% - 50px);font-weight:bold;vertical-align:middle;line-height:1;' href='pilkada/$row[kategori_pilkada]'>$row[kategori_pilkada]</a>
+              </li>";
+              endwhile;
+            ?>
+          </ul>
         </div>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- W_Custom Square Ads -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:270px;height:270px"
+            data-ad-client="ca-pub-4290882175389422"
+            data-ad-slot="1205411324"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         <div class="single_blog_sidebar berita-popular wow fadeInUp">
           <h1 style="font-weight:900;">BERITA POPULAR</h1>
           <ol class="list-berita-popular">
@@ -234,9 +253,18 @@
           ?>
           </ol>
         </div>
-        <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
+        <!-- <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
           <img src="foto_iklanheader/gammara.jpg" alt="iklan gammara untuk funday harianamanah.com" style="height:auto">
-        </div>
+        </div> -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- W_Right Banner Ads -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:270px;height:350px"
+            data-ad-client="ca-pub-4290882175389422"
+            data-ad-slot="1385019502"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
           <h1 class="title liputan-khusus" style="background:#EBEBEB;margin:0;margin-bottom:7px;padding:10px 0;color:#31708f; border-bottom:3px solid #31708f">ENSIKLOPEDI MUSLIM</h1>
             <ul class="list-liputan-khusus" style="background:#fff;box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
@@ -346,7 +374,7 @@
             <h1 class="title" style="color: #4158D0;">FOTO</h1>
             <ul class="list-berita-foto">
             <?php
-            $foto = mysql_query("SELECT * FROM berita WHERE username = '19' ORDER BY id_berita DESC LIMIT 1");
+            $foto = mysql_query("SELECT * FROM berita WHERE jenis_berita = 'foto' ORDER BY id_berita DESC LIMIT 1");
             while($row = mysql_fetch_array($foto)){
               echo "
               <li style='position:relative;margin-bottom:2px;'>
@@ -365,7 +393,7 @@
             <h1 class="title liputan-khusus" style="color:#cd201f;">VIDEO</h1>
             <ul class="list-liputan-video">
             <?php
-            $video = mysql_query("SELECT * FROM berita WHERE username = '20' ORDER BY id_berita DESC LIMIT 1");
+            $video = mysql_query("SELECT * FROM berita WHERE jenis_berita = 'video' ORDER BY id_berita DESC LIMIT 1");
             while($row = mysql_fetch_array($video)){
               echo "
                 <li style='position:relative;margin-bottom:2px;'>
@@ -483,7 +511,7 @@
 
   elseif ($_GET['module']=='detailtag'){
   include "$f[folder]/modul/mod_halaman/hasiltag.php";}
-  
+
   elseif ($_GET['module']=='hasilcari'){
   include "$f[folder]/modul/mod_berita/hasilcari.php";}
 
@@ -492,6 +520,12 @@
 
   elseif ($_GET['module']=='warnaislami'){
   include "$f[folder]/modul/mod_halaman/warnaislami.php";}
+
+  elseif ($_GET['module']=='pilkd-daerah'){
+  include "$f[folder]/modul/mod_halaman/pilkd-daerah.php";}
+
+  elseif ($_GET['module']=='pilkd'){
+  include "$f[folder]/modul/mod_halaman/pilkd.php";}
 
   elseif ($_GET['module']=='error'){
   include "$f[folder]/notfound.html";}

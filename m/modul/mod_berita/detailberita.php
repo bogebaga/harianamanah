@@ -14,65 +14,18 @@
                           AND kategori.id_kategori=menu.id_menu
                           AND judul_seo='$_GET[judul]'");
   $d   = mysql_fetch_array($detail);
-  $tgl = tgl_indo($d['tanggal']);
+  $tgl = tgl_indo_short($d['tanggal']);
   $jam = trans_jam($d['jam']);
-?>
-<style>
-    .bungkus{
-        padding-top:0;
-        padding-right: 10px;
-        padding-left: 10px;
-        padding-bottom: 10px;
-        background-color:white;
-    }
-
-    .bungkus.nav-nex-pre {
-      padding:0;
-    }
-
-    .bungkus.nav-nex-pre .berita-next {text-align:right;}
-    .bungkus.nav-nex-pre .berita-next span {right:10px;}
-    .bungkus.nav-nex-pre span {position:absolute;display:block;color:#19A2AC;font-size:22px;bottom:10px;}
-    .bungkus.nav-nex-pre a:first-child {border-right:1px solid rgba(0, 0, 0, 0.2);}
-    .bungkus.nav-nex-pre a {
-      width:50%;
-      padding:10px 10px 40px;
-      float:left;
-      font-size:17px;
-      color:#333;
-      font-weight:300;
-      min-height:195px;
-      position:relative;
-    }
-
-    #main{
-        background:#ececec ;
-        top:50px;
-    }
-</style>
-<?php
+ 
   $query = mysql_query("SELECT color, link, nama_menu FROM menu where id_menu = (SELECT id_parent FROM menu WHERE link = '$d[link]')");
   $menu = mysql_fetch_array($query);
 ?>
-<section>
-<div style="text-align:center;">
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <!-- M_Banner -->
-  <ins class="adsbygoogle"
-      style="display:inline-block;width:320px;height:50px"
-      data-ad-client="ca-pub-4290882175389422"
-      data-ad-slot="6679890438"></ins>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
-</section>
 <section class="container-fluid bungkus" id="test" style="margin-bottom:0;">
     <p class="daftar-redaksi" style="margin:10px 0 0;font-size:10px;"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=$menu[link]>$menu[nama_menu]</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
           </div>
     <h1 class="read_berita" style="margin-top:3px;"><?php echo $d['judul'];?></h1>
-    <span style='display:block'><?php echo ucfirst($d['username'])?></span>
-    <span class="tanggal-release"><?php echo $d['hari'].", ".$tgl." - ".$jam ?></span>
+    <!-- <span style='display:block'><?php echo ucfirst($d['username'])?></span> -->
+    <span class="tanggal-release">Oleh&nbsp;<?php echo ucfirst($d['username'])."&nbsp;pada&nbsp;".$tgl.",&nbsp;".$jam ?></span>
     <div class="social-optimize">
       <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share fa fa-facebook" target="_blank"></a>
       <a href="https://twitter.com/intent/tweet?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="social-share fa fa-twitter" target="_blank"></a>
@@ -82,7 +35,7 @@
       <a href="https://telegram.me/share/url?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>" class="social-share fa fa-paper-plane" target="_blank"></a>
       <a href="#facebook-comment" class="social-share fa fa-commenting-o"></a>
     </div>
-    <div class="box-header row">
+    <div class="box-header">
       <div class="gambar-berita" style="position:relative;margin:0 0 7px;">
         <span id="toggle-info" class="fa fa-info-circle" style="font-size:35px;position:absolute;right:10px;bottom:10px"></span>
         <img style="height:230px;object-fit:cover;" class='lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/<?php echo $d['gambar']?>' class='img-responsive' alt='<?php echo $d['judul']?>'>
@@ -284,11 +237,11 @@
             ?>
                 <div style="text-align:center;">
                   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                  <!-- Stopper Ads -->
+                  <!-- B_Center Ads -->
                   <ins class="adsbygoogle"
                       style="display:inline-block;width:300px;height:250px"
                       data-ad-client="ca-pub-4290882175389422"
-                      data-ad-slot="2144258369"></ins>
+                      data-ad-slot="1158479752"></ins>
                   <script>
                   (adsbygoogle = window.adsbygoogle || []).push({});
                   </script>

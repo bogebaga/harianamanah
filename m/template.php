@@ -124,6 +124,27 @@ if(! $automobile->isMobile()){
   }else{
   echo "http://harianamanah.com/images/amanah.jpg";
   }?>" />
+  <meta property="og:image:alt" content="<?php
+  if($_GET['jn']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
+    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['judul']):
+    echo htmlentities($d['judul']);
+  elseif($_GET['id']):
+    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
+    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'hasilcari'):
+    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'home'):
+    echo "Berita Islami Terkini - harianamanah.com";
+  elseif($_GET['module'] == 'rekomendasi'):
+    echo "Rekomendasi Berita Islami - harianamanah.com";
+  elseif($_GET['module'] == 'popular'):
+    echo "Berita Popular Islami - harianamanah.com";
+  else:
+    echo "Kiblat Berita Islami - harianamanah.com";
+  endif;
+  ?>">
   <meta property="og:site_name" content="harianamanah.com" />
   <meta property="og:locale" content="id_ID" />
   <meta property="fb:app_id" content="490830364408744" />
@@ -188,7 +209,7 @@ if(! $automobile->isMobile()){
   <meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $color['color']?>">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="<?php echo SITE_URL?>favicon.png">
   <!--Bootstrap Theme-->
   <!-- CSS -->
   <link rel="stylesheet" href="<?php echo SITE_URL?>css/bootstrap.min.css" >
@@ -197,13 +218,11 @@ if(! $automobile->isMobile()){
   <link rel="stylesheet" href="<?php echo SITE_URL?>css/dream.css?v=1.00" type="text/css">
   <link rel="stylesheet" href="<?php echo SITE_URL?>css/style.css?v=1.00" type="text/css">
   <link rel="stylesheet" href="<?php echo SITE_URL?>css/Berita.css?v=1.00" type="text/css">
-  <link rel="stylesheet" href="<?php echo SITE_URL?>css/sidemenu.css?v=1.00">
+  <link rel="stylesheet" href="<?php echo SITE_URL?>css/sidemenu.css?v=1.01">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-  <!-- JS -->
   <script src="<?php echo SITE_URL?>js/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
   <script src="<?php echo SITE_URL?>js/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="<?php echo SITE_URL?>js/jquery.lazy.min.js" type="text/javascript"></script>
-
+ 
   <script type="application/ld+json">
   {
     "@context": "http://schema.org/",
@@ -241,8 +260,7 @@ if(! $automobile->isMobile()){
         "url": "http://harianamanah.com/logo/assets/pp_ff.png"
       },
       "name": "harianamanah"
-    },
-    "articleBody": "<?php echo fullbody($d['isi_berita'])?>"
+    }
   }
   </script>
   <?php 
@@ -252,46 +270,33 @@ if(! $automobile->isMobile()){
   ?>
 </head>
 <body>
-<!-- <style>
-@-webkit-keyframes flicker{
-    0% {opacity:1;}
-    50% {opacity:0;}
-    100% {opacity:1;}
-   }
-@keyframes flicker{
-0% {opacity:1;}
-50% {opacity:0;}
-100% {opacity:1;}
-}
-</style> -->
-<?php if (empty($_SESSION['cek'])) : ?>
-  <div id="loader" >
-    <div class="page-loader">
-    <center>
-      <img src="<?php echo SITE_URL?>assets/logo/pp_ff.png" width="160px" alt="dinamis" style="margin-top:50px;">
-    </center>
+    <div style="text-align:center;">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- M_Banner -->
+      <ins class="adsbygoogle"
+          style="display:inline-block;width:320px;height:50px"
+          data-ad-client="ca-pub-4290882175389422"
+          data-ad-slot="6679890438"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
-  </div>
-  <?php 
-    $_SESSION['cek'] = $_GET['module'];
-    endif;
-    // $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
-  ?>
-    <header class="navbar navbar-default navbar-fixed-top <?php echo $color['link'];?>">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#menuSamping">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <button type="button" class="tutup"><span class="big-close"></span></button>
-                <a href="./" class="navbar-brand"><img src="<?php echo SITE_URL?>assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
-                <form method="GET" action="search" style="width:100vw;">
-          <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div><input type="text" name="query-search" placeholder="Cari berita dan peristiwa">
-                </form>
-            </div>
+    <header id="head_fixed" class="navbar navbar-default <?php echo $color['link'];?>">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#menuSamping">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <button type="button" class="tutup"><span class="big-close"></span></button>
+            <a href="<?php echo SITE_URL?>" class="navbar-brand"><img src="<?php echo SITE_URL?>assets/amanah1.png" class="img-responsive" alt="logo-amanah"></a>
+            <form method="GET" action="search" style="width:100vw;">
+              <div style="width:28px;height:28px;border-radius:50%;border:1px solid #fff;margin-top:11px;margin-right:11px;float:right;"></div>
+              <input type="text" name="query-search" placeholder="Cari berita dan peristiwa">
+            </form>
+        </div>
       </div>
       <div id="menuSamping" class="sidenav">
         <!-- <p>KATEGORI</p> -->
@@ -303,31 +308,14 @@ if(! $automobile->isMobile()){
           <li class="linkedin"><a href="https://www.linkedin.com/company/13466134" target="_blank"><span class="fa fa-linkedin-square"></span></a></li>
           <li class="youtube"><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><span class="fa fa-youtube-square"></span></a></li>
         </ul>
-        <h2 class="caption">#PILGUB 2018</h2>
+        <h1 class='caption' style="color:#fff;background-color:#333;display:inline-block;margin:0 0 10px 10px;padding:5px;">PILKADA</h1>
         <ul class="nav navbar-nav container-log">
-          <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
-          <li class='tagging-pilgub'><a href='./' >
-            <img src="pilkada/AAN-TBL.png" width='230' alt="appicicu - harianamanah.com"></a></li>
-          <li class='tagging-pilgub'><a href='popular'>  
-            <img src="pilkada/IYL-CAKKA.png" alt="appicicu - harianamanah.com"></a></li>
-          <li class='tagging-pilgub'><a href='rekomendasi'>  
-            <img src="pilkada/NA-ASS.png" alt="appicicu - harianamanah.com"></a></li>
-          <li class='tagging-pilgub'><a href='rekomendasi'>  
-            <img src="pilkada/NH-AZIS.png" alt="appicicu - harianamanah.com"></a></li>
-        </ul>
-        <h2 class="caption">#PILWALKOT 2018</h2>
-        <ul class="nav navbar-nav container-log">
-          <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
-          <li class='tagging-walkot'>
-            <a href='./' >
-              <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com">
-            </a>
-          </li>
-          <li class='tagging-walkot'>
-            <a href='popular'>
-              <img src="pilkada/diami.png" alt="diami - harianamanah.com">
-            </a>
-          </li>
+        <?php
+          $query = mysql_query("SELECT DISTINCT kategori_pilkada FROM pilkada");
+          while($gub = mysql_fetch_array($query)):
+            echo "<li><a href='".SITE_URL."pilkada/$gub[kategori_pilkada]' style='padding:10px 15px;'>#$gub[kategori_pilkada]</a></li>" ;
+          endwhile;
+        ?>
         </ul>
         <hr>
         <h2 class="caption">HARIANAMANAH</h2>
@@ -368,7 +356,6 @@ if(! $automobile->isMobile()){
         </ul>
       </div>
     </header>
-    
     <section id="main">
     <?php include "content.php"; ?>
     <footer>
@@ -405,11 +392,11 @@ if(! $automobile->isMobile()){
       </div>
     </div>
     <div class="menu-footer">
-        <a href="<?php echo SITE_URL?>hal-tentang-kami">Tentang Kami</a>
-        <a href="<?php echo SITE_URL?>hal-privacy-policy">Privasi</a>
-        <a href="<?php echo SITE_URL?>hal-kontak-kami">Kontak</a>
-        <a href="<?php echo SITE_URL?>hal-redaksi">Redaksi</a>
-      </div>
+      <a href="<?php echo SITE_URL?>hal-tentang-kami">Tentang Kami</a>
+      <a href="<?php echo SITE_URL?>hal-privacy-policy">Privasi</a>
+      <a href="<?php echo SITE_URL?>hal-kontak-kami">Kontak</a>
+      <a href="<?php echo SITE_URL?>hal-redaksi">Redaksi</a>
+    </div>
       <div class="state-one">
         <ul class="block">
           <li style="display:inline-block;">
@@ -431,58 +418,8 @@ if(! $automobile->isMobile()){
     </div>
     </footer>
 </section>
-<script type="text/javascript">
-  var $allVideo = $('iframe[src*="www.youtube.com"], iframe[src*="docs.google.com"]'), $fluidEle = $('.box, #row');
-  $allVideo.each(function(){
-    $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');
-  });
-
-  $(window).resize(function(){
-      var newWidth = $fluidEle.width();
-      $allVideo.each(function(){
-        var $el = $(this);
-        $el.width(newWidth).height(newWidth * $el.attr('data-aspectratio'));
-    });
-  }).resize();
-  
-  $('.lazy').lazy();
-  $('#loader').fadeOut('slow');
-  $(document).ready(function() {
-      //iklan and tag
-      $('.close-headline').click(function(event){
-          event.preventDefault();
-          $(this).parents('.headline-text').fadeOut('slow');
-      });
-      $('.close-iklan').click(function(event){
-          event.preventDefault();
-          $(this).parents('.iklan-fixed').fadeOut('slow');
-      });
-    // Animate the scroll to top
-    $('.go-top').click(function(event) {
-        event.preventDefault();
-        $('html, body').animate({scrollTop: 0}, 300);
-    });
-  });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        var arah = 1;
-        $(".tutup").hide();
-        $(".navbar-toggle").click(function(event) {
-            $("#menuSamping").css('width', '100%');
-            $(".navbar-toggle").hide();
-            $(".tutup").show();
-        });
-        $(".tutup").click(function(event) {
-            $("#menuSamping").css('width', '0');
-            $(".tutup").hide();
-            $(".navbar-toggle").show();
-        });
-        $("#main").click(function(event) {
-            $("#menuSamping").css('width', '0');
-            $(".navbar-toggle").show();
-            $(".tutup").hide();
-        });
-    });
-</script>
+ <!-- JS -->
+ 
+  <script src="<?php echo SITE_URL?>js/jquery.lazy.min.js" type="text/javascript"></script>
+  <script src="<?php echo SITE_URL?>js/mha.js" type="text/javascript"></script>
 </body>

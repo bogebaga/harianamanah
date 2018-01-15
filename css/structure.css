@@ -1708,3 +1708,101 @@ ol.list-berita-popular-rubrik
 	font-size: 20px;
 	text-align: center;line-height: 2;
 }
+
+#err{
+	background-image: url("images/404.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	margin-bottom:-50px;
+	}
+
+@media(max-width:629px){
+	#err{
+	background-image: url("images/404.jpg");
+	background-repeat: no-repeat;
+	background-size: 150% auto;
+	margin-bottom:-50px;
+	}
+}
+
+	@media(max-width:476px){
+	#err{
+	background-image: url("images/404.jpg");
+	background-repeat: no-repeat;
+	background-size: 180% auto;
+	margin-bottom:-50px;
+	}
+}
+@media(max-width:421px){
+	#err{
+	background-image: url("images/404.jpg");
+	background-repeat: no-repeat;
+	background-size: 210% auto;
+	margin-bottom:-50px;
+	}
+}
+@media(max-width:373px){
+	#err{
+	background-image: url("images/404.jpg");
+	background-repeat: no-repeat;
+	background-size: 210% auto;
+	margin-bottom:-80px;
+	}
+}
+
+		#radio{
+			text-align: center;
+			position: relative;
+			width: fit-content;
+			height: fit-content;
+		}
+
+		#radio button{
+
+			color: white;
+			background: #e74c3c;
+			position: absolute;
+			left: 30px;
+			bottom: 30px;
+			font-size: 35px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50px;
+			border: 1px solid transparent;
+			cursor: pointer;
+		}
+
+		#radio audio{
+			width: 100%;
+		}
+
+		#radio img {
+      width: 100%;
+      height:80px;
+    }
+
+  .row.header-row-logo-bulat
+  {
+    background-color: white;
+    box-shadow: -9px -4px 20px 0px black;
+    /* background-image: linear-gradient(90deg, #052844 1%, #073e69 100%);     */
+  }
+  .container.nav-menu
+  {
+    background-color: #1c9fa7;
+    background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+    background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+    background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+    background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+  }
+  nav#logo{
+    position:relative;
+    top: 60px;
+    margin-bottom:35px;
+  }
+
+  nav#logo img {
+    padding:15px 0 10px;
+    margin-right: 20px;
+  }
+  .logo{display:inline-block;}

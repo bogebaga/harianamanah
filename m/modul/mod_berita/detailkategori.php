@@ -65,6 +65,16 @@
 					$state = true;
 					$test = $foto['id_berita'];
 					endwhile;
+			elseif($x == 9):
+				echo '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-format="autorelaxed"
+							data-ad-client="ca-pub-4290882175389422"
+							data-ad-slot="9556530284"></ins>
+				<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>';
 				else:
 					echo "<article class= 'artikle' >
 						<div class='list-picture'>
@@ -85,7 +95,7 @@
 		</section>
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">
-			<center><img src="assets/loading.gif" width="100px"></center>
+			<center><i class="fa fa-4x fa-spin fa-circle-o-notch" style="color:#1c9fa7;"></i></center>
 		</div>
 		</section>
 		<section>

@@ -42,6 +42,8 @@
   RewriteRule ^hal-(.*)$ template.php?module=halaman-statis&judulseo=$1 [L]
   RewriteRule ^not-found$ template.php?module=notfound&id=$1 [L]
   RewriteRule ^googlec4c1ba331ed90473\.html$ googlec4c1ba331ed90473.html [L]
+  RewriteRule ^lombamewarnaiislami$ template.php?module=warnaislam [L]
+
 
   #Clean URL
   RewriteRule ^(.*)\.html$ template.php?module=rubrik&jn=$1 [L]

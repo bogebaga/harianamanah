@@ -307,13 +307,13 @@ if(! $automobile->isMobile()){
         <ul class="nav navbar-nav container-log">
           <!-- <li><a class='tagging'>BERITA UTAMA</a></li> -->
           <li class='tagging-pilgub'><a href='./' >
-            <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com"></a></li>
+            <img src="pilkada/AAN-TBL.png" width='230' alt="appicicu - harianamanah.com"></a></li>
           <li class='tagging-pilgub'><a href='popular'>  
-            <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com"></a></li>
+            <img src="pilkada/IYL-CAKKA.png" alt="appicicu - harianamanah.com"></a></li>
           <li class='tagging-pilgub'><a href='rekomendasi'>  
-            <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com"></a></li>
+            <img src="pilkada/NA-ASS.png" alt="appicicu - harianamanah.com"></a></li>
           <li class='tagging-pilgub'><a href='rekomendasi'>  
-            <img src="pilkada/appicicu.png" alt="appicicu - harianamanah.com"></a></li>
+            <img src="pilkada/NH-AZIS.png" alt="appicicu - harianamanah.com"></a></li>
         </ul>
         <h2 class="caption">#PILWALKOT 2018</h2>
         <ul class="nav navbar-nav container-log">
@@ -432,7 +432,7 @@ if(! $automobile->isMobile()){
     </footer>
 </section>
 <script type="text/javascript">
-  var $allVideo = $('iframe[src*="www.youtube.com"]'), $fluidEle = $('.box');
+  var $allVideo = $('iframe[src*="www.youtube.com"], iframe[src*="docs.google.com"]'), $fluidEle = $('.box, #row');
   $allVideo.each(function(){
     $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');
   });

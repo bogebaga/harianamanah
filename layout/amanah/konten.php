@@ -2,6 +2,9 @@
 	<div class="featured container" style="top:20px;" >
 		<div class="row" style="margin-top: 20px;">
 			<div class="col-xs-12 col-lg-9" style='padding-left:0;padding-right:20px;'>
+          <a href="lombamewarnaiislami">
+            <img src="img_lomba/Banner Mewarnai.jpg" alt="Lomba Mewarnai Islami - harianamanah.com">
+          </a>
           <!-- Carousel -->
           <div id="carousel-example-generic" class="carousel slide carousel-fade hl-slider" data-ride="carousel" style="background-color:#000;height:auto;">
             <!-- Wrapper for slides -->
@@ -486,6 +489,9 @@
 
   elseif ($_GET['module']=='halamanstatis'){
   include "$f[folder]/modul/mod_halaman/halaman.php";}
+
+  elseif ($_GET['module']=='warnaislami'){
+  include "$f[folder]/modul/mod_halaman/warnaislami.php";}
 
   elseif ($_GET['module']=='error'){
   include "$f[folder]/notfound.html";}

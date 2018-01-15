@@ -5,6 +5,9 @@
     <li><a href='popular'>Popular</a></li>
     <li><a href='rekomendasi'>Rekomendasi</a></li>
 	</ul>
+	<a href="lombamewarnaiislami">
+		<img src="img_lomba/Banner Mewarnai.jpg" alt="Lomba Mewarnai Islami - harianamanah.com" style="width:100%;">
+	</a>
  	<section class="container-fluid" style="background-color:white;padding:0 10px;">
 		<section class="headline row">
       <?php
@@ -202,4 +205,6 @@
 		include 'modul/mod_berita/detailfoto.php';
 	elseif ($_GET['module']=='halaman-statis')
 		include 'modul/mod_berita/halaman-statis.php';
+	elseif ($_GET['module']=='warnaislam')
+		include 'modul/mod_berita/warnaislami.php';
 ?>

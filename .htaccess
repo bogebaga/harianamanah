@@ -24,6 +24,7 @@
   RewriteRule ^not-found$ media.php?module=notfound&id=$1 [L]
   RewriteRule ^sitemap\.html$ media.php?module=sitemap [L]
   RewriteRule ^googlec4c1ba331ed90473\.html$ googlec4c1ba331ed90473.html [L]
+  RewriteRule ^lombamewarnaiislami$ media.php?module=warnaislami
 
   #Clean URL
   RewriteRule ^(.*)\.html$ media.php?module=katepage&menu=$1 [L]

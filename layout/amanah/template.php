@@ -512,8 +512,8 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
 <script type="text/javascript">
   $(document).ready(function()
   {
-    var $allVideo = $('iframe[src*="www.youtube.com"]'),
-        $fluidEle = $('.isi-berita, .main-video');
+    var $allVideo = $('iframe[src*="www.youtube.com"], iframe[src*="docs.google.com"]'),
+        $fluidEle = $('.isi-berita, .main-video, #row');
 
     $allVideo.each(function(){
       $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');

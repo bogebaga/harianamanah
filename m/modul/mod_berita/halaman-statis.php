@@ -19,11 +19,6 @@
   <div class="isi-halaman">
     <?php echo $row['isi_halaman'] ; ?>
   </div>
-  <!-- <div class="iklan">
-    <a href="abutours" title="AbuTours.com">
-      <img class="img-responsive" src="assets/abujie.jpg" alt="iklan">
-    </a>
-  </div> -->
 </section>
 <section style='text-align:center;'>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

@@ -5,8 +5,8 @@
   RewriteEngine on
   RewriteCond %{REQUEST_FILENAME} !-f
 
-  RewriteRule ^popular\.html$ template.php?module=popular [L]
-  RewriteRule ^rekomendasi\.html$ template.php?module=rekomendasi [L]
+  # RewriteRule ^popular\.html$ template.php?module=popular [L]
+  # RewriteRule ^rekomendasi\.html$ template.php?module=rekomendasi [L]
   RewriteRule ^foto-(.*)$ template.php?module=detailfoto&judul=$1 [L]
   RewriteRule ^kategori-(.*)\.html$ template.php?module=detailkategori&id=$1 [L]
   RewriteRule ^berita-(.*)\.html$ template.php?module=detailberita&judul=$1 [L]
@@ -43,11 +43,11 @@
   RewriteRule ^not-found$ template.php?module=notfound&id=$1 [L]
   RewriteRule ^googlec4c1ba331ed90473\.html$ googlec4c1ba331ed90473.html [L]
   RewriteRule ^lombamewarnaiislami$ template.php?module=warnaislam [L]
-  RewriteRule ^pilkada/(.*)/(.*)$ template.php?module=pilkd&daerah_pilkada=$1&calon=$2 [L]
   RewriteRule ^pilkada/(.*)$ template.php?module=pilkd-daerah&daerah_pilkada=$1 [L]
+  RewriteRule ^kategori/(.*)$ template.php?module=rubrik&jn=$1 [L]
 
   #Clean URL
-  RewriteRule ^(.*)\.html$ template.php?module=rubrik&jn=$1 [L]
+  RewriteRule ^(.*)\.html$ template.php?module=menu&jn=$1 [L]
   RewriteRule ^([^\.]+)$ $1.html [NC,L]
   RewriteRule ^index.php$ template.php?module=home [L]
 </IfModule>

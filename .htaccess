@@ -25,11 +25,11 @@
   RewriteRule ^sitemap\.html$ media.php?module=sitemap [L]
   RewriteRule ^googlec4c1ba331ed90473\.html$ googlec4c1ba331ed90473.html [L]
   RewriteRule ^lombamewarnaiislami$ media.php?module=warnaislami [L]
-  RewriteRule ^pilkada/(.*)/(.*)$ media.php?module=pilkd&daerah_pilkada=$1&calon=$2 [L]
-  RewriteRule ^pilkada/(.*)?$ media.php?module=pilkd-daerah&daerah_pilkada=$1 [L]
+  RewriteRule ^pilkada/(.*)$ media.php?module=pilkd-daerah&daerah_pilkada=$1 [L]
+  RewriteRule ^kategori/(.*)$ media.php?module=katepage&menu=$1 [L]
 
   #Clean URL
-  RewriteRule ^(.*)\.html$ media.php?module=katepage&menu=$1 [L]
+  RewriteRule ^(.*)\.html$ media.php?module=test&menu=$1 [L]
   RewriteRule ^([^\.]+)$ $1.html [NC,L]
   RewriteRule ^index.php$ media.php?module=home [L]
 </IfModule>

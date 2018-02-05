@@ -2,7 +2,7 @@
 	<div class="featured container" style="top:35px;" >
 		<div class="row">
     <a href="lombamewarnaiislami" style="margin-bottom:10px;display:block;">
-      <img src="img_lomba/Proposal Lomba Mewarnai.jpg" alt="Lomba Mewarnai Islami - harianamanah.com">
+      <img src="img_lomba/Proposal Lomba Mewarnai.jpg" alt="Lomba Mewarnai Islami - harianamanah.com" style="width:100%;">
     </a>
 			<div class="col-xs-12 col-lg-9" style='padding-left:0;padding-right:20px;'>
           <!-- Carousel -->
@@ -240,22 +240,24 @@
           <ol class="list-berita-popular">
           <?php
           $date = date('Y-m-d');
-          $berita_popular = mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN date_sub('$date', INTERVAL 7 DAY) AND '$date' ORDER BY dibaca DESC LIMIT 10");
+          $berita_popular = mysql_query("SELECT judul,judul_seo, nama_menu, link FROM berita, menu WHERE id_menu = id_kategori AND tanggal BETWEEN date_sub('$date', INTERVAL 7 DAY) AND '$date' ORDER BY dibaca DESC LIMIT 10");
           $x=1;
           while($row = mysql_fetch_array($berita_popular)){
             if($x == 1){
-              echo "<img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:auto;'><li><a style='float:right;width:calc(100% - 65px)' href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a><div class='clearfix'></div></li>";
+              echo "<img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:auto;'><li>
+              <a href='$row[link]' style='float:right;width:calc(100% - 65px);text-transform:uppercase;color:#35a0a4;font-size:11px;margin-bottom:5px;'>$row[nama_menu]</a>
+              <a style='float:right;width:calc(100% - 65px)' href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a><div class='clearfix'></div></li>";
             }else{
-              echo "<li><a style='float:right;width:calc(100% - 65px)' href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a><div class='clearfix'></div></li>";
+              echo "<li>
+                <a href='$row[link]' style='float:right;width:calc(100% - 65px);text-transform:uppercase;color:#35a0a4;font-size:11px;margin-bottom:5px;'>$row[nama_menu]</a>
+                <a style='float:right;width:calc(100% - 65px)' href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a><div class='clearfix'></div>
+              </li>";
             }
             $x++;
           }
           ?>
           </ol>
         </div>
-        <!-- <div class="single_blog_sidebar wow fadeInUp" style="background-color: #ebebeb;height:auto;margin-bottom:10px;">
-          <img src="foto_iklanheader/gammara.jpg" alt="iklan gammara untuk funday harianamanah.com" style="height:auto">
-        </div> -->
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- W_Right Banner Ads -->
         <ins class="adsbygoogle"

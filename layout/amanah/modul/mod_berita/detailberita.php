@@ -19,7 +19,7 @@ $menu = mysql_fetch_array($main_menu);
     <div id="sidebar">
       <div class="user-panel">
         <div class="info">
-          <p class="daftar-redaksi"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".lcfirst($menu['link']).">".$menu['nama_menu']."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
+          <p class="daftar-redaksi"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=".SITE_URL.'kategori/'.lcfirst($menu['link']).">".$menu['nama_menu']."</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
           <ul class="block-top" style="width:auto;float:right;">
             <li style="display:inline-block;width:28px;"><a href="https://www.facebook.com/harianamanah/" target="_blank" style='color:#abb3b7;'><i class='fa fa-2x fa-fw fa-facebook-official'></i></a></li>
             <li style="display:inline-block;width:28px;"><a href="https://twitter.com/harianamanah" target="_blank" style='color:#abb3b7;'><i class='fa fa-2x fa-fw fa-twitter-square'></i></a></li>
@@ -86,17 +86,36 @@ $menu = mysql_fetch_array($main_menu);
           <?php  
           endif;
           echo $konten[$i].'</p>';
-        endfor;
+        endfor;?>
+        <table>
+          <tr><td colspan="1">Laporan</td><td width="25px" align="center">:</td><td><?= ucfirst($d['reporter'])?></td></tr>
+          <tr><td colspan="1">Editor</td><td width="25px" align="center">:</td><td><?= ucfirst($d['username'])?></td></tr>
+        </table>
+        <div class="sosial">
+          <ul class="list-inline" style="text-align:left;;margin:50px 0 20px 0;">
+            <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 1.67;font-size:28px;" href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
+            <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 1.67;font-size:28px;" href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
+            <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 1.67;font-size:28px;" href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
+            <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 1.67;font-size:28px;" href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
+          </ul>
+        </div>
+        <?php
         echo '</div>';
         echo "<div class='clearfix'></div>";
         mysql_query("UPDATE berita SET dibaca='$d[dibaca]'+1 WHERE judul_seo='$_GET[judul]'");
         ?>
         <div class="tagline">
         <span>TAGS</span>
-          <!-- <a href="tag/test1">test1</a>
-          <a href="tag/test1">TEST!TEST!TEST!</a>
-          <a href="tag/test1">TEST!</a>
-          <a href="tag/test1">test1TEST!TEST!</a> -->
+          <?php
+            echo "<a href=".SITE_URL.'kategori/'.lcfirst($menu['link']).">".$menu['nama_menu']."</a><a href='$d[link]'>$d[nama_kategori]</a>";
+            if($d['tag'] != ''):
+              $array = explode(',', $d[tag]);
+              foreach($array as $tag):
+                // echo $tag;
+                echo "<a href='tag/".seo_title($tag)."'>".ucwords($tag)."</a>";
+              endforeach;
+            endif;
+          ?>
         </div>
         <div class="match_content"> 
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -111,13 +130,13 @@ $menu = mysql_fetch_array($main_menu);
         </div>
         <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="10"></div>
         <!-- <div style="float:left;">Dibaca: <?php echo $d['dibaca']?></div> -->
-        <div class="sosial">
+        <!-- <div class="sosial">
           <ul class="list-inline" style="text-align:center;;margin:0;">
             <a style="border-radius: 100%;width: 52px;height: 52px;text-align: center;display: inline-block;line-height: 1.7;font-size:30px;" href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
             <a style="border-radius: 100%;width: 52px;height: 52px;text-align: center;display: inline-block;line-height: 1.7;font-size:30px;" href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
             <a style="border-radius: 100%;width: 52px;height: 52px;text-align: center;display: inline-block;line-height: 1.7;font-size:30px;" href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
             <a style="border-radius: 100%;width: 52px;height: 52px;text-align: center;display: inline-block;line-height: 1.7;font-size:30px;" href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
-          </ul>
+          </ul> -->
         </div>
         <div id='terkait-berita' class='kotak' style="width:100%;float:none">
           <div class="row">
@@ -153,9 +172,6 @@ $menu = mysql_fetch_array($main_menu);
         </div>
         <div class="related-news">
           <div class='kotak' style="width:100%;margin-bottom:10px;float:none">
-          <div class='row'>
-            <h6 style="display:inline-block;padding:10px 0px;text-transform:uppercase;font-weight:bold !important;text-align:left;color:#000;border-bottom:3px solid <?php echo $menu['color']?>;margin:15px;">BERITA REKOMENDASI</h6>
-          </div>
             <ul class="featured_nav0 berita-lainnya">
             <?php
             $detail2=mysql_query("SELECT * FROM berita, menu WHERE id_kategori = id_menu AND nama_menu = '$d[nama_menu]' order by id_berita DESC limit 8");
@@ -216,7 +232,6 @@ $menu = mysql_fetch_array($main_menu);
       </div>
     </div>
   </div>
-</div>
 <!-- <div class="clearfix"></div> -->
 <div class="hidden-xs col-lg-3" style="background:#ECECEC;padding-right:0;">
         <div class="single_blog_sidebar wow fadeInUp">
@@ -264,11 +279,11 @@ $menu = mysql_fetch_array($main_menu);
           while($c=mysql_fetch_array($iklantengah))
           {
             $idc2 = $c['id_pasangiklan'];
-            echo "
-                  <li>
-                    <a class='featured_img' href='$c[url]' >
-                    <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
-                  </li>";
+            // // echo "
+            //       <li>
+            //         <a class='featured_img' href='$c[url]' >
+            //         <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
+            //       </li>";
           }?>
            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <!-- W_Right Banner Ads -->

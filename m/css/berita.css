@@ -44,47 +44,13 @@ a:hover{
   white-space: nowrap;
   overflow-x: scroll;
 }
-/* .line-news
-{
-	border-bottom: 5px solid rgba(6, 55, 94, 0.8)  !important;
-}
-.line-lifestyle
-{
-	border-bottom: 5px solid rgba(0, 150, 136, 0.8) !important;
-}
-.line-ummatizen
-{
-	border-bottom: 5px solid rgba(33, 150, 243, 0.8) !important;
-}
-.line-islamic-view{
-	border-bottom: 5px solid rgba(60, 167, 117, 0.82) !important;
-}
-.line-tekno
-{
-	border-bottom: 5px solid rgba(229, 40, 125, 0.82) !important;
-}
-.line-alharam
-{
-	border-bottom: 5px solid rgba(244, 67, 54, 0.8) !important;
-}
-.line-kalam
-{
-	border-bottom: 5px solid rgba(103, 58, 183, 0.83) !important;
-} */
 .navbar.sub-rubrik li{
   display: inline-block;
   padding: 10px 17px;
   position: relative;
 }
 .navbar.sub-rubrik li.active a{ color:#EFCB17;}
-/* .navbar.sub-rubrik li.active::after{
-  content: '';
-  width: 100%;
-  position: absolute;
-  border-bottom: 5px solid #EFCB17;
-  bottom: -5px;
-  left:0;
-} */
+
 .navbar-header{
 	height: 50px;
 }
@@ -92,11 +58,12 @@ a:hover{
 .navbar-default .navbar-toggle .icon-bar{
 	background-color: white  !important;
 	border-radius: 5px !important;
-	height: 5px;
+	height: 1px;
+	width: 35px;
 }
 
 .navbar-toggle .icon-bar+.icon-bar{
-	margin-top: 7px !important;
+	margin-top: 10px !important;
 }
 
 .navbar-default .navbar-toggle:focus,
@@ -724,32 +691,27 @@ footer .menu-footer a {
 	color: black;
 }
 
-/* .gambar-berita span#toggle-info{
-  display: none;
-} */
 .gambar-berita:hover span#toggle-info{
   display: block;
 }
 
 .tagline
 {
-	margin-bottom: 20px;
-}
-.tagline > span 
-{
- display: block;	
- margin-bottom: 10px;
- font-weight: bold;
- font-size: 20px;
+	white-space: nowrap;
+	overflow-x: auto;
 }
 
 .tagline > a
 {
 	display: inline-block;
-	padding: 3px 10px;
+	padding: 5px 12px;
+	font-size: 12px;
 	border-radius: 50px;
-	background: #ebebec;
+	background: #fff;
+	color: #333;
+	margin-right: 7px;
 	margin-bottom: 7px;
+	border: 1px solid #333;
 }
 
 .baca-juga-berita

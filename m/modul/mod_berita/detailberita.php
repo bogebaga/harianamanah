@@ -21,7 +21,7 @@
   $menu = mysql_fetch_array($query);
 ?>
 <section class="container-fluid bungkus" id="test" style="margin-bottom:0;">
-    <p class="daftar-redaksi" style="margin:10px 0 0;font-size:10px;"><?php echo "<a href='/'>Home</a>&nbsp;&#8883;&nbsp;<a href=$menu[link]>$menu[nama_menu]</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
+    <p class="daftar-redaksi" style="margin:10px 0 0;font-size:10px;"><?php echo "<a href='".SITE_URL."'>Home</a>&nbsp;&#8883;&nbsp;<a href='".SITE_URL."kategori/$menu[link]'>$menu[nama_menu]</a>&nbsp;&#8883;&nbsp;<a href='$d[link]'>$d[nama_kategori]</a>"; ?></p>
           </div>
     <h1 class="read_berita" style="margin-top:3px;"><?php echo $d['judul'];?></h1>
     <!-- <span style='display:block'><?php echo ucfirst($d['username'])?></span> -->
@@ -66,6 +66,21 @@
             </script>
           </p>
         <?php
+        elseif($i == count($konten)-2): ?>
+          <div class="baca-juga-berita">
+            <b style="display:inline-block;margin-bottom:10px;border-bottom:1px solid #333;">BERITA TERKAIT</b>
+            <ul>
+                <?php
+                $detail1=mysql_query("SELECT * FROM berita WHERE username != 'alifahmi' AND id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 5");
+                while($p1=mysql_fetch_array($detail1)){
+                echo"
+                  <li>
+                    <a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a>
+                  </li>";
+                }?>
+            </ul>
+        </div>
+      <?php
         endif;
         echo $konten[$i]."</p>";
       endfor;
@@ -81,60 +96,55 @@
         <a href="https://telegram.me/share/url?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>" class="social-share big fa fa-paper-plane" target="_blank"></a>
         <a href="#facebook-comment" class="social-share big fa fa-commenting-o"></a>
       </div> 
+      <table>
+        <tr><td colspan="1">Sumber</td><td width="25px" align="center">:</td><td><?= ucfirst($d['reporter'])?></td></tr>
+        <tr><td colspan="1">Reporter</td><td width="25px" align="center">:</td><td><?= ucfirst($d['username'])?></td></tr>
+      </table>
+      <br>
+      <h5>TAGS</h5>
       <div class="tagline">
-        <span>TAGS</span>
-    <!--     <a href="tag/test1">test1</a>
-        <a href="tag/test1">TEST!</a>
-        <a href="tag/test1">TEST!</a> -->
+        <?php
+            echo "<a href='".SITE_URL."kategori/$menu[link]'>$menu[nama_menu]</a><a href='$d[link]'>$d[nama_kategori]</a>";
+            if($d[tag] != ''):
+              $array = explode(',', $d[tag]);
+              foreach($array as $tag):
+                // echo $tag;
+                echo "<a  href='tag/".seo_title($tag)."'>".ucwords($tag)."</a>";
+              endforeach;
+            endif;
+          ?>
       </div>
-      <div class="match_content">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-format="autorelaxed"
-            data-ad-client="ca-pub-4290882175389422"
-            data-ad-slot="9556530284"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-      <section style="text-align:center;margin-bottom:10px;">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- M_Banner -->
-        <ins class="adsbygoogle"
-            style="display:inline-block;width:320px;height:50px"
-            data-ad-client="ca-pub-4290882175389422"
-            data-ad-slot="6679890438"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </section>
-      </div>
-      <!-- <hr>
-      <span>Dibaca : <?php echo $d['dibaca']?></span>
-      <hr> -->
-      <div class="baca-juga">
-          <h3 style='margin-top:0;font-size:19px;'>TERKAIT</h3>
-          <ul style="list-style-type: none;">
-              <?php
-              $detail1=mysql_query("SELECT * FROM berita WHERE username != 'alifahmi' AND id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 5");
-              while($p1=mysql_fetch_array($detail1)){
-              echo"
-                <li>
-                  <img class='lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar]' alt='$p1[judul]' style='border-radius:50px;width:42px;'>
-                  <a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a>
-                </li>";
-              }?>
+  </div>
+  <!-- <hr>
+  <span>Dibaca : <?php echo $d['dibaca']?></span>
+  <hr> -->
+  <!-- <div class="baca-juga">
+    <ul style="list-style-type: none;">
+      <?php
+            $detail1=mysql_query("SELECT * FROM berita WHERE username != 'alifahmi' AND id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 5");
+            while($p1=mysql_fetch_array($detail1)){
+            echo"
+            <li>
+                <img class='lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar]' alt='$p1[judul]' style='border-radius:50px;width:42px;'>
+                <a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a>
+              </li>";
+            }?>
           </ul>
+        </div> -->
       </div>
-      </div>
-      <!-- <div class="iklan">
-          <a href="https://abutours.com/" target="_blank" title="AbuTours.com">
-              <img class="img-responsive" src="http://harianamanah.com/m/assets/abujie.jpg" alt="iklan">
-          </a>
-      </div> -->
     </div>
 </section>
+<div class="match_content">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-format="autorelaxed"
+      data-ad-client="ca-pub-4290882175389422"
+      data-ad-slot="9556530284"></ins>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 <div style="text-align:center;margin-top: 20px;">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <!-- B_Center Ads -->
@@ -150,7 +160,6 @@
   <h4 style='margin-top:20px;'>Tinggalkan Jejakmu disini</h4>
   <div class="fb-comments" data-href="" data-width="686" data-numposts="5"></div>
 </section>
-
 <section class="container-fluid bungkus nav-nex-pre" style='margin:0;border-bottom:1px solid #e0e0e0;'>
   <?php
   // echo $d['id_kategori'];
@@ -185,7 +194,7 @@
       </div>
         <ul class="list-berita-terkini" style="list-style-type: none;">
             <?php
-            $detail1=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = '$d[id_parent]' ORDER BY berita.id_berita DESC LIMIT 15");
+            $detail1=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori AND menu.id_parent = '$d[id_parent]' ORDER BY berita.id_berita DESC LIMIT 7");
             $x=1;
             while($p1=mysql_fetch_array($detail1)){
             if($x == 6):
@@ -233,7 +242,7 @@
                 ?>
               </section>
             <?php
-            elseif($x == 11): 
+            elseif($x == 7): 
             ?>
                 <div style="text-align:center;">
                   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

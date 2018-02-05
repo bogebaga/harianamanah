@@ -3,6 +3,7 @@ session_start();
 error_reporting(0);
 
 require_once 'settings.php';
+require_once 'source.php';
 //fungsi cek akses user
 function user_akses($mod,$id){
 	$link = "?module=".$mod;
@@ -66,6 +67,7 @@ else{
 	<link rel="stylesheet" href="css/zalstyle.css" />
 	<link rel="stylesheet" href="js/jQuery-tagEditor-master/jquery.tag-editor.css" />
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script type="text/javascript">
     var _BASE_URL_ = '<?=APP_URL;?>';
 	</script>
@@ -166,15 +168,40 @@ else{
   <?php include "content.php"; ?>
   </div>
 
-  <!-- <script src="js/jquery.min.js"></script> -->
   <script src="js/jquery-1.7.min.js"></script>
-  <!-- <script src="js/jquery-2.1.1.js"></script>  -->
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 	<script src="ckeditor/ckeditor.js"></script>
   <script src="js/jQuery-tagEditor-master/jquery.tag-editor.min.js"></script>
   <script src="js/jQuery-tagEditor-master/jquery.caret.min.js"></script>
   <script>
+  <?php
+    function return_bytes($val){
+      $val = trim($val);
+      $last = strtolower($val[strlen($val)-1]);
+        switch($last):
+          case 'g':
+            $val *= 1024;
+          case 'm':
+            $val *= 1024;
+          case 'k':
+            $val *= 1024;
+        endswitch;
+      return $val;
+    }
+  ?>
   jQuery(document).ready(function() {
+   $('#fupload, #grafis_upload').change(function() {
+    var file_size = $(this)[0].files[0].size;
+    if(file_size > <?= return_bytes(ini_get('upload_max_filesize'))?>){
+      // 2097152
+      alert('Ukuran File lebih besar dari <?= ini_get('upload_max_filesize')?>');
+      this.value = '';
+      return false;
+    }else{
+      return true;
+    }
+    
+  })
     $('#editberita').validate({
       rules:{
           kategori : {
@@ -192,7 +219,22 @@ else{
       }
     });
   });
-  jQuery('#tags_berita').tagEditor();
+
+  jQuery('#tags_berita').tagEditor({
+    autocomplete:{
+      delay:0,
+      position: {collision: 'flip'},
+      source: <?php source('tag_news');?>
+    },
+    placeholder: 'Tag Berita Terkait'
+  });  
+  jQuery('#topik').tagEditor({
+    autocomplete:{
+      delay:0,
+      position: {collision: 'flip'},
+      source: <?php source('topik_news');?>},
+    placeholder: 'Topik Berita Terkait'
+  });
 	CKEDITOR.replace('editor');
   </script>
   <script>window.jQuery||document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>');</script>

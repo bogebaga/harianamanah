@@ -216,7 +216,7 @@ else{
 	</div>
 	<div class='block-content'>
 
-	<form id='editberita' method=POST action='$aksi?module=berita&act=input' enctype='multipart/form-data'>
+	<form id='editberita' method=POST action='$aksi?module=berita&act=input' enctype='multipart/form-data' onSubmit='return validate();'>
 
 
 	 <p class=inline-small-label>
@@ -331,7 +331,7 @@ else{
 	
 	 <p class=inline-small-label>
 	 <label for=field4>Topik Berita</label>
-	 <input type='text' name='topik'>
+	 <input type='text' name='topik' id='topik'>
 	 </p>
 
 	 <p class=inline-small-label>
@@ -342,12 +342,14 @@ else{
 
 	 <p class=inline-small-label>
 	 <label for=field4>Gambar</label>
-	 <input type=file name='fupload' size=40 required>
+	 <input type='file' id='fupload' name='fupload' required>
+	 Perhatian: <span class style=\"color:#EA1C1C;\">Foto yang akan diupload kecil dari 512K</span>
 	 </p>
 
 	 <p class=inline-small-label>
 	 <label for=field4>Infografis</label>
-	 <input type=file name='grafis_upload' size=40 required>
+	 <input type='file' id='grafis_upload' name='grafis_upload' required>
+	 Perhatian: <span class style=\"color:#EA1C1C;\">Foto yang akan diupload kecil dari 512K</span>
 	 </p>
 
 	 <p class=inline-small-label>
@@ -394,7 +396,7 @@ else{
 
 	 <p class=inline-small-label>
 	 <label for=field4>Judul Berita</label>
-	 <input type=text name='judul' size=60 value='$r[judul]'>
+	 <input type=text name='judul' minlength='25' value='$r[judul]'>
 	 </p>
 
 	 <p class=inline-small-label>
@@ -503,7 +505,7 @@ else{
 	 
 	 <p class=inline-small-label>
 	 <label for=field4>Topik Berita</label>
-	 <input type='text' name='topik' value='$r[topik]'>
+	 <input id='topik' type='text' name='topik' value='$r[topik]'>
 	 </p>
 
 	 <p class=inline-small-label>
@@ -514,31 +516,33 @@ else{
 	 <p class=inline-small-label>
 	 <label for=field4>Gambar</label> ";
 				if ($r[gambar]!=''){
-					echo "<img src='foto_berita/$r[gambar]' width='250px'>
+					echo "<img src='../foto_berita/$r[gambar]' width='250px'>
 	 </p>";}
 
 	 echo "
 			<p class=inline-small-label>
 			<label for=field4>Ganti Gambar</label>
-			<input type=file name='fupload' size=30 >
+			<input type='file' id='fupload' name='fupload' >
+			Perhatian: <span class style=\"color:#EA1C1C;\">Foto yang akan diupload kecil dari 512K</span>
 			</p> ";
 
 	 echo "<p class=inline-small-label>
 	 <label for=field4>Infografis</label> ";
 				if ($r[gambar]!=''){
-					echo "<img src='info_grafis/$r[gambar]' width='250px'>
+					echo "<img src='../info_grafis/$r[gambar]' width='250px'>
 	 </p>";}
 				echo "
 	 <p class=inline-small-label>
 	 <label for=field4>Ganti Gambar</label>
-	 <input type=file name='grafis_upload' size=30 >
+	 <input type='file' id='grafis_upload' name='grafis_upload'>
+	 Perhatian: <span class style=\"color:#EA1C1C;\">Foto yang akan diupload kecil dari 512K</span>
 	 </p> ";
 
 				echo"
 	 <p class=inline-small-label>
 	 <label for=field4>Gambar Kecil</label> ";
 				if ($r[gambar]!=''){
-					echo "<img src='foto_small/$r[gambar1]' width='150px'>
+					echo "<img src='../foto_small/$r[gambar1]' width='150px'>
 	 </p>";}
 
 				echo"

@@ -10,16 +10,6 @@
 	height: 50px;
 }
 
-.navbar-default .navbar-toggle .icon-bar{
-	background-color: white  !important;
-	border-radius: 5px !important;
-	height: 5px;
-}
-
-.navbar-toggle .icon-bar+.icon-bar{
-	margin-top: 3px !important;
-}
-
 .navbar-default .navbar-header .navbar-toggle{
 	border-color: transparent;
 	margin-right: 10px;
@@ -30,80 +20,6 @@
 	margin-top:10px;
 }
 
-/*Div Search*/
-
-/* .demo-2{
-	width: 300px;
-	vertical-align: middle;
-	white-space: nowrap;
-	position: relative;
-}
-
-.demo-2 input#search{
-	width: 20px;
-	height: 50px;
-	border: none;
-	background: black;
-	font-size: 14pt;
-	color: #262626;
-	padding-left: 50px;
-	padding-right: 10px;
-	padding-bottom: 10px;
-	color: #fff;
-
-	z-index: 1;
-	-webkit-transition: width .55s ease;
-  	-moz-transition: width .55s ease;
-  	transition: width .55s ease;
-}
-
-demo-2 input#search::-webkit-input-placeholder {
-   color: #ffffff;
-}
-
-.demo-2 .icon{
-  position: absolute;
-  font-size: 18px;
-  top: -12%;
-  margin-left: 17px;
-  margin-top: 17px;
-  color: #4f5b66;
-}
-
-.demo-2 input#search:focus, .demo-2 input#search:active{
-    outline:none;
-    width: 100%
-}
-
- .demo-2:hover input#search{
-    outline:none;
-    width: 100%;
-
-  }
-
-  .demo-2:hover .icon{
-    color: #93a2ad;
-  } */
-
-/*-------------------END---------------------*/
-
-/*Owl Carousel*/
-#owl-demo .item{
-  position: relative;
-}
-
-#owl-demo .item img{
-	display: block;
-	width: 100%;
-	height: auto;
-	/* margin-top: 13%; */
-}
-
-#owl-demo{
-	margin-bottom: 10px;
-}
-
-#owl-demo .item .judul-berita-utama,
 .judul-berita-utama
 {
 	background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.8));
@@ -117,20 +33,18 @@ demo-2 input#search::-webkit-input-placeholder {
   bottom: 0;
 }
 
-#owl-demo .item .judul-berita-utama span,
 .judul-berita-utama span{
   color:#efcb17;
   margin: 10px 15px;
   display: inline-block;
 }
 
-#owl-demo .item .judul-berita-utama .caption-dt-jd,
 .judul-berita-utama .caption-dt-jd
 {
   position: absolute;
   bottom: 0;
 }
-#owl-demo .item .judul-berita-utama h3,
+
 .judul-berita-utama h3{
 	text-align: left;
 	margin-bottom: 0;
@@ -139,14 +53,6 @@ demo-2 input#search::-webkit-input-placeholder {
 	line-height: 1.1;
 }
 
-#owl-demo .item .judul-berita-utama p{
-	text-align: left;
-	margin: 4px 15px 0;
-	font-size: 10px;
-	color: white;
-}
-
-#owl-demo .item .judul-berita-utama h3 a,
 .judul-berita-utama h3 a{
 	color: white;
 	font-size:20px;
@@ -155,19 +61,11 @@ demo-2 input#search::-webkit-input-placeholder {
 }
 /*-------------------END---------------------*/
 
-
-/*10 Berita*/
-/*.container-fluid{
-	background: whitesmoke;
-}*/
-
 .artikle{
 	padding: 8px 0px;
-	/*margin-bottom: 10px;*/
 	background: white;
 	border-bottom: 1px solid #ececec;
 	overflow: hidden;
-	/*box-shadow: 0px 1px 5px #c8c8c8;*/
 }
 
 .artikle:last-child{
@@ -180,7 +78,6 @@ demo-2 input#search::-webkit-input-placeholder {
 	margin: 0;
 	text-align: left;
 }
-:nth
 
 .artikle .artikle-text .berita {
 	font-size: 16px;
@@ -196,15 +93,7 @@ demo-2 input#search::-webkit-input-placeholder {
 	text-transform: uppercase;
 }
 
-/* .list-picture img{
-	border-radius: 40px;
-	height: 80px;
-	float: left;
-	margin-left: 5px;
-	margin-top:5px;
-} */
 .list-picture img{
-	/* border-radius: 40px; */
 	height: 100px;
 	float: left;
 }

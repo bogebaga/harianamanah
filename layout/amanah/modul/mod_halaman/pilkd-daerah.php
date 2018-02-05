@@ -16,21 +16,12 @@
         <?php
           $query = mysql_query("SELECT * FROM pilkada WHERE kategori_pilkada = '$daerah'");
           while($mbr = mysql_fetch_array($query)):
-            echo "<a href='".SITE_URL.str_replace('/harianamanah/', '', $_SERVER['REQUEST_URI'])."/$mbr[tag_seo]'><img src='".SITE_URL."img_pilkada/$mbr[gambar_pilkada]' width='50%'></a>";
+            echo "<a href='".SITE_URL."tag/$mbr[tag_seo]'><img src='".SITE_URL."img_pilkada/$mbr[gambar_pilkada]' width='50%'></a>";
           endwhile;
         ?>
       </div>
       <div class="clearfix"></div>
     </div>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- Banner Side -->
-      <ins class="adsbygoogle"
-          style="display:inline-block;width:300px;height:1050px"
-          data-ad-client="ca-pub-4290882175389422"
-          data-ad-slot="9517721043"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
     </section><!--konten end-->
     <div class="clr"></div>
     <section class="big-ads" id="remove-fixed23">

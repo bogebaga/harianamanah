@@ -1,42 +1,33 @@
 	<!-- Content -->
-	<section>
-		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- Mobile Banner -->
-		<ins class="adsbygoogle"
-				style="display:inline-block;width:320px;height:50px"
-				data-ad-client="ca-pub-4290882175389422"
-				data-ad-slot="6679890438"></ins>
-		<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-	</section>
   <section class="container-fluid" style="background-color:white;padding:0 10px;">
 		<section class="headline row">
     <span id="id" style="display:none;"><?php echo $_GET['id']?></span>
-    <?php
-        $terkini=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori WHERE berita.headline='Y' AND berita.id_kategori = '$_GET[id]' ORDER BY id_berita DESC LIMIT 1");
-				while($t=mysql_fetch_array($terkini)){
-          $tgl = tgl_indo($t['tanggal']);
-          $jam = trans_jam($t['jam']);
-					$id1 = $t['id_berita'];
-			 echo"
-			 <div id='owl-demo' class='owl-carousel owl-theme'>
-			  	<div class='item'>
-			  		<img class='lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='Header-$t[judul]'>
-            <span class='judul-berita-utama'>
-              <div class='caption-dt-jd'>
-                <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
-                <span class='tanggal-release home'> $t[hari], $tgl - $jam</span>
-              </div>
-            </span>
-			  	</div>
-        </div>"; }?>
+		<div id='home-carousel' class='carousel slide' data-ride="carousel">
+        <div class="carousel-inner"> 
+          <?php
+            $terkini=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori WHERE berita.headline='Y' AND berita.id_kategori = '$_GET[id]' ORDER BY id_berita DESC LIMIT 1");
+            while($t=mysql_fetch_array($terkini)){
+              $tgl = tgl_indo($t["tanggal"]);
+              $jam = trans_jam($t["jam"]);
+              $id = $t['id_berita'];
+          echo"
+              <div class='item'>
+                <img class='lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='width:100%;height:285px;object-fit:cover;'>
+                <span class='judul-berita-utama'>
+                  <div class='caption-dt-jd'>
+                    <h3><a href='berita-$t[judul_seo]' title='$t[judul]'>$t[judul]</a></h3>
+                    <span class='tanggal-release home'>$t[hari], $tgl - $jam</span>
+                  </div>
+                </span>
+              </div>"; }?>
+        </div>
+			</div>
     </section>
 		<section class="daftar-artikel">
 			<?php
 			$_digit = 10;
 			$x=1;
-			$artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori WHERE berita.id_berita != '$id1' AND berita.id_kategori = '$_GET[id]' ORDER BY id_berita DESC LIMIT $_digit");
+			$artikel=mysql_query("SELECT * FROM menu JOIN (kategori JOIN berita ON kategori.id_kategori = berita.id_kategori) ON menu.nama_menu = kategori.nama_kategori WHERE berita.id_berita != '$id' AND berita.id_kategori = '$_GET[id]' ORDER BY id_berita DESC LIMIT $_digit");
 			while($q=mysql_fetch_array($artikel))
 			{
         $tgl = tgl_indo($q['tanggal']);

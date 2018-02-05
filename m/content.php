@@ -114,19 +114,18 @@
 							}
 						?>
 					</section> <?php
-				elseif($x == '6' || $x=='11'|| $x == '17' || $x=='21'):
-					echo '<article class="artikle">
-						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-						<ins class="adsbygoogle"
-								style="display:block"
-								data-ad-format="fluid"
-								data-ad-layout-key="-g8+a-1l-3c+cc"
-								data-ad-client="ca-pub-4290882175389422"
-								data-ad-slot="6517920510"></ins>
-						<script>
-								(adsbygoogle = window.adsbygoogle || []).push({});
-						</script>
-					</article>';
+						elseif($x == '6' || $x=='11'|| $x == '17' || $x=='21' || $x=='26' || $x=='31' || $x=='36' || $x=='41' || $x=='46'):
+							echo '<article class="artikle" style="text-align:center;">
+											<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+											<!-- M_Banner -->
+											<ins class="adsbygoogle"
+													style="display:inline-block;width:320px;height:50px"
+													data-ad-client="ca-pub-4290882175389422"
+													data-ad-slot="6679890438"></ins>
+											<script>
+											(adsbygoogle = window.adsbygoogle || []).push({});
+											</script>
+							</article>';
         else:
 					echo "<article class= 'artikle' >
 									<div class='list-picture'>
@@ -146,7 +145,6 @@
 			}
 		?>
 		</section>
-
 		<section id="daftar-artikel"></section>
 		<div id="more" style="display: none;">
 			<center><i class="fa fa-4x fa-spin fa-circle-o-notch" style="color:#1c9fa7;margin:10px 0;"></i></center>
@@ -190,8 +188,8 @@
 		});
 	</script>
 <?php }
-  elseif ($_GET['module']=='popular'){
-    include "modul/mod_berita/popular.php";}
+  elseif ($_GET['module']=='menu'){
+    include "modul/mod_berita/menu.php";}
   elseif ($_GET['module']=='rekomendasi'){
     include "modul/mod_berita/rekomendasi.php";}
   elseif ($_GET['module']=='detailkategori'){

@@ -1,5 +1,5 @@
-  var $allVideo = $('iframe[src*="www.youtube.com"], iframe[src*="docs.google.com"], iframe[src*="www.facebook.com"]'), 
-      $fluidEle = $('.box, #row');
+  var $allVideo = $('iframe[src*="www.youtube.com"], iframe[src*="docs.google.com"], iframe[src*="www.facebook.com"], iframe[src*="www.google.com"]'), 
+      $fluidEle = $('.box, #row, .isi-halaman');
   $allVideo.each(function(){
     $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');
   });

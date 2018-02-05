@@ -1,32 +1,39 @@
 <?php
-define ('SITE_URL', site_URL());
+  define ('SITE_URL', site_URL());
 
-$automobile = new Mobile_Detect;
-$pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
-if($automobile->isMobile()){
-  header('Location: http://m.harianamanah.com/'.$pop);
-  exit();
-}
-error_reporting(0);
+  $automobile = new Mobile_Detect;
+  $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
+  if($automobile->isMobile()){
+    header('Location: http://m.harianamanah.com/'.$pop);
+    exit();
+  }
+  error_reporting(0);
 
-$detail=mysql_query("SELECT * FROM berita,users,kategori
-			WHERE users.id=berita.username
-			AND kategori.id_kategori=berita.id_kategori
-			AND judul_seo='$_GET[judul]'");
-	$d   = mysql_fetch_array($detail);
-	$tgl = tgl_indo($d['tanggal']);
+  $detail=mysql_query("SELECT * FROM berita,users,kategori
+        WHERE users.id=berita.username
+        AND kategori.id_kategori=berita.id_kategori
+        AND judul_seo='$_GET[judul]'");
+    $d   = mysql_fetch_array($detail);
+    $tgl = tgl_indo($d['tanggal']);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" />
+  <meta http-equiv="content-language" content="In-Id">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
   <meta http-equiv="refresh" content="900">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="author" content="harianamanah.com">
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
   <meta name="googlebot-news" content="index, follow" />
+  <meta name="keywords" content>
+  <meta name="news_keywords" content>
+  <meta name="language" content="id">
+  <meta name="geo.placename" content="Indonesia">
+  <meta name="geo.country" content="id">
   <meta name="title" content="<?php
   if($_GET['menu']):
     $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[menu]'"));
@@ -123,6 +130,8 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
     echo "Kiblat Berita Islami - harianamanah.com";
   endif;
   ?>">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="315">
   <meta property="og:site_name" content="harianamanah.com" />
   <meta property="og:locale" content="id_ID" />
   <meta property="fb:app_id" content="490830364408744" />
@@ -166,14 +175,14 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   ?>" />
 
   <!-- Bootstrap Core CSS -->
-  <link rel="shortcut icon" type="image/png" href="<?php echo SITE_URL?>favicon.png">
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/bootstrap.min.css" type="text/css">
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/structure.css">
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/style.css">
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>css/new.css">
-  <link rel="stylesheet" href="<?php echo SITE_URL;?>font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
+  <link rel="shortcut icon" type="image/png" href="<?= SITE_URL?>favicon.png">
+  <link rel="stylesheet" href="<?= SITE_URL;?>css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="<?= SITE_URL;?>font-awesome-4.7.0/css/font-awesome.min.css"  type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900">
-  <script src="<?php echo SITE_URL;?>js/jquery-2.1.1.js"></script>
+  <link rel="stylesheet" href="<?= SITE_URL;?>css/structure.css?v=1.01">
+  <link rel="stylesheet" href="<?= SITE_URL;?>css/style.css?v=1.01">
+  <link rel="stylesheet" href="<?= SITE_URL;?>css/new.css?v=1.01">
+  <script src="<?= SITE_URL;?>js/jquery-2.1.1.js"></script>
   
   <script type="application/ld+json">
   {
@@ -253,7 +262,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
         <a href="/">
           <div class="logo"><img src="<?php echo SITE_URL?>images/amanah.png" width="400px" alt="Logo Amanah - harianamanah.com"></div>
         </a>
-        <!-- <img width="665" src="foto_banner/milad_amanah.jpg" alt="banner milad amanah"> -->
       <div style="vertical-align:middle;display:inline-block;">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- Banner Top Ads -->
@@ -279,38 +287,46 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       endif;
     ?>
     <div class="row">
-    <div class="container nav-menu" style="padding:0;<?php echo $color['gradient']?>">
+    <div class="container nav-menu" style="padding:0;<?= $color['gradient']?>">
       <div class="navbar-header">
         <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
       </div>
       <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0;position:relative;">
         <ul class="nav navbar-nav" style="position:relative;">
-          <?php
+        <?php
           $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY menu_order");
-          while( $row = mysql_fetch_array($result)){
-            $idp = $row['id_menu'];
-            echo "
-              <li data-caption= \"$row[link]\" class=\"main-menu\" style=\"position:static;\">
-                <a href='".SITE_URL.$row[link]."' style='color:#fff;font-size:17px;padding:13px 15px;font-weight:bold;text-transform:uppercase;' >$row[nama_menu]</a>
-                <ul class=\"menu-show sub-nav-menu ".strtolower($row[link])."\">";
-                $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = '$row[id_menu]' AND aktif = 'Ya'");
-                while($row_sub = mysql_fetch_array($sub_rubrik)){
-                echo "
-                    <li class=\"sub__rubrik\">
-                      <a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;padding:10px 0;display:inline-block;'>$row_sub[nama_menu]</a>
-                    </li>";
-                }
-                echo "</ul></li>";
-          }?>
+          while( $row = mysql_fetch_array($result)):
+        ?>
+          <li data-caption ="<?= $row['link']?>" class="main-menu" style="position:static;">
+            <a href="<?= SITE_URL.'kategori/'.$row['link']?>" style="color:#fff;font-size:17px;padding:13px 15px;font-weight:bold;text-transform:uppercase;" ><?= $row['nama_menu']?></a>
+              <ul class="menu-show sub-nav-menu <?= strtolower($row['link']) ?>">
+                <li class="sub__rubrik col-lg-3">
+                <?php
+                  $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = '$row[id_menu]' AND aktif = 'Ya'");
+                  while($row_sub = mysql_fetch_array($sub_rubrik)):
+                    echo "<a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;padding:7px 0;display:block;'>$row_sub[nama_menu]</a>";
+                  endwhile;
+                ?>
+                </li>
+                <li class="col-lg-9" style="padding-left:25px;border-left:1px solid rgba(0, 0, 0, 0.25);">
+                <?php
+                $query = mysql_query("SELECT judul, judul_seo, gambar FROM berita, menu WHERE id_kategori = id_menu AND id_parent = '$row[id_menu]' ORDER BY id_berita DESC LIMIT 8");
+                while($img_news = mysql_fetch_array($query)):
+                ?>
+                  <div class="mega_menu_img">
+                    <a href="<?= SITE_URL.'berita-'.$img_news['judul_seo'] ?>" style="display:inline-block;">
+                      <img class="lazy reset_img" src="<?= SITE_URL; ?>foto_statis/base.jpg" data-src="http://harianamanah.com/foto_berita/<?= $img_news['gambar']?>" alt="<?= $img_news['judul']?>">
+                    </a>
+                    <a class="caption" href="<?= SITE_URL.'berita-'.$img_news['judul_seo'] ?>"><?= $img_news['judul']?></a>
+                  </div>
+                <?php endwhile; ?>
+                </li>
+              </ul>
+            </li>
+        <?php endwhile;?>
         </ul>
         <ul class="sub-nav-menu sub-menu-rubrik menu-show">
         <?php
-          // $pop = array_pop(explode('/', $_SERVER['REQUEST_URI']));
-          // if($pop){
-            // $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$pop') AND aktif = 'Ya'");
-          // }else{
-          //   $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE link = '$pop') AND aktif = 'Ya'");
-          // }
           if($_GET['menu']):
             $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[menu]')");
           elseif($_GET['judul']):
@@ -319,13 +335,12 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
             $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')");
           endif;
           
-          while($row_sub = mysql_fetch_array($sub_rubrik)){
-          echo "
-            <li class=\"sub__rubrik\">
-              <a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;padding:10px 0;display:inline-block;'>$row_sub[nama_menu]</a>
-              <i>&nbsp;&nbsp;&nbsp;•</i>
-            </li>";
-          }
+          while($row_sub = mysql_fetch_array($sub_rubrik)):
+              echo "
+              <li class=\"sub__rubrik\">
+                <a href='".SITE_URL.$row_sub[link]."' style='font-size:13px;font-weight:bold;padding:10px 15px;;display:inline-block;'>$row_sub[nama_menu]</a>
+              </li>";
+          endwhile;
           echo "</ul>";
         ?>
       </div>
@@ -337,18 +352,11 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   include_once "embed.php";
   include_once "konten.php"; 
 ?>
-<!-- <div class="clearfix"></div> -->
 <footer>
   <div class="footer-logo">
     <div class="gambar-footer">
       <a href="/" class="go-top"><span class="fa fa-angle-up" aria-hidden="true" style="color:#1f2126;"></span></a>
-            <!-- <a href="#">
-                <img src="assets/pp_ff.png" width="38px">
-            </a> -->
     </div>
-    <!-- <div class="container">
-      <img src="logo/assets/pp_ff.png"  width="32px" title="Amanah" alt="logo amanah - harianamanah.com">
-    </div> -->
   </div>
   <div class="footer-menu-expand">
     <div class="container">
@@ -364,17 +372,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
           ?>
         </ul>
       </li>
-      <!-- <li style="width:220px;">
-        <span class="title-menu">MENU&nbsp;UTAMA</span>
-        <ul class="block">
-          <?php
-          $menu_parent = mysql_query("SELECT link, nama_menu FROM menu WHERE aktif='Ya' AND id_parent='0'");
-          while($row = mysql_fetch_array($menu_parent)){
-            echo "<li><a href='".SITE_URL.$row[link]."'>$row[nama_menu]</a></li>";
-          }
-          ?>
-        </ul>
-      </li> -->
     </ul>
     </div>
   </div>
@@ -389,7 +386,6 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
       </ul>
       <ul class="menu-utama">
         <li style="text-align:right;">
-          <!-- <span class="title-menu">SOCIAL&nbsp;HUB</span> -->
           <ul class="block" style="display:block;">
             <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='' class='fa fa-fw fa-facebook'></i></a></li>
             <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='' class='fa fa-fw fa-twitter'></i></a></li>
@@ -403,12 +399,12 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
           <ul class="block-2">
             <li>
               <a href="https://play.google.com/store/apps/details?id=com.koran.harian.amanah&hl=in" text-decor="none" target="_blank" >
-                <img src="<?php echo SITE_URL?>images/googleplay.png" alt="android" style="width:140px">
+                <img src="<?= SITE_URL?>images/googleplay.png" alt="android" style="width:140px">
               </a>
             </li>
             <li>
               <a href="https://itunes.apple.com/id/app/harian-amanah/id1186655456?mt=8" text-decor="none" target="_blank">
-                <img src="<?php echo SITE_URL?>images/appstore.png" alt="apple" style="width:140px">
+                <img src="<?=SITE_URL?>images/appstore.png" alt="apple" style="width:140px">
               </a>
             </li>
           </ul>
@@ -418,17 +414,17 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori
   </div>
   <div class="copy-right">
     <div class="container">
-      <p style="margin:0;">&copy;&nbsp;2017&nbsp;PT. Harian Amanah Alharam - All Rights Reserved.</p>
+      <p style="margin:0;">2015&nbsp;&#45;&nbsp;2018&nbsp;&copy;&nbsp;PT. Harian Amanah Alharam - All Rights Reserved.</p>
     </div>
   </div>
 	</footer>
 	<!-- Footer -->
   <!-- JS -->
   <!-- jQuery and Modernizr-->
-  <script src="<?php echo SITE_URL;?>js/bootstrap.min.js"></script>
-  <script src="<?php echo SITE_URL;?>js/jquery.lazy.min.js"></script>
-  <script src="<?php echo SITE_URL;?>js/jquery.lazy.plugins.min.js"></script>
-  <script src="<?php echo SITE_URL;?>js/jquery-scrolltofixed-min.js"></script>
-  <script src="<?php echo SITE_URL;?>js/ha.js"></script>
+  <script src="<?= SITE_URL; ?>js/bootstrap.min.js"></script>
+  <script src="<?= SITE_URL; ?>js/jquery.lazy.min.js"></script>
+  <script src="<?= SITE_URL; ?>js/jquery.lazy.plugins.min.js"></script>
+  <script src="<?= SITE_URL; ?>js/jquery-scrolltofixed-min.js"></script>
+  <script src="<?= SITE_URL; ?>js/ha.js?v=1.01"></script>
 </body>
 </html>

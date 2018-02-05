@@ -502,6 +502,9 @@ figure{
     padding: 10px 15px;
     background: #efefef;;
     border-radius: 7px;
+    width: 295px;
+    float: right;
+    margin-left: 15px;
 }
 
 .baca-juga-berita > p:first-child

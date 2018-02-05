@@ -214,11 +214,8 @@ else{
                     die('Unsupported File!'); //output error and exit
             }
         }
-        // if (!empty($_POST['tag_seo'])){
-        //     $tag_seo = $_POST['tag_seo'];
-        //     $tag=implode(',',$tag_seo);
-        // }
-        // $jud = mysql_escape_string($_POST[judul]);
+
+        $jud = mysql_escape_string($_POST[judul]);
         $subjud=  $_POST[sub_judul];
         $reporter=  $_POST[reporter];
         $youtube= $_POST[youtube];
@@ -237,7 +234,6 @@ else{
 
         // $judul_seo      = seo_title($_POST[judul]);
         $topik      = seo_title($_POST[sub_judul]);
-        // $topik      = 'test';
 
         if(!empty($TempSrc)){
             list($CurWidth,$CurHeight)=getimagesize($TempSrc);
@@ -271,7 +267,8 @@ else{
         }
         // Apabila gambar tidak diganti
         if (empty($ImageName)) {
-            mysql_query("UPDATE berita SET sub_judul  = '$subjud',
+            mysql_query("UPDATE berita SET judul = '$jud',
+                                    sub_judul  = '$subjud',
                                     topik = '$topik',  
                                     jenis_berita = '$jenis_berita',
                                     youtube   = '$youtube',
@@ -297,10 +294,11 @@ else{
                 @unlink('../../../foto_small/'.$r['gambar1']);
 
 
-                mysql_query("UPDATE berita SET sub_judul       = '$subjud',
-                             topik = '$topik',
-                             jenis_berita = '$jenis_berita',
-                    youtube      = '$youtube',
+                mysql_query("UPDATE berita SET judul = '$jud',
+                                sub_judul       = '$subjud',
+                                topik = '$topik',
+                                jenis_berita = '$jenis_berita',
+                                youtube      = '$youtube',
                                    id_kategori = '$kategori',
                                    daerah = '$dae',
                                    headline    = '$headline',

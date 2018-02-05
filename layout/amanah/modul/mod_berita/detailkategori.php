@@ -29,7 +29,7 @@ echo $_GET['id'];
           </script>
         </div>
         <!-- right konten start -->
-        <div class="left-konten trend" style="float:right"><!-- left konten start -->
+        <div class="left-konten trend" style="float:right;margin:0;"><!-- left konten start -->
             <div class="art-social-bar">
                 <!-- <span class="fl art-count">
 				<?php

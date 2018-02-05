@@ -16,11 +16,11 @@
           $jam = trans_jam($row['jam']);
           $id_berita = $row['id_berita'];
           echo "<div class='item-flex grid-$i'>
-          <span class='kategori-grid' style='background:$nama_menu[background]'><a style='color:#fff;' href='kategori-$row[id_kategori]-$row[kategori_seo]'>$row[nama_kategori]</a></span>
-          <a href='berita-$row[judul_seo]' title='$row[judul]'><h2 class='grid-flex-foto'>$row[judul]</h2></a>
+          <span class='kategori-grid' style='background:$nama_menu[background]'><a style='color:#fff;' href='".SITE_URL."kategori-$row[id_kategori]-$row[kategori_seo]'>$row[nama_kategori]</a></span>
+          <a href='".SITE_URL."berita-$row[judul_seo]' title='$row[judul]'><h2 class='grid-flex-foto'>$row[judul]</h2></a>
           <span class='info-uploader' style='margin-left:5px;'>Oleh&nbsp;".ucfirst($row[username])."&nbsp;|&nbsp;$row[hari], $tgl - $jam</span>
           <div class='black_layer'></div>
-          <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'>
+          <img class='lazy' src='".SITE_URL."foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'>
         </div>";
         $i++;
         }
@@ -40,7 +40,7 @@
 					</div>
 				</div></br> -->
       </div>
-      <div class="col-xs-12" style="padding:0;float:none;">
+      <div class="col-xs-12" style="padding:0;float:none;margin-bottom:10px;">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <!-- Billboard Category -->
         <ins class="adsbygoogle"
@@ -60,7 +60,7 @@
           <?php
             $submenu = mysql_query("SELECT * FROM menu WHERE id_parent='$nama_menu[id_menu]'");
             while($row = mysql_fetch_array($submenu)){
-              echo "<li style='padding-bottom:10px;'><a style='color:$nama_menu[color];' href='$row[link]'>$row[nama_menu]</a></li>";
+              echo "<li style='padding-bottom:10px;'><a style='color:$nama_menu[color];' href='".SITE_URL."$row[link]'>$row[nama_menu]</a></li>";
             }
           ?>
           </ul>
@@ -76,7 +76,7 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       </div>
-      <div class="col-xs-9 news-category" style="background:#fff;">
+      <div class="col-xs-9 news-category" style="background:#fff;padding:0;padding-left:10px;">
           <!-- <h1 style="color:#06375E;border-bottom:1px solid #06375E"><?php echo $nama_menu['nama_menu']?></h1> -->
           <?php
           $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '$nama_menu[id_menu]' AND b.id_berita < $id_berita ORDER BY id_berita DESC LIMIT 27");
@@ -94,13 +94,13 @@
             echo "
             <article>
               <div class='badges-cate'>
-                <span style='background:$nama_menu[color]'><a style='color:#fff;' href='kategori-$t[id_kategori]-$t[kategori_seo]'>$t[nama_kategori]</a></span>
+                <span style='background:$nama_menu[color]'><a style='color:#fff;' href='".SITE_URL."kategori-$t[id_kategori]-$t[kategori_seo]'>$t[nama_kategori]</a></span>
               </div>
-              <a href='berita-$t[judul_seo]'>
-                <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]'>
+              <a href='".SITE_URL."berita-$t[judul_seo]'>
+                <img class='lazy' src='".SITE_URL."foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]'>
               </a>
               <span style='font-size:10px;'>".$tgl." | ".$jam."</span>
-              <a href='berita-$t[judul_seo]' class='captions'>$hasil</a>
+              <a href='".SITE_URL."berita-$t[judul_seo]' class='captions'>$hasil</a>
             </article>"; }
           ?>
           <div class="clearfix"></div>

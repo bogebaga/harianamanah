@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    var $allVideo = $('iframe[src*="www.youtube.com"], iframe[src*="docs.google.com"], iframe[src*="www.facebook.com"]'),
-        $fluidEle = $('.isi-berita, .main-video, #row');
+    var $allVideo = $('iframe[src*="www.youtube.com"], iframe[src*="docs.google.com"], iframe[src*="www.facebook.com"], iframe[src*="www.google.com"]'),
+        $fluidEle = $('.isi-berita, .main-video, #row, #maps');
 
     $allVideo.each(function(){
       $(this).attr('data-aspectratio', this.height / this.width).removeAttr('height').removeAttr('width');

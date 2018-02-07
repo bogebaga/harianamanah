@@ -189,12 +189,12 @@
     "@context": "http://schema.org/",
     "@type": "NewsArticle",
     "headline": "<?php
-  if($d['judul'] !=''){
-    echo "$d[judul]";
-  }else{
-    echo "Kiblat Berita Islami - harianamanah.com";
-  }?>",
-    "datePublished": "<?php echo $d['tanggal']?>",
+      if($d['judul'] !=''){
+        echo "$d[judul]";
+      }else{
+        echo "Kiblat Berita Islami - harianamanah.com";
+      }?>",
+    "datePublished": "<?= $d['tanggal']?>",
     "description": "<?php
   if($d['isi_berita'] != '')
     echo desc($d['isi_berita']);
@@ -203,8 +203,8 @@
   ?>",
     "image": {
       "@type": "ImageObject",
-      "height": "350",
-      "width": "595",
+      "height": "315",
+      "width": "600",
       "url": "<?php
   if($d['gambar']!=''){
     echo "http://harianamanah.com/foto_berita/$d[gambar]";
@@ -243,7 +243,7 @@
     <div class="row header-row-logo-bulat">
       <div class="container" style="padding:0;">
         <a href="/" style="display:inline-block; padding:13px 30px 13px 0;border-right:1px solid rgba(38, 41, 50, 0.12);">
-          <img src="<?php echo SITE_URL?>logo/assets/pp_ff.png" width="30" alt="Logo bulat Amanah - harianamanah.com">
+          <img src="<?= SITE_URL?>logo/assets/pp_ff.png" width="30" alt="Logo bulat Amanah - harianamanah.com">
         </a>
         <div id="cari">
           <div class="mid1">
@@ -260,7 +260,7 @@
     <div class="row">
       <div class="container" style="padding:0;">
         <a href="/">
-          <div class="logo"><img src="<?php echo SITE_URL?>images/amanah.png" width="400px" alt="Logo Amanah - harianamanah.com"></div>
+          <div class="logo"><img src="<?= SITE_URL?>images/amanah.png" width="400px" alt="Logo Amanah - harianamanah.com"></div>
         </a>
       <div style="vertical-align:middle;display:inline-block;">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -300,7 +300,7 @@
           <li data-caption ="<?= $row['link']?>" class="main-menu" style="position:static;">
             <a href="<?= SITE_URL.'kategori/'.$row['link']?>" style="color:#fff;font-size:17px;padding:13px 15px;font-weight:bold;text-transform:uppercase;" ><?= $row['nama_menu']?></a>
               <ul class="menu-show sub-nav-menu <?= strtolower($row['link']) ?>">
-                <li class="sub__rubrik col-lg-3">
+                <li class="sub__rubrik col-lg-3" style="border-right:1px solid rgba(0, 0, 0, 0.25);">
                 <?php
                   $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = '$row[id_menu]' AND aktif = 'Ya'");
                   while($row_sub = mysql_fetch_array($sub_rubrik)):
@@ -308,9 +308,9 @@
                   endwhile;
                 ?>
                 </li>
-                <li class="col-lg-9" style="padding-left:25px;border-left:1px solid rgba(0, 0, 0, 0.25);">
+                <li class="col-lg-9" style="padding-left:25px;">
                 <?php
-                $query = mysql_query("SELECT judul, judul_seo, gambar FROM berita, menu WHERE id_kategori = id_menu AND id_parent = '$row[id_menu]' ORDER BY id_berita DESC LIMIT 8");
+                $query = mysql_query("SELECT judul, judul_seo, gambar FROM berita, menu WHERE id_kategori = id_menu AND id_parent = '$row[id_menu]' ORDER BY id_berita DESC LIMIT 4");
                 while($img_news = mysql_fetch_array($query)):
                 ?>
                   <div class="mega_menu_img">
@@ -378,21 +378,21 @@
   <div class="footer-menu">
     <div class="container">
       <ul class="must-know">
-        <li><a style="color:#eee;" href="<?php echo SITE_URL?>hal-tentang-kami">TENTANG KAMI</a></li>
-        <li><a style="color:#eee;" href="<?php echo SITE_URL?>hal-redaksi">REDAKSI</a></li>
-        <li><a style="color:#eee;" href="<?php echo SITE_URL?>hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
-        <li><a style="color:#eee;" href="<?php echo SITE_URL?>hal-kontak-kami">KONTAK</a></li>
-        <li><a style="color:#eee;" href="<?php echo SITE_URL?>sitemap">SITEMAP</a></li>
+        <li><a style="color:#eee;" href="<?= SITE_URL?>hal-tentang-kami">TENTANG KAMI</a></li>
+        <li><a style="color:#eee;" href="<?= SITE_URL?>hal-redaksi">REDAKSI</a></li>
+        <li><a style="color:#eee;" href="<?= SITE_URL?>hal-privacy-policy">KEBIJAKAN PRIVASI</a></li>
+        <li><a style="color:#eee;" href="<?= SITE_URL?>hal-kontak-kami">KONTAK</a></li>
+        <li><a style="color:#eee;" href="<?= SITE_URL?>sitemap">SITEMAP</a></li>
       </ul>
       <ul class="menu-utama">
         <li style="text-align:right;">
           <ul class="block" style="display:block;">
-            <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i style='' class='fa fa-fw fa-facebook'></i></a></li>
-            <li><a href="https://twitter.com/harianamanah" target="_blank"><i style='' class='fa fa-fw fa-twitter'></i></a></li>
-            <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i style='' class='fa fa-fw fa-instagram'></i></a></li>
-            <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i style='' class='fa fa-fw fa-google-plus'></i></a></li>
-            <li><a href="https://www.linkedin.com/company/13466134"><i style='' class='fa fa-fw fa-linkedin'></i></a></li>
-            <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i style='' class='fa fa-fw fa-youtube'></i></a></li>
+            <li><a href="https://www.facebook.com/harianamanah/" target="_blank"><i class='fa fa-fw fa-facebook'></i></a></li>
+            <li><a href="https://twitter.com/harianamanah" target="_blank"><i class='fa fa-fw fa-twitter'></i></a></li>
+            <li><a href="https://www.instagram.com/harian_amanah/" target="_blank"><i class='fa fa-fw fa-instagram'></i></a></li>
+            <li><a href="https://plus.google.com/115045050828571942973" target="_blank"><i class='fa fa-fw fa-google-plus'></i></a></li>
+            <li><a href="https://www.linkedin.com/company/13466134"><i class='fa fa-fw fa-linkedin'></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCyk4N4qJdhduvO697WQKc1w" target='_blank'><i class='fa fa-fw fa-youtube'></i></a></li>
           </ul>
         </li>
         <li>

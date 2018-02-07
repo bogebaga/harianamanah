@@ -507,6 +507,11 @@ figure{
     margin-left: 15px;
 }
 
+.baca-juga-berita.terkait
+{
+    width: 100%;    
+}
+
 .baca-juga-berita > p:first-child
 {
     margin:0;

@@ -84,6 +84,27 @@ $menu = mysql_fetch_array($main_menu);
             </script>
           </p>
           <?php  
+          elseif($i == count($konten)-1):
+          ?>
+          <div class="baca-juga-berita terkait">
+            <h2 style="color:#00a0a5;font-size:17px;text-transform:uppercase;text-align:left;">Berita Terkait</h2>
+            <ul>
+              <?php
+              $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 6");
+              while($p1=mysql_fetch_array($detail1))
+              {
+                $idarray = $p1['id_berita'];
+                echo "
+                      <li>
+                        <a href='berita-$p1[judul_seo]'>$p1[judul]</a>
+                      </li>
+                    ";}
+              ?>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+          <br>
+          <?php
           endif;
           echo $konten[$i].'</p>';
         endfor;?>
@@ -92,7 +113,7 @@ $menu = mysql_fetch_array($main_menu);
           <tr><td colspan="1">Editor</td><td width="25px" align="center">:</td><td><?= ucfirst($d['username'])?></td></tr>
         </table>
         <div class="sosial">
-          <ul class="list-inline" style="text-align:left;;margin:50px 0 20px 0;">
+          <ul class="list-inline" style="text-align:left;;margin:10px 0 20px 0;">
             <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 1.67;font-size:28px;" href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
             <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 1.67;font-size:28px;" href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
             <a style="border-radius: 100%;width: 42px;height: 42px;text-align: center;display: inline-block;line-height: 1.67;font-size:28px;" href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
@@ -105,61 +126,35 @@ $menu = mysql_fetch_array($main_menu);
         mysql_query("UPDATE berita SET dibaca='$d[dibaca]'+1 WHERE judul_seo='$_GET[judul]'");
         ?>
         <div class="tagline">
-        <span>TAGS</span>
-          <?php
-            echo "<a href=".SITE_URL.'kategori/'.lcfirst($menu['link']).">".$menu['nama_menu']."</a><a href='$d[link]'>$d[nama_kategori]</a>";
-            if($d['tag'] != ''):
-              $array = explode(',', $d[tag]);
-              foreach($array as $tag):
-                // echo $tag;
-                echo "<a href='tag/".seo_title($tag)."'>".ucwords($tag)."</a>";
-              endforeach;
-            endif;
-          ?>
-        </div>
-        <div class="match_content"> 
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-format="autorelaxed"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="9556530284"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-        <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="10"></div>
-        <!-- <div style="float:left;">Dibaca: <?php echo $d['dibaca']?></div> -->
-        <!-- <div class="sosial">
-          <ul class="list-inline" style="text-align:center;;margin:0;">
-            <a style="border-radius: 100%;width: 52px;height: 52px;text-align: center;display: inline-block;line-height: 1.7;font-size:30px;" href="https://www.facebook.com/sharer.php?u=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-facebook" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-facebook"></i></a>
-            <a style="border-radius: 100%;width: 52px;height: 52px;text-align: center;display: inline-block;line-height: 1.7;font-size:30px;" href="https://twitter.com/intent/tweet?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="btn-twitter" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-twitter"></i></a>
-            <a style="border-radius: 100%;width: 52px;height: 52px;text-align: center;display: inline-block;line-height: 1.7;font-size:30px;" href="https://plus.google.com/share?url=<?php echo "http://harianamanah.com/berita-".$d['judul_seo']?>" class="btn-google" target="_blank" style="padding:10px;"><i class="fa fa-fw fa-google-plus"></i></a>
-            <a style="border-radius: 100%;width: 52px;height: 52px;text-align: center;display: inline-block;line-height: 1.7;font-size:30px;" href="#facebook-comment" class="btn-facebook" style="padding:10px;background-color:#02b875;"><i class="fa fa-fw fa-commenting-o"></i></a>
-          </ul> -->
-        </div>
-        <div id='terkait-berita' class='kotak' style="width:100%;float:none">
-          <div class="row">
-            <h2 style="color:#00a0a5;font-size:17px;padding:13px 15px;text-transform:uppercase;text-align:left;">Berita Terkait</h2>
-          </div>
-            <ul class="featured_nav0 berita-terkait">
+          <span>TAGS</span>
             <?php
-            $detail1=mysql_query("SELECT * FROM berita WHERE id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 6");
-            while($p1=mysql_fetch_array($detail1))
-            {
-              $idarray = $p1['id_berita'];
-              echo "
-                    <li style='width:48%;text-align:left;margin-top:5px;padding-bottom:0;border:0;'>
-                        <img class='lazy' src='foto_statis/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar]' alt='$p1[judul]' style='width:19%;height:65px;'>
-                        <div class='featured_title berita-terkait' style='display:inline-block;width:75%;vertical-align:top;'>
-                        <a href='berita-$p1[judul_seo]' style='text-align:left;padding-left:0;font-weight:bold;font-size:15px;'>$p1[judul]</a>
-                        </div>
-                      </li>
-                    ";}
+              echo "<a href=".SITE_URL.'kategori/'.lcfirst($menu['link']).">".$menu['nama_menu']."</a><a href='$d[link]'>$d[nama_kategori]</a>";
+              if($d['tag'] != ''):
+                $array = explode(',', $d[tag]);
+                foreach($array as $tag):
+                  // echo $tag;
+                  echo "<a href='tag/".seo_title($tag)."'>".ucwords($tag)."</a>";
+                endforeach;
+              endif;
             ?>
-          </ul>
-          <div class='clearfix'></div>
         </div>
+          <div class="match_content"> 
+            <div class='row'>
+              <h6 style="display:inline-block;padding:10px 0px;text-transform:uppercase;font-weight:bold !important;text-align:left;color:#000;border-bottom:3px solid <?php echo $menu['color']?>;margin:15px;">BERITA REKOMENDASI</h6>
+            </div>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="autorelaxed"
+                data-ad-client="ca-pub-4290882175389422"
+                data-ad-slot="9556530284"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+          <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="10"></div>
+        </div>
+        <!-- end of news content -->
         <div style="margin-top:10px;text-align:center;">
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <!-- W_Banner Top Ads -->
@@ -171,24 +166,6 @@ $menu = mysql_fetch_array($main_menu);
           </script>
         </div>
         <div class="related-news">
-          <div class='kotak' style="width:100%;margin-bottom:10px;float:none">
-            <ul class="featured_nav0 berita-lainnya">
-            <?php
-            $detail2=mysql_query("SELECT * FROM berita, menu WHERE id_kategori = id_menu AND nama_menu = '$d[nama_menu]' order by id_berita DESC limit 8");
-            while($p2=mysql_fetch_array($detail2))
-            {
-              echo"
-                    <li style='width:190px;margin:0 0 10px;padding-right:7px;height:185px;'>
-                      <a class='featured_img' href='berita-$p2[judul_seo]'><img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$p2[gambar]' alt='$p2[judul]'></a>
-                      <div class='featured_title berita-lainnya' style='font-size:14px;'>
-                        <a href='berita-$p2[judul_seo]' style='margin-top:0;padding-top:5px;text-align:left;width:auto;font-weight:bold;'>$p2[judul]</a>
-                      </div>
-                    </li>
-                  ";
-            }?>
-            </ul>
-            <div class="clearfix"></div>
-          </div>
           <div class='kotak' style="width:100%;float:none;">
             <div class="row">
               <h2 style="display:inline-block;width:auto;padding:13px 0;text-align:left;text-transform:uppercase !important;border-bottom:3px solid <?php echo $menu['color']?>; font-weight:bold !important; color:#000;margin:15px;">Berita Terkini</h2>
@@ -299,7 +276,7 @@ $menu = mysql_fetch_array($main_menu);
     </div>
   </div>
 
-  <div style="align:center;">
+  <div style="text-align:center;">
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- Banner Bottom -->
       <ins class="adsbygoogle"

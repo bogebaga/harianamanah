@@ -1534,7 +1534,8 @@ h3[data-style="und-bdr"]::after
 
 .sub-nav-menu li.sub__rubrik {
   display: inline-block;
-  font-size:15px;
+	font-size:15px;
+	/* min-height: 250px; */
 }
 
 .sub-nav-menu li.sub__rubrik:last-child i

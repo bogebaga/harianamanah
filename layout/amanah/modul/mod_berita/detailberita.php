@@ -128,12 +128,12 @@ $menu = mysql_fetch_array($main_menu);
         <div class="tagline">
           <span>TAGS</span>
             <?php
-              echo "<a href=".SITE_URL.'kategori/'.lcfirst($menu['link']).">".$menu['nama_menu']."</a><a href='$d[link]'>$d[nama_kategori]</a>";
+              echo "<a href=".SITE_URL.'kategori/'.lcfirst($menu['link']).">#".$menu['nama_menu']."</a><a href='$d[link]'>#$d[nama_kategori]</a>";
               if($d['tag'] != ''):
                 $array = explode(',', $d[tag]);
                 foreach($array as $tag):
                   // echo $tag;
-                  echo "<a href='tag/".seo_title($tag)."'>".ucwords($tag)."</a>";
+                  echo "<a href='tag/".seo_title($tag)."'>#".ucwords($tag)."</a>";
                 endforeach;
               endif;
             ?>

@@ -6,6 +6,7 @@
   <link rel="shortcut icon" href="../favicon.png" />
   <meta name=description content=""> <meta name=author content="">
   <meta name=viewport content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel=stylesheet href='css/zalstyle.css'>
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 
@@ -17,18 +18,23 @@
   <h1>LOGIN ADMINISTRATOR</h1> </div>
 
   <form id=login-form class="block-content form" action="cek_login.php" method="post">
-  <p class=inline-small-label>
-  <label for=username>Username</label> <input type=text name="username" value="" class=required> </p>
-  <p class=inline-small-label> <label for=password>Password</label>
-  <input type=password name="password"  value="" class=required> </p>
-  <p> </p> <div class=clear></div>
+  <p class='inline-small-label form-group'>
+    <label for=username>Username</label> 
+    <input type=text name="username" value="" class='required form-control'> 
+  </p>
+  <p class='inline-small-label form-group'>
+    <label for=password>Password</label>
+    <input type=password name="password"  value="" class='required form-control'> 
+  </p>
+  <div class=clear></div>
 
 
   <div class=block-actions> <ul class=actions-left>
   <li><a class="button red" id=reset-login href="javascript:void(0);">BATALKAN</a></li></ul>
   <ul class=actions-right><li><input type=submit class=button value=&nbsp;&nbsp;LOGIN&nbsp;&nbsp;></li>
   </ul> </div> </form> </div> </section> </div>
-  <script src="js/jquery.min.js">
-  </script> <script>window.jQuery||document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>');
+  <script src="js/jquery.min.js"></script> 
+  <script>window.jQuery||document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>');
+  <script src="js/bootstrap.min.js"></script>
   </script> <script defer src='js/zal.js'></script>
   </html>

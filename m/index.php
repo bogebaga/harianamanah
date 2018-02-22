@@ -1,3 +1,3 @@
  <?php
- header("location:template.php"); 
+  header("location:template.php"); 
  ?>

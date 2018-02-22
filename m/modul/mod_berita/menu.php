@@ -56,6 +56,14 @@
 								</span>
 							</div>"; }?>
 				</div>
+				<!-- Kontrol navigasi Left & Right -->
+					<a href="#home-carousel" class="left carousel-control" data-slide="prev">
+						<i style="margin-top:100px;" class="fa fa-2x fa-chevron-left"></i>
+					</a>
+					<a href="#home-carousel" class="right carousel-control" data-slide="next">
+						<i style="margin-top:100px;" class="fa fa-2x fa-chevron-right"></i>
+					</a>
+				<!-- end -->
 			</div>
 		</section>
 		<section>

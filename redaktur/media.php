@@ -63,13 +63,14 @@ else{
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="shortcut icon" href="../favicon.ico" />
-	<link rel="dns-prefetch" href="http://fonts.googleapis.com/" />
+  <link rel="dns-prefetch" href="http://fonts.googleapis.com/" />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/zalstyle.css" />
 	<link rel="stylesheet" href="js/jQuery-tagEditor-master/jquery.tag-editor.css" />
-	<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans" />
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script type="text/javascript">
-    var _BASE_URL_ = '<?=APP_URL;?>';
+    var _BASE_URL_ = '<?= APP_URL; ?>';
 	</script>
   </head>
   <body id="top">
@@ -169,6 +170,7 @@ else{
   </div>
 
   <script src="js/jquery-1.7.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 	<script src="ckeditor/ckeditor.js"></script>
   <script src="js/jQuery-tagEditor-master/jquery.tag-editor.min.js"></script>

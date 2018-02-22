@@ -404,3 +404,8 @@ if(! $automobile->isMobile()){
   <script src="<?= SITE_URL?>js/jquery.lazy.min.js" type="text/javascript"></script>
   <script src="<?= SITE_URL?>js/mha.js?v=1.01" type="text/javascript"></script>
 </body>
+</html>
+
+<?php
+  mysql_close($link);
+?>

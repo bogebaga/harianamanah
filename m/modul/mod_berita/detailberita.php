@@ -25,7 +25,7 @@
           </div>
     <h1 class="read_berita" style="margin-top:3px;"><?php echo $d['judul'];?></h1>
     <!-- <span style='display:block'><?php echo ucfirst($d['username'])?></span> -->
-    <span class="tanggal-release">Oleh&nbsp;<?php echo ucfirst($d['username'])."&nbsp;pada&nbsp;".$tgl.",&nbsp;".$jam ?></span>
+    <span class="tanggal-release">Oleh&nbsp;<?php echo ucfirst($d['nama_lengkap'])."&nbsp;pada&nbsp;".$tgl.",&nbsp;".$jam ?></span>
     <div class="social-optimize">
       <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share fa fa-facebook" target="_blank"></a>
       <a href="https://twitter.com/intent/tweet?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="social-share fa fa-twitter" target="_blank"></a>
@@ -98,7 +98,7 @@
       </div> 
       <table>
         <tr><td colspan="1">Sumber</td><td width="25px" align="center">:</td><td><?= ucfirst($d['reporter'])?></td></tr>
-        <tr><td colspan="1">Reporter</td><td width="25px" align="center">:</td><td><?= ucfirst($d['username'])?></td></tr>
+        <tr><td colspan="1">Reporter</td><td width="25px" align="center">:</td><td><?= ucfirst($d['nama_lengkap'])?></td></tr>
       </table>
       <br>
       <h5>TAGS</h5>

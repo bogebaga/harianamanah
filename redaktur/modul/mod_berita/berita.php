@@ -220,28 +220,28 @@ else{
 
 
 	 <p class=inline-small-label>
-	 <label for=field4>Judul Berita</label>
-	 <input type=text name='judul' minlength='25' required>
+	 <label>Judul Berita</label>
+	 <input class=form-control type=text name='judul' minlength='25' required>
 	 </p>
 
 	 <p class=inline-small-label>
 	 <label for=field4>Sub Judul Berita</label>
-	<input type=text name='sub_judul' size=60>
+	<input class=form-control type=text name='sub_judul' size=60>
 	 </p>
 
 	 <p class=inline-small-label>
 	 <label for=field4>Reporter</label>
-	<input type=text name='reporter' size=90 required>
+	<input class=form-control type=text name='reporter' size=90 required>
 	 </p>
 
 	 <p class=inline-small-label>
 	 <label for=field4>Waktu Tayang</label>
-	<input type=date name='waktu' size=90 >
+	<input class=form-control type=date name='waktu' size=90 >
 	 </p>
 
 	 <p class=inline-small-label>
 	 <label for=field4>Video Youtube</label>
-	 <input type=text name='youtube' size=60><br/>
+	 <input class=form-control type=text name='youtube' size=60><br/>
 	 contoh link: <span class style=\"color:#EA1C1C;\">http://www.youtube.com/embed/xbuEmoRWQHU</span>
 	 </p>
 
@@ -326,7 +326,7 @@ else{
 
 	 <p class=inline-small-label>
 	 <label for=field4>Deskripsi Berita</label>
-	 <input type='text' name='deskripsi'>
+	 <textarea class=form-control name='deskripsi'></textarea>
 	 </p>
 	
 	 <p class=inline-small-label>
@@ -343,19 +343,19 @@ else{
 	 <p class=inline-small-label>
 	 <label for=field4>Gambar</label>
 	 <input type='file' id='fupload' name='fupload' required>
-	 Perhatian: <span class style=\"color:#EA1C1C;\">Foto yang akan diupload kecil dari 512K</span>
+	 <span class style=\"color:#EA1C1C;display:block\">Foto yang akan diupload kecil dari 512K</span>
 	 </p>
 
 	 <p class=inline-small-label>
 	 <label for=field4>Infografis</label>
 	 <input type='file' id='grafis_upload' name='grafis_upload' required>
-	 Perhatian: <span class style=\"color:#EA1C1C;\">Foto yang akan diupload kecil dari 512K</span>
+	 <span class style=\"color:#EA1C1C;display:block\">Foto yang akan diupload kecil dari 512K</span>
 	 </p>
 
 	 <p class=inline-small-label>
 	 <label for=field4>Keterangan Gbr</label>
 
-	 <input type=text name='keterangan_gambar'>
+	 <input class=form-control type=text name='keterangan_gambar'>
 	 </p><br /><br />";
 
 				echo "<br /><br />
@@ -396,22 +396,22 @@ else{
 
 	 <p class=inline-small-label>
 	 <label for=field4>Judul Berita</label>
-	 <input type=text name='judul' minlength='25' value='$r[judul]'>
+	 <input class=form-control type=text name='judul' minlength='25' value='$r[judul]'>
 	 </p>
 
 	 <p class=inline-small-label>
 	 <label for=field4>Sub Judul Berita</label>
-	<input type=text name='sub_judul' size=60 value='$r[sub_judul]'>
+	<input class=form-control type=text name='sub_judul' size=60 value='$r[sub_judul]'>
 	 </p>
 
 	<p class=inline-small-label>
 	 <label for=field4>Reporter</label>
-	<input type=text name='reporter' size=60 value='$r[reporter]'>
+	<input class=form-control type=text name='reporter' size=60 value='$r[reporter]'>
 	 </p>
 
 	 <p class=inline-small-label>
 	 <label for=field4>Video Youtube</label>
-	 <input type=text name='youtube' size=60 value='$r[youtube]'><BR/>
+	 <input class=form-control type=text name='youtube' size=60 value='$r[youtube]'><BR/>
 	 contoh link: <span class style=\"color:#EA1C1C;\">http://www.youtube.com/embed/xbuEmoRWQHU</span>
 	 </p>
 
@@ -431,7 +431,7 @@ else{
 
 				echo "</select>";
 
-	echo"<p class=inline-small-label>
+	echo"<p class=inline-small-label form-group>
 	<label for=field4>Jenis Berita</label>
 	<input type=checkbox name='jenis_berita' value='foto' ".($r['jenis_berita'] == 'foto' ? 'checked' : '').">Foto
 	<input type=checkbox name='jenis_berita' value='video' ".($r['jenis_berita'] == 'video' ? 'checked' : '').">Video
@@ -500,7 +500,7 @@ else{
 
 	 <p class=inline-small-label>
 	 <label for=field4>Deskripsi Berita</label>
-	 <input type='text' name='deskripsi' value='$r[deskripsi]'>
+	 <textarea class=form-control name='deskripsi' value='$r[deskripsi]'></textarea>
 	 </p>
 	 
 	 <p class=inline-small-label>
@@ -523,7 +523,7 @@ else{
 			<p class=inline-small-label>
 			<label for=field4>Ganti Gambar</label>
 			<input type='file' id='fupload' name='fupload' >
-			Perhatian: <span class style=\"color:#EA1C1C;\">Foto yang akan diupload kecil dari 512K</span>
+			<span class style=\"color:#EA1C1C;display:block\">Foto yang akan diupload kecil dari 512K</span>
 			</p> ";
 
 	 echo "<p class=inline-small-label>
@@ -535,7 +535,7 @@ else{
 	 <p class=inline-small-label>
 	 <label for=field4>Ganti Gambar</label>
 	 <input type='file' id='grafis_upload' name='grafis_upload'>
-	 Perhatian: <span class style=\"color:#EA1C1C;\">Foto yang akan diupload kecil dari 512K</span>
+	 <span class style=\"color:#EA1C1C;display:block\">Foto yang akan diupload kecil dari 512K</span>
 	 </p> ";
 
 				echo"
@@ -548,7 +548,7 @@ else{
 				echo"
 	 <p class=inline-small-label>
 	<label for=field4>Keterangan Gbr</label>
-	 <input type=text name='keterangan_gambar' value='$r[keterangan_gambar]'>
+	 <input class=form-control type=text name='keterangan_gambar' value='$r[keterangan_gambar]'>
 	 </p>";
 
 				echo  "<div class=block-actions>

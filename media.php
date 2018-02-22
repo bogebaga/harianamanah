@@ -23,4 +23,6 @@
   $pilih_template=mysql_query("SELECT folder FROM templates WHERE aktif='Y'");
   $f=mysql_fetch_array($pilih_template);
   include "$f[folder]/template.php";
+
+  mysql_close($link);
 ?>

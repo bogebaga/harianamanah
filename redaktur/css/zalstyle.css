@@ -643,7 +643,8 @@ td {
 }
 
 body {
-    background: url("../img/container/navigation/nav-bg.png") repeat-y scroll top left #e3e5e7
+    /* background: url("../img/container/navigation/nav-bg.png") repeat-y scroll top left #e3e5e7 */
+    background-color: #bbb;
 }
 
 body.special-page {
@@ -691,7 +692,7 @@ body.special-page {
 
 #user-info {
     float: right;
-    margin-top: -4px;
+    margin-top: 10px;
     margin-right: 10px
 }
 
@@ -717,15 +718,13 @@ body.special-page {
     padding: 15px
 }
 
+
 #container>#sidebar {
-    float: left;
-    width: 261px;
-    position: absolute;
     z-index: 30
 }
 
 #container>#sidebar>#nav>.menu {
-    padding-bottom: 14px;
+    padding-bottom: 0;
     margin-top: -1px
 }
 
@@ -835,7 +834,7 @@ font-family:tahoma;}
 }
 
 #container>#main {
-    margin-left: 261px
+    margin-left: 0;
 }
 
 #container>#main>#main-content {
@@ -1216,7 +1215,7 @@ font-family:tahoma;}
     border-color: #111;
     color: #fff!important;
     cursor: pointer;
-    display: inline-block;
+    /* display: inline-block; */
     padding: 5px 10px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.4);
     height: 14px
@@ -1476,7 +1475,7 @@ ul.shortcut-list {
     list-style: none;
     list-style-image: none;
     padding: 0;
-    margin: 0;
+    /* margin: 0; */
     display: block;
     overflow: hidden
 }
@@ -1501,7 +1500,7 @@ ul.shortcut-list li a {
     position: relative;
     text-align: center;
     width: 90px;
-    height: 68px;
+    height: 100px;
     padding: 10px 5px;
     overflow: hidden
 }
@@ -1515,7 +1514,7 @@ ul.shortcut-list li img {
 
 ul.shortcut-list li:hover a {
     text-decoration: none;
-    height: 68px;
+    /* height: 68px; */
     top: 1px
 }
 
@@ -2665,7 +2664,7 @@ p.no-top-margin {
 }
 
 .inline-label label,.inline-label .label,.inline-medium-label label,.inline-medium-label .label,.inline-small-label label,.inline-small-label .label,.inline-mini-label label,.inline-mini-label .label {
-    float: left;
+    /* float: left; */
     display: block;
     padding: 4px 0 0 4px
 }
@@ -2687,11 +2686,11 @@ p.inline-medium-label {
 }
 
 p.inline-small-label {
-    padding-left: 100px
+    /* padding-left: 100px */
 }
 
 .inline-small-label label,.inline-small-label .label {
-    margin-left: -100px
+    /* margin-left: -100px */
 }
 
 p.inline-mini-label {
@@ -3030,7 +3029,7 @@ div.selector span {
 
 div.selector span {
     color: #666;
-    width: 30%;
+    width:100%;
     text-shadow: 0 1px 0 #fff
 }
 
@@ -5186,4 +5185,22 @@ button.ui-button::-moz-focus-inner {
 	font-family: Geneva, Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	color: #FFFFFF;   
+}
+
+@media (min-width: 768px){
+    #container>#sidebar {
+        float: left;
+        width: 261px;
+        position: absolute;
+        z-index: 30
+    }
+
+    #container>#sidebar>#nav>.menu {
+        padding-bottom: 14px;
+        margin-top: -1px
+    }
+
+    #container>#main {
+        margin-left: 261px
+    }
 }

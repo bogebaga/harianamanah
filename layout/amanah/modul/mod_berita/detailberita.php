@@ -46,7 +46,7 @@ $menu = mysql_fetch_array($main_menu);
         </div>
       </div>
       <div class="info">
-        <span class="info-name"> <?php echo ucfirst($d['username']);?></span>
+        <span class="info-name"> <?php echo ucfirst($d['nama_lengkap']);?></span>
         <p class="daftar-redaksi" style="font-size:12px;color:rgba(49, 49, 49, 0.76);"><?php echo"$d[hari], $tgl - $jam"; ?></p>
       </div>
       <hr>
@@ -110,7 +110,7 @@ $menu = mysql_fetch_array($main_menu);
         endfor;?>
         <table>
           <tr><td colspan="1">Laporan</td><td width="25px" align="center">:</td><td><?= ucfirst($d['reporter'])?></td></tr>
-          <tr><td colspan="1">Editor</td><td width="25px" align="center">:</td><td><?= ucfirst($d['username'])?></td></tr>
+          <tr><td colspan="1">Editor</td><td width="25px" align="center">:</td><td><?= ucfirst($d['nama_lengkap'])?></td></tr>
         </table>
         <div class="sosial">
           <ul class="list-inline" style="text-align:left;;margin:10px 0 20px 0;">

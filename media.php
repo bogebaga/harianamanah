@@ -17,6 +17,7 @@
   include "config/option.php";
   include "config/desc.php";
   include "config/Mobile_Detect.php";
+  include "class/meta.php";
   // include_once "police/project-security.php";
 
   // Memilih template yang aktif saat ini

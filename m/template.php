@@ -7,6 +7,8 @@ include "../config/fungsi_combobox.php";
 include "../config/class_paging.php";
 include "../config/fungsi_seo.php";
 include "../config/desc.php";
+include "../class/meta.php";
+
 include "../config/Mobile_Detect.php";
 define ('SITE_URL', site_URL()."m/");
 
@@ -24,7 +26,9 @@ if(! $automobile->isMobile()){
 			AND kategori.id_kategori=berita.id_kategori
 			AND judul_seo='$_GET[judul]'");
 	$d   = mysql_fetch_array($detail);
-	$tgl = tgl_indo($d['tanggal']);
+  $tgl = tgl_indo($d['tanggal']);
+  
+  $meta = new meta;
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,116 +45,16 @@ if(! $automobile->isMobile()){
   <meta name="robots" content="index, follow" />
   <meta name="googlebot" content="index, follow" />
   <meta name="googlebot-news" content="index, follow" />
-  <meta name="title" content="<?php
-  if($_GET['jn']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
-    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['judul']):
-    echo htmlentities($d['judul']);
-  elseif($_GET['id']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
-    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'hasilcari'):
-    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'home'):
-    echo "Berita Islami Terkini - harianamanah.com";
-  elseif($_GET['module'] == 'rekomendasi'):
-    echo "Rekomendasi Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'popular'):
-    echo "Berita Popular Islami - harianamanah.com";
-  else:
-    echo "Kiblat Berita Islami - harianamanah.com";
-  endif;
-  ?>" />
-  <meta name="image"  content="<?php
-  if($d['gambar']!=''){
-    echo "http://harianamanah.com/foto_berita/$d[gambar]";
-  }else{
-    echo "http://harianamanah.com/images/amanah.jpg";
-  }
-  ?>" />
-  <title><?php
-  if($_GET['jn']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
-    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['judul']):
-    echo htmlentities($d['judul']);
-  elseif($_GET['id']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
-    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'hasilcari'):
-    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'home'):
-    echo "Berita Islami Terkini - harianamanah.com";
-  elseif($_GET['module'] == 'rekomendasi'):
-    echo "Rekomendasi Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'popular'):
-    echo "Berita Popular Islami - harianamanah.com";
-  else:
-    echo "Kiblat Berita Islami - harianamanah.com";
-  endif;
-  ?></title>
-  <meta property="og:title" content="<?php
-  if($_GET['jn']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
-    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['judul']):
-    echo htmlentities($d['judul']);
-  elseif($_GET['id']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
-    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'hasilcari'):
-    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'home'):
-    echo "Berita Islami Terkini - harianamanah.com";
-  elseif($_GET['module'] == 'rekomendasi'):
-    echo "Rekomendasi Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'popular'):
-    echo "Berita Popular Islami - harianamanah.com";
-  else:
-    echo "Kiblat Berita Islami - harianamanah.com";
-  endif;
-  ?>" />
-  <meta property="og:description" content="<?php
-  if($d['isi_berita'] != '')
-    echo desc($d['isi_berita']);
-  else
-    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
-  ?>" />
+  <meta name="title" content="<?= $meta->meta_title($_GET['jn'], $_GET['id'], $_GET['judul'], $_GET['module']); ?>" />
+  <meta name="description" content="<?= $meta->meta_description($d['isi_berita']); ?>" />
+  <meta name="image" content="<?= $meta->meta_image($d['gambar'])?>" />
+  <title><?= $meta->meta_title($_GET['jn'], $_GET['id'], $_GET['judul'], $_GET['module']); ?></title>
+  <meta property="og:title" content="<?= $meta->meta_title($_GET['jn'], $_GET['id'], $_GET['judul'], $_GET['module']); ?>" />
+  <meta property="og:description" content="<?= $meta->meta_description($d['isi_berita']); ?>" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="<?php
-  if ($d['judul_seo'] != '') {
-      echo "http://harianamanah.com/berita-$d[judul_seo]";
-  } else {
-      echo "http://harianamanah.com";
-  }?>" />
-  <meta property="og:image" content="<?php
-  if($d['gambar']!=''){
-  echo "http://harianamanah.com/foto_berita/$d[gambar]";
-  }else{
-  echo "http://harianamanah.com/images/amanah.jpg";
-  }?>" />
-  <meta property="og:image:alt" content="<?php
-  if($_GET['jn']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
-    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['judul']):
-    echo htmlentities($d['judul']);
-  elseif($_GET['id']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
-    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'hasilcari'):
-    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'home'):
-    echo "Berita Islami Terkini - harianamanah.com";
-  elseif($_GET['module'] == 'rekomendasi'):
-    echo "Rekomendasi Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'popular'):
-    echo "Berita Popular Islami - harianamanah.com";
-  else:
-    echo "Kiblat Berita Islami - harianamanah.com";
-  endif;
-  ?>">
+  <meta property="og:url" content="<?= $meta->meta_seo_title($d['judul_seo'])?>" />
+  <meta property="og:image" content="<?= $meta->meta_image($d['gambar'])?>" />
+  <meta property="og:image:alt" content="<?= $meta->meta_title($_GET['jn'], $_GET['id'], $_GET['judul'], $_GET['module']); ?>">
   <meta property="og:image:width" content="600">
   <meta property="og:image:height" content="315">
   <meta property="og:site_name" content="harianamanah.com" />
@@ -161,46 +65,11 @@ if(! $automobile->isMobile()){
   <meta name="twitter:site" content="@harianamanah" />
   <meta name="twitter:site:id" content="@harianamanah" />
   <meta name="twitter:creator" content="@harianamanah" />
-  <meta name="twitter:title" content="<?php
-  if($_GET['jn']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_menu FROM menu WHERE link = '$_GET[jn]'"));
-    echo ucfirst($title['nama_menu'])." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['judul']):
-    echo htmlentities($d['judul']);
-  elseif($_GET['id']):
-    $title = mysql_fetch_array(mysql_query("SELECT nama_kategori FROM kategori WHERE id_kategori = '$_GET[id]'"));
-    echo $title['nama_kategori']." | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'hasilcari'):
-    echo "Pencarian | Kiblat Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'home'):
-    echo "Berita Islami Terkini - harianamanah.com";
-  elseif($_GET['module'] == 'rekomendasi'):
-    echo "Rekomendasi Berita Islami - harianamanah.com";
-  elseif($_GET['module'] == 'popular'):
-    echo "Berita Popular Islami - harianamanah.com";
-  else:
-    echo "Kiblat Berita Islami - harianamanah.com";
-  endif;
-  ?>" />
-  <meta name="twitter:url" content="<?php
-  if ($d['judul_seo'] != '') {
-      echo "http://harianamanah.com/berita-$d[judul_seo]";
-  } else {
-      echo "http://harianamanah.com";
-  }?>" />
-  <meta name="twitter:description" content="<?php
-  if($d['isi_berita'] != '')
-    echo desc($d['isi_berita']);
-  else
-    echo "Indeks berita islam terkini dari Dunia islam, Olahraga, Tekno, Ekonomi, Jazirah, politik, halal destination, Islamic View, berita haji dan umroh dan international";
-  ?>" />
-  <meta name="twitter:image" content="<?php
-  if($d['gambar']!=''){
-    echo "http://harianamanah.com/foto_berita/$d[gambar]";
-  }else{
-    echo "http://harianamanah.com/images/amanah.jpg";
-  }
-  ?>" />
+  <meta name="twitter:title" content="<?= $meta->meta_title($_GET['jn'], $_GET['id'], $_GET['judul'], $_GET['module']); ?>" />
+  <meta name="twitter:url" content="<?= $meta->meta_seo_title($d['judul_seo'])?>" />
+  <meta name="twitter:description" content="<?= $meta->meta_description($d['isi_berita']); ?>" />
+  <meta name="twitter:image" content="<?= $meta->meta_image($d['gambar'])?>" />
+
   <?php
   if($_GET['jn']):
     $color = mysql_fetch_array(mysql_query("SELECT color, link FROM menu WHERE link = '$_GET[jn]'"));
@@ -212,6 +81,7 @@ if(! $automobile->isMobile()){
     $color = ["color" => "#1c9fa7"];
   endif;
   ?>
+
   <meta name="theme-color" content="<?= $color['color']?>">
   <meta name="msapplication-navbutton-color" content="<?= $color['color']?>">
   <meta name="apple-mobile-web-app-status-bar-style" content="<?= $color['color']?>">
@@ -231,7 +101,7 @@ if(! $automobile->isMobile()){
   <script src="<?= SITE_URL?>js/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
   <script src="<?= SITE_URL?>js/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
  
-  <script type="application/ld+json">
+  <!-- <script type="application/ld+json">
   {
     "@context": "http://schema.org/",
     "@type": "NewsArticle",
@@ -270,7 +140,7 @@ if(! $automobile->isMobile()){
       "name": "harianamanah"
     }
   }
-  </script>
+  </script> -->
   <?php 
     include_once "heatmap.php"; 
     include_once "analyticstracking.php"; 
@@ -406,6 +276,4 @@ if(! $automobile->isMobile()){
 </body>
 </html>
 
-<?php
-  mysql_close($link);
-?>
+<?php mysql_close($link); ?>

@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------------------- */
-body {font-family: 'Roboto', sans-serif;color:#000007;background-color: #ECECEC ;font-size: 18px;line-height: 1.5;font-weight: 400; color:#343741;}
+body {font-family: 'Roboto', sans-serif;color:#000007;background-color: #fff ;font-size: 18px;line-height: 1.5;font-weight: 400; color:#343741;}
 html, body {width:100%; padding:0; margin:0;}
 
 img{max-width:100%;	height: auto;  /* ie8 */}
@@ -416,11 +416,11 @@ margin-bottom:-2px;
 /* -------------------------------------Content-------------------------------- */
 /* ---------------------------------------------------------------------------- */
 #page-content{padding: 0;}
-#page-content.index-page, #page-content.single-page, #page-content.archive-page{margin-top: 100px;background-color: #fff;}
+#page-content.index-page, #page-content.single-page, #page-content.archive-page{margin-top: 40px;background-color: #fff;}
 
 .archive-page .box .zoom-container{max-width: 250px;display: inline-block; margin-right: 5px;}
 
-.featured{background-color: #ECECEC; position:relative;top:75px;/*border: 1px solid #ddd; saya ubah*/}
+.featured{background-color: #fff;}
 
 /* ---MainContent--- */
 
@@ -557,7 +557,6 @@ footer .footer-logo img{
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
 }
-footer .footer-logo
 {
 	text-align: center;
 	padding: 5px 0;

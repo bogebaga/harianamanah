@@ -27,6 +27,7 @@
   RewriteRule ^lombamewarnaiislami$ media.php?module=warnaislami [L]
   RewriteRule ^pilkada/(.*)$ media.php?module=pilkd-daerah&daerah_pilkada=$1 [L]
   RewriteRule ^kategori/(.*)$ media.php?module=katepage&menu=$1 [L]
+  RewriteRule ^amanahpaper/(.*)$ media.php?module=epaper&judul=$1 [L]
 
   #Clean URL
   RewriteRule ^(.*)\.html$ media.php?module=test&menu=$1 [L]

@@ -348,7 +348,7 @@ else{
 
 	 <p class=inline-small-label>
 	 <label for=field4>Infografis</label>
-	 <input type='file' id='grafis_upload' name='grafis_upload' required>
+	 <input type='file' id='grafis_upload' name='grafis_upload'>
 	 <span class style=\"color:#EA1C1C;display:block\">Foto yang akan diupload kecil dari 512K</span>
 	 </p>
 

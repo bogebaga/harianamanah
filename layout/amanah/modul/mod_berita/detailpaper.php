@@ -7,15 +7,16 @@ $detail=mysql_query("SELECT * FROM berita,users,kategori,menu
 $d   = mysql_fetch_array($detail);
 $tgl = tgl_indo($d['tanggal']);
 $jam = trans_jam($d['jam']);
-// var_export(array_flip($param));
-// echo $d['id_kategori'];
+
 $main_menu = mysql_query("SELECT * FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$d[id_kategori]')");
 $menu = mysql_fetch_array($main_menu);
+
+// var_export(array_flip($param));
 // echo $d['id_kategori'];
 // echo $d['judul'];
 ?>
-<div id="page-content" style="background-color: #fff;margin-bottom:10px;" class="index-page container">
-  <div class="col-xs-12 col-md-12 col-lg-9" style="background:#fff;">
+<div id="page-content" style="background-color: #fff;margin-bottom:10px;margin-top:130px;" class="index-page container">
+  <div class="col-xs-12 col-md-12 col-lg-12" style="background:#fff;">
     <div id="sidebar">
       <div class="user-panel">
         <div class="info">
@@ -53,32 +54,19 @@ $menu = mysql_fetch_array($main_menu);
       <div class="dua-atas">
         <div class="single_blog_sidebar wow fadeInUp">
         <?php
-        echo "<div class='row'><img class='main-pic lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$d[gambar]' alt='$d[judul]'></div>";
-        echo "<p class='caption-pic'>$d[keterangan_gambar]</p>";
-        echo "<hr style='margin-right:-15px;margin-left:-15px;'>";
-        echo "<div id='ads_news' style='width:160px;float:left;'><!-- <img src='foto_Iklan_isiberita/ems web.png' style='float:left;width:160px;height:100%;'> -->
-                <script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-                <!-- W_Half_page_ads -->
-                <ins class=\"adsbygoogle\"
-                    style=\"display:inline-block;width:160px;height:600px\"
-                    data-ad-client=\"ca-pub-4290882175389422\"
-                    data-ad-slot=\"4658060817\"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-              </div>";
-        echo '<div class="isi-berita">';
+        echo '<div class="isi-berita full">';
         $konten = explode('</p>', $d['isi_berita']);
         for($i = 0; $i < count($konten); $i++):
           if($i == 1): 
           ?>
           <p id="iklan-google-p" style="text-align:center;">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- B_Center Ads -->
+            <!-- B_amanah_paper -->
             <ins class="adsbygoogle"
-                style="display:inline-block;width:300px;height:250px"
+                style="display:block"
                 data-ad-client="ca-pub-4290882175389422"
-                data-ad-slot="1158479752"></ins>
+                data-ad-slot="5805154747"
+                data-ad-format="auto"></ins>
             <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
@@ -109,8 +97,8 @@ $menu = mysql_fetch_array($main_menu);
           echo $konten[$i].'</p>';
         endfor;?>
         <table>
-          <tr><td colspan="1">Laporan</td><td width="25px" align="center">:</td><td><?= ucfirst($d['reporter'])?></td></tr>
-          <tr><td colspan="1">Editor</td><td width="25px" align="center">:</td><td><?= ucfirst($d['nama_lengkap'])?></td></tr>
+          <tr><td >Laporan</td><td width="25px" align="center">:</td><td><?= ucfirst($d['reporter'])?></td></tr>
+          <tr><td >Editor</td><td width="25px" align="center">:</td><td><?= ucfirst($d['nama_lengkap'])?></td></tr>
         </table>
         <div class="sosial">
           <ul class="list-inline" style="text-align:left;;margin:10px 0 20px 0;">
@@ -138,41 +126,15 @@ $menu = mysql_fetch_array($main_menu);
               endif;
             ?>
         </div>
-          <div class="match_content"> 
-            <div class='row'>
-              <h6 style="display:inline-block;padding:10px 0px;text-transform:uppercase;font-weight:bold !important;text-align:left;color:#000;border-bottom:3px solid <?php echo $menu['color']?>;margin:15px;">BERITA REKOMENDASI</h6>
-            </div>
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-format="autorelaxed"
-                data-ad-client="ca-pub-4290882175389422"
-                data-ad-slot="9556530284"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
-          <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="10"></div>
-        </div>
-        <!-- end of news content -->
-        <div style="margin-top:10px;text-align:center;">
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- W_Banner Top Ads -->
-          <ins class="adsbygoogle"
-              style="display:inline-block;width:640px;height:95px"
-              data-ad-client="ca-pub-4290882175389422"
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
+        <div id="facebook-comment" class="fb-comments" data-href="" data-width="100%" data-numposts="10"></div>
         <div class="related-news">
           <div class='kotak' style="width:100%;float:none;">
             <div class="row">
-              <h2 style="display:inline-block;width:auto;padding:13px 0;text-align:left;text-transform:uppercase !important;border-bottom:3px solid <?php echo $menu['color']?>; font-weight:bold !important; color:#000;margin:15px;">Berita Terkini</h2>
+              <h2 style="display:inline-block;width:auto;padding:13px 0;text-align:left;text-transform:uppercase !important;border-bottom:3px solid <?php echo $menu['color']?>; font-weight:bold !important; color:#000;margin:15px;">PAPER</h2>
             </div>
             <ul class="featured_nav0">
             <?php
-            $detail1=mysql_query("SELECT * FROM berita, kategori WHERE username != 'alifahmi' AND berita.id_kategori = kategori.id_kategori AND berita.id_berita != '$d[id_berita]' ORDER BY berita.id_berita DESC LIMIT 6, 10");
+            $detail1=mysql_query("");
             while($p1=mysql_fetch_array($detail1))
             {
               $tgl = tgl_indo($p1['tanggal']);
@@ -192,100 +154,26 @@ $menu = mysql_fetch_array($main_menu);
                   </li>
                 ";} ?>
             </ul>
-            <div id="iklan-footer">
-              <?php
-              $iklantengah=mysql_query("SELECT * FROM iklanatas  ORDER BY id_iklanatas DESC LIMIT 1");
-              while($b=mysql_fetch_array($iklantengah))
-              {
-                $id1 = $b['id_iklanatas'];
-                echo "<div class='iklan' width='100%' style='position:relative;'>
-                      <a href='$b[url]' target='_blank' title='$b[judul]'>
-                      <img src='foto_iklanatas/$b[gambar]' alt='abutours beriklan di harianamanah.com' style='height:auto;'></a>
-                      </div>";
-              }?>
-            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-<!-- <div class="clearfix"></div> -->
-<div class="hidden-xs col-lg-3" style="background:#fff;padding-right:0;">
-        <div class="single_blog_sidebar wow fadeInUp">
-        <ul class="featured_nav0 read-news">
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- W_Right Banner Ads -->
-          <ins class="adsbygoogle"
-              style="display:inline-block;width:270px;height:350px"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="1385019502"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        <!-- id="fixed-baca" data-spy="affix" -->
-         <li style="background:#fff;">
-            <h1 class="title berita-foto" style="color:#333;font-weight:bold;font-size:20px;text-align:left;margin-top:0;">POPULAR</h1>
-            <div class="single_blog_sidebar wow fadeInUp popular-rubrik <?php echo $menu['link']?>" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44); margin-bottom:10px;">
-              <ol class="list-berita-popular-rubrik">
-              <?php
-              $date = date('Y-m-d');
-              $berita_popular = mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN date_sub('$date', INTERVAL 30 DAY) AND '$date' AND id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 5");
-              $x=1;
-              while($row = mysql_fetch_array($berita_popular)){
-              if ($x == 1):
-                echo "
-                  <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:auto;'>
-                  <li>
-                    <a href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a>
-                    <div class='clearfix'></div>
-                  </li>";
-              else:
-                echo "
-                  <li>
-                    <a href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a>
-                    <div class='clearfix'></div>
-                  </li>";
-              endif;
-              $x++;  
-              }?>
-              </ol>
+          <div class="match_content"> 
+            <div class='row'>
+              <h6 style="display:inline-block;padding:10px 0px;text-transform:uppercase;font-weight:bold !important;text-align:left;color:#000;border-bottom:3px solid <?php echo $menu['color']?>;margin:15px;">BERITA REKOMENDASI</h6>
             </div>
-          </li>
-          <?php
-          $iklantengah=mysql_query("SELECT * FROM pasangiklan WHERE id_pasangiklan != '$idc1'  ORDER BY id_pasangiklan DESC LIMIT 1");
-          while($c=mysql_fetch_array($iklantengah))
-          {
-            $idc2 = $c['id_pasangiklan'];
-            // // echo "
-            //       <li>
-            //         <a class='featured_img' href='$c[url]' >
-            //         <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
-            //       </li>";
-          }?>
-           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- W_Right Banner Ads -->
-          <ins class="adsbygoogle"
-              style="display:inline-block;width:270px;height:350px"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="1385019502"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-format="autorelaxed"
+                data-ad-client="ca-pub-4290882175389422"
+                data-ad-slot="9556530284"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+          
+        </div>
+        <!-- end of news content -->
       </div>
     </div>
   </div>
-
-  <div style="text-align:center;">
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- Banner Bottom -->
-      <ins class="adsbygoogle"
-          style="display:inline-block;width:728px;height:90px"
-          data-ad-client="ca-pub-4290882175389422"
-          data-ad-slot="4948221961"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    <!-- End Banner Bottom -->
-  </div>
-  <!-- <div class="clearfix"></div> -->
+</div>

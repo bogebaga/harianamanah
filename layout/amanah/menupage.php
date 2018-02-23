@@ -3,10 +3,10 @@
   $nama_menu = mysql_fetch_array($terkini);
 ?>
 <!-- /////////////////////////////////////////Content -->
-	<div id="page-content" class="index-page container" style="background-color:#ececec;">
+	<div id="page-content" class="index-page container">
   <!-- <h1 style="color:<?php echo $nama_menu['color']?>;border-bottom:1px solid <?php echo $nama_menu['color']?>"><?php echo $nama_menu['nama_menu']?></h1> -->
-    <div id="sidebar" style="padding:0;background:#ECECEC;">
-      <div class="col-xs-12" style="padding:0;float:none;margin-bottom:25px;margin-top:25px">
+    <div id="sidebar" style="padding:0;">
+      <div class="col-xs-12" style="padding:0;float:none;margin-bottom:25px;">
         <div class='flex-container'>
         <?php
         $rubrik=mysql_query("SELECT u.username, judul, judul_seo, id_berita, tanggal, jam, kategori_seo, k.id_kategori, nama_kategori, hari, gambar FROM users u JOIN (berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori) ON b.username = u.ID WHERE m.id_parent = '$nama_menu[id_menu]' ORDER BY id_berita DESC LIMIT 5");
@@ -53,29 +53,7 @@
         </script>
       </div>
       <div class="col-xs-12" style="padding:0;float:none;">
-      <div class="col-xs-3" style="padding-left:0;">
-        <div style="padding:10px;background:#fff;border-radius:5px;" >
-          <ul>
-          <h1 style="color:<?php echo $nama_menu['color']?>;border-bottom:3px solid #F44336;margin:0 0 15px 0;font-weight:bold !important;display:inline-block;"><?php echo $nama_menu['nama_menu']?></h1>
-          <?php
-            $submenu = mysql_query("SELECT * FROM menu WHERE id_parent='$nama_menu[id_menu]'");
-            while($row = mysql_fetch_array($submenu)){
-              echo "<li style='padding-bottom:10px;'><a style='color:$nama_menu[color];' href='".SITE_URL."$row[link]'>$row[nama_menu]</a></li>";
-            }
-          ?>
-          </ul>
-        </div>
-        <br>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- B_Square Ads -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:250px;height:250px"
-             data-ad-client="ca-pub-4290882175389422"
-             data-ad-slot="4401462448"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
+      <div class="col-lg-3"></div>
       <div class="col-xs-9 news-category" style="background:#fff;padding:0;padding-left:10px;">
           <!-- <h1 style="color:#06375E;border-bottom:1px solid #06375E"><?php echo $nama_menu['nama_menu']?></h1> -->
           <?php

@@ -3,7 +3,7 @@
 	$query = mysql_query("SELECT nama_menu, link
 													FROM menu
 													WHERE id_parent = '1' AND aktif = 'Ya'
-													ORDER BY menu_order ASC;");
+													ORDER BY menu_order ASC");
 	while($menu = mysql_fetch_array($query)):
 		if( $_GET['jn'] == $menu['link']):
 			echo "<li class='active'><a href='".SITE_URL."$menu[link]'>$menu[nama_menu]</a></li>";	
@@ -57,12 +57,18 @@
 							</div>"; }?>
 				</div>
 				<!-- Kontrol navigasi Left & Right -->
-					<a href="#home-carousel" class="left carousel-control" data-slide="prev">
-						<i style="margin-top:100px;" class="fa fa-2x fa-chevron-left"></i>
-					</a>
-					<a href="#home-carousel" class="right carousel-control" data-slide="next">
-						<i style="margin-top:100px;" class="fa fa-2x fa-chevron-right"></i>
-					</a>
+				<a href="#home-carousel" class="left carousel-control" data-slide="prev">
+				<!-- <i style="margin-top:100px;" class="fa fa-2x fa-chevron-left"></i> -->
+				<svg style="width:48px;height:48px;margin-top:100px;" viewBox="0 0 24 24">
+						<path fill="#fff" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+				</svg>
+			</a>
+			<a href="#home-carousel" class="right carousel-control" data-slide="next">
+				<!-- <i style="margin-top:100px;" class="fa fa-2x fa-chevron-right"></i> -->
+				<svg style="width:48px;height:48px;margin-top:100px;" viewBox="0 0 24 24">
+					<path fill="#fff" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+				</svg>
+			</a>
 				<!-- end -->
 			</div>
 		</section>

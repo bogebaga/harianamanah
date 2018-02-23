@@ -1,8 +1,8 @@
 .wraplist {
-    background: #ececec;
+    background: #fff;
     font: 10px "RobotoMedium",Arial,Helvetica,sans-serif;
     line-height: 1;
-    margin-top:70px;
+    margin-top:40px;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-font-smoothing: antialiased;

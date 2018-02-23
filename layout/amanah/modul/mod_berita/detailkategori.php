@@ -1,9 +1,8 @@
 <?php
-echo $_GET['id'];
   $sq = mysql_query("SELECT * from kategori where id_kategori='$_GET[id]'");
   $n = mysql_fetch_array($sq);
 ?>
-<div class="wraplist" style="margin-top:100px;">
+<div class="wraplist">
 <div id="listberita">
     <section class="container cf" style="margin-bottom:0px;padding:0;margin-top:0;"><!--konten start-->
         <div class="right-konten" style="border: 0px solid red;"><!-- right konten start -->

@@ -13,7 +13,6 @@
   RewriteRule ^video-(.*)$ template.php?module=detailvideo&judul=$1 [L]
   RewriteRule ^search? template.php?module=hasilcari&searchmode=all [QSA,L]
   RewriteRule ^tag/(.*) template.php?module=hasiltag&tag=$1 [QSA,L]
-  RewriteRule ^epaper$ template.php?module=epaper [L]
   RewriteRule ^video$ template.php?module=video [L]
   RewriteRule ^foto$ template.php?module=foto [L]
   RewriteRule ^profil-kami$ template.php?module=profilkami&id=$1 [L]
@@ -43,6 +42,7 @@
   RewriteRule ^not-found$ template.php?module=notfound&id=$1 [L]
   RewriteRule ^googlec4c1ba331ed90473\.html$ googlec4c1ba331ed90473.html [L]
   RewriteRule ^lombamewarnaiislami$ template.php?module=warnaislam [L]
+  RewriteRule ^amanahpaper/(.*)$ template.php?module=epaper&judul=$1 [L]
   RewriteRule ^pilkada/(.*)$ template.php?module=pilkd-daerah&daerah_pilkada=$1 [L]
   RewriteRule ^kategori/(.*)$ template.php?module=rubrik&jn=$1 [L]
 

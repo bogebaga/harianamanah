@@ -139,8 +139,8 @@ else{
         $tags = explode(',', $tag);
         foreach($tags as $value):
             $tag_seo = seo_title($value);
-            mysql_query("INSERT INTO tag_news(nama_tag, tag_seo, hari, tanggal_tag) 
-                            VALUES('$value','$tag_seo','$hari_ini','$tgl_sekarang')");
+            mysql_query("INSERT INTO tag_news(nama_tag, tag_seo, hari, tanggal_tag, username) 
+                            VALUES('$value','$tag_seo','$hari_ini','$tgl_sekarang','$nama_user')");
         endforeach;
         
         mysql_query("INSERT INTO topik_news(nama_tag, tag_seo, kategori_tag, hari, tanggal_tag) 

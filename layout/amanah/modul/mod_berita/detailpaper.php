@@ -121,7 +121,7 @@ $menu = mysql_fetch_array($main_menu);
                 $array = explode(',', $d[tag]);
                 foreach($array as $tag):
                   // echo $tag;
-                  echo "<a href='tag/".seo_title($tag)."'>#".ucwords($tag)."</a>";
+                  echo "<a href='".SITE_URL."tag/".seo_title($tag)."'>#".ucwords($tag)."</a>";
                 endforeach;
               endif;
             ?>

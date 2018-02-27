@@ -5,7 +5,7 @@
     </a> -->
 			<div class="col-xs-12 col-lg-9" style='padding-left:0;padding-right:20px;'>
           <!-- Carousel -->
-          <div id="carousel-example-generic" class="carousel slide carousel-fade hl-slider" data-ride="carousel" style="background-color:#000;height:auto;">
+          <div id="carousel-example-generic" class="carousel slide carousel-fade hl-slider" data-ride="carousel" style="height:auto;">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role='listbox'>
             <?php
@@ -16,18 +16,19 @@
               echo"
                 <div class='item'>
                   <div class='col-xs-12' style='float:none;padding-bottom:8px;'>
-                    <div class='tanggal-news' style='color:#fff;padding-top:10px;font-size:14px;'> $t[hari], $tgl - $jam</div>
-                    <div class='header-text'>
-                      <h1 id='title'><a href='berita-$t[judul_seo]'>$t[judul]</a></h1>
-                    </div><!-- /header-text -->
                     <div style='position:relative;'>
                       <a href='berita-$t[judul_seo]'>
                         <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='display:inline-block;vertical-align:top;'>
                       </a>
-                      <div class='desc-home' style='display:inline-block;width:290px;bottom:15px;right:15px;position:absolute;background:rgba(2, 2, 2, 0.7686274509803922);padding:12px 12px 20px;'>
-                        <a href='kategori-$t[id_kategori]-$t[kategori_seo]' style='font-size:12px;background-color:#EFCB17;padding:5px 8px;display:inline-block;color:#000;margin:0 3px'>".strtoupper($t['nama_kategori'])."</a>
-                        <p style='font-size:12px;color:#ddd;line-height:1.5;margin:10px 3px 0;word-wrap:break-word;'>".substr(strip_tags($t['isi_berita']), 0, 160).".&nbsp;<a href='berita-$t[judul_seo]'><b style='color:yellow;'>Selanjutnya</b></a></p>
-                      </div>
+                    </div>
+                    <div class='header-text'>
+                    <div class='desc-home' style='display:inline-block;bottom:15px;right:15px;background:rgba(2, 2, 2, 0.7686274509803922);padding:12px;'>
+                        <a href='kategori-$t[id_kategori]-$t[kategori_seo]' style='font-size:12px;background-color:#EFCB17;padding:0 5px;display:inline-block;color:#000;'>".strtoupper($t['nama_kategori'])."</a>
+                        <div class='tanggal-news' style='display:inline-block;font-size:12px;'> $t[hari], $tgl - $jam</div>
+                        <h1 id='title' style='font-size:30px;margin-top:7px;'><a href='berita-$t[judul_seo]'>$t[judul]</a></h1>
+                        <p style='font-size:12px;color:#ddd;line-height:1.5;word-wrap:break-word;margin:0;'>".substr(strip_tags($t['isi_berita']), 0, 160).".&nbsp;<a href='berita-$t[judul_seo]'><b style='color:yellow;'>Selanjutnya</b></a></p>
+                    </div>
+                    <br>
                     </div>
                   </div>
                   <!-- Static Header -->
@@ -36,7 +37,7 @@
                     <ul style='line-height:.8;margin-top:10px'>";
                       $terkait=mysql_query("SELECT * FROM berita WHERE id_kategori = '$t[id_kategori]' ORDER BY id_berita DESC LIMIT 3");
                       while($u=mysql_fetch_array($terkait)){
-                        echo "<li><a href='berita-$u[judul_seo]' style='font-size:12px;color:white;'>$u[judul]</a></li>";
+                        echo "<li><a href='berita-$u[judul_seo]' style='font-size:12px;color:#333;'>$u[judul]</a></li>";
                       };
                 echo "</ul></div> --></div>";
               } ?>
@@ -55,7 +56,7 @@
                   while($indicator = mysql_fetch_array($terkini)){
                     echo "<li data-target='#carousel-example-generic' data-slide-to='$i'>
                       <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$indicator[gambar]' alt='$indicator[judul]'>
-                      <a href='berita-$indicator[judul_seo]' onclick='open_link(this); return false;' style=margin:0;padding:7px;font-size:12px;color:white;display:inline-block;'>$indicator[judul]</a>
+                      <a href='berita-$indicator[judul_seo]' onclick='open_link(this); return false;' style=margin:0;padding:7px;font-size:12px;color:#333;display:inline-block;'>$indicator[judul]</a>
                     </li>";
                   $i++;
                   }
@@ -288,7 +289,7 @@
               while($row = mysql_fetch_array($paper)){
                 echo "<li style='background: transparent;'>
                   <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:auto'>
-                  <a style='font-size:15px;display:inline-block;width:calc(100% - 50px);font-weight:bold;vertical-align:middle;' href='amanahpaper/$row[judul_seo]'>$row[judul]
+                  <a style='font-size:15px;display:inline-block;font-weight:bold;vertical-align:middle;' href='amanahpaper/$row[judul_seo]'>$row[judul]
                   </a>
                 </li>";
               } ?>

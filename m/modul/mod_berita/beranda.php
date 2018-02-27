@@ -3,9 +3,9 @@
     <li><a href='popular'>Popular</a></li>
     <li><a href='rekomendasi'>Rekomendasi</a></li>
   </ul>
-  <a href="lombamewarnaiislami">
+  <!-- <a href="lombamewarnaiislami">
     <img src="img_lomba/Proposal Lomba Mewarnai.jpg" alt="Lomba Mewarnai Islami - harianamanah.com" style="width:100%;margin-bottom:5px;">
-  </a>
+  </a> -->
  	<section class="container-fluid" style="background-color:white;padding:0 10px;">
 		<section class="headline">
 		<div id='home-carousel' class='carousel slide' data-ride="carousel">

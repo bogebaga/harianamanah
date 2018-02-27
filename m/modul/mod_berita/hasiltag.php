@@ -4,7 +4,7 @@
 				<?php
           $kata = $_GET['tag'];
           // $kata = htmlentities(htmlspecialchars($kata), ENT_QUOTES);
-          echo "<h3 style='font-weight:bold;line-height:1;margin-bottom:0;text-transform:uppercase;'>TAG: ".str_replace('-', ' ', $kata)."</h3><br>";
+          echo "<h3 style='font-weight:bold;line-height:1;margin-bottom:0;text-transform:uppercase;'>#".str_replace('-', ' ', $kata)."</h3><br>";
           
           $hasilcari_page = new Paging_hasilcari_mobtag;
           $batas = 15;

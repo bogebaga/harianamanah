@@ -9,8 +9,8 @@ $tgl = tgl_indo($d['tanggal']);
 $jam = trans_jam($d['jam']);
 // var_export(array_flip($param));
 // echo $d['id_kategori'];
-$main_menu = mysql_query("SELECT * FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$d[id_kategori]')");
-$menu = mysql_fetch_array($main_menu);
+  $main_menu = mysql_query("SELECT * FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$d[id_kategori]')");
+  $menu = mysql_fetch_array($main_menu);
 // echo $d['id_kategori'];
 // echo $d['judul'];
 ?>
@@ -133,7 +133,7 @@ $menu = mysql_fetch_array($main_menu);
                 $array = explode(',', $d[tag]);
                 foreach($array as $tag):
                   // echo $tag;
-                  echo "<a href='tag/".seo_title($tag)."'>#".ucwords($tag)."</a>";
+                  echo "<a href='".SITE_URL."tag/".seo_title($tag)."'>#".ucwords($tag)."</a>";
                 endforeach;
               endif;
             ?>
@@ -211,67 +211,69 @@ $menu = mysql_fetch_array($main_menu);
   </div>
 <!-- <div class="clearfix"></div> -->
 <div class="hidden-xs col-lg-3" style="background:#fff;padding-right:0;">
+      <div id="scroll-fixed">
         <div class="single_blog_sidebar wow fadeInUp">
-        <ul class="featured_nav0 read-news">
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- W_Right Banner Ads -->
-          <ins class="adsbygoogle"
-              style="display:inline-block;width:270px;height:350px"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="1385019502"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        <!-- id="fixed-baca" data-spy="affix" -->
-         <li style="background:#fff;">
-            <h1 class="title berita-foto" style="color:#333;font-weight:bold;font-size:20px;text-align:left;margin-top:0;">POPULAR</h1>
-            <div class="single_blog_sidebar wow fadeInUp popular-rubrik <?php echo $menu['link']?>" style="background-color:#fff;box-shadow:0 0 4px 0 rgba(0, 0, 0, 0.44); margin-bottom:10px;">
-              <ol class="list-berita-popular-rubrik">
-              <?php
-              $date = date('Y-m-d');
-              $berita_popular = mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN date_sub('$date', INTERVAL 30 DAY) AND '$date' AND id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 5");
-              $x=1;
-              while($row = mysql_fetch_array($berita_popular)){
-              if ($x == 1):
-                echo "
-                  <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:auto;'>
-                  <li>
-                    <a href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a>
-                    <div class='clearfix'></div>
-                  </li>";
-              else:
-                echo "
-                  <li>
-                    <a href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a>
-                    <div class='clearfix'></div>
-                  </li>";
-              endif;
-              $x++;  
-              }?>
-              </ol>
-            </div>
-          </li>
-          <?php
-          $iklantengah=mysql_query("SELECT * FROM pasangiklan WHERE id_pasangiklan != '$idc1'  ORDER BY id_pasangiklan DESC LIMIT 1");
-          while($c=mysql_fetch_array($iklantengah))
-          {
-            $idc2 = $c['id_pasangiklan'];
-            // // echo "
-            //       <li>
-            //         <a class='featured_img' href='$c[url]' >
-            //         <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
-            //       </li>";
-          }?>
-           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- W_Right Banner Ads -->
-          <ins class="adsbygoogle"
-              style="display:inline-block;width:270px;height:350px"
-              data-ad-client="ca-pub-4290882175389422"
-              data-ad-slot="1385019502"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </ul>
+          <ul class="featured_nav0 read-news">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- W_Right Banner Ads -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:270px;height:350px"
+                data-ad-client="ca-pub-4290882175389422"
+                data-ad-slot="1385019502"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          <!-- id="fixed-baca" data-spy="affix" -->
+           <li>
+              <h1 class="title berita-foto" style="color:#333;font-weight:bold;font-size:20px;text-align:left;margin-top:0;">POPULAR</h1>
+              <div class="single_blog_sidebar wow fadeInUp popular-rubrik <?php echo $menu['link']?>" style="background-color:#fff;margin-bottom:10px;">
+                <ol class="list-berita-popular-rubrik">
+                <?php
+                $date = date('Y-m-d');
+                $berita_popular = mysql_query("SELECT * FROM berita WHERE tanggal BETWEEN date_sub('$date', INTERVAL 30 DAY) AND '$date' AND id_kategori = '$d[id_kategori]' ORDER BY dibaca DESC LIMIT 5");
+                $x=1;
+                while($row = mysql_fetch_array($berita_popular)){
+                if ($x == 1):
+                  echo "
+                    <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:auto;'>
+                    <li>
+                      <a href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a>
+                      <div class='clearfix'></div>
+                    </li>";
+                else:
+                  echo "
+                    <li>
+                      <a href='berita-$row[judul_seo]' title='$row[judul]'>$row[judul]</a>
+                      <div class='clearfix'></div>
+                    </li>";
+                endif;
+                $x++;  
+                }?>
+                </ol>
+              </div>
+            </li>
+            <?php
+            $iklantengah=mysql_query("SELECT * FROM pasangiklan WHERE id_pasangiklan != '$idc1'  ORDER BY id_pasangiklan DESC LIMIT 1");
+            while($c=mysql_fetch_array($iklantengah))
+            {
+              $idc2 = $c['id_pasangiklan'];
+              // // echo "
+              //       <li>
+              //         <a class='featured_img' href='$c[url]' >
+              //         <img src='foto_pasangiklan/$c[gambar]' alt='iklan harianamanah.com bawah' width='100%'></a>
+              //       </li>";
+            }?>
+             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- W_Right Banner Ads -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:270px;height:350px"
+                data-ad-client="ca-pub-4290882175389422"
+                data-ad-slot="1385019502"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

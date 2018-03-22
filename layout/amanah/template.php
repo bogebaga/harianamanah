@@ -124,17 +124,18 @@
   ?>
 </head>
 <body>
-<header>
+<header style="margin-bottom:20px;">
   <!--Navigation-->
-  <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+  <nav id="menu" class="navbar navbar-default" style="margin:0;">
     <div class="row header-row-logo-bulat">
       <div class="container" style="padding:0;">
-        <a href="/" style="display:inline-block; padding:13px 30px 13px 0;border-right:1px solid rgba(38, 41, 50, 0.12);">
-          <img src="<?= SITE_URL?>logo/assets/pp_ff.png" width="30" alt="Logo bulat Amanah - harianamanah.com">
+        <a href="/">
+          <div class="logo"><img src="<?= SITE_URL?>images/amanah.png" width="250px" alt="Logo Amanah - harianamanah.com"></div>
         </a>
         <div id="cari">
           <div class="mid1">
-          <form method="GET" action="search">
+          <!-- <form method="GET" action="/search"> -->
+          <form method="GET" action="<?= SITE_URL."search"?>">
             <input type="text" name="query-search" placeholder='Cari berita dan peristiwa'>
             <button><i class="fa fa-circle-thin"></i></button>
           </form>
@@ -144,24 +145,7 @@
     </div>
   </nav>
   <nav id="logo" class="navbar navbar-default" style="background-color:#fff;">
-    <div class="row">
-      <div class="container" style="padding:0;">
-        <a href="/">
-          <div class="logo"><img src="<?= SITE_URL?>images/amanah.png" width="400px" alt="Logo Amanah - harianamanah.com"></div>
-        </a>
-      <div style="vertical-align:middle;display:inline-block;">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Banner Top Ads -->
-        <ins class="adsbygoogle"
-            style="display:inline-block;width:640px;height:95px"
-            data-ad-client="ca-pub-4290882175389422"
-            data-ad-slot="5899334806"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        </div>
-      </div>
-    </div>
+   
     <?php
       if($_GET['menu']):
         $color = mysql_fetch_array(mysql_query("SELECT gradient, color, link FROM menu WHERE link = '$_GET[menu]'"));
@@ -170,67 +154,77 @@
       elseif($_GET['id']):
         $color = mysql_fetch_array(mysql_query("SELECT gradient, color, link FROM menu WHERE id_menu = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')"));
       else:
-        $color = ["color" => "#1c9fa7"];
+        $color = [
+          "color" => "#1c9fa7",
+          "gradient" => "background-color: #1c9fa7;
+          background-image: -webkit-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+          background-image: -moz-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+          background-image: -o-linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);
+          background-image: linear-gradient(255deg, #1c9fa7 25%, #11747c 100%);"
+      ];
       endif;
     ?>
     <div class="row">
-    <div class="container nav-menu" style="padding:0;<?= $color['gradient']?>">
-      <div class="navbar-header">
-        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
-      </div>
-      <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0;position:relative;">
-        <ul class="nav navbar-nav" style="position:relative;">
+      <div class="container nav-menu" style="padding:0;">
+        <div class="navbar-header">
+          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0;position:relative;">
+          <ul class="nav navbar-nav" style="position:relative;">
+          <?php
+            $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY menu_order");
+            while( $row = mysql_fetch_array($result)):
+          ?>
+            <li data-caption ="<?= $row['link']?>" class="main-menu" style="position:static;">
+              <a href="<?= SITE_URL.'kategori/'.$row['link']?>"><?= $row['nama_menu']?></a>
+                <ul class="menu-show sub-nav-menu <?= strtolower($row['link']) ?>">
+                  <li class="sub__rubrik col-lg-3" style="border-right:1px solid rgba(0, 0, 0, 0.25);">
+                  <?php
+                    $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = '$row[id_menu]' AND aktif = 'Ya'");
+                    while($row_sub = mysql_fetch_array($sub_rubrik)):
+                      echo "<a href='".SITE_URL.$row_sub[link]."' style='font-size:12;font-weight:bolder;padding:7px 0;display:block;'>$row_sub[nama_menu]</a>";
+                    endwhile;
+                  ?>
+                  </li>
+                  <li class="col-lg-9" style="padding-left:25px;">
+                  <?php
+                  $query = mysql_query("SELECT judul, judul_seo, gambar FROM berita, menu WHERE id_kategori = id_menu AND id_parent = '$row[id_menu]' ORDER BY id_berita DESC LIMIT 4");
+                  while($img_news = mysql_fetch_array($query)):
+                  ?>
+                    <div class="mega_menu_img">
+                      <a href="<?= SITE_URL.'berita-'.$img_news['judul_seo'] ?>" style="display:inline-block;">
+                        <img class="lazy reset_img" src="<?= SITE_URL; ?>foto_statis/base.jpg" data-src="http://harianamanah.com/foto_berita/<?= $img_news['gambar']?>" alt="<?= $img_news['judul']?>">
+                      </a>
+                      <a class="caption" href="<?= SITE_URL.'berita-'.$img_news['judul_seo'] ?>"><?= $img_news['judul']?></a>
+                    </div>
+                  <?php endwhile; ?>
+                  </li>
+                </ul>
+              </li>
+          <?php endwhile;?>
+          </ul>
+        </div>
+        </div>
+    </div>
+    <div class="row" style="border-bottom:1px solid #e5e5e5;border-top:1px solid #e5e5e5;">
+      <div class="container" style="padding:0;">
+        <ul class="sub-nav-menu sub-menu-rubrik">
         <?php
-          $result = mysql_query("SELECT * FROM menu WHERE aktif='Ya' AND id_parent='0' ORDER BY menu_order");
-          while( $row = mysql_fetch_array($result)):
-        ?>
-          <li data-caption ="<?= $row['link']?>" class="main-menu" style="position:static;">
-            <a href="<?= SITE_URL.'kategori/'.$row['link']?>" style="color:#fff;font-size:17px;padding:13px 15px;font-weight:bold;text-transform:uppercase;" ><?= $row['nama_menu']?></a>
-              <ul class="menu-show sub-nav-menu <?= strtolower($row['link']) ?>">
-                <li class="sub__rubrik col-lg-3" style="border-right:1px solid rgba(0, 0, 0, 0.25);">
-                <?php
-                  $sub_rubrik = mysql_query("SELECT link, nama_menu FROM menu WHERE id_parent = '$row[id_menu]' AND aktif = 'Ya'");
-                  while($row_sub = mysql_fetch_array($sub_rubrik)):
-                    echo "<a href='".SITE_URL.$row_sub[link]."' style='font-size:15px;font-weight:bolder;padding:7px 0;display:block;'>$row_sub[nama_menu]</a>";
-                  endwhile;
-                ?>
-                </li>
-                <li class="col-lg-9" style="padding-left:25px;">
-                <?php
-                $query = mysql_query("SELECT judul, judul_seo, gambar FROM berita, menu WHERE id_kategori = id_menu AND id_parent = '$row[id_menu]' ORDER BY id_berita DESC LIMIT 4");
-                while($img_news = mysql_fetch_array($query)):
-                ?>
-                  <div class="mega_menu_img">
-                    <a href="<?= SITE_URL.'berita-'.$img_news['judul_seo'] ?>" style="display:inline-block;">
-                      <img class="lazy reset_img" src="<?= SITE_URL; ?>foto_statis/base.jpg" data-src="http://harianamanah.com/foto_berita/<?= $img_news['gambar']?>" alt="<?= $img_news['judul']?>">
-                    </a>
-                    <a class="caption" href="<?= SITE_URL.'berita-'.$img_news['judul_seo'] ?>"><?= $img_news['judul']?></a>
-                  </div>
-                <?php endwhile; ?>
-                </li>
-              </ul>
-            </li>
-        <?php endwhile;?>
-        </ul>
-        <ul class="sub-nav-menu sub-menu-rubrik menu-show">
-        <?php
-          if($_GET['menu']):
-            $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[menu]')");
-          elseif($_GET['judul']):
-            $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE id_menu = (SELECT id_kategori FROM berita WHERE judul_seo = '$_GET[judul]'))");
-          elseif($_GET['id']):
-            $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')");
-          endif;
-          
-          while($row_sub = mysql_fetch_array($sub_rubrik)):
-              echo "
-              <li class=\"sub__rubrik\">
-                <a href='".SITE_URL.$row_sub[link]."' style='font-size:13px;font-weight:bold;padding:10px 15px;;display:inline-block;'>$row_sub[nama_menu]</a>
-              </li>";
-          endwhile;
-          echo "</ul>";
-        ?>
-      </div>
+            if($_GET['menu']):
+              $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_menu FROM menu WHERE link = '$_GET[menu]')");
+            elseif($_GET['judul']):
+              $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE id_menu = (SELECT id_kategori FROM berita WHERE judul_seo = '$_GET[judul]'))");
+            elseif($_GET['id']):
+              $sub_rubrik = mysql_query("SELECT nama_menu, link FROM menu WHERE id_parent = (SELECT id_parent FROM menu WHERE id_menu = '$_GET[id]')");
+            endif;
+            
+            while($row_sub = mysql_fetch_array($sub_rubrik)):
+                echo "
+                <li class=\"sub__rubrik\">
+                  <a href='".SITE_URL.$row_sub[link]."'>$row_sub[nama_menu]</a>
+                </li>";
+            endwhile;?>
+          </ul>
       </div>
     </div>
   </nav>
@@ -295,7 +289,7 @@
                 <img src="<?=SITE_URL?>images/appstore.png" alt="apple" style="width:140px">
               </a>
             </li>
-          </ul>w
+          </ul>
         </li>
       </ul>
     </div>

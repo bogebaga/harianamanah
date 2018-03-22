@@ -35,7 +35,7 @@ $(document).ready(function(){
         return $('.tagline').offset().top - $(this).height();
       },
       fixed: function(){
-        $('#ads_news').css('width', 'auto');
+        $('#ads_news').css('width', 160);
         $('#ads_news').next().css({
           float: 'left',
           width: 'auto'
@@ -43,9 +43,9 @@ $(document).ready(function(){
       },
       unfixed: function(){
         $('#ads_news').css({
-          left: 17,
           float: 'left',
           width: 160,
+          left: 623,
           top: function(){
             return $('.tagline').offset().top - $(this).height() - 280 ;
           }

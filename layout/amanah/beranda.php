@@ -15,7 +15,7 @@
               $jam = trans_jam($t['jam']);
               echo"
                 <div class='item'>
-                  <div class='col-xs-12' style='float:none;padding-bottom:8px;'>
+                  <div class='col-xs-12' style='float:none;padding-bottom:8px;padding-left:0;'>
                     <div style='position:relative;'>
                       <a href='berita-$t[judul_seo]'>
                         <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]' style='display:inline-block;vertical-align:top;'>
@@ -25,7 +25,7 @@
                     <div class='desc-home' style='display:inline-block;bottom:15px;right:15px;background:rgba(2, 2, 2, 0.7686274509803922);padding:12px;'>
                         <a href='kategori-$t[id_kategori]-$t[kategori_seo]' style='font-size:12px;background-color:#EFCB17;padding:0 5px;display:inline-block;color:#000;'>".strtoupper($t['nama_kategori'])."</a>
                         <div class='tanggal-news' style='display:inline-block;font-size:12px;'> $t[hari], $tgl - $jam</div>
-                        <h1 id='title' style='font-size:30px;margin-top:7px;'><a href='berita-$t[judul_seo]'>$t[judul]</a></h1>
+                        <h1 id='title' style='font-size:35px;margin-top:7px;'><a href='berita-$t[judul_seo]'>$t[judul]</a></h1>
                         <p style='font-size:12px;color:#ddd;line-height:1.5;word-wrap:break-word;margin:0;'>".substr(strip_tags($t['isi_berita']), 0, 160).".&nbsp;<a href='berita-$t[judul_seo]'><b style='color:yellow;'>Selanjutnya</b></a></p>
                     </div>
                     <br>
@@ -42,7 +42,7 @@
                 echo "</ul></div> --></div>";
               } ?>
             </div>
-            <div class='col-xs-12' style='float:none;'>
+            <div class='col-xs-12' style='float:none;padding-left:0;'>
               <script>
                 function open_link (obj){
                 window.open(obj.getAttribute("href"), '_self');
@@ -56,7 +56,7 @@
                   while($indicator = mysql_fetch_array($terkini)){
                     echo "<li data-target='#carousel-example-generic' data-slide-to='$i'>
                       <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$indicator[gambar]' alt='$indicator[judul]'>
-                      <a href='berita-$indicator[judul_seo]' onclick='open_link(this); return false;' style=margin:0;padding:7px;font-size:12px;color:#333;display:inline-block;'>$indicator[judul]</a>
+                      <a href='berita-$indicator[judul_seo]' onclick='open_link(this); return false;' style=margin:0;padding:7px;font-size:15px;color:#333;display:inline-block;'>$indicator[judul]</a>
                     </li>";
                   $i++;
                   }
@@ -76,17 +76,9 @@
           </script>
         </div>
         <div class="col-xs-12" style="margin-top:7px;padding:0;">
-          <style>
-           li p[data-opacity='true']{
-            opacity:0;
-           }
-           li:hover p[data-opacity='true']{
-            opacity: 1;
-          }
-          </style>
             <!-- <h1 style="margin-top:0;font-weight:900;">BERITA TERKINI</h1> -->
             <div class="single_blog_sidebar1 berita-terkini wow fadeInUp">
-              <ul id="list-terkini-middle" style="box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.46);">
+              <ul id="list-terkini-middle">
               <?php
                 $x=1;
                 $detail1=mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori AND jenis_berita != 'foto' AND username != '28' ORDER BY b.id_berita DESC LIMIT 48");
@@ -102,14 +94,14 @@
                     endif;
                     $inilah = mysql_query("SELECT * FROM berita b JOIN kategori k ON b.id_kategori = k.id_kategori WHERE jenis_berita = 'foto' $add_q ORDER BY b.id_berita DESC LIMIT 1");
                     while($foto=mysql_fetch_array($inilah)):
-                      echo "<li style='color:white;background:#252831' data-berita-foto='$foto[id_berita]'>
-                      <div class='deskripsi-judul home reda'>
-                        <h6 ><a style='color:#fff;font-size:30px;' href='foto-$foto[judul_seo]' title='$foto[judul]'>$foto[judul]</a></h6>
-                        <p class='rubrik-tanggal'><a href='kategori-$foto[id_kategori]-$foto[kategori_seo]'>".strtoupper($foto['nama_kategori'])."</a>&nbsp;$foto[hari], $tgl - $jam</p>
-                      </div>
+                      echo "<li data-berita-foto='$foto[id_berita]'>
                       <a href='foto-$foto[judul_seo]'>
                         <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$foto[gambar]' alt='$foto[judul]' style='object-fit:cover;width:100%;height:400px;'>
                       </a>
+                      <div class='deskripsi-judul home reda' style='margin-top:15px;'>
+                        <h6 ><a style='color:#333;font-size:30px;' href='foto-$foto[judul_seo]' title='$foto[judul]'>$foto[judul]</a></h6>
+                        <p class='rubrik-tanggal'><a href='kategori-$foto[id_kategori]-$foto[kategori_seo]'>".strtoupper($foto['nama_kategori'])."</a>&nbsp;$foto[hari], $tgl - $jam</p>
+                      </div>
                     </li>";
                     $state = true;
                     $test = $foto['id_berita'];
@@ -160,21 +152,13 @@
                     <div class='deskripsi-judul home'>
                       <p style='margin-left:7px;' class='rubrik-tanggal'><a href='kategori-$p1[id_kategori]-$p1[kategori_seo]'>".strtoupper($p1['nama_kategori'])."</a>&nbsp;$p1[hari], $tgl - $jam</p>
                       <h6><a href='berita-$p1[judul_seo]' title='$p1[judul]'>$p1[judul]</a></h6>
-                      <p style='margin-bottom:0;'>".substr(strip_tags($p1['isi_berita']), 0, 130)."&nbsp;<a href='berita-$p1[judul_seo]'><b style='color:#009688;'>&hellip;</b></a></p>
-                      <p data-opacity='true' style='margin:0 0 0 7px;font-size:15px;margin-top:7px;'>
-                        <a href='https://www.facebook.com/sharer.php?u=http://harianamanah.com/berita-$p1[judul_seo]' target='_blank'><i class='fa fa-facebook fa-fw'></i></a>
-                        <a href='https://twitter.com/intent/tweet?url=http://harianamanah.com/berita-$p1[judul_seo]&text=$p1[judul]&via=harianamanah' target='_blank'><i class='fa fa-twitter fa-fw'></i></a>
-                        <a href='https://plus.google.com/share?url=http://harianamanah.com/berita-$p1[judul_seo]' target='_blank' ><i class='fa fa-google-plus fa-fw'></i></a>
-                      </p>
                     </div>
                   </li>";
                   endif;
                   $x++;
                 } ?>
               </ul>
-              <style>
-                #more,#more_indeks {margin-bottom:10px;display:inline-block;padding:7px 40px;box-shadow:0px 1px 5px 0px rgba(0, 0, 0, 0.5686274509803921);border-radius:50px; background:#009688;color:#fff;cursor:pointer;font-weight:700; transition:background .5s ease;}
-              </style>
+              
               <div id="more_animasi" style="text-align:center;margin-top:10px;">
                 <div id="more">BERITA LAINNYA</div>
               </div>
@@ -200,7 +184,7 @@
       <!-- break -->
       <div class="col-xs-12 col-lg-3 hidden-sm hidden-md" style="padding:0">
         <div class="single_blog_sidebar wow fadeInUp" style="margin-bottom:50px;">
-        <h1 style="font-weight:bold;margin-top:0;font-size:20px;line-height:.8;padding:5px;color:#333;">TOPIK UTAMA</h1>
+        <h1 style="font-weight:900;margin-top:0;font-size:20px;line-height:.8;color:#333;">TOPIK UTAMA</h1>
           <ul class="featured_nav2 list-topik-khusus">
             <?php
             $liputan_khusus = mysql_query("SELECT sub_judul, topik FROM berita WHERE topik != '' GROUP BY topik");
@@ -213,15 +197,6 @@
           </ul>
         </div>
         
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- W_Custom Square Ads -->
-        <ins class="adsbygoogle"
-            style="display:inline-block;width:270px;height:270px"
-            data-ad-client="ca-pub-4290882175389422"
-            data-ad-slot="1205411324"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
         <div class="single_blog_sidebar berita-popular wow fadeInUp">
           <h1 style="font-weight:900;font-size:20px;">BERITA POPULAR</h1>
           <ol class="list-berita-popular">
@@ -289,7 +264,7 @@
               while($row = mysql_fetch_array($paper)){
                 echo "<li style='background: transparent;'>
                   <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]' style='height:auto'>
-                  <a style='font-size:15px;display:inline-block;font-weight:bold;vertical-align:middle;' href='amanahpaper/$row[judul_seo]'>$row[judul]
+                  <a style='font-size:15px;display:inline-block;vertical-align:middle;' href='amanahpaper/$row[judul_seo]'>$row[judul]
                   </a>
                 </li>";
               } ?>
@@ -376,13 +351,13 @@
           <div class="single_blog_sidebar wow fadeInUp" style="margin-bottom:50px;">
           <h1 style="font-weight:bold;margin-top:0;font-size:20px;line-height:.8;padding:5px;color:#333;">PILKADA SULSEL 2018</h1>
             <ul class="list-topik-khusus">
-              <img src="<?= SITE_URL."foto_banner/leader_amanah.jpg"?>" style="height:auto">
+              <img src="<?= SITE_URL."foto_banner/leader_amanah.jpg"?>" style="height:auto;margin-bottom:10px;">
               <?php 
                 $query = mysql_query("SELECT DISTINCT kategori_pilkada FROM pilkada");
                 while($row = mysql_fetch_array($query)):
                   echo "<li style='background: transparent;'>
                   <i class='fa fa-hashtag' style='font-size:15x;margin-right:10px;color:#333'></i>
-                  <a style='color:#41454f;font-size:20px;display:inline-block;width:calc(100% - 50px);font-weight:100;vertical-align:middle;line-height:1;' href='pilkada/$row[kategori_pilkada]'>$row[kategori_pilkada]</a>
+                  <a style='color:#41454f;line-height:1.5;font-size:20px;display:inline-block;width:calc(100% - 50px);font-weight:100;vertical-align:middle' href='pilkada/$row[kategori_pilkada]'>$row[kategori_pilkada]</a>
                 </li>";
                 endwhile;
               ?>
@@ -406,7 +381,7 @@
   </div>
   <script>
   $('#more_animasi').one('click', function(){
-    $(this).html('<div><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" style="color:#009688"></i><span style="color:#fff;padding:7px 0;display:block">Memuat&hellip;</span></div>');
+    $(this).html('<div><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw" style="color:#009688"></i><span style="color:#fff;padding:7px 0;display:block;">Memuat&hellip;</span></div>');
     $.ajax({
       method: 'GET',
       url: 'more-web.php',

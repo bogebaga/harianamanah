@@ -65,7 +65,7 @@ else{
   <link rel="shortcut icon" href="../favicon.ico" />
   <link rel="dns-prefetch" href="http://fonts.googleapis.com/" />
   <link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/zalstyle.css" />
+	<link rel="stylesheet" href="css/zalstyle.css?v=1.0" />
 	<link rel="stylesheet" href="js/jQuery-tagEditor-master/jquery.tag-editor.css" />
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans" />
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -202,7 +202,7 @@ else{
     }else{
       return true;
     }
-    
+
   })
     $('#editberita').validate({
       rules:{
@@ -229,7 +229,7 @@ else{
       source: <?php source('tag_news');?>
     },
     placeholder: 'Tag Berita Terkait'
-  });  
+  });
   jQuery('#topik').tagEditor({
     autocomplete:{
       delay:0,

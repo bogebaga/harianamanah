@@ -7,11 +7,8 @@
         <span class="fl art-count">
         <?php
         $kata = $_GET['query-search'];
-        $data_kata = "SELECT * FROM berita b JOIN menu m ON b.id_kategori = m.id_menu where judul LIKE '%$kata%' OR isi_berita LIKE '%$kata%'";
-        $hasil  = mysql_query($data_kata);
-        $data_artikel = mysql_num_rows($hasil);
 
-        echo "<div style='font-size:20px;font-weight:100;line-height:1.5;'>Hasil Pencarian <b>\"$kata\"</b>, $data_artikel berita yang ditemukan.</div>";
+        echo "<div style='font-size:17px;font-weight:100;line-height:1.5;'>Hasil Pencarian <b>\"$kata\"</b></div>";
         echo "</span></div>";
         
         // call pagination
@@ -30,7 +27,6 @@
           echo "
           <div class='trend-left-inner'>
             <div class='trend-left-list cf'>
-              <span class='img-circle trend-bullet'></span>
               <figure>
                 <div class='left-trending-fix'>
                 <a href='berita-$r[judul_seo]' title='$r[judul]'>
@@ -39,8 +35,7 @@
                 </div>
               </figure>
               <div class='trend-left-info'>
-                <a href='berita-$r[judul_seo]' title='$r[judul]' style='margin-top:0;'>$r[judul]</a>
-                <div class='publish-info cf'>".substr(strip_tags($r['isi_berita']), 0, 160)." - <a style='display:inline-block;margin:0;color:#19A2AC;line-height:1;' href='$r[link]'>$r[nama_menu]</a></div>
+                <a href='berita-$r[judul_seo]' title='$r[judul]' style='margin-top:0;font-size:25px;font-weight:300;'>$r[judul]</a>
               </div>
             </div>
           </div>";}

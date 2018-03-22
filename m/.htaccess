@@ -42,9 +42,10 @@
   RewriteRule ^not-found$ template.php?module=notfound&id=$1 [L]
   RewriteRule ^googlec4c1ba331ed90473\.html$ googlec4c1ba331ed90473.html [L]
   RewriteRule ^lombamewarnaiislami$ template.php?module=warnaislam [L]
-  RewriteRule ^amanahpaper/(.*)$ template.php?module=epaper&judul=$1 [L]
   RewriteRule ^pilkada/(.*)$ template.php?module=pilkd-daerah&daerah_pilkada=$1 [L]
   RewriteRule ^kategori/(.*)$ template.php?module=rubrik&jn=$1 [L]
+  RewriteRule ^amanahpaper/(.*)$ template.php?module=epaperdetail&judul=$1 [L]
+  RewriteRule ^epaper$ template.php?module=epaper [L]
 
   #Clean URL
   RewriteRule ^(.*)\.html$ template.php?module=menu&jn=$1 [L]

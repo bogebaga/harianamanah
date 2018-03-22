@@ -29,14 +29,8 @@
         </div>
         <!-- right konten start -->
         <div class="left-konten trend" style="float:right;margin:0;"><!-- left konten start -->
-            <div class="art-social-bar">
-                <!-- <span class="fl art-count">
-				<?php
-				$jmldata     = mysql_num_rows(mysql_query("SELECT * FROM berita, users WHERE users.id = berita.username AND id_kategori='$_GET[id]'"));
-				echo $jmldata." ARTIKEL";
-				?>
-				</span> -->
-        </div>
+          <div class="art-social-bar">
+          </div>
 			<?php
       $p      = new Paging_kategori;
       $batas  = 15;
@@ -52,16 +46,13 @@
         echo"
         <div class='trend-left-inner'>
           <div class='trend-left-list cf'>
-            <span class='img-circle trend-bullet'></span>
             <figure>
                 <div class='left-trending-fix'><a href='berita-$r[judul_seo]'>
                   <img class='lazy' src='foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$r[gambar]' border='0' alt='$r[judul]'>
                 </div>
             </figure>
             <div class='trend-left-info'>
-              <a href='berita-$r[judul_seo]' style='margin-top:0;'>$r[judul]</a>
-              <p style='margin-top:3px;'>$r[hari], $tgl - $jam</p>
-              <div class='publish-info cf'>".substr(strip_tags($r['isi_berita']), 0, 160)."</div>
+              <a href='berita-$r[judul_seo]' style='font-size:25px;font-weight:300;margin-top:0;'>$r[judul]</a>
               </div>
           </div>
         </div>";

@@ -8,7 +8,7 @@
         <?php
         $kata = $_GET['tag'];
 
-        echo "<h1 style='margin-bottom:0;font-weight:bolder;text-transform:uppercase;'>#".str_replace('-', ' ', $kata)."</h1>";
+        echo "<h1 style='margin-bottom:0;font-weight:bolder;text-transform:capitalize;margin:0;'>#".str_replace('-', ' ', $kata)."</h1>";
         echo "</span></div>";
         
         // call pagination
@@ -27,7 +27,6 @@
           echo "
           <div class='trend-left-inner'>
             <div class='trend-left-list cf'>
-              <span class='img-circle trend-bullet'></span>
               <figure>
                 <div class='left-trending-fix'>
                 <a href='berita-$r[judul_seo]' title='$r[judul]'>

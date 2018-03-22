@@ -65,20 +65,7 @@
       mysql_query("UPDATE berita SET dibaca=$d[dibaca]+1 WHERE judul_seo='$_GET[judul]'");
       ?>
       </div>
-      <div class="social-optimize" style='margin:30px 0;text-align:center;'>
-        <a href="https://www.facebook.com/sharer.php?u=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share big fa fa-facebook" target="_blank"></a>
-        <a href="https://twitter.com/intent/tweet?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>&via=harianamanah.com" class="social-share big fa fa-twitter" target="_blank"></a>
-        <a href="https://plus.google.com/share?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share big fa fa-google-plus" target="_blank"></a>
-        <a href="https://line.me/R/msg/text/?<?php echo "http://m.harianamanah.com/berita-$d[judul_seo]"?>" class="social-share big line" target="_blank"></a>
-        <a href="whatsapp://send?text=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>" class="social-share big fa fa-whatsapp" target="_blank"></a>
-        <a href="https://telegram.me/share/url?url=<?php echo "http://m.harianamanah.com/berita-".$d['judul_seo']?>&text=<?php echo $d['judul']?>" class="social-share big fa fa-paper-plane" target="_blank"></a>
-        <a href="#facebook-comment" class="social-share big fa fa-commenting-o"></a>
-      </div> 
-      <table>
-        <tr><td colspan="1">Sumber</td><td width="25px" align="center">:</td><td><?= ucfirst($d['reporter'])?></td></tr>
-        <tr><td colspan="1">Reporter</td><td width="25px" align="center">:</td><td><?= ucfirst($d['nama_lengkap'])?></td></tr>
-      </table>
-      <br>
+     
       <h5>TAGS</h5>
       <div class="tagline">
         <?php
@@ -92,25 +79,9 @@
             endif;
           ?>
       </div>
-  </div>
-  <!-- <hr>
-  <span>Dibaca : <?php echo $d['dibaca']?></span>
-  <hr> -->
-  <!-- <div class="baca-juga">
-    <ul style="list-style-type: none;">
-      <?php
-            $detail1=mysql_query("SELECT * FROM berita WHERE username != 'alifahmi' AND id_kategori = '$d[id_kategori]' AND id_berita != '$d[id_berita]' order by id_berita DESC limit 5");
-            while($p1=mysql_fetch_array($detail1)){
-            echo"
-            <li>
-                <img class='lazy' src='assets/base_n.jpg' data-src='http://harianamanah.com/foto_small/$p1[gambar]' alt='$p1[judul]' style='border-radius:50px;width:42px;'>
-                <a href='berita-$p1[judul_seo]' title='artikel-lain'>$p1[judul]</a>
-              </li>";
-            }?>
-          </ul>
-        </div> -->
       </div>
     </div>
+  </div>
 </section>
 <div class="match_content">
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -167,12 +138,12 @@
             {
               echo "<article class= 'artikle' style='border:0;width:200px;display:inline-block;padding-right:15px;white-space:normal;vertical-align:top;'>
               <div class='list-picture'>
-              <a href='berita-$tp[judul_seo]' style='width:100%;'>
+              <a href='".SITE_URL."berita-$tp[judul_seo]' style='width:100%;'>
               <img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$tp[gambar]' alt='$tp[judul]' style='object-fit:cover;height:115px;width:100%;'>
               </a>
               </div>
               <div class='artikle-text' data-target='update' style='padding:0;margin-top:10px;width:100% !important'>
-              <a href='berita-$tp[judul_seo]' class='berita' title='$tp[judul]' style='font-weight:500;font-size:12px;width:100% !important'>$tp[judul]</a>
+              <a href='".SITE_URL."berita-$tp[judul_seo]' class='berita' title='$tp[judul]' style='font-weight:500;font-size:12px;width:100% !important'>$tp[judul]</a>
               <br>
               </div>
               </article>";
@@ -188,12 +159,12 @@
             {
             echo "<article class= 'artikle' style='border:0;width:200px;display:inline-block;padding-right:15px;white-space:normal;vertical-align:top;'>
                     <div class='list-picture'>
-                      <a href='berita-$tp[judul_seo]' style='width:100%;'>
+                      <a href='".SITE_URL."berita-$tp[judul_seo]' style='width:100%;'>
                         <img class='picture lazy' src='assets/base.jpg' data-src='http://harianamanah.com/foto_berita/$tp[gambar1]' alt='$tp[judul]' style='object-fit:cover;height:115px;width:100%;'>
                       </a>
                     </div>
                     <div class='artikle-text' data-target='update' kode='$tp[id_berita]' style='padding:0;margin-top:10px;width:100% !important'>
-                      <a href='berita-$tp[judul_seo]' class='berita' title='$tp[judul]' style='font-weight:500;font-size:12px;width:100% !important'>$tp[judul]</a>
+                      <a href='".SITE_URL."berita-$tp[judul_seo]' class='berita' title='$tp[judul]' style='font-weight:500;font-size:12px;width:100% !important'>$tp[judul]</a>
                       <br>
                     </div>
                   </article>";

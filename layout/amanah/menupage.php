@@ -16,9 +16,9 @@
           $jam = trans_jam($row['jam']);
           $id_berita = $row['id_berita'];
           echo "<div class='item-flex grid-$i'>
-          <span class='kategori-grid' style='background:$nama_menu[background]'><a style='color:#fff;' href='".SITE_URL."kategori-$row[id_kategori]-$row[kategori_seo]'>$row[nama_kategori]</a></span>
+          
           <a href='".SITE_URL."berita-$row[judul_seo]' title='$row[judul]'><h2 class='grid-flex-foto'>$row[judul]</h2></a>
-          <span class='info-uploader' style='margin-left:5px;'>Oleh&nbsp;".ucfirst($row[username])."&nbsp;|&nbsp;$row[hari], $tgl - $jam</span>
+          <span class='info-uploader' style='margin-left:5px;'>$row[hari], $tgl - $jam</span>
           <div class='black_layer'></div>
           <img class='lazy' src='".SITE_URL."foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$row[gambar]' alt='$row[judul]'>
         </div>";
@@ -40,22 +40,8 @@
 					</div>
 				</div></br> -->
       </div>
-      <div class="col-xs-12" style="padding:0;float:none;margin-bottom:10px;">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Billboard Category -->
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-4290882175389422"
-            data-ad-slot="6347211346"
-            data-ad-format="auto"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
       <div class="col-xs-12" style="padding:0;float:none;">
-      <div class="col-lg-3"></div>
-      <div class="col-xs-9 news-category" style="background:#fff;padding:0;padding-left:10px;">
-          <!-- <h1 style="color:#06375E;border-bottom:1px solid #06375E"><?php echo $nama_menu['nama_menu']?></h1> -->
+      <div class="col-xs-9 news-category" style="padding:0;">
           <?php
           $terkini=mysql_query("SELECT * FROM berita b JOIN (kategori k JOIN menu m ON k.id_kategori = m.id_menu ) ON b.id_kategori = k.id_kategori WHERE  m.id_parent = '$nama_menu[id_menu]' AND b.id_berita < $id_berita ORDER BY id_berita DESC LIMIT 27");
 					while($t=mysql_fetch_array($terkini)){
@@ -72,12 +58,12 @@
             echo "
             <article>
               <div class='badges-cate'>
-                <span style='background:$nama_menu[color]'><a style='color:#fff;' href='".SITE_URL."kategori-$t[id_kategori]-$t[kategori_seo]'>$t[nama_kategori]</a></span>
+                <span style='background:#fff'><a style='color:$nama_menu[color];' href='".SITE_URL."kategori-$t[id_kategori]-$t[kategori_seo]'>$t[nama_kategori]</a></span>
               </div>
               <a href='".SITE_URL."berita-$t[judul_seo]'>
                 <img class='lazy' src='".SITE_URL."foto_statis/base.jpg' data-src='http://harianamanah.com/foto_berita/$t[gambar]' alt='$t[judul]'>
               </a>
-              <span style='font-size:10px;'>".$tgl." | ".$jam."</span>
+              <span style='font-size:10px;display:block;padding:5px 0;'>".$tgl." | ".$jam."</span>
               <a href='".SITE_URL."berita-$t[judul_seo]' class='captions'>$hasil</a>
             </article>"; }
           ?>

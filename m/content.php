@@ -1,6 +1,8 @@
 <?php
 	if ($_GET['module']=='home')
 		include "modul/mod_berita/beranda.php";
+	if ($_GET['module']=='epaper')
+		include "modul/mod_berita/epaper.php";
   elseif ($_GET['module']=='menu')
     include "modul/mod_berita/menu.php";
   elseif ($_GET['module']=='rekomendasi')
@@ -9,7 +11,7 @@
     include "modul/mod_berita/detailkategori.php";
   elseif ($_GET['module']=='detailberita')
     include "modul/mod_berita/detailberita.php";
-  elseif ($_GET['module']=='epaper')
+  elseif ($_GET['module']=='epaperdetail')
     include "modul/mod_berita/detailpaper.php";
   elseif ($_GET['module']=='detailvideo')
     include "modul/mod_berita/detailvideo.php";
